@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hmelo003\\source\\repos\\Api3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\api3\\api3\\controllers\\pokemoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\controllers\\pokemoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\api3\\api3\\views\\pedido\\confirmacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\views\\pedido\\confirmacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\api3\\api3\\models\\productopokemon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\models\\productopokemon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\api3\\api3\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\api3\\api3\\services\\pokemonstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\services\\pokemonstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\api3\\api3\\services\\pokemonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\services\\pokemonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\api3\\api3\\views\\pokemon\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\views\\pokemon\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PokemonController.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Controllers\\PokemonController.cs",
+              "RelativeDocumentMoniker": "Api3\\Controllers\\PokemonController.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Controllers\\PokemonController.cs",
+              "RelativeToolTip": "Api3\\Controllers\\PokemonController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwC0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T14:39:49.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductoPokemon.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Models\\ProductoPokemon.cs",
+              "RelativeDocumentMoniker": "Api3\\Models\\ProductoPokemon.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Models\\ProductoPokemon.cs",
+              "RelativeToolTip": "Api3\\Models\\ProductoPokemon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T21:12:58.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PedidoController.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Controllers\\PedidoController.cs",
+              "RelativeDocumentMoniker": "Api3\\Controllers\\PedidoController.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Controllers\\PedidoController.cs",
+              "RelativeToolTip": "Api3\\Controllers\\PedidoController.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAswDsAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T19:52:25.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Confirmacion.cshtml",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Views\\Pedido\\Confirmacion.cshtml",
+              "RelativeDocumentMoniker": "Api3\\Views\\Pedido\\Confirmacion.cshtml",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Views\\Pedido\\Confirmacion.cshtml",
+              "RelativeToolTip": "Api3\\Views\\Pedido\\Confirmacion.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-16T21:21:54.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PokemonStorageService.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Services\\PokemonStorageService.cs",
+              "RelativeDocumentMoniker": "Api3\\Services\\PokemonStorageService.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Services\\PokemonStorageService.cs",
+              "RelativeToolTip": "Api3\\Services\\PokemonStorageService.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAcwB0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T21:41:06.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PokemonService.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Services\\PokemonService.cs",
+              "RelativeDocumentMoniker": "Api3\\Services\\PokemonService.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Services\\PokemonService.cs",
+              "RelativeToolTip": "Api3\\Services\\PokemonService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAuwD4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T21:14:41.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Views\\Pokemon\\Index.cshtml",
+              "RelativeDocumentMoniker": "Api3\\Views\\Pokemon\\Index.cshtml",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\Api3\\Api3\\Views\\Pokemon\\Index.cshtml",
+              "RelativeToolTip": "Api3\\Views\\Pokemon\\Index.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACcAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-15T20:22:31.023Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

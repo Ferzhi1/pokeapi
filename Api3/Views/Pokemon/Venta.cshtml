@@ -1,0 +1,28 @@
+﻿@model List<api3.Models.ProductoPokemon>
+
+<div class="container mt-5 text-center">
+    <h2 class="mb-4">Pokémon en Venta</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning">❌ No hay Pokémon en venta.</div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var pokemon in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-lg">
+                        <img src="@pokemon.ImagenUrl" class="card-img-top img-fluid rounded" alt="@pokemon.Nombre">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@pokemon.Nombre</h5>
+                            <p class="card-text">Rareza: @pokemon.Rareza</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+

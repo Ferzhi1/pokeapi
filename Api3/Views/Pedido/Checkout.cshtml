@@ -1,0 +1,32 @@
+﻿@model api3.Models.MazoPokemon
+
+<div class="container text-center mt-5">
+    <h2 class="mb-4">Finalizar Compra</h2>
+
+    <div class="card mx-auto shadow-sm" style="width: 18rem;">
+        <img src="@Model.ImagenUrl" class="card-img-top mazo-img" alt="@Model.Nombre">
+
+        <div class="card-body">
+            <h5 class="card-title">@Model.Nombre</h5>
+            <p class="card-text">Precio: $@Model.Precio</p>
+
+            <!-- Formulario para ingresar nombre y correo antes de pagar -->
+            <form asp-controller="Pedido" asp-action="Confirmacion" method="get">
+                <div class="mb-3">
+                    <label for="nombreMazo" class="form-label">Nombre del Mazo</label>
+                    <input type="text" id="nombreMazo" name="nombreMazo" class="form-control" value="@Model.Nombre" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label for="emailUsuario" class="form-label">Tu Correo Electrónico</label>
+                    <input type="email" id="emailUsuario" name="email" class="form-control" required>
+                </div>
+
+                <!-- Botón para confirmar la compra -->
+                <button type="submit" class="btn btn-success w-100">
+                    Pagar ahora
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

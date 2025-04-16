@@ -1,0 +1,59 @@
+﻿@model List<api3.Models.ProductoPokemon>
+
+<div class="container text-center mt-5">
+    <h2 class="mb-4">Mi Colección de Pokémon ⭐</h2>
+
+    @if (Model.Any())
+    {
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var pokemon in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-lg">
+                        @if (!string.IsNullOrEmpty(pokemon.ImagenUrl))
+                        {
+                            <img src="@pokemon.ImagenUrl" class="card-img-top img-fluid rounded" alt="@pokemon.Nombre">
+                        }
+                        else
+                        {
+                            <p class="text-danger">❌ Imagen no disponible</p>
+                        }
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@pokemon.Nombre</h5>
+                            <p class="card-text">Rareza: @pokemon.Rareza</p>
+
+                            <!-- 💰 Botón para vender el Pokémon -->
+                            <button class="btn btn-danger w-100 mt-2" onclick="venderPokemon('@pokemon.Nombre')">
+                                💰 Vender Pokémon
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            ❌ Aún no tienes Pokémon en tu colección. ¡Guarda algunos!
+        </div>
+    }
+
+    <!-- 📜 Botón para volver a la confirmación -->
+    <button class="btn btn-success mt-4" onclick="window.location.href='/Pedido/Confirmacion'">
+        📜 Volver a la Confirmación
+    </button>
+</div>
+
+<!-- 🔥 JavaScript para manejar la venta -->
+<script>
+    function venderPokemon(nombrePokemon) {
+        if (!nombrePokemon) {
+            alert("❌ Error: No se encontró el nombre del Pokémon.");
+            return;
+        }
+
+        window.location.href = `/Pokemon/Vender?nombre=${encodeURIComponent(nombrePokemon)}`;
+    }
+</script>
