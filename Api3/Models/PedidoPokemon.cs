@@ -3,6 +3,7 @@
 namespace api3.Models;
 public class PedidoPokemon
 {
+    public int id { get; set; }
     public string NombreMazo { get; set; }
     public decimal Precio { get; set; }
     public string UsuarioEmail { get; set; }

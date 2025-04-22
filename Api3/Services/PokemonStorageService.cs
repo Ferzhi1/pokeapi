@@ -1,80 +1,56 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
+﻿using api3.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using System.Collections.Generic;
 using System.Linq;
-using api3.Models;
+using System.Text.Json;
 
 namespace api3.Services
 {
     public class PokemonStorageService
     {
         private readonly Dictionary<string, PedidoUsuario> _storage = new();
-        private readonly string _archivoJson = "favoritos.json"; // 📂 Archivo de almacenamiento
-        private Dictionary<string, List<ProductoPokemon>> _coleccionPokemon = new();
-        private readonly List<ProductoPokemon> _pokemonsEnVenta = new List<ProductoPokemon>();
+        private readonly IMemoryCache _cache;
+        private const string CacheKey = "coleccionPokemon";
+        private readonly Dictionary<string, List<ProductoPokemon>> _coleccionPokemon = new();
+        private readonly Dictionary<string, List<ProductoPokemon>> _ventaPokemon = new();
 
-        public PokemonStorageService()
+        public PokemonStorageService(IMemoryCache cache)
         {
-            Console.WriteLine("🔄 Iniciando carga de datos desde archivo...");
-            CargarDatosDesdeArchivo();
-            Console.WriteLine("✅ Carga de datos completada.");
+            _cache = cache;
+            ReiniciarCache(); // 🔄 Reinicia la caché en cada arranque
         }
 
+        // ✅ Obtener Pedido de Usuario
         public PedidoUsuario ObtenerPedidoUsuario(string email)
         {
             Console.WriteLine($"🔎 Buscando pedido para {email}...");
             return _storage.TryGetValue(email, out var pedido) ? pedido : null;
         }
 
+        // ✅ Guardar Pedido del Usuario
         public void GuardarPedidoUsuario(string email, string mazo, List<PedidoPokemon> pokemons)
         {
             Console.WriteLine($"💾 Guardando pedido para {email} con {pokemons.Count} Pokémon...");
             _storage[email] = new PedidoUsuario { MazoSeleccionado = mazo, Pokemons = pokemons };
         }
 
-        // ✅ Agregar Pokémon a favoritos con almacenamiento persistente
+        // ✅ Agregar Pokémon a Favoritos
         public void AgregarPokemonAFavoritos(string email, ProductoPokemon pokemon)
         {
-            Console.WriteLine($"🛠 Antes de guardar en favoritos/venta: {pokemon.Nombre} - Rareza: {pokemon.Rareza}");
-
-            if (string.IsNullOrWhiteSpace(email))
-            {
-                Console.WriteLine("⚠️ Error: Email inválido.");
-                return;
-            }
+            Console.WriteLine($"🔍 Guardando Pokémon: {pokemon.Nombre}");
 
             if (!_coleccionPokemon.ContainsKey(email))
             {
                 _coleccionPokemon[email] = new List<ProductoPokemon>();
             }
 
-            // 🛡️ Evitar duplicados
-            if (_coleccionPokemon[email].Any(p => p.Nombre == pokemon.Nombre))
-            {
-                Console.WriteLine($"ℹ️ Pokémon {pokemon.Nombre} ya está en la colección de {email}.");
-                return;
-            }
-
-            // ✅ Verificar si `ImagenUrl` está presente
-            if (string.IsNullOrEmpty(pokemon.ImagenUrl))
-            {
-                Console.WriteLine($"⚠️ Advertencia: Pokémon {pokemon.Nombre} no tiene URL de imagen.");
-            }
-            else
-            {
-                Console.WriteLine($"🖼️ URL de imagen asignada: {pokemon.ImagenUrl}");
-            }
-
-            Console.WriteLine($"✅ Pokémon agregado a la colección de {email}: {pokemon.Nombre} - Rareza: {pokemon.Rareza}");
-            pokemon.Rareza = string.IsNullOrWhiteSpace(pokemon.Rareza) ? "Desconocida" : pokemon.Rareza; // 🔥 Evita rareza vacía
             _coleccionPokemon[email].Add(pokemon);
 
-            pokemon.Rareza = string.IsNullOrWhiteSpace(pokemon.Rareza) ? "Desconocida" : pokemon.Rareza;
-
-
-            GuardarDatosEnArchivo(); // 🔥 Guardar en JSON después de agregar
+            Console.WriteLine($"✅ Pokémon {pokemon.Nombre} guardado en favoritos.");
         }
 
+        // ✅ Obtener lista de Pokémon de la colección
         public List<ProductoPokemon> ObtenerColeccionPokemon(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -83,72 +59,81 @@ namespace api3.Services
                 return new List<ProductoPokemon>();
             }
 
-            if (!_coleccionPokemon.TryGetValue(email, out var lista))
+            if (_cache.TryGetValue(email, out List<ProductoPokemon> coleccion) && coleccion != null)
             {
-                Console.WriteLine($"❌ No se encontró una colección para el email {email}.");
+                Console.WriteLine($"📂 Colección obtenida desde caché para {email}: {coleccion.Count} Pokémon");
+                return coleccion;
+            }
+
+            if (!_coleccionPokemon.ContainsKey(email))
+            {
+                Console.WriteLine($"⚠️ No se encontraron Pokémon en la colección para {email}.");
                 return new List<ProductoPokemon>();
             }
 
-            Console.WriteLine($"🔍 Colección obtenida para {email}: {lista.Count} Pokémon");
-            foreach (var pokemon in lista)
-            {
-                Console.WriteLine($"🐉 Pokémon en colección: {pokemon.Nombre} - Rareza: {pokemon.Rareza}");
-            }
+            coleccion = _coleccionPokemon[email];
 
-            return lista;
+            _cache.Set(email, coleccion); // 🔥 Guardar en caché
+            Console.WriteLine($"✅ Colección obtenida para {email}: {coleccion.Count} Pokémon");
+
+            return coleccion;
         }
 
-        // ✅ Guardar colección en archivo JSON
-        private void GuardarDatosEnArchivo()
+        // ✅ Agregar Pokémon a Venta
+        public bool AgregarPokemonAVenta(string email, ProductoPokemon pokemon)
         {
-            Console.WriteLine("💾 Guardando datos en JSON...");
-            var jsonData = JsonSerializer.Serialize(_coleccionPokemon, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_archivoJson, jsonData);
-            foreach (var usuario in _coleccionPokemon)
+            Console.WriteLine($"🛠 Recibido para venta: {pokemon.Nombre}");
+
+            if (string.IsNullOrWhiteSpace(email) || pokemon == null || string.IsNullOrWhiteSpace(pokemon.Nombre))
             {
-                foreach (var pokemon in usuario.Value)
-                {
-                    pokemon.Rareza = string.IsNullOrWhiteSpace(pokemon.Rareza) ? "Desconocida" : pokemon.Rareza;
-                    Console.WriteLine($"📝 Guardando Pokémon: {pokemon.Nombre} - Rareza: {pokemon.Rareza}");
-                }
+                Console.WriteLine("⚠️ Error: Información inválida.");
+                return false;
             }
 
-            Console.WriteLine("✅ Datos guardados correctamente.");
+            if (!_ventaPokemon.ContainsKey(email))
+            {
+                _ventaPokemon[email] = new List<ProductoPokemon>();
+            }
+
+            if (_ventaPokemon[email].Any(p => p.Nombre == pokemon.Nombre))
+            {
+                Console.WriteLine($"⚠️ Pokémon {pokemon.Nombre} ya está en la lista de venta.");
+                return false;
+            }
+
+            _ventaPokemon[email].Add(pokemon);
+
+            Console.WriteLine($"✅ Pokémon {pokemon.Nombre} agregado a la venta.");
+            return true;
         }
 
-        // ✅ Cargar colección desde archivo JSON al iniciar la app
-        private void CargarDatosDesdeArchivo()
+        // ✅ Obtener lista de Pokémon en venta
+        public List<ProductoPokemon> ObtenerPokemonEnVenta(string email)
         {
-            foreach (var usuario in _coleccionPokemon)
+            if (string.IsNullOrWhiteSpace(email) || !_ventaPokemon.ContainsKey(email))
             {
-                foreach (var pokemon in usuario.Value)
-                {
-                    pokemon.Rareza = string.IsNullOrWhiteSpace(pokemon.Rareza) ? "Desconocida" : pokemon.Rareza; // 🔥 Evita rareza vacía al cargar
-                    Console.WriteLine($"🔎 Pokémon: {pokemon.Nombre} - Rareza: {pokemon.Rareza}");
-                }
+                Console.WriteLine("⚠️ No hay Pokémon en venta para este usuario.");
+                return new List<ProductoPokemon>();
             }
 
-            if (File.Exists(_archivoJson))
-            {
-                Console.WriteLine("📂 Cargando datos desde archivo JSON...");
-                string jsonData = File.ReadAllText(_archivoJson);
-                _coleccionPokemon = JsonSerializer.Deserialize<Dictionary<string, List<ProductoPokemon>>>(jsonData) ?? new();
+            Console.WriteLine($"📌 Obteniendo lista de Pokémon en venta para {email}...");
+            return _ventaPokemon[email];
+        }
 
-                Console.WriteLine("✅ Datos cargados con éxito. Colección contiene:");
-                foreach (var usuario in _coleccionPokemon)
-                {
-                    Console.WriteLine($"📌 Usuario: {usuario.Key}, Total Pokémon: {usuario.Value.Count}");
-                    foreach (var pokemon in usuario.Value)
-                    {
-                        Console.WriteLine($"🔎 Pokémon: {pokemon.Nombre} - Rareza: {pokemon.Rareza}");
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("⚠️ No se encontró el archivo JSON, se crea uno nuevo.");
-                _coleccionPokemon = new();
-            }
+        // ✅ Limpiar Caché
+        public void LimpiarCache()
+        {
+            Console.WriteLine("🚀 Limpiando caché...");
+            _cache.Remove(CacheKey);
+            Console.WriteLine("✅ Caché reiniciada.");
+        }
+
+        // ✅ Reiniciar Caché al inicio
+        private void ReiniciarCache()
+        {
+            Console.WriteLine("🔄 Reiniciando caché al inicio de la aplicación...");
+            _cache.Set(CacheKey, new Dictionary<string, List<ProductoPokemon>>());
+            Console.WriteLine("✅ Caché lista para almacenar datos.");
         }
     }
 }

@@ -3,6 +3,7 @@ namespace api3.Models
 {
     public class ProductoPokemon
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public decimal Precio { get; set; }
         public string Descripcion { get; set; }
@@ -14,6 +15,7 @@ namespace api3.Models
 
     public class StatPokemon
     {
+        public int Id { get; set; }
         public string Nombre { get; set; } // Ejemplo: "attack", "defense", "speed"
         public int Valor { get; set; } // Ejemplo: 50, 80, 100
     }

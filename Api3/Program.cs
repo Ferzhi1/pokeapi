@@ -1,6 +1,8 @@
 ﻿using api3.Services;
 using Microsoft.AspNetCore.Components;
-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // 🔹 Register Services
@@ -8,9 +10,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllersWithViews();
 
-// 🔹 Register HttpClient Correctly
-builder.Services.AddHttpClient<PokemonService>(); // ✅ Fixed service registration
-builder.Services.AddScoped<PokemonStorageService>();
+// 🔹 Register HttpClient Correctly (if needed)
+builder.Services.AddHttpClient<PokemonService>();
+builder.Services.AddSingleton<PokemonStorageService>();
 
 // 🔹 Register Other Services
 builder.Services.AddScoped<CheckoutService>();
@@ -18,6 +20,10 @@ builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<PokemonVentaService>();
 builder.Services.AddMemoryCache();
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
 var app = builder.Build();
 
 // 🔹 Middleware for Error Handling & Security
@@ -27,14 +33,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseRouting();
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseAuthorization(); // ✅ Correct placement
+app.UseStaticFiles(); // ✅ Correct placement for serving static files
+app.UseRouting();
+app.UseAuthorization(); // ✅ Authorization should be after routing
 
 // 🔹 Configure Routes Correctly
-app.MapControllers();  // ✅ Ensures MVC controllers are mapped correctly
-app.MapRazorPages();   // ✅ Ensures Razor Pages routing is supported
+app.MapControllers();
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Pokemon}/{action=Index}/{nombre?}"

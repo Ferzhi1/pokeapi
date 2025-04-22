@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using api3.Services;
+
 using Newtonsoft.Json;
 
 public class PokemonController : Controller
@@ -10,10 +11,9 @@ public class PokemonController : Controller
     private readonly PokemonService _pokemonService;
     private readonly CheckoutService _checkoutService;
     private readonly PokemonStorageService _pokemonStorageService;
-        private readonly PokemonVentaService _pokemonVentaService;
+    private readonly PokemonVentaService _pokemonVentaService;
 
-        // 🔹 Constructor with dependency injection
-        public PokemonController(PokemonService pokemonService, CheckoutService checkoutService, PokemonStorageService pokemonStorageService, PokemonVentaService pokemonVentaService)
+    public PokemonController(PokemonService pokemonService, CheckoutService checkoutService, PokemonStorageService pokemonStorageService, PokemonVentaService pokemonVentaService)
     {
         _pokemonService = pokemonService;
         _checkoutService = checkoutService;
@@ -21,9 +21,6 @@ public class PokemonController : Controller
         _pokemonVentaService = pokemonVentaService;
     }
 
-
-
-    // 🔹 Show available mazos
     public async Task<IActionResult> Index()
     {
         var mazos = new List<MazoPokemon>
@@ -36,96 +33,74 @@ public class PokemonController : Controller
         return View(mazos);
     }
 
-    public IActionResult GuardarFavorito(string nombre, string imagenUrl, string rareza)
+    [HttpPost]
+    public IActionResult GuardarFavorito([FromBody] ProductoPokemon pokemon)
     {
-        string emailUsuario = "hugo@test.com";
+        Console.WriteLine($"📩 Datos recibidos - Stats: {JsonConvert.SerializeObject(pokemon.Stats, Formatting.Indented)}");
 
-        Console.WriteLine($"🖼️ URL recibida: {imagenUrl}");
-        Console.WriteLine($"🔎 Rareza recibida: {rareza}");
-
-        var pokemon = new ProductoPokemon
+        if (pokemon.Stats == null || pokemon.Stats.Count == 0)
         {
-            Nombre = nombre,
-            ImagenUrl = imagenUrl,
-            Rareza =rareza
-        };
+            Console.WriteLine($"⚠ Estadísticas no recibidas correctamente para {pokemon.Nombre}. Se asigna lista vacía.");
+            pokemon.Stats = new List<StatPokemon>();
+        }
 
-        Console.WriteLine($"✅ Pokémon antes de guardar en favoritos: {pokemon.Nombre} - Rareza: {pokemon.Rareza}");
 
-        _pokemonStorageService.AgregarPokemonAFavoritos(emailUsuario, pokemon);
-        return Ok(new { mensaje = "Pokémon guardado exitosamente" });
+        _pokemonStorageService.AgregarPokemonAFavoritos("hugo@test.com", pokemon);
+        
+        return Ok(new { mensaje = "Pokémon guardado exitosamente", stats = pokemon.Stats });
     }
+
+
+    [HttpGet]
     public IActionResult Coleccion()
     {
-        string emailUsuario = "hugo@test.com"; // 📌 Asegúrate de obtener el email correctamente
+        var pokemonsGuardados = _pokemonStorageService.ObtenerColeccionPokemon("hugo@test.com");
 
-        if (string.IsNullOrWhiteSpace(emailUsuario))
+        if (pokemonsGuardados == null || pokemonsGuardados.Count == 0)
         {
-            TempData["Error"] = "❌ No se encontró el email del usuario. Por favor, inicia sesión.";
-            return RedirectToAction("PedidoConfirmado"); // 🔄 Redirigir si falta el email
+            Console.WriteLine("⚠️ No se encontraron Pokémon en la colección.");
+            return Ok(new { mensaje = "No hay Pokémon guardados en la colección.", pokemons = new List<ProductoPokemon>() });
         }
 
-        var coleccion = _pokemonStorageService.ObtenerColeccionPokemon(emailUsuario);
+        Console.WriteLine($"✅ Enviando colección al frontend: {JsonConvert.SerializeObject(pokemonsGuardados, Formatting.Indented)}");
 
-        if (coleccion == null || !coleccion.Any())
-        {
-            TempData["Error"] = "❌ No tienes Pokémon en tu colección.";
-        }
-
-        return View(coleccion);
+        return View(pokemonsGuardados);
     }
-    public IActionResult GuardarEnVenta(string nombre, string imagenUrl, string rareza)
+
+
+
+    [HttpPost]
+    public IActionResult GuardarParaVenta([FromBody] ProductoPokemon pokemon)
     {
-        string emailUsuario = "hugo@test.com";
+        Console.WriteLine($"📩 Datos recibidos para venta - Stats: {JsonConvert.SerializeObject(pokemon.Stats, Formatting.Indented)}");
 
-        Console.WriteLine($"🖼️ URL recibida: {imagenUrl}");
-        Console.WriteLine($"🔎 Rareza recibida: {rareza}");
-
-        var pokemon = new ProductoPokemon
+        if (pokemon.Stats == null || pokemon.Stats.Count == 0)
         {
-            Nombre = nombre,
-            ImagenUrl = imagenUrl,
-            Rareza = string.IsNullOrWhiteSpace(rareza) ? "Desconocida" : rareza // 🔥 Aquí está la corrección
-        };
+            Console.WriteLine($"⚠ Estadísticas no recibidas correctamente para {pokemon.Nombre}. Se asigna lista vacía.");
+            pokemon.Stats = new List<StatPokemon>();
+        }
 
-        Console.WriteLine($"✅ Pokémon antes de enviar a venta: {pokemon.Nombre} - Rareza: {pokemon.Rareza}");
+        _pokemonStorageService.AgregarPokemonAVenta("hugo@test.com", pokemon); // ✅ Guarda en la lista de venta, no en favoritos
 
-        _pokemonVentaService.AgregarPokemonAVenta(emailUsuario, pokemon);
-        return Ok(new { mensaje = "Pokémon agregado a la venta exitosamente" });
+        return Ok(new { mensaje = "Pokémon agregado para venta exitosamente", stats = pokemon.Stats });
     }
 
+
+    [HttpGet]
     public IActionResult Venta()
     {
-        var pokemonsEnVenta = _pokemonVentaService.ObtenerPokemonsEnVenta();
+        var pokemonsEnVenta = _pokemonStorageService.ObtenerPokemonEnVenta("hugo@test.com");
 
-        if (pokemonsEnVenta == null || !pokemonsEnVenta.Any())
+        if (pokemonsEnVenta == null || pokemonsEnVenta.Count == 0)
         {
-            TempData["Error"] = "❌ No hay Pokémon en venta.";
+            Console.WriteLine("⚠️ No se encontraron Pokémon en venta.");
+            return Ok(new { mensaje = "No hay Pokémon disponibles para vender.", pokemons = new List<ProductoPokemon>() });
         }
+
+        Console.WriteLine($"✅ Enviando lista de Pokémon en venta al frontend: {JsonConvert.SerializeObject(pokemonsEnVenta, Formatting.Indented)}");
 
         return View(pokemonsEnVenta);
     }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -21,49 +21,52 @@ namespace api3.Services
             _cache = cache;
         }
 
-        // 🔎 Obtener una lista de Pokémon desde la PokéAPI con sus estadísticas
+        // 🌟 Obtener una lista aleatoria de Pokémon con caché
         public async Task<List<ProductoPokemon>> ObtenerPokemonsAsync(int cantidadPokemons)
         {
-            if (_cache.TryGetValue($"ListaPokemons_{cantidadPokemons}", out List<ProductoPokemon> cachedPokemons))
-                return cachedPokemons;
+            List<ProductoPokemon> pokemons = new List<ProductoPokemon>();
 
-            var url = $"https://pokeapi.co/api/v2/pokemon?limit={cantidadPokemons}";
-            var response = await _httpClient.GetStringAsync(url);
-            var jsonData = JsonDocument.Parse(response);
-
-            var pokemons = new List<ProductoPokemon>();
-            var listaTemp = jsonData.RootElement.GetProperty("results").EnumerateArray().ToList();
-
-            foreach (var pokemon in listaTemp)
+            HashSet<int> idsAleatorios = new HashSet<int>(); // 🔥 Evita repetidos
+            while (idsAleatorios.Count < cantidadPokemons)
             {
-                var nombre = pokemon.GetProperty("name").GetString();
-                var id = pokemon.GetProperty("url").GetString().Split('/')[6];
+                idsAleatorios.Add(_random.Next(1, 898)); // ✅ Genera un ID aleatorio entre 1 y 898 (total de Pokémon en PokéAPI)
+            }
 
-                // 🌟 Obtener detalles del Pokémon, incluyendo sus estadísticas
+            foreach (var id in idsAleatorios)
+            {
+                string cacheKey = $"Pokemon_{id}";
+                if (_cache.TryGetValue(cacheKey, out ProductoPokemon cachedPokemon))
+                {
+                    pokemons.Add(cachedPokemon);
+                    continue;
+                }
+
                 var detallesUrl = $"https://pokeapi.co/api/v2/pokemon/{id}";
                 var detallesResponse = await _httpClient.GetStringAsync(detallesUrl);
                 var detallesJson = JsonDocument.Parse(detallesResponse);
 
-                var stats = detallesJson.RootElement.GetProperty("stats").EnumerateArray()
-                    .Select(stat => new StatPokemon
-                    {
-                        Nombre = stat.GetProperty("stat").GetProperty("name").GetString(),
-                        Valor = stat.GetProperty("base_stat").GetInt32()
-                    }).ToList();
-
-                pokemons.Add(new ProductoPokemon
+                var pokemon = new ProductoPokemon
                 {
-                    Nombre = nombre,
+                    Nombre = detallesJson.RootElement.GetProperty("name").GetString(),
                     ImagenUrl = $"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png",
                     Descripcion = "Pokémon obtenido de la PokéAPI",
-                    Precio = _random.Next(5, 100), // ✅ Asigna un precio aleatorio
-                    Rareza = _random.Next(1, 100) > 80 ? "Raro" : "Común", // ✅ Simulación de rareza aleatoria
-                    Stats = stats // ✅ Agrega las estadísticas obtenidas
-                });
+                    Precio = _random.Next(5, 100),
+                    Rareza = _random.Next(1, 100) > 80 ? "Raro" : "Común",
+                    Stats = detallesJson.RootElement.GetProperty("stats").EnumerateArray()
+                        .Select(stat => new StatPokemon
+                        {
+                            Nombre = stat.GetProperty("stat").GetProperty("name").GetString(),
+                            Valor = stat.GetProperty("base_stat").GetInt32()
+                        }).ToList()
+                };
+
+                pokemons.Add(pokemon);
+                _cache.Set(cacheKey, pokemon, TimeSpan.FromMinutes(30)); // 🔥 Caché por 30 minutos
             }
 
-            _cache.Set($"ListaPokemons_{cantidadPokemons}", pokemons, TimeSpan.FromHours(1));
             return pokemons;
         }
+
     }
 }
+

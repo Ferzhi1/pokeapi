@@ -5,147 +5,200 @@
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "caterpie",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "ekans",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "pidgeotto",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "wartortle",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "bulbasaur",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "fearow",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "beedrill",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "blastoise",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
-      "Rareza": null
+      "Rareza": null,
+      "Stats": []
     },
     {
       "Nombre": "ivysaur",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "venusaur",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "charmander",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "nidoran-f",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "butterfree",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "metapod",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "weedle",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "kakuna",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "raichu",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "sandshrew",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "sandslash",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
     },
     {
       "Nombre": "pidgey",
       "Precio": 0,
       "Descripcion": null,
       "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png",
-      "Rareza": "Desconocida"
+      "Rareza": "Desconocida",
+      "Stats": []
+    },
+    {
+      "Nombre": "squirtle",
+      "Precio": 0,
+      "Descripcion": null,
+      "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+      "Rareza": "undefined",
+      "Stats": []
+    },
+    {
+      "Nombre": "charmeleon",
+      "Precio": 0,
+      "Descripcion": null,
+      "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+      "Rareza": "undefined",
+      "Stats": []
+    },
+    {
+      "Nombre": "charizard",
+      "Precio": 0,
+      "Descripcion": null,
+      "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "Rareza": "undefined",
+      "Stats": []
+    },
+    {
+      "Nombre": "pidgeot",
+      "Precio": 0,
+      "Descripcion": null,
+      "ImagenUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png",
+      "Rareza": "undefined",
+      "Stats": []
     }
   ]
 }
