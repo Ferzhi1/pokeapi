@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 
 // 🔹 Register HttpClient Correctly (if needed)
 builder.Services.AddHttpClient<PokemonService>();
-builder.Services.AddSingleton<PokemonStorageService>();
+builder.Services.AddScoped<PokemonStorageService>();
 
 // 🔹 Register Other Services
 builder.Services.AddScoped<CheckoutService>();

@@ -31,14 +31,28 @@ namespace api3.Controllers
                 _ => "/img/default.jpg"
             };
         }
+
         [HttpGet("Confirmacion")]
         public async Task<IActionResult> Confirmacion(string nombreMazo, string email)
         {
             if (string.IsNullOrWhiteSpace(nombreMazo) || string.IsNullOrWhiteSpace(email))
             {
+                Console.WriteLine("❌ ERROR: El nombre del mazo y el email son obligatorios.");
                 return BadRequest("El nombre del mazo y el email son obligatorios.");
             }
 
+            // 🟢 Verificar si el usuario existe en la base de datos
+            Console.WriteLine($"🔍 Buscando usuario con email: {email}");
+            var usuarioPokemon = _pokemonStorageService.ObtenerUsuarioPokemon(email);
+
+            if (usuarioPokemon == null)
+            {
+                Console.WriteLine("❌ ERROR: Usuario no encontrado en la base de datos.");
+                return BadRequest("El usuario no existe en la base de datos.");
+            }
+            Console.WriteLine($"✅ Usuario encontrado: {usuarioPokemon.Email}");
+
+            // 🔹 Definir cantidad de Pokémon según el mazo
             var cantidadPokemons = nombreMazo switch
             {
                 "Mazo Pequeño" => 30,
@@ -51,31 +65,37 @@ namespace api3.Controllers
             var mazo = new MazoPokemon(nombreMazo, 25.99m, imagenUrl);
 
             // 🟢 Verificar si el usuario ya tiene un pedido guardado
-            var pedidoUsuario = _pokemonStorageService.ObtenerPedidoUsuario(email);
+            Console.WriteLine($"🔍 Buscando pedido existente para el usuario: {email}");
+            var pedidoUsuario = _pokemonStorageService.ObtenerPedidoUsuario(email); // ✅ Corrección aquí
 
             if (pedidoUsuario == null || pedidoUsuario.MazoSeleccionado != nombreMazo)
             {
+                Console.WriteLine("🆕 No hay pedido previo o el usuario cambió de mazo, generando nuevo.");
                 var nuevosPokemons = await _pokemonService.ObtenerPokemonsAsync(cantidadPokemons);
 
-              
                 var nuevoPedidoPokemon = new PedidoPokemon(nombreMazo, mazo.Precio, email)
                 {
                     Pokemons = nuevosPokemons
                 };
 
-                _pokemonStorageService.GuardarPedidoUsuario(email, nombreMazo, new List<PedidoPokemon> { nuevoPedidoPokemon });
+                // ✅ Asegurar que `EmailUsuario` NO sea nulo antes de guardar
+                foreach (var pokemon in nuevoPedidoPokemon.Pokemons)
+                {
+                    pokemon.Email = email; // ✅ Corrección aquí
+                }
 
-                // ✅ Asignar los Pokémon obtenidos al mazo
+                _pokemonStorageService.GuardarPedidoUsuario(email, nombreMazo, new List<PedidoPokemon> { nuevoPedidoPokemon });
                 mazo.Pokemons = nuevosPokemons;
             }
             else
             {
+                Console.WriteLine($"✅ Pedido existente encontrado: {pedidoUsuario.MazoSeleccionado}");
                 mazo.Pokemons = pedidoUsuario.Pokemons.Select(p => new ProductoPokemon
                 {
                     Nombre = p.NombreMazo,
                     Precio = p.Precio,
-                    ImagenUrl = imagenUrl
-                    
+                    ImagenUrl = imagenUrl,
+                    Email = email // ✅ Corrección aquí
                 }).ToList();
             }
 
@@ -84,11 +104,10 @@ namespace api3.Controllers
                 Pokemons = mazo.Pokemons
             };
 
+            Console.WriteLine("✔ Pedido listo, mostrando confirmación.");
             return View("~/Views/Pedido/Confirmacion.cshtml", pedidoPokemon);
-
-
-           
         }
+
         public IActionResult Checkout(string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre))
@@ -101,7 +120,5 @@ namespace api3.Controllers
 
             return View(mazo);
         }
- 
-
     }
 }

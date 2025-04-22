@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250422221917_update8")]
+    partial class update8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,35 +23,6 @@ namespace Api3.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Api3.Models.ColeccionPokemon", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("EmailUsuario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagenUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Rareza")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ColeccionPokemon");
-                });
 
             modelBuilder.Entity("api3.Models.MazoPokemon", b =>
                 {
@@ -139,7 +113,7 @@ namespace Api3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("EmailUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -184,9 +158,6 @@ namespace Api3.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ColeccionPokemonId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -198,8 +169,6 @@ namespace Api3.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ColeccionPokemonId");
 
                     b.HasIndex("ProductoPokemonId");
 
@@ -251,18 +220,9 @@ namespace Api3.Migrations
 
             modelBuilder.Entity("api3.Models.StatPokemon", b =>
                 {
-                    b.HasOne("Api3.Models.ColeccionPokemon", null)
-                        .WithMany("Stats")
-                        .HasForeignKey("ColeccionPokemonId");
-
                     b.HasOne("api3.Models.ProductoPokemon", null)
                         .WithMany("Stats")
                         .HasForeignKey("ProductoPokemonId");
-                });
-
-            modelBuilder.Entity("Api3.Models.ColeccionPokemon", b =>
-                {
-                    b.Navigation("Stats");
                 });
 
             modelBuilder.Entity("api3.Models.MazoPokemon", b =>

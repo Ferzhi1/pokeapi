@@ -4,6 +4,7 @@ namespace api3.Models
 {
     public class MazoPokemon
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public decimal Precio { get; set; }
         public string ImagenUrl { get; set; }
@@ -13,6 +14,7 @@ namespace api3.Models
 
         public MazoPokemon(string nombre, decimal precio, string imagenUrl)
         {
+            Id = Id;
             Nombre = nombre;
             Precio = precio;
             ImagenUrl = imagenUrl;
