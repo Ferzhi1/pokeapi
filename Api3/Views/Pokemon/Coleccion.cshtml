@@ -1,47 +1,41 @@
 ﻿@model List<api3.Models.ProductoPokemon>
 
 <div class="container text-center mt-5">
-    <h2 class="mb-4">Pokémon en Venta 💰</h2>
+    <h2 class="mb-4">Colección de Pokémon 📜</h2>
 
     @if (Model == null || !Model.Any())
     {
         <div class="alert alert-warning">
-            ❌ No hay Pokémon disponibles para la venta en este momento.
+            ❌ No hay Pokémon guardados en tu colección.
         </div>
     }
     else
     {
-        <h6>📢 Total de Pokémon en venta: @(Model.Count())</h6>
+        <h6>📢 Total de Pokémon guardados: @(Model.Count())</h6>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach (var pokemon in Model)
             {
                 <div class="col">
                     <div class="card shadow-lg h-100">
-                        <div class="d-flex flex-column align-items-center p-3">
-                            <img src="@pokemon.ImagenUrl" class="img-fluid rounded" alt="@pokemon.Nombre" style="width: 150px; height: auto;">
-                            <h5 class="mt-2">@pokemon.Nombre</h5>
-                            <p>Rareza: <span class="fw-bold">@pokemon.Rareza</span></p>
+                        <img src="@pokemon.ImagenUrl" class="img-fluid rounded" alt="@pokemon.Nombre" style="width: 150px; height: auto;">
+                        <h5 class="mt-2">@pokemon.Nombre</h5>
+                        <p>Rareza: <span class="fw-bold">@pokemon.Rareza</span></p>
 
-                            @if (pokemon.Stats != null && pokemon.Stats.Any())
-                            {
-                                <ul class="list-group mt-2">
-                                    @foreach (var stat in pokemon.Stats)
-                                    {
-                                        <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
-                                    }
-                                </ul>
-                            }
-                            else
-                            {
-                                <p class="text-muted">🔎 Sin estadísticas registradas.</p>
-                            }
-                            <button class="btn btn-danger mt-2" onclick='guardarEnVenta("@pokemon.Nombre", "@pokemon.ImagenUrl", "@pokemon.Rareza", JSON.stringify(@Html.Raw(Json.Serialize(pokemon.Stats))))'>
-                                💰 Agregar a Venta
-                            </button>
+                        @if (pokemon.Stats?.Any() ?? false)
+                        {
+                            <ul class="list-group mt-2">
+                                @foreach (var stat in pokemon.Stats)
+                                {
+                                    <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p class="text-muted">🔎 Sin estadísticas registradas.</p>
+                        }
 
-                         
-                        </div>
                     </div>
                 </div>
             }
@@ -49,76 +43,6 @@
     }
 </div>
 
-<div class="text-center mt-4">
-    <button class="btn btn-primary" onclick="window.location.href='/Pedido/Confirmacion'">
-        📜 Regresar a pedido
-    </button>
-</div>
-<script>
-	function guardarEnVenta(nombrePokemon, imagenUrl, rareza, statsJson) {
-		if (!nombrePokemon || !imagenUrl || !rareza) {
-			console.error("❌ Información del Pokémon incompleta.");
-			return;
-		}
 
-		// 🔥 Procesar estadísticas JSON
-		let stats = [];
-		try {
-			stats = statsJson && statsJson.trim() !== "" ? JSON.parse(statsJson) : [];
-		} catch (error) {
-			console.error("❌ Error al procesar estadísticas:", error);
-			return;
-		}
 
-		// 🔥 Configuración de datos a enviar
-		const datosPokemon = {
-			nombre: nombrePokemon,
-			imagenUrl: imagenUrl,
-			rareza: rareza,
-			stats: stats
-		};
 
-		fetch("/Pokemon/GuardarParaVenta", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"Accept": "application/json"
-			},
-			body: JSON.stringify(datosPokemon)
-		})
-		.then(response => {
-			if (!response.ok) {
-				return response.text().then(text => {
-					throw new Error(`❌ Error del servidor: ${response.status} - ${text}`);
-				});
-			}
-			return response.json();
-		})
-		.then(data => {
-			console.log("✅ Respuesta del servidor:", data);
-
-			// 🔥 Crear alerta flotante
-			let alertDiv = document.createElement("div");
-			alertDiv.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x";
-			alertDiv.style.zIndex = "9999";
-			alertDiv.style.width = "auto";
-			alertDiv.style.padding = "10px 20px";
-			alertDiv.innerHTML = "✅ Pokémon enviado a la venta";
-
-			document.body.appendChild(alertDiv);
-
-			// 🔥 Ocultar alerta después de 3 segundos automáticamente
-			setTimeout(() => {
-				alertDiv.remove();
-			}, 3000);
-
-			// 🔥 Eliminar la tarjeta del Pokémon sin recargar la página
-			const card = document.getElementById(`card-${nombrePokemon}`);
-			if (card) {
-				card.remove();
-				console.log(`🗑️ Tarjeta de ${nombrePokemon} eliminada.`);
-			}
-		})
-		.catch(error => console.error("❌ Error al enviar a la venta:", error));
-	}
-</script>

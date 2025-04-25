@@ -53,112 +53,171 @@ namespace api3.Services
         // ✅ Obtener Pedido de Usuario desde la base de datos
         public void GuardarPedidoUsuario(string email, string mazo, List<PedidoPokemon> pokemons)
         {
-            if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("⚠ ERROR: El email no puede ser nulo.");
-
-            if (string.IsNullOrWhiteSpace(mazo))
-                throw new ArgumentException("⚠ ERROR: El nombre del mazo no puede ser nulo.");
-
-            if (pokemons == null || pokemons.Count == 0)
-                throw new ArgumentException("⚠ ERROR: La lista de Pokémon no puede estar vacía.");
-
-            Console.WriteLine($"🔍 Asignando EmailUsuario a {pokemons.Count} Pokémon(s): {email}");
-
-            foreach (var pokemon in pokemons)
-            {
-                if (pokemon == null)
-                    throw new ArgumentException("⚠ ERROR: Se encontró un Pokémon nulo en la lista.");
-
-                pokemon.UsuarioEmail = email;  // ✅ Asigna el email antes de insertar
-            }
-
-            var pedido = new PedidoUsuario { Email = email, MazoSeleccionado = mazo, Pokemons = pokemons };
-
             try
             {
+                Console.WriteLine($"📩 Recibido: Email = {email}, Mazo = {mazo}, Pokémon(s) = {pokemons?.Count}");
+
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    Console.WriteLine("❌ ERROR: Email no puede ser nulo ni vacío.");
+                    throw new ArgumentException("El email no puede ser nulo ni vacío.");
+                }
+
+                if (string.IsNullOrWhiteSpace(mazo))
+                {
+                    Console.WriteLine("❌ ERROR: El nombre del mazo no puede ser nulo.");
+                    throw new ArgumentException("El nombre del mazo no puede ser nulo.");
+                }
+
+                if (pokemons == null || pokemons.Count == 0)
+                {
+                    Console.WriteLine("❌ ERROR: La lista de Pokémon no puede estar vacía.");
+                    throw new ArgumentException("La lista de Pokémon no puede estar vacía.");
+                }
+
+                Console.WriteLine($"🔍 Asignando EmailUsuario a {pokemons.Count} Pokémon(s): {email}");
+
+                foreach (var pokemon in pokemons)
+                {
+                    if (pokemon == null)
+                    {
+                        Console.WriteLine("❌ ERROR: Se encontró un Pokémon nulo en la lista.");
+                        throw new ArgumentException("Se encontró un Pokémon nulo en la lista.");
+                    }
+
+                    pokemon.UsuarioEmail = email;  // ✅ Asigna el email antes de insertar
+                    Console.WriteLine($"✅ Asignado email a Pokémon: {pokemon.NombreMazo}");
+                }
+
+                // ✅ Crear y guardar el pedido
+                var pedido = new PedidoUsuario { Email = email, MazoSeleccionado = mazo, Pokemons = pokemons };
+
+                Console.WriteLine("💾 Verificando contexto de base de datos...");
+                if (_context.PedidoUsuario == null)
+                {
+                    Console.WriteLine("❌ ERROR: La tabla PedidoUsuario no está disponible en DbContext.");
+                    throw new InvalidOperationException("PedidoUsuario no está en DbContext.");
+                }
+
                 _context.PedidoUsuario.Add(pedido);
+
+                Console.WriteLine("💾 Ejecutando SaveChanges()...");
                 _context.SaveChanges();
+
                 Console.WriteLine($"✅ Pedido guardado correctamente en la base de datos: {mazo}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ ERROR al guardar el pedido: {ex.Message}");
+                Console.WriteLine($"❌ ERROR en GuardarPedidoUsuario(): {ex.Message}");
                 throw;
             }
         }
+
         public PedidoUsuario ObtenerPedidoUsuario(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("⚠ ERROR: El email no puede ser nulo ni vacío.");
+            {
+                Console.WriteLine("❌ ERROR: El email no puede ser nulo ni vacío.");
+                throw new ArgumentException("El email no puede ser nulo ni vacío.");
+            }
 
             Console.WriteLine($"🔍 Buscando pedido en PedidoUsuario para el email: {email}");
 
-            var pedido = _context.PedidoUsuario
-                .Include(p => p.Pokemons) // ✅ Si `PedidoUsuario` tiene relación con `PedidoPokemon`
-                .FirstOrDefault(p => p.Email == email);
+            try
+            {
+                // ✅ Verificamos si el DbSet PedidoUsuario está disponible
+                if (_context.PedidoUsuario == null)
+                {
+                    Console.WriteLine("❌ ERROR: La tabla PedidoUsuario no está disponible en DbContext.");
+                    throw new InvalidOperationException("PedidoUsuario no está en DbContext.");
+                }
 
-            Console.WriteLine(pedido != null
-                ? $"✅ Pedido encontrado: {pedido.MazoSeleccionado}"
-                : "❌ No se encontró pedido para el usuario.");
+                // 🔹 Recuperando el pedido con los Pokémon relacionados
+                var pedido = _context.PedidoUsuario
+                    .Include(p => p.Pokemons) // ✅ Si `PedidoUsuario` tiene relación con `PedidoPokemon`
+                    .FirstOrDefault(p => p.Email == email);
 
-            return pedido;
+                if (pedido == null)
+                {
+                    Console.WriteLine("❌ No se encontró pedido para el usuario.");
+                    return null;
+                }
+
+                // ✅ Verificar la cantidad de Pokémon recuperados
+                Console.WriteLine($"✅ Pedido encontrado: {pedido.MazoSeleccionado} con {pedido.Pokemons?.Count} Pokémon(s).");
+
+                return pedido;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ ERROR en ObtenerPedidoUsuario(): {ex.Message}");
+                throw;
+            }
         }
+
 
 
 
         // ✅ Agregar Pokémon a Favoritos
         public void AgregarPokemonAFavoritos(string email, ProductoPokemon pokemon)
         {
-            if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("El email no puede ser nulo ni vacío.");
-            if (pokemon == null || string.IsNullOrWhiteSpace(pokemon.Nombre))
-                throw new ArgumentException("Los datos del Pokémon son inválidos.");
+            try
+            {
+                // 🔥 Asegurar que la descripción nunca sea NULL
+                pokemon.Descripcion = string.IsNullOrWhiteSpace(pokemon.Descripcion) ? "Sin descripción" : pokemon.Descripcion;
 
-            pokemon.Email = email;
-            _context.ProductoPokemon.Add(pokemon);
-            _context.SaveChanges();
+                _context.ProductoPokemon.Add(pokemon);
+                _context.SaveChanges();
+                Console.WriteLine("✅ Pokémon guardado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ ERROR en AgregarPokemonAFavoritos(): {ex.Message}");
+                throw;
+            }
         }
+
+
 
         // ✅ Obtener lista de Pokémon de la colección
+        // ✅ Obtener lista de Pokémon de la colección con estadísticas
         public List<ProductoPokemon> ObtenerColeccionPokemon(string email)
         {
-            if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("El email no puede ser nulo ni vacío.");
-
-            return _context.ProductoPokemon
-                .Where(p => p.Email == email)
-                .ToList();
-        }
-
-        // ✅ Agregar Pokémon a Venta
-        public bool AgregarPokemonAVenta(string email, ProductoPokemon pokemon)
-        {
-            if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("El email no puede ser nulo ni vacío.");
-            if (pokemon == null || string.IsNullOrWhiteSpace(pokemon.Nombre))
-                throw new ArgumentException("Los datos del Pokémon son inválidos.");
-
-            if (_context.ProductoPokemon.Any(p => p.Nombre == pokemon.Nombre && p.Email == email))
+            try
             {
-                return false; // Ya existe en la venta
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    Console.WriteLine("❌ Error: El email no puede ser nulo ni vacío.");
+                    throw new ArgumentException("El email no puede ser nulo ni vacío.");
+                }
+
+                Console.WriteLine($"🔍 Buscando colección de Pokémon para el usuario: {email}");
+
+                var pokemonsGuardados = _context.ProductoPokemon
+                    .Include(p => p.Stats) // 🔥 Asegura que se cargan las estadísticas
+                    .Where(p => p.Email == email)
+                    .ToList();
+
+                if (!pokemonsGuardados.Any())
+                {
+                    Console.WriteLine("⚠ No se encontraron Pokémon en la colección.");
+                }
+                else
+                {
+                    Console.WriteLine($"✅ Enviando colección con {pokemonsGuardados.Count} Pokémon(s).");
+                }
+
+                return pokemonsGuardados;
             }
-
-            pokemon.Email = email;
-            pokemon.EnVenta = true;
-            _context.ProductoPokemon.Add(pokemon);
-            _context.SaveChanges();
-            return true;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ ERROR en ObtenerColeccionPokemon(): {ex.Message}");
+                return new List<ProductoPokemon>(); // Retorna una lista vacía en caso de error
+            }
         }
 
-        // ✅ Obtener lista de Pokémon en venta
-        public List<ProductoPokemon> ObtenerPokemonEnVenta(string email)
-        {
-            if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("El email no puede ser nulo ni vacío.");
 
-            return _context.ProductoPokemon
-                .Where(p => p.Email == email && p.EnVenta)
-                .ToList();
-        }
     }
 }
+
+

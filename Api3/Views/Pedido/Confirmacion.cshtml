@@ -1,221 +1,184 @@
 ﻿@model api3.Models.PedidoPokemon
 
 <div class="container text-center mt-5">
-	<h2 class="mb-4">Pedido Confirmado</h2>
+    <h2 class="mb-4">Pedido Confirmado</h2>
 
-	<div class="alert alert-success">
-		✅ ¡Gracias por tu compra! 🎴✨ Tu mazo: <strong>@Model.NombreMazo</strong>
-	</div>
+    <div class="alert alert-success">
+        ✅ ¡Gracias por tu compra! 🎴✨ Tu mazo: <strong>@Model.NombreMazo</strong>
+    </div>
 
-	<div class="row row-cols-1 row-cols-md-3 g-4">
-		@if (Model.Pokemons != null && Model.Pokemons.Any())
-		{
-			@foreach (var pokemon in Model.Pokemons)
-			{
-				<div class="col" id="card-@pokemon.Nombre">
-					<div class="card shadow-lg">
-						<div class="d-flex align-items-center p-3">
-							<div class="flex-shrink-0">
-								@if (!string.IsNullOrEmpty(pokemon.ImagenUrl))
-								{
-									<img src="@pokemon.ImagenUrl" class="img-fluid rounded" alt="@pokemon.Nombre" style="width: 180px; height: auto;">
-								}
-								else
-								{
-									<p class="text-danger">❌ Imagen no disponible</p>
-								}
-							</div>
+    <input type="hidden" id="emailUsuario" value="@Model.UsuarioEmail" /> <!-- 🔥 Capturamos el email -->
 
-							@if (pokemon.Stats != null && pokemon.Stats.Any())
-							{
-								<div class="stats-section ms-3">
-									<h6>📊 Estadísticas:</h6>
-									<ul class="list-group">
-										@foreach (var stat in pokemon.Stats)
-										{
-											<li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
-										}
-									</ul>
-								</div>
-							}
-							else
-							{
-								<p class="text-muted ms-3 small">🔎 Estadísticas no disponibles</p>
-							}
-						</div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @if (Model.Pokemons?.Any() ?? false)
+        {
+            @foreach (var pokemon in Model.Pokemons)
+            {
+                <div class="col pokemon-card" id="card-@pokemon.Nombre">
+                    <div class="card shadow-lg">
+                        <div class="d-flex align-items-center p-3">
+                            <div class="flex-shrink-0">
+                                <img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
+                                     style="width: 180px; height: auto;"
+                                     onerror="this.src='/images/default-pokemon.png';" />
+                            </div>
 
+                            <div class="stats-section ms-3">
+                                <h6>📊 Estadísticas:</h6>
+                                <ul class="list-group">
+                                    @if (pokemon.Stats?.Any() ?? false)
+                                    {
+                                        @foreach (var stat in pokemon.Stats)
+                                        {
+                                            <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
 
-						<div class="card-body text-center">
-							<h5 class="card-title">@pokemon.Nombre</h5>
-							<p class="card-text">Rareza: @pokemon.Rareza</p>
-
-							<button class="btn btn-warning w-100 mt-2"
-									onclick='guardarEnColeccion("@pokemon.Nombre", "@pokemon.ImagenUrl", "@pokemon.Rareza", JSON.stringify(@Html.Raw(Json.Serialize(pokemon.Stats))))'>
-								⭐ Guardar en colección
-							</button>
-
-							<button class="btn btn-danger mt-2" onclick='guardarEnVenta("@pokemon.Nombre", "@pokemon.ImagenUrl", "@pokemon.Rareza", JSON.stringify(@Html.Raw(Json.Serialize(pokemon.Stats))))'>
-								💰 Agregar a Venta
-							</button>
-						</div>
-
-
-					</div>
-				</div>
-			}
-		}
-		else
-		{
-			<p class="text-muted">⚠ No hay Pokémon en el pedido.</p>
-		}
-	</div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
+                            <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
+                            <button class="btn btn-danger mt-2 guardar-btn">Guardar</button>
+                            <button class="btn btn-warning mt-2 vender-btn">Vender</button> <!-- 🔥 Nuevo botón de venta -->
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">⚠ No hay Pokémon en el pedido.</p>
+        }
+    </div>
 </div>
 
-<div>
-	<button class="btn btn-success mt-2" onclick="window.location.href='/Pokemon/Coleccion'">
-		📜 Ver Pokémon Guardados
-	</button>
-	<button class="btn btn-primary mt-2" onclick="window.location.href='/Pokemon/Venta'">
-		🛒 Ver Pokémon en Venta
-	</button>
+<div class="text-center">
+    <button class="btn btn-success mt-3" onclick="irAColeccion()">
+        📜 Ver Pokémon Guardados
+    </button>
+    <button class="btn btn-primary mt-3" onclick="irAVenta()">
+        💰 Ir a Venta
+    </button> <!-- 🔥 Botón para redirigir a la sección de ventas -->
 </div>
 
 <script>
-	function guardarEnColeccion(nombrePokemon, imagenUrl, rareza, statsJson) {
-		if (!nombrePokemon || !imagenUrl || !rareza) {
-			console.error("❌ Información del Pokémon incompleta.");
-			return;
-		}
+    function irAColeccion() {
+        const emailUsuario = document.getElementById("emailUsuario")?.value.trim();
 
-		// 🔥 Procesar estadísticas JSON
-		let stats = [];
-		try {
-			stats = statsJson && statsJson.trim() !== "" ? JSON.parse(statsJson) : [];
-		} catch (error) {
-			console.error("❌ Error al procesar estadísticas:", error);
-			return;
-		}
+        if (!emailUsuario) {
+            console.error("❌ No se encontró el email del usuario.");
+            alert("⚠ No puedes acceder a la colección sin estar autenticado.");
+            return;
+        }
 
-		// 🔥 Configuración de datos a enviar
-		const datosPokemon = {
-			nombre: nombrePokemon,
-			imagenUrl: imagenUrl,
-			rareza: rareza,
-			stats: stats
-		};
-
-		fetch("/Pokemon/GuardarFavorito", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"Accept": "application/json"
-			},
-			body: JSON.stringify(datosPokemon)
-		})
-		.then(response => {
-			if (!response.ok) {
-				return response.text().then(text => {
-					throw new Error(`❌ Error del servidor: ${response.status} - ${text}`);
-				});
-			}
-			return response.json();
-		})
-		.then(data => {
-			console.log("✅ Respuesta del servidor:", data);
-
-			// 🔥 Crear alerta flotante
-			let alertDiv = document.createElement("div");
-			alertDiv.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x";
-			alertDiv.style.zIndex = "9999";
-			alertDiv.style.width = "auto";
-			alertDiv.style.padding = "10px 20px";
-			alertDiv.innerHTML = "✅ Guardado satisfactoriamente";
-
-			document.body.appendChild(alertDiv);
-
-			// 🔥 Ocultar alerta después de 3 segundos automáticamente
-			setTimeout(() => {
-				alertDiv.remove();
-			}, 3000);
-
-			// 🔥 Ocultar la tarjeta del Pokémon de la pantalla sin recargar
-			const card = document.getElementById(`card-${nombrePokemon}`);
-			if (card) {
-				card.remove();
-				console.log(`🗑️ Tarjeta de ${nombrePokemon} eliminada.`);
-			}
-		})
-		.catch(error => console.error("❌ Error al guardar:", error));
-	}
-
-
-
-
-	function guardarEnVenta(nombrePokemon, imagenUrl, rareza, statsJson) {
-		if (!nombrePokemon || !imagenUrl || !rareza) {
-			console.error("❌ Información del Pokémon incompleta.");
-			return;
-		}
-
-		// 🔥 Procesar estadísticas JSON
-		let stats = [];
-		try {
-			stats = statsJson && statsJson.trim() !== "" ? JSON.parse(statsJson) : [];
-		} catch (error) {
-			console.error("❌ Error al procesar estadísticas:", error);
-			return;
-		}
-
-		// 🔥 Configuración de datos a enviar
-		const datosPokemon = {
-			nombre: nombrePokemon,
-			imagenUrl: imagenUrl,
-			rareza: rareza,
-			stats: stats
-		};
-
-		fetch("/Pokemon/GuardarParaVenta", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"Accept": "application/json"
-			},
-			body: JSON.stringify(datosPokemon)
-		})
-		.then(response => {
-			if (!response.ok) {
-				return response.text().then(text => {
-					throw new Error(`❌ Error del servidor: ${response.status} - ${text}`);
-				});
-			}
-			return response.json();
-		})
-		.then(data => {
-			console.log("✅ Respuesta del servidor:", data);
-
-			// 🔥 Crear alerta flotante
-			let alertDiv = document.createElement("div");
-			alertDiv.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x";
-			alertDiv.style.zIndex = "9999";
-			alertDiv.style.width = "auto";
-			alertDiv.style.padding = "10px 20px";
-			alertDiv.innerHTML = "✅ Pokémon enviado a la venta";
-
-			document.body.appendChild(alertDiv);
-
-			// 🔥 Ocultar alerta después de 3 segundos automáticamente
-			setTimeout(() => {
-				alertDiv.remove();
-			}, 3000);
-
-			// 🔥 Eliminar la tarjeta del Pokémon sin recargar la página
-			const card = document.getElementById(`card-${nombrePokemon}`);
-			if (card) {
-				card.remove();
-				console.log(`🗑️ Tarjeta de ${nombrePokemon} eliminada.`);
-			}
-		})
-		.catch(error => console.error("❌ Error al enviar a la venta:", error));
-	}
-
+        console.log("🔍 Redirigiendo a la colección con email:", emailUsuario);
+        window.location.href = `/Pokemon/Coleccion?email=${encodeURIComponent(emailUsuario)}`;
+    }
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const emailUsuario = document.getElementById("emailUsuario")?.value?.trim(); // 🔥 Captura el email
+
+        if (!emailUsuario) {
+            console.error("❌ ERROR: Email del usuario no definido.");
+            return;
+        }
+
+        const botonesGuardar = document.querySelectorAll(".guardar-btn");
+
+        botonesGuardar.forEach((boton) => {
+            boton.addEventListener("click", function () {
+                const card = boton.closest(".pokemon-card");
+
+                if (!card) {
+                    console.error("❌ No se encontró la tarjeta del Pokémon.");
+                    alert("⚠ Error: No se pudo obtener la información del Pokémon.");
+                    return;
+                }
+
+                const nombrePokemon = card.querySelector(".pokemon-nombre")?.textContent?.trim() || "Desconocido";
+                const rarezaPokemon = card.querySelector(".pokemon-rareza")?.textContent?.replace("Rareza: ", "").trim() || "N/A";
+                const imagenUrl = card.querySelector(".pokemon-img")?.src || "/images/default-pokemon.png";
+
+                // 🔥 Obtener estadísticas del Pokémon
+                const statsElements = card.querySelectorAll(".list-group-item");
+                const stats = Array.from(statsElements).map(stat => {
+                    const statData = stat.textContent.split(": ");
+                    return { nombre: statData[0]?.trim(), valor: statData[1]?.trim() || "N/A" };
+                }).filter(stat => stat.nombre); // ✅ Filtramos valores vacíos
+
+                // 🔥 Validar datos antes de enviar
+                if (!nombrePokemon || !imagenUrl || !rarezaPokemon || stats.length === 0) {
+                    console.error("❌ Información del Pokémon incompleta.", { nombrePokemon, imagenUrl, rarezaPokemon, stats, emailUsuario });
+                    alert("⚠ No se pudo guardar porque los datos están incompletos.");
+                    return;
+                }
+
+                console.log("📤 Enviando datos al servidor:", {
+                    Nombre: nombrePokemon,
+                    ImagenUrl: imagenUrl,
+                    Rareza: rarezaPokemon,
+                    Stats: stats,
+                    Email: emailUsuario // ✅ Se agrega el email correctamente
+                });
+
+                fetch("/Pokemon/GuardarFavorito", { // 🔥 Ajuste de la ruta al controlador correcto
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        Nombre: nombrePokemon,
+                        ImagenUrl: imagenUrl,
+                        Rareza: rarezaPokemon,
+                        Stats: stats,
+                        Email: emailUsuario
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            throw new Error(`❌ Error del servidor: ${response.status} - ${text}`);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("✅ Guardado exitoso:", data);
+
+                    // 🔥 Crear alerta flotante
+                    let alertDiv = document.createElement("div");
+                    alertDiv.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x fade show";
+                    alertDiv.style.zIndex = "9999";
+                    alertDiv.style.padding = "10px 20px";
+                    alertDiv.innerHTML = `✅ ${nombrePokemon} guardado satisfactoriamente`;
+
+                    document.body.appendChild(alertDiv);
+
+                    // 🔥 Ocultar alerta después de 3 segundos con animación segura
+                    setTimeout(() => {
+                        alertDiv.style.transition = "opacity 0.5s";
+                        alertDiv.style.opacity = "0";
+                        setTimeout(() => alertDiv.remove(), 500);
+                    }, 3000);
+
+                    // 🔥 Ocultar la tarjeta del Pokémon de la pantalla sin recargar
+                    card.remove();
+                })
+                .catch(error => {
+                    console.error("❌ Error al guardar:", error);
+                    alert(`⚠ Error al guardar: ${error.message}`);
+                });
+            });
+        });
+    })
+</script>
+

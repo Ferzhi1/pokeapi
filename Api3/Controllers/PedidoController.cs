@@ -41,7 +41,6 @@ namespace api3.Controllers
                 return BadRequest("El nombre del mazo y el email son obligatorios.");
             }
 
-            // 🟢 Verificar si el usuario existe en la base de datos
             Console.WriteLine($"🔍 Buscando usuario con email: {email}");
             var usuarioPokemon = _pokemonStorageService.ObtenerUsuarioPokemon(email);
 
@@ -52,7 +51,7 @@ namespace api3.Controllers
             }
             Console.WriteLine($"✅ Usuario encontrado: {usuarioPokemon.Email}");
 
-            // 🔹 Definir cantidad de Pokémon según el mazo
+            var imagenUrl = ObtenerImagenUrl(nombreMazo);
             var cantidadPokemons = nombreMazo switch
             {
                 "Mazo Pequeño" => 30,
@@ -61,54 +60,28 @@ namespace api3.Controllers
                 _ => 30
             };
 
-            var imagenUrl = ObtenerImagenUrl(nombreMazo);
-            var mazo = new MazoPokemon(nombreMazo, 25.99m, imagenUrl);
+            Console.WriteLine($"🔍 Obteniendo {cantidadPokemons} Pokémon(s) para mostrar.");
+            var pokemons = await _pokemonService.ObtenerPokemonsAsync(cantidadPokemons);
 
-            // 🟢 Verificar si el usuario ya tiene un pedido guardado
-            Console.WriteLine($"🔍 Buscando pedido existente para el usuario: {email}");
-            var pedidoUsuario = _pokemonStorageService.ObtenerPedidoUsuario(email); // ✅ Corrección aquí
-
-            if (pedidoUsuario == null || pedidoUsuario.MazoSeleccionado != nombreMazo)
+            if (pokemons == null || !pokemons.Any())
             {
-                Console.WriteLine("🆕 No hay pedido previo o el usuario cambió de mazo, generando nuevo.");
-                var nuevosPokemons = await _pokemonService.ObtenerPokemonsAsync(cantidadPokemons);
-
-                var nuevoPedidoPokemon = new PedidoPokemon(nombreMazo, mazo.Precio, email)
-                {
-                    Pokemons = nuevosPokemons
-                };
-
-                // ✅ Asegurar que `EmailUsuario` NO sea nulo antes de guardar
-                foreach (var pokemon in nuevoPedidoPokemon.Pokemons)
-                {
-                    pokemon.Email = email; // ✅ Corrección aquí
-                }
-
-                _pokemonStorageService.GuardarPedidoUsuario(email, nombreMazo, new List<PedidoPokemon> { nuevoPedidoPokemon });
-                mazo.Pokemons = nuevosPokemons;
-            }
-            else
-            {
-                Console.WriteLine($"✅ Pedido existente encontrado: {pedidoUsuario.MazoSeleccionado}");
-                mazo.Pokemons = pedidoUsuario.Pokemons.Select(p => new ProductoPokemon
-                {
-                    Nombre = p.NombreMazo,
-                    Precio = p.Precio,
-                    ImagenUrl = imagenUrl,
-                    Email = email // ✅ Corrección aquí
-                }).ToList();
+                Console.WriteLine("❌ Error: No se pudieron obtener Pokémon.");
+                return BadRequest("No se encontraron Pokémon para este mazo.");
             }
 
-            var pedidoPokemon = new PedidoPokemon(nombreMazo, mazo.Precio, email)
+            var pedidoPokemon = new PedidoPokemon(nombreMazo, 25.99m, email)
             {
-                Pokemons = mazo.Pokemons
+                Pokemons = pokemons
             };
 
-            Console.WriteLine("✔ Pedido listo, mostrando confirmación.");
+            // ✅ Ahora estamos pasando un objeto del tipo correcto a la vista
+            Console.WriteLine($"✅ Pedido listo con {pedidoPokemon.Pokemons.Count} Pokémon(s) para mostrar, pero no guardar.");
+
             return View("~/Views/Pedido/Confirmacion.cshtml", pedidoPokemon);
         }
 
-        public IActionResult Checkout(string nombre)
+
+        public async Task<IActionResult> Checkout(string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre))
             {
@@ -116,7 +89,31 @@ namespace api3.Controllers
             }
 
             var imagenUrl = ObtenerImagenUrl(nombre);
-            var mazo = new MazoPokemon(nombre, 25.99m, imagenUrl);
+
+            nombre = nombre.Trim().ToLower();
+            var cantidadPokemons = nombre switch
+            {
+                "mazo pequeño" => 30,
+                "mazo mediano" => 40,
+                "mazo grande" => 50,
+                _ => 30
+            };
+
+            Console.WriteLine($"🔍 Cargando {cantidadPokemons} Pokémon(s) para el mazo: {nombre}");
+            var pokemons = await _pokemonService.ObtenerPokemonsAsync(cantidadPokemons);
+
+            if (pokemons == null || !pokemons.Any())
+            {
+                Console.WriteLine("❌ Error: No se pudieron obtener Pokémon.");
+                return BadRequest("No se encontraron Pokémon para este mazo.");
+            }
+
+            var mazo = new MazoPokemon(nombre, 25.99m, imagenUrl)
+            {
+                Pokemons = pokemons
+            };
+
+            Console.WriteLine($"✅ Mazo listo con {mazo.Pokemons.Count} Pokémon(s).");
 
             return View(mazo);
         }

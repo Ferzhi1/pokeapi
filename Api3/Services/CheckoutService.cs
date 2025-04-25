@@ -4,29 +4,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using api3.Models;
 
-
 namespace api3.Services
 {
     public class CheckoutService
     {
-        private readonly ConcurrentBag<PedidoPokemon> _pedidos;
+        private readonly ConcurrentDictionary<string, PedidoPokemon> _pedidos;
 
         public CheckoutService()
         {
-            _pedidos = new ConcurrentBag<PedidoPokemon>();
+            _pedidos = new ConcurrentDictionary<string, PedidoPokemon>();
         }
 
         public Task<string> ProcesarPagoAsync(PedidoPokemon pedido)
         {
-            _pedidos.Add(pedido);
+            if (pedido == null || string.IsNullOrWhiteSpace(pedido.UsuarioEmail))
+                return Task.FromResult("❌ Error: Pedido inválido o sin email.");
+
+            if (pedido.Pokemons == null || !pedido.Pokemons.Any())
+                return Task.FromResult("❌ Error: El pedido no tiene Pokémon.");
+
+            _pedidos[pedido.UsuarioEmail] = pedido; // ✅ Guardar en memoria por email del usuario
             return Task.FromResult($"✅ Pago exitoso para {pedido.NombreMazo}. ¡Gracias por tu compra!");
         }
 
-        public List<PedidoPokemon> ObtenerPedidos()
+        public PedidoPokemon ObtenerPedido(string email)
         {
-            return _pedidos.ToList(); 
-        }
+            if (string.IsNullOrWhiteSpace(email))
+                return null;
 
-      
+            _pedidos.TryGetValue(email, out var pedido);
+            return pedido;
+        }
     }
 }
