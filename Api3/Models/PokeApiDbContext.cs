@@ -14,6 +14,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<ColeccionPokemon> ColeccionPokemon { get; set; }
 
 
+  
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // 🔹 Configuración de relaciones

@@ -9,8 +9,40 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles2.css",
+      "PackagePath": "staticwebassets\\css\\styles2.css"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles3.css",
+      "PackagePath": "staticwebassets\\css\\styles3.css"
+    },
+    {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon.png",
+      "PackagePath": "staticwebassets\\img\\HeaderPokemon.png"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon1.jpg",
+      "PackagePath": "staticwebassets\\img\\HeaderPokemon1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon2.png",
+      "PackagePath": "staticwebassets\\img\\HeaderPokemon2.png"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon3.jpg",
+      "PackagePath": "staticwebassets\\img\\HeaderPokemon3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon4.png",
+      "PackagePath": "staticwebassets\\img\\HeaderPokemon4.png"
     },
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\Mazo1.jpg",
@@ -25,8 +57,20 @@
       "PackagePath": "staticwebassets\\img\\Mazo3.jpg"
     },
     {
-      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\headerPokemon.jpg",
-      "PackagePath": "staticwebassets\\img\\headerPokemon.jpg"
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\Mazo4.webp",
+      "PackagePath": "staticwebassets\\img\\Mazo4.webp"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\Mazo5.jpg",
+      "PackagePath": "staticwebassets\\img\\Mazo5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\mazo6.jpg",
+      "PackagePath": "staticwebassets\\img\\mazo6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
+      "PackagePath": "staticwebassets\\js\\App.js"
     },
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\site.js",

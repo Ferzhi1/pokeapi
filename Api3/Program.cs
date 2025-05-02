@@ -17,7 +17,7 @@ builder.Services.AddScoped<PokemonStorageService>();
 // 🔹 Register Other Services
 builder.Services.AddScoped<CheckoutService>();
 builder.Services.AddScoped<PedidoService>();
-builder.Services.AddScoped<PokemonVentaService>();
+
 builder.Services.AddMemoryCache();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -34,9 +34,9 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(); // ✅ Correct placement for serving static files
+app.UseStaticFiles(); 
 app.UseRouting();
-app.UseAuthorization(); // ✅ Authorization should be after routing
+app.UseAuthorization();
 
 // 🔹 Configure Routes Correctly
 app.MapControllers();

@@ -1,90 +1,62 @@
-/* ----- GENERAL ----- */
-html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
 body {
-    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    margin-bottom: 60px;
+    background-color: #1A1A2E; /* Fondo oscuro elegante */
+    color: white; /* Texto blanco en toda la página */
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* ----- HEADER ----- */
-.pokemon-header img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFD700; /* Dorado Pokémon */
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
-/* ----- NAVBAR ----- */
-.navbar {
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-}
-
-/* ----- MAZOS ----- */
 .card {
-    border-radius: 10px;
-    overflow: hidden;
+    background: #222; /* Fondo oscuro para la tarjeta */
+    color: white; /* Texto blanco */
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.5); /* Sombra dorada */
     transition: transform 0.3s ease-in-out;
 }
 
     .card:hover {
-        transform: scale(1.05);
+        transform: scale(1.05); /* Efecto de zoom */
     }
 
-.card-img-top {
+.mazo-img {
     width: 100%;
-    height: 200px; /* Tamaño fijo para todas las imágenes */
-    object-fit: cover; /* Evita distorsión */
-    border-radius: 10px;
+    height: auto;
+    border-radius: 10px 10px 0 0; /* Bordes redondeados solo arriba */
 }
 
-/* ----- FOOTER ----- */
-.pokemon-footer {
-    background-color: #343a40;
-    color: white;
-    padding: 20px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
-
-    .pokemon-footer a {
-        color: #ffcc00;
-        text-decoration: none;
-    }
-
-        .pokemon-footer a:hover {
-            text-decoration: underline;
-        }
-
-/* ----- BOTONES ----- */
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-.btn-primary {
-    background-color: #ffcc00;
-    border-color: #ffcc00;
-    color: #343a40;
+.card-title {
+    font-size: 24px;
     font-weight: bold;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    color: #FFD700; /* Dorado */
 }
 
-    .btn-primary:hover {
-        background-color: #ff8800;
-        border-color: #ff8800;
-        color: white;
+.card-text {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.btn-success {
+    background-color: #ffcc00; /* Amarillo Pokémon */
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+    .btn-success:hover {
+        background-color: #e6b800; /* Tonalidad más oscura */
     }

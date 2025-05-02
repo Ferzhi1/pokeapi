@@ -1,0 +1,110 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #331F2E;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+@keyframes cambiarColor {
+    0% {
+        color: red;
+    }
+
+    25% {
+        color: yellow;
+    }
+
+    50% {
+        color: blue;
+    }
+
+    75% {
+        color: green;
+    }
+
+    100% {
+        color: red;
+    }
+    
+}
+
+h1 span {
+    display: inline-block;
+    animation: cambiarColor 4s infinite ease-in-out; 
+}
+
+
+
+@keyframes cambiarFondo {
+    0% {
+       
+        background-image: url('../img/headerpokemon.png');
+    }
+
+    33% {
+        background-image: url("/img/HeaderPokemon1.jpg");
+    }
+
+    66% {
+      
+        background-image: url('../img/headerpokemon2.png');
+    }
+
+    100% {
+        background-image: url('../img/headerpokemon3.jpg');
+     
+    }
+}
+
+.hero {
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    animation: cambiarFondo 12s infinite ease-in-out;
+}
+
+.main-container {
+    padding: 20px;
+}
+
+.mazos-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.mazo-card {
+    background: black;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    color: white;
+    
+}
+
+    .mazo-card:hover {
+        transform: scale(1.05);
+    }
+
+    .mazo-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+    }

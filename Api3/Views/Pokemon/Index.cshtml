@@ -1,60 +1,37 @@
 ﻿@using api3.Models
 @model List<MazoPokemon>
-<!-- Navbar responsive -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Pokémon Store</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Mazos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-            </ul>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Store</title>
+    <link rel="stylesheet" href="~/css/styles.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>TIENDA DE <span>MAZOS POKEMON</span></h1>
+            <h1>¡Atrapa tu Mazo Pokémon!</h1>
+            <p>Explora y consigue cartas exclusivas.</p>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="mazos-container">
+            @foreach (var mazo in Model)
+            {
+                <div class="mazo-card">
+                    <img src="@mazo.ImagenUrl" alt="@mazo.Nombre">
+                    <h2>@mazo.Nombre</h2>
+                    <p>Precio: $@mazo.Precio</p>
+                    <a asp-controller="Pedido" asp-action="Checkout" asp-route-nombre="@mazo.Nombre"
+                       class="btn btn-primary">Comprar</a>
+                </div>
+            }
         </div>
     </div>
-</nav>
 
-<!-- Header con imagen -->
-<header class="pokemon-header">
-    <img src="/img/headerPokemon.jpg" alt="Pokémon Store">
-</header>
-
-
-<!-- Contenedor de mazos -->
-<div class="container text-center mt-5">
-    <h2 class="mb-4">Compra tu Mazo Pokémon</h2>
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <!-- Distribución uniforme -->
-        @foreach (var mazo in Model)
-        {
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="@mazo.ImagenUrl" class="card-img-top mazo-img" alt="@mazo.Nombre">
-                    <div class="card-body">
-                        <h5 class="card-title">@mazo.Nombre</h5>
-                        <p class="card-text">Precio: $@mazo.Precio</p>
-                        <a asp-controller="Pedido" asp-action="Checkout" asp-route-nombre="@mazo.Nombre" class="btn btn-primary">Comprar</a>
-
-
-
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
-
-<!-- Footer -->
-<footer class="pokemon-footer text-center mt-5">
-    <p>© 2025 Pokémon Store. Todos los derechos reservados.</p>
-    <p><a href="#">Términos y condiciones</a> | <a href="#">Política de privacidad</a></p>
-</footer>
-
-
-
-
-
+</body>
+</html>

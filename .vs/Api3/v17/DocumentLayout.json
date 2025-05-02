@@ -3,36 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\pokemonstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\services\\pokemonstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\pokemoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\controllers\\pokemoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\pedido\\confirmacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\views\\pedido\\confirmacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\pokemon\\coleccion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\views\\pokemon\\coleccion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\wwwroot\\js\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\pokemoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\controllers\\pokemoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\pokemonventaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\services\\pokemonventaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\models\\pokeapidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\models\\pokeapidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\services\\pedidoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\Api3.csproj|solutionrelative:api3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,19 +26,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Program.cs",
+              "RelativeDocumentMoniker": "Api3\\Program.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Program.cs",
+              "RelativeToolTip": "Api3\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T21:37:08.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Coleccion.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Pokemon\\Coleccion.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Pokemon\\Coleccion.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Pokemon\\Coleccion.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Pokemon\\Coleccion.cshtml",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T21:18:02.376Z",
+              "Title": "App.js",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
+              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\App.js",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
+              "RelativeToolTip": "Api3\\wwwroot\\js\\App.js",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-02T20:48:07.423Z",
               "EditorCaption": ""
             },
             {
@@ -65,87 +62,22 @@
               "RelativeDocumentMoniker": "Api3\\Views\\Pedido\\Confirmacion.cshtml",
               "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Pedido\\Confirmacion.cshtml",
               "RelativeToolTip": "Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "ViewState": "AgIAALUAAAAAAAAAAAAAALgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T15:57:57.464Z",
+              "WhenOpened": "2025-05-02T20:47:43.601Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PokemonStorageService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\PokemonStorageService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\PokemonStorageService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\PokemonStorageService.cs",
-              "RelativeToolTip": "Api3\\Services\\PokemonStorageService.cs",
-              "ViewState": "AgIAAMMAAAAAAAAAAAAAAN0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T19:27:19.405Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "PokemonController.cs",
               "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\PokemonController.cs",
               "RelativeDocumentMoniker": "Api3\\Controllers\\PokemonController.cs",
               "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\PokemonController.cs",
               "RelativeToolTip": "Api3\\Controllers\\PokemonController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowDsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAACJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T21:38:16.341Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PedidoController.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\PedidoController.cs",
-              "RelativeDocumentMoniker": "Api3\\Controllers\\PedidoController.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\PedidoController.cs",
-              "RelativeToolTip": "Api3\\Controllers\\PedidoController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAADwvyEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T20:02:44.041Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PokemonVentaService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\PokemonVentaService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\PokemonVentaService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\PokemonVentaService.cs",
-              "RelativeToolTip": "Api3\\Services\\PokemonVentaService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T21:58:38.628Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PokeApiDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Models\\PokeApiDbContext.cs",
-              "RelativeDocumentMoniker": "Api3\\Models\\PokeApiDbContext.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Models\\PokeApiDbContext.cs",
-              "RelativeToolTip": "Api3\\Models\\PokeApiDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T22:06:36.32Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PedidoService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\PedidoService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\PedidoService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\PedidoService.cs",
-              "RelativeToolTip": "Api3\\Services\\PedidoService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA1wD4AAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T17:37:27.298Z",
+              "WhenOpened": "2025-05-02T20:43:21.252Z",
               "EditorCaption": ""
             }
           ]

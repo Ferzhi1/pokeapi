@@ -13,7 +13,7 @@ namespace api3.Services
     {
         private readonly HttpClient _httpClient;
         private readonly IMemoryCache _cache;
-        private readonly Random _random = new Random();
+        private readonly Random _random = new();
 
         public PokemonService(HttpClient httpClient, IMemoryCache cache)
         {
@@ -21,34 +21,29 @@ namespace api3.Services
             _cache = cache;
         }
 
-        // 🌟 Obtener una lista aleatoria de Pokémon con caché
         public async Task<List<ProductoPokemon>> ObtenerPokemonsAsync(int cantidadPokemons)
         {
-            List<ProductoPokemon> pokemons = new List<ProductoPokemon>();
+            var pokemons = new List<ProductoPokemon>();
+            var idsAleatorios = new HashSet<int>();
 
-            HashSet<int> idsAleatorios = new HashSet<int>(); // 🔥 Evita repetidos
             while (idsAleatorios.Count < cantidadPokemons)
-            {
-                idsAleatorios.Add(_random.Next(1, 898)); // ✅ Genera un ID aleatorio entre 1 y 898
-            }
+                idsAleatorios.Add(_random.Next(1, 898));
 
             foreach (var id in idsAleatorios)
             {
                 try
                 {
                     string cacheKey = $"Pokemon_{id}";
+
                     if (_cache.TryGetValue(cacheKey, out ProductoPokemon cachedPokemon))
                     {
                         pokemons.Add(cachedPokemon);
                         continue;
                     }
 
-                    var detallesUrl = $"https://pokeapi.co/api/v2/pokemon/{id}";
-                    var detallesResponse = await _httpClient.GetStringAsync(detallesUrl);
-                    var detallesJson = JsonDocument.Parse(detallesResponse);
+                    var detallesJson = JsonDocument.Parse(await _httpClient.GetStringAsync($"https://pokeapi.co/api/v2/pokemon/{id}"));
 
-                    // ✅ Asegurar que Descripcion nunca sea NULL
-                    string descripcion = detallesJson.RootElement.TryGetProperty("species", out var species)
+                    var descripcion = detallesJson.RootElement.TryGetProperty("species", out var species)
                         ? species.GetProperty("name").GetString() ?? "Pokémon sin descripción"
                         : "Descripción no disponible";
 
@@ -56,7 +51,7 @@ namespace api3.Services
                     {
                         Nombre = detallesJson.RootElement.GetProperty("name").GetString(),
                         ImagenUrl = $"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png",
-                        Descripcion = descripcion, // 🔥 Siempre se pasa una descripción válida
+                        Descripcion = descripcion,
                         Precio = _random.Next(5, 100),
                         Rareza = _random.Next(1, 100) > 80 ? "Raro" : "Común",
                         Stats = detallesJson.RootElement.GetProperty("stats").EnumerateArray()
@@ -68,7 +63,7 @@ namespace api3.Services
                     };
 
                     pokemons.Add(pokemon);
-                    _cache.Set(cacheKey, pokemon, TimeSpan.FromMinutes(30)); // 🔥 Caché por más tiempo para evitar llamadas repetidas
+                    _cache.Set(cacheKey, pokemon, TimeSpan.FromMinutes(30));
                 }
                 catch (Exception ex)
                 {

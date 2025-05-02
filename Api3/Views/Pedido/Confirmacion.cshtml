@@ -1,184 +1,87 @@
 ﻿@model api3.Models.PedidoPokemon
 
-<div class="container text-center mt-5">
-    <h2 class="mb-4">Pedido Confirmado</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Store</title>
 
-    <div class="alert alert-success">
-        ✅ ¡Gracias por tu compra! 🎴✨ Tu mazo: <strong>@Model.NombreMazo</strong>
-    </div>
 
-    <input type="hidden" id="emailUsuario" value="@Model.UsuarioEmail" /> <!-- 🔥 Capturamos el email -->
+    <link rel="stylesheet" href="~/css/styles2.css">
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @if (Model.Pokemons?.Any() ?? false)
-        {
-            @foreach (var pokemon in Model.Pokemons)
+   
+    <link rel="stylesheet" href="~/css/styles2.css">
+</head>
+<body>
+
+    <div class="container text-center mt-5">
+        <h2 class="mb-4">Pedido Confirmado</h2>
+
+        <div class="alert alert-success">
+            ✅ ¡Gracias por tu compra! 🎴✨ Tu mazo: <strong>@Model.NombreMazo</strong>
+        </div>
+
+        <input type="hidden" id="emailUsuario" value="@Model.UsuarioEmail" />
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @if (Model.Pokemons?.Any() ?? false)
             {
-                <div class="col pokemon-card" id="card-@pokemon.Nombre">
-                    <div class="card shadow-lg">
-                        <div class="d-flex align-items-center p-3">
-                            <div class="flex-shrink-0">
-                                <img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
-                                     style="width: 180px; height: auto;"
-                                     onerror="this.src='/images/default-pokemon.png';" />
-                            </div>
+                @foreach (var pokemon in Model.Pokemons)
+                {
+                    <div class="col pokemon-card" id="card-@pokemon.Nombre">
+                        <div class="card shadow-lg">
+                            <div class="d-flex align-items-center p-3">
+                                <div class="flex-shrink-0">
+                                    <img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
+                                         style="width: 180px; height: auto;"
+                                         onerror="this.src='/images/default-pokemon.png';" />
+                                </div>
 
-                            <div class="stats-section ms-3">
-                                <h6>📊 Estadísticas:</h6>
-                                <ul class="list-group">
-                                    @if (pokemon.Stats?.Any() ?? false)
-                                    {
-                                        @foreach (var stat in pokemon.Stats)
+                                <div class="stats-section ms-3">
+                                    <h6>📊 Estadísticas:</h6>
+                                    <ul class="list-group">
+                                        @if (pokemon.Stats?.Any() ?? false)
                                         {
-                                            <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
+                                            @foreach (var stat in pokemon.Stats)
+                                            {
+                                                <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        <li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>
-                                    }
-                                </ul>
+                                        else
+                                        {
+                                            <li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>
+                                        }
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="card-body text-center">
-                            <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
-                            <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
-                            <button class="btn btn-danger mt-2 guardar-btn">Guardar</button>
-                            <button class="btn btn-warning mt-2 vender-btn">Vender</button> <!-- 🔥 Nuevo botón de venta -->
+                            <div class="card-body text-center">
+                                <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
+                                <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
+                                <button class="btn btn-danger mt-2 guardar-btn">Guardar</button>
+                                <button class="btn btn-warning mt-3" onclick="guardarPokemonEnVenta(this.closest('.pokemon-card'))">🛒 Vender Pokémon</button>
+
+
+
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
-        }
-        else
-        {
-            <p class="text-muted">⚠ No hay Pokémon en el pedido.</p>
-        }
+            else
+            {
+                <p class="text-muted">⚠ No hay Pokémon en el pedido.</p>
+            }
+        </div>
     </div>
-</div>
 
-<div class="text-center">
-    <button class="btn btn-success mt-3" onclick="irAColeccion()">
-        📜 Ver Pokémon Guardados
-    </button>
-    <button class="btn btn-primary mt-3" onclick="irAVenta()">
-        💰 Ir a Venta
-    </button> <!-- 🔥 Botón para redirigir a la sección de ventas -->
-</div>
+    <div class="text-center">
+        <button class="btn btn-success mt-3" onclick="irAColeccion()">📜 Ver Pokémon Guardados</button>
+        <button class="btn btn-primary mt-3" onclick="irAVenta()">💰 Ir a Venta</button>
+    </div>
 
-<script>
-    function irAColeccion() {
-        const emailUsuario = document.getElementById("emailUsuario")?.value.trim();
+    <script src="/js/App.js"></script>
 
-        if (!emailUsuario) {
-            console.error("❌ No se encontró el email del usuario.");
-            alert("⚠ No puedes acceder a la colección sin estar autenticado.");
-            return;
-        }
-
-        console.log("🔍 Redirigiendo a la colección con email:", emailUsuario);
-        window.location.href = `/Pokemon/Coleccion?email=${encodeURIComponent(emailUsuario)}`;
-    }
-</script>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const emailUsuario = document.getElementById("emailUsuario")?.value?.trim(); // 🔥 Captura el email
-
-        if (!emailUsuario) {
-            console.error("❌ ERROR: Email del usuario no definido.");
-            return;
-        }
-
-        const botonesGuardar = document.querySelectorAll(".guardar-btn");
-
-        botonesGuardar.forEach((boton) => {
-            boton.addEventListener("click", function () {
-                const card = boton.closest(".pokemon-card");
-
-                if (!card) {
-                    console.error("❌ No se encontró la tarjeta del Pokémon.");
-                    alert("⚠ Error: No se pudo obtener la información del Pokémon.");
-                    return;
-                }
-
-                const nombrePokemon = card.querySelector(".pokemon-nombre")?.textContent?.trim() || "Desconocido";
-                const rarezaPokemon = card.querySelector(".pokemon-rareza")?.textContent?.replace("Rareza: ", "").trim() || "N/A";
-                const imagenUrl = card.querySelector(".pokemon-img")?.src || "/images/default-pokemon.png";
-
-                // 🔥 Obtener estadísticas del Pokémon
-                const statsElements = card.querySelectorAll(".list-group-item");
-                const stats = Array.from(statsElements).map(stat => {
-                    const statData = stat.textContent.split(": ");
-                    return { nombre: statData[0]?.trim(), valor: statData[1]?.trim() || "N/A" };
-                }).filter(stat => stat.nombre); // ✅ Filtramos valores vacíos
-
-                // 🔥 Validar datos antes de enviar
-                if (!nombrePokemon || !imagenUrl || !rarezaPokemon || stats.length === 0) {
-                    console.error("❌ Información del Pokémon incompleta.", { nombrePokemon, imagenUrl, rarezaPokemon, stats, emailUsuario });
-                    alert("⚠ No se pudo guardar porque los datos están incompletos.");
-                    return;
-                }
-
-                console.log("📤 Enviando datos al servidor:", {
-                    Nombre: nombrePokemon,
-                    ImagenUrl: imagenUrl,
-                    Rareza: rarezaPokemon,
-                    Stats: stats,
-                    Email: emailUsuario // ✅ Se agrega el email correctamente
-                });
-
-                fetch("/Pokemon/GuardarFavorito", { // 🔥 Ajuste de la ruta al controlador correcto
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        Nombre: nombrePokemon,
-                        ImagenUrl: imagenUrl,
-                        Rareza: rarezaPokemon,
-                        Stats: stats,
-                        Email: emailUsuario
-                    })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.text().then(text => {
-                            throw new Error(`❌ Error del servidor: ${response.status} - ${text}`);
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log("✅ Guardado exitoso:", data);
-
-                    // 🔥 Crear alerta flotante
-                    let alertDiv = document.createElement("div");
-                    alertDiv.className = "alert alert-success position-fixed top-0 start-50 translate-middle-x fade show";
-                    alertDiv.style.zIndex = "9999";
-                    alertDiv.style.padding = "10px 20px";
-                    alertDiv.innerHTML = `✅ ${nombrePokemon} guardado satisfactoriamente`;
-
-                    document.body.appendChild(alertDiv);
-
-                    // 🔥 Ocultar alerta después de 3 segundos con animación segura
-                    setTimeout(() => {
-                        alertDiv.style.transition = "opacity 0.5s";
-                        alertDiv.style.opacity = "0";
-                        setTimeout(() => alertDiv.remove(), 500);
-                    }, 3000);
-
-                    // 🔥 Ocultar la tarjeta del Pokémon de la pantalla sin recargar
-                    card.remove();
-                })
-                .catch(error => {
-                    console.error("❌ Error al guardar:", error);
-                    alert(`⚠ Error al guardar: ${error.message}`);
-                });
-            });
-        });
-    })
-</script>
-
+</body>
+</html>
