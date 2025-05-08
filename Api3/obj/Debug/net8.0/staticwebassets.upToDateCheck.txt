@@ -2,6 +2,8 @@ wwwroot\css\site.css
 wwwroot\css\styles.css
 wwwroot\css\styles2.css
 wwwroot\css\styles3.css
+wwwroot\css\styles4.css
+wwwroot\css\styles5.css
 wwwroot\favicon.ico
 wwwroot\img\HeaderPokemon.png
 wwwroot\img\HeaderPokemon1.jpg

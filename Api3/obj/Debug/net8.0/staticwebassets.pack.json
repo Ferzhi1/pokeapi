@@ -21,6 +21,14 @@
       "PackagePath": "staticwebassets\\css\\styles3.css"
     },
     {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles4.css",
+      "PackagePath": "staticwebassets\\css\\styles4.css"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles5.css",
+      "PackagePath": "staticwebassets\\css\\styles5.css"
+    },
+    {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

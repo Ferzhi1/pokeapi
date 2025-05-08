@@ -1,0 +1,70 @@
+﻿
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('../img/HeaderPokemon2.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+.register-container {
+    background: rgba(127, 69, 199, 0.88);
+    padding: 30px;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    animation: slideUp 1s ease-in-out;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+form div {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    background: #808080;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+    .btn:hover {
+        background: #3D3D3D;
+    }
+p {
+    color: white;
+}
+
+    p a {
+        color: white;
+        text-decoration: none; 
+    }
+
+        p a:hover {
+            text-decoration: underline; 
+        }
+

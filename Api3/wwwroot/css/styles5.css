@@ -1,0 +1,67 @@
+﻿
+.container {
+    display: flex;
+    height: 100vh;
+    width:100vw;
+}
+
+
+.image-section {
+    width: 50%;
+    background: url('../img/HeaderPokemon3.jpg') center/cover no-repeat;
+}
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient( to right, #2454BC 35%, #9055F8 63% ); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+.login-container {
+    width: 50%;
+    background:linear-gradient( to right, #C879FD 14%, #B2ABAB 47%, #774897 91% );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: white;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+.btn {
+    background: #7F45C7;
+    color: white;
+    padding: 5px 50px;
+    border: none;
+    border-radius: 20px; 
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+    .btn:hover {
+        background: #602F9D;
+    }
+
+
+p a {
+    color: white;
+    text-decoration: none;
+}
+
+    p a:hover {
+        text-decoration: underline;
+    }

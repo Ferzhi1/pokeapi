@@ -1,18 +1,41 @@
 ﻿@model api3.Models.LoginRequest
 
-<h2>Iniciar Sesión</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="~/css/styles5.css">
+</head>
+<body>
 
-<form asp-action="Login" method="post">
-    <div>
-        <label>Email:</label>
-        <input asp-for="Email" class="form-control" required />
+    <div class="container">
+      
+        <div class="image-section"></div>
+       
+       
+        <div class="login-container">
+            <h2>Login</h2>
+            <form asp-action="Login" method="post">
+                <div>
+                    <label>Email:</label>
+                    <input asp-for="Email" class="form-control" required />
+                </div>
+
+                <div>
+                    <label>Contraseña:</label>
+                    <input asp-for="Password" type="password" class="form-control" required />
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p> <a asp-action="Register">Create an Account</a></p>
+            <p>Forget Password? 
+                <a asp-action="changePassword">Click here</a></p>
+        </div>
     </div>
 
-    <div>
-        <label>Contraseña:</label>
-        <input asp-for="Password" type="password" class="form-control" required />
-    </div>
+</body>
+</html>
 
-    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-</form>
-<p>¿No tienes una cuenta? <a asp-action="Register">Regístrate aquí</a></p>

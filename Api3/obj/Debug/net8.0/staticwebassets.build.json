@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yvpl9e0YF5ubHqQ5elkJEctEuAmc6kw02GVt4T2fp9A=",
+  "Hash": "9GAHL4emtNAP+Z0HmxQz5rQwo3/xFaHJEj6C7SSVYFI=",
   "Source": "api3",
   "BasePath": "_content/api3",
   "Mode": "Default",
@@ -141,6 +141,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\styles3.css"
+    },
+    {
+      "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles4.css",
+      "SourceId": "api3",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
+      "BasePath": "_content/api3",
+      "RelativePath": "css/styles4#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "z39gvqj3zq",
+      "Integrity": "4VaxIxwpQlCYL0UQUjV97anjNI5itL2FReFwpcV7l2k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles4.css"
+    },
+    {
+      "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles5.css",
+      "SourceId": "api3",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
+      "BasePath": "_content/api3",
+      "RelativePath": "css/styles5#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "zmmswiy2lb",
+      "Integrity": "ZVZacr7zpHaiJR6YAO2DBx6LtaapEAcUP3LpKxGMyl8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles5.css"
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\favicon.ico",
@@ -409,8 +451,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ndo7tuwo4t",
-      "Integrity": "1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0=",
+      "Fingerprint": "ujt8fh9t6j",
+      "Integrity": "ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\App.js"
@@ -2128,6 +2170,170 @@
       ]
     },
     {
+      "Route": "css/styles4.css",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles4.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1198"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4VaxIxwpQlCYL0UQUjV97anjNI5itL2FReFwpcV7l2k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 14:32:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4VaxIxwpQlCYL0UQUjV97anjNI5itL2FReFwpcV7l2k="
+        }
+      ]
+    },
+    {
+      "Route": "css/styles4.z39gvqj3zq.css",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles4.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1198"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4VaxIxwpQlCYL0UQUjV97anjNI5itL2FReFwpcV7l2k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 14:32:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "z39gvqj3zq"
+        },
+        {
+          "Name": "label",
+          "Value": "css/styles4.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4VaxIxwpQlCYL0UQUjV97anjNI5itL2FReFwpcV7l2k="
+        }
+      ]
+    },
+    {
+      "Route": "css/styles5.css",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles5.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1224"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZVZacr7zpHaiJR6YAO2DBx6LtaapEAcUP3LpKxGMyl8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 15:05:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZVZacr7zpHaiJR6YAO2DBx6LtaapEAcUP3LpKxGMyl8="
+        }
+      ]
+    },
+    {
+      "Route": "css/styles5.zmmswiy2lb.css",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles5.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1224"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZVZacr7zpHaiJR6YAO2DBx6LtaapEAcUP3LpKxGMyl8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 15:05:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zmmswiy2lb"
+        },
+        {
+          "Name": "label",
+          "Value": "css/styles5.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZVZacr7zpHaiJR6YAO2DBx6LtaapEAcUP3LpKxGMyl8="
+        }
+      ]
+    },
+    {
       "Route": "favicon.61n19gt1b8.ico",
       "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\favicon.ico",
       "Selectors": [],
@@ -3122,7 +3328,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3953"
+          "Value": "4007"
         },
         {
           "Name": "Content-Type",
@@ -3130,11 +3336,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0=\""
+          "Value": "\"ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 23:03:24 GMT"
+          "Value": "Wed, 07 May 2025 23:12:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3144,12 +3350,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0="
+          "Value": "sha256-ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4="
         }
       ]
     },
     {
-      "Route": "js/App.ndo7tuwo4t.js",
+      "Route": "js/App.ujt8fh9t6j.js",
       "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3159,7 +3365,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3953"
+          "Value": "4007"
         },
         {
           "Name": "Content-Type",
@@ -3167,11 +3373,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0=\""
+          "Value": "\"ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 23:03:24 GMT"
+          "Value": "Wed, 07 May 2025 23:12:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3181,7 +3387,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ndo7tuwo4t"
+          "Value": "ujt8fh9t6j"
         },
         {
           "Name": "label",
@@ -3189,7 +3395,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0="
+          "Value": "sha256-ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4="
         }
       ]
     },
