@@ -1,28 +1,28 @@
 {
   "Version": 1,
-  "Hash": "wcVLdvuoD095R+jKzAFC/DwauyJm9cwLMWT0HwW+vBs=",
-  "Source": "Api3",
-  "BasePath": "_content/Api3",
+  "Hash": "yvpl9e0YF5ubHqQ5elkJEctEuAmc6kw02GVt4T2fp9A=",
+  "Source": "api3",
+  "BasePath": "_content/api3",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "Api3\\wwwroot",
-      "Source": "Api3",
+      "Name": "api3\\wwwroot",
+      "Source": "api3",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Api3.styles.css",
-      "SourceId": "Api3",
+      "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\api3.styles.css",
+      "SourceId": "api3",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/Api3",
-      "RelativePath": "Api3#[.{fingerprint}]?.styles.css",
+      "BasePath": "_content/api3",
+      "RelativePath": "api3#[.{fingerprint}]?.styles.css",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Primary",
@@ -31,19 +31,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "41jdfugntq",
-      "Integrity": "aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA=",
+      "Fingerprint": "j3j5e62mko",
+      "Integrity": "Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Api3.styles.css"
+      "OriginalItemSpec": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\api3.styles.css"
     },
     {
-      "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Api3.bundle.scp.css",
-      "SourceId": "Api3",
+      "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\api3.bundle.scp.css",
+      "SourceId": "api3",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/Api3",
-      "RelativePath": "Api3#[.{fingerprint}]!.bundle.scp.css",
+      "BasePath": "_content/api3",
+      "RelativePath": "api3#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Primary",
@@ -52,18 +52,18 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "41jdfugntq",
-      "Integrity": "aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA=",
+      "Fingerprint": "j3j5e62mko",
+      "Integrity": "Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Api3.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\api3.bundle.scp.css"
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\site.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "css/site#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -81,10 +81,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "css/styles#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -102,10 +102,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles2.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "css/styles2#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -123,10 +123,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles3.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "css/styles3#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -144,10 +144,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\favicon.ico",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "favicon#[.{fingerprint}]?.ico",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -165,10 +165,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon.png",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/HeaderPokemon#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -186,10 +186,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon1.jpg",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/HeaderPokemon1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -207,10 +207,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon2.png",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/HeaderPokemon2#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -228,10 +228,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon3.jpg",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/HeaderPokemon3#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -249,10 +249,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon4.png",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/HeaderPokemon4#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -270,10 +270,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\Mazo1.jpg",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/Mazo1#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -291,10 +291,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\Mazo2.jpg",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/Mazo2#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -312,10 +312,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\Mazo3.jpg",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/Mazo3#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -333,10 +333,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\Mazo4.webp",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/Mazo4#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -354,10 +354,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\Mazo5.jpg",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/Mazo5#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -375,10 +375,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\mazo6.jpg",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "img/mazo6#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -396,10 +396,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "js/App#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -409,18 +409,18 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "zbr60s83bl",
-      "Integrity": "3//AMPWH0wtWqFOj5dnPpaVlO5oQotPlufmFYJMFzX4=",
+      "Fingerprint": "ndo7tuwo4t",
+      "Integrity": "1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\App.js"
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\site.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "js/site#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -438,10 +438,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -459,10 +459,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -480,10 +480,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -501,10 +501,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -522,10 +522,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -543,10 +543,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -564,10 +564,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -585,10 +585,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -606,10 +606,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -627,10 +627,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -648,10 +648,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -669,10 +669,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -690,10 +690,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -711,10 +711,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -732,10 +732,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -753,10 +753,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -774,10 +774,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -795,10 +795,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -816,10 +816,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -837,10 +837,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -858,10 +858,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -879,10 +879,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -900,10 +900,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -921,10 +921,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -942,10 +942,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -963,10 +963,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -984,10 +984,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1005,10 +1005,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1026,10 +1026,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1047,10 +1047,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1068,10 +1068,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1089,10 +1089,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1110,10 +1110,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1131,10 +1131,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1152,10 +1152,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1173,10 +1173,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1194,10 +1194,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1215,10 +1215,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1236,10 +1236,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1257,10 +1257,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1278,10 +1278,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1299,10 +1299,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1320,10 +1320,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1341,10 +1341,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1362,10 +1362,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\LICENSE",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/bootstrap/LICENSE#[.{fingerprint}]?",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1383,10 +1383,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery\\dist\\jquery.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery/dist/jquery#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1404,10 +1404,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1425,10 +1425,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.map",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1446,10 +1446,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery/LICENSE#[.{fingerprint}]?.txt",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1467,10 +1467,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery-validation/dist/additional-methods#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1488,10 +1488,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1509,10 +1509,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1530,10 +1530,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1551,10 +1551,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery-validation/LICENSE#[.{fingerprint}]?.md",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1572,10 +1572,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1593,10 +1593,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1614,10 +1614,10 @@
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "SourceId": "Api3",
+      "SourceId": "api3",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
-      "BasePath": "_content/Api3",
+      "BasePath": "_content/api3",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE#[.{fingerprint}]?.txt",
       "AssetKind": "All",
       "AssetMode": "All",
@@ -1636,8 +1636,8 @@
   ],
   "Endpoints": [
     {
-      "Route": "Api3.41jdfugntq.bundle.scp.css",
-      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Api3.bundle.scp.css",
+      "Route": "api3.bundle.scp.css",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\api3.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1654,101 +1654,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA=\""
+          "Value": "\"Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "41jdfugntq"
-        },
-        {
-          "Name": "label",
-          "Value": "Api3.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA="
-        }
-      ]
-    },
-    {
-      "Route": "Api3.41jdfugntq.styles.css",
-      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Api3.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1122"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "41jdfugntq"
-        },
-        {
-          "Name": "label",
-          "Value": "Api3.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA="
-        }
-      ]
-    },
-    {
-      "Route": "Api3.bundle.scp.css",
-      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Api3.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1122"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 17:06:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1758,13 +1668,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA="
+          "Value": "sha256-Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw="
         }
       ]
     },
     {
-      "Route": "Api3.styles.css",
-      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Api3.styles.css",
+      "Route": "api3.j3j5e62mko.bundle.scp.css",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\api3.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1781,11 +1691,101 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA=\""
+          "Value": "\"Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 17:06:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j3j5e62mko"
+        },
+        {
+          "Name": "label",
+          "Value": "api3.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw="
+        }
+      ]
+    },
+    {
+      "Route": "api3.j3j5e62mko.styles.css",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\api3.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1122"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 17:06:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j3j5e62mko"
+        },
+        {
+          "Name": "label",
+          "Value": "api3.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw="
+        }
+      ]
+    },
+    {
+      "Route": "api3.styles.css",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\Debug\\net8.0\\scopedcss\\bundle\\api3.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1122"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 17:06:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1795,7 +1795,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-aPeYFmjSwWONRc25g3r28LVoq5jQq5lscYVhBLu1TcA="
+          "Value": "sha256-Ecppv5kiCxe2QpoKU3bH/DY/z8722uOaOJi30ERm3Pw="
         }
       ]
     },
@@ -1822,7 +1822,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:28:19 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1859,7 +1859,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:28:19 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1904,7 +1904,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:15:48 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1941,7 +1941,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:15:48 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1986,7 +1986,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:39:30 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2023,7 +2023,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:39:30 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2068,7 +2068,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 19:07:52 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2105,7 +2105,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 19:07:52 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2150,7 +2150,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2195,7 +2195,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2232,7 +2232,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:00:53 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2269,7 +2269,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:00:53 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2314,7 +2314,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:02:23 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2359,7 +2359,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:02:23 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2396,7 +2396,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:03:38 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2441,7 +2441,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:03:38 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2478,7 +2478,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:08:03 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2515,7 +2515,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:08:03 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2560,7 +2560,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:04:37 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2605,7 +2605,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 17:04:37 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2642,7 +2642,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2679,7 +2679,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2724,7 +2724,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2769,7 +2769,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2806,7 +2806,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2843,7 +2843,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2888,7 +2888,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 19:43:56 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2933,7 +2933,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 19:43:56 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2970,7 +2970,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 19:46:32 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3007,7 +3007,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 19:46:32 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3052,7 +3052,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 19:52:53 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3097,7 +3097,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 19:52:53 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3122,7 +3122,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3042"
+          "Value": "3953"
         },
         {
           "Name": "Content-Type",
@@ -3130,11 +3130,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3//AMPWH0wtWqFOj5dnPpaVlO5oQotPlufmFYJMFzX4=\""
+          "Value": "\"1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 21:34:50 GMT"
+          "Value": "Wed, 07 May 2025 23:03:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3144,12 +3144,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3//AMPWH0wtWqFOj5dnPpaVlO5oQotPlufmFYJMFzX4="
+          "Value": "sha256-1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0="
         }
       ]
     },
     {
-      "Route": "js/App.zbr60s83bl.js",
+      "Route": "js/App.ndo7tuwo4t.js",
       "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3159,7 +3159,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3042"
+          "Value": "3953"
         },
         {
           "Name": "Content-Type",
@@ -3167,11 +3167,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3//AMPWH0wtWqFOj5dnPpaVlO5oQotPlufmFYJMFzX4=\""
+          "Value": "\"1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 21:34:50 GMT"
+          "Value": "Wed, 07 May 2025 23:03:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3181,7 +3181,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "zbr60s83bl"
+          "Value": "ndo7tuwo4t"
         },
         {
           "Name": "label",
@@ -3189,7 +3189,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-3//AMPWH0wtWqFOj5dnPpaVlO5oQotPlufmFYJMFzX4="
+          "Value": "sha256-1RP0HOrAkkir1/kHCJgBobsUYYcDPAISnLJvzVYcIN0="
         }
       ]
     },
@@ -3216,7 +3216,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3261,7 +3261,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3298,7 +3298,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3335,7 +3335,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3380,7 +3380,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3417,7 +3417,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3462,7 +3462,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3499,7 +3499,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3544,7 +3544,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3581,7 +3581,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3626,7 +3626,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3663,7 +3663,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3708,7 +3708,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3745,7 +3745,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3790,7 +3790,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3835,7 +3835,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3872,7 +3872,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3917,7 +3917,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3954,7 +3954,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3991,7 +3991,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4028,7 +4028,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4073,7 +4073,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4118,7 +4118,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4155,7 +4155,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4200,7 +4200,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4237,7 +4237,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4282,7 +4282,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4319,7 +4319,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4364,7 +4364,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4401,7 +4401,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4446,7 +4446,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4483,7 +4483,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4520,7 +4520,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4565,7 +4565,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4610,7 +4610,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4647,7 +4647,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4692,7 +4692,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4729,7 +4729,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4766,7 +4766,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4803,7 +4803,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4848,7 +4848,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4893,7 +4893,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4938,7 +4938,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4983,7 +4983,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5020,7 +5020,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5065,7 +5065,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5102,7 +5102,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5139,7 +5139,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5176,7 +5176,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5221,7 +5221,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5266,7 +5266,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5303,7 +5303,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5348,7 +5348,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5385,7 +5385,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5430,7 +5430,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5467,7 +5467,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5504,7 +5504,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5549,7 +5549,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5586,7 +5586,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5631,7 +5631,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5668,7 +5668,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5705,7 +5705,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5750,7 +5750,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5787,7 +5787,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5832,7 +5832,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5877,7 +5877,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5922,7 +5922,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5967,7 +5967,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6012,7 +6012,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6049,7 +6049,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6094,7 +6094,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6131,7 +6131,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6176,7 +6176,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6213,7 +6213,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6258,7 +6258,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6295,7 +6295,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6332,7 +6332,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6377,7 +6377,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6414,7 +6414,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6459,7 +6459,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6496,7 +6496,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6533,7 +6533,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6578,7 +6578,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6623,7 +6623,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6660,7 +6660,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6705,7 +6705,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6742,7 +6742,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6787,7 +6787,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6824,7 +6824,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6861,7 +6861,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6906,7 +6906,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6943,7 +6943,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6988,7 +6988,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7033,7 +7033,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7070,7 +7070,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7115,7 +7115,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7160,7 +7160,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7197,7 +7197,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7234,7 +7234,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7279,7 +7279,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7316,7 +7316,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7361,7 +7361,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7398,7 +7398,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7443,7 +7443,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7480,7 +7480,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7525,7 +7525,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7562,7 +7562,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7599,7 +7599,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7644,7 +7644,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7681,7 +7681,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7726,7 +7726,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7771,7 +7771,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7808,7 +7808,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7853,7 +7853,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7890,7 +7890,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7935,7 +7935,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 17:35:28 GMT"
+          "Value": "Wed, 07 May 2025 16:32:20 GMT"
         },
         {
           "Name": "Cache-Control",

@@ -1,0 +1,25 @@
+﻿@model api3.Models.RegisterRequest
+
+<h2>Registro</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label>Nombre:</label>
+        <input asp-for="Nombre" class="form-control" required />
+    </div>
+
+    <div>
+        <label>Email:</label>
+        <input asp-for="Email" type="email" class="form-control" required />
+    </div>
+
+    <div>
+        <label>Contraseña:</label>
+        <input asp-for="Password" type="password" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Registrarse</button>
+</form>
+
+<p>¿Ya tienes cuenta? <a asp-action="Login">Inicia sesión aquí</a></p>
+

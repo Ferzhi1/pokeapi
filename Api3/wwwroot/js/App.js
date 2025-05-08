@@ -2,36 +2,39 @@
     const emailUsuario = document.getElementById("emailUsuario")?.value?.trim();
     if (!emailUsuario) return console.error("❌ ERROR: Email del usuario no definido.");
 
-    agregarEventoGuardar(emailUsuario);
-    agregarEventoVender(emailUsuario);
-});
-agregarEventoVender(emailUsuario);
-
-
-function agregarEventoGuardar(emailUsuario) {
     document.querySelectorAll(".guardar-btn").forEach((boton) => {
-        boton.addEventListener("click", function () {
-            const card = boton.closest(".pokemon-card");
-            if (!card) return mostrarAlerta("⚠ Error: No se pudo obtener la información del Pokémon.", "danger");
-
-            const { nombrePokemon, imagenUrl, rarezaPokemon, stats } = obtenerDatosPokemon(card);
-            if (!nombrePokemon || !imagenUrl || !rarezaPokemon || stats.length === 0)
-                return mostrarAlerta("⚠ No se pudo guardar porque los datos están incompletos.", "danger");
-
-            fetch("/Pokemon/GuardarFavorito", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ Nombre: nombrePokemon, ImagenUrl: imagenUrl, Rareza: rarezaPokemon, Stats: stats, Email: emailUsuario })
-            })
-                .then(response => response.ok ? response.json() : response.text().then(text => { throw new Error(text); }))
-                .then(() => {
-                    mostrarAlerta(`✅ ${nombrePokemon} guardado satisfactoriamente`, "success");
-                    card.remove();
-                })
-                .catch(error => mostrarAlerta(`⚠ Error al guardar: ${error.message}`, "danger"));
-        });
+        boton.removeEventListener("click", boton.dataset.eventListener);
+        const eventListener = function () {
+            guardarPokemon(boton, emailUsuario);
+        };
+        boton.dataset.eventListener = eventListener;
+        boton.addEventListener("click", eventListener);
     });
+});
+
+function guardarPokemon(boton, emailUsuario) {
+    const card = boton.closest(".pokemon-card");
+    if (!card) return mostrarAlerta("⚠ Error: No se pudo obtener la información del Pokémon.", "danger");
+
+    const { nombrePokemon, imagenUrl, rarezaPokemon, stats } = obtenerDatosPokemon(card);
+    if (!nombrePokemon || !imagenUrl || !rarezaPokemon || stats.length === 0)
+        return mostrarAlerta("⚠ No se pudo guardar porque los datos están incompletos.", "danger");
+
+    fetch("/Pokemon/GuardarFavorito", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ Nombre: nombrePokemon, ImagenUrl: imagenUrl, Rareza: rarezaPokemon, Stats: stats, Email: emailUsuario })
+    })
+        .then(response => response.ok ? response.json() : response.text().then(text => { throw new Error(text); }))
+        .then(() => {
+            mostrarAlerta(`✅ ${nombrePokemon} guardado satisfactoriamente`, "success");
+            card.remove();
+        })
+        .catch(error => mostrarAlerta(`⚠ Error al guardar: ${error.message}`, "danger"));
 }
+
+
+
 function irAColeccion() {
     const emailUsuario = document.getElementById("emailUsuario")?.value?.trim();
 
@@ -77,13 +80,7 @@ function mostrarAlerta(mensaje, tipo) {
         setTimeout(() => alertDiv.remove(), 500);
     }, 3000);
 }
-document.addEventListener("DOMContentLoaded", function () {
-    const emailUsuario = document.getElementById("emailUsuario")?.value?.trim();
-    if (!emailUsuario) return console.error("❌ ERROR: Email del usuario no definido.");
 
-    agregarEventoGuardar(emailUsuario);
-    agregarEventoVender(emailUsuario);
-});
 
 
 

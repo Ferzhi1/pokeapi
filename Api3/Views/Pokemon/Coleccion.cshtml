@@ -7,50 +7,47 @@
     <title>Pokémon Store</title>
     <link rel="stylesheet" href="~/css/styles3.css">
 </head>
+<body>
+    <div class="container text-center mt-5">
+        <h2 class="mb-4">Colección de Pokémon 📜</h2>
 
-<div class="container text-center mt-5">
-    <h2 class="mb-4">Colección de Pokémon 📜</h2>
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-warning">
+                ❌ No hay Pokémon guardados en tu colección.
+            </div>
+        }
+        else
+        {
+            <h6>📢 Total de Pokémon guardados: @(Model.Count())</h6>
 
-    @if (Model == null || !Model.Any())
-    {
-        <div class="alert alert-warning">
-            ❌ No hay Pokémon guardados en tu colección.
-        </div>
-    }
-    else
-    {
-        <h6>📢 Total de Pokémon guardados: @(Model.Count())</h6>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var pokemon in Model)
+                {
+                    <div class="col">
+                        <div class="card shadow-lg h-100">
+                            <img src="@pokemon.ImagenUrl" class="img-fluid rounded" alt="@pokemon.Nombre" style="width: 150px; height: auto;">
+                            <h5 class="mt-2">@pokemon.Nombre</h5>
+                            <p>Rareza: <span class="fw-bold">@pokemon.Rareza</span></p>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            @foreach (var pokemon in Model)
-            {
-                <div class="col">
-                    <div class="card shadow-lg h-100">
-                        <img src="@pokemon.ImagenUrl" class="img-fluid rounded" alt="@pokemon.Nombre" style="width: 150px; height: auto;">
-                        <h5 class="mt-2">@pokemon.Nombre</h5>
-                        <p>Rareza: <span class="fw-bold">@pokemon.Rareza</span></p>
-
-                        @if (pokemon.Stats?.Any() ?? false)
-                        {
-                            <ul class="list-group mt-2">
-                                @foreach (var stat in pokemon.Stats)
-                                {
-                                    <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
-                                }
-                            </ul>
-                        }
-                        else
-                        {
-                            <p class="text-muted">🔎 Sin estadísticas registradas.</p>
-                        }
-
+                            @if (pokemon.Stats?.Any() ?? false)
+                            {
+                                <ul class="list-group mt-2">
+                                    @foreach (var stat in pokemon.Stats)
+                                    {
+                                        <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p class="text-muted">🔎 Sin estadísticas registradas.</p>
+                            }
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
-    }
-</div>
-
-
-
-
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>

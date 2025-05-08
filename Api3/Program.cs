@@ -1,32 +1,37 @@
 ﻿using api3.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔹 Register Services
+
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllersWithViews();
-
-// 🔹 Register HttpClient Correctly (if needed)
 builder.Services.AddHttpClient<PokemonService>();
 builder.Services.AddScoped<PokemonStorageService>();
-
-// 🔹 Register Other Services
 builder.Services.AddScoped<CheckoutService>();
 builder.Services.AddScoped<PedidoService>();
-
+builder.Services.AddScoped<AuthService>();
 builder.Services.AddMemoryCache();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Auth/Login";   
+        options.LogoutPath = "/Auth/Logout";
+    });
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
-// 🔹 Middleware for Error Handling & Security
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -38,7 +43,6 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
-// 🔹 Configure Routes Correctly
 app.MapControllers();
 app.MapRazorPages();
 app.MapControllerRoute(

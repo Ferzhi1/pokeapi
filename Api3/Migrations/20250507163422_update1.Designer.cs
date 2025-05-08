@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250422201828_Update5")]
-    partial class Update5
+    [Migration("20250507163422_update1")]
+    partial class update1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,35 @@ namespace Api3.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Api3.Models.ColeccionPokemon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("EmailUsuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagenUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rareza")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ColeccionPokemon");
+                });
 
             modelBuilder.Entity("api3.Models.MazoPokemon", b =>
                 {
@@ -50,11 +79,11 @@ namespace Api3.Migrations
 
             modelBuilder.Entity("api3.Models.PedidoPokemon", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("FechaPedido")
                         .HasColumnType("datetime2");
@@ -63,7 +92,7 @@ namespace Api3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PedidosUsuariosPokeId")
+                    b.Property<int>("PedidosUsuariosPokeId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Precio")
@@ -73,14 +102,14 @@ namespace Api3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("PedidosUsuariosPokeId");
 
                     b.ToTable("PedidoPokemon");
                 });
 
-            modelBuilder.Entity("api3.Models.PedidosUsuariosPoke", b =>
+            modelBuilder.Entity("api3.Models.PedidoUsuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,7 +142,7 @@ namespace Api3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EmailUsuario")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -131,7 +160,7 @@ namespace Api3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PedidoPokemonid")
+                    b.Property<int?>("PedidoPokemonId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Precio")
@@ -145,7 +174,7 @@ namespace Api3.Migrations
 
                     b.HasIndex("MazoPokemonId");
 
-                    b.HasIndex("PedidoPokemonid");
+                    b.HasIndex("PedidoPokemonId");
 
                     b.ToTable("ProductoPokemon");
                 });
@@ -157,6 +186,9 @@ namespace Api3.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("ColeccionPokemonId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -170,16 +202,47 @@ namespace Api3.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ColeccionPokemonId");
+
                     b.HasIndex("ProductoPokemonId");
 
                     b.ToTable("StatPokemon");
                 });
 
+            modelBuilder.Entity("api3.Models.UsuariosPokemonApi", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UsuariosPokemonApi");
+                });
+
             modelBuilder.Entity("api3.Models.PedidoPokemon", b =>
                 {
-                    b.HasOne("api3.Models.PedidosUsuariosPoke", null)
+                    b.HasOne("api3.Models.PedidoUsuario", "PedidoUsuario")
                         .WithMany("Pokemons")
-                        .HasForeignKey("PedidosUsuariosPokeId");
+                        .HasForeignKey("PedidosUsuariosPokeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PedidoUsuario");
                 });
 
             modelBuilder.Entity("api3.Models.ProductoPokemon", b =>
@@ -190,14 +253,23 @@ namespace Api3.Migrations
 
                     b.HasOne("api3.Models.PedidoPokemon", null)
                         .WithMany("Pokemons")
-                        .HasForeignKey("PedidoPokemonid");
+                        .HasForeignKey("PedidoPokemonId");
                 });
 
             modelBuilder.Entity("api3.Models.StatPokemon", b =>
                 {
+                    b.HasOne("Api3.Models.ColeccionPokemon", null)
+                        .WithMany("Stats")
+                        .HasForeignKey("ColeccionPokemonId");
+
                     b.HasOne("api3.Models.ProductoPokemon", null)
                         .WithMany("Stats")
                         .HasForeignKey("ProductoPokemonId");
+                });
+
+            modelBuilder.Entity("Api3.Models.ColeccionPokemon", b =>
+                {
+                    b.Navigation("Stats");
                 });
 
             modelBuilder.Entity("api3.Models.MazoPokemon", b =>
@@ -210,7 +282,7 @@ namespace Api3.Migrations
                     b.Navigation("Pokemons");
                 });
 
-            modelBuilder.Entity("api3.Models.PedidosUsuariosPoke", b =>
+            modelBuilder.Entity("api3.Models.PedidoUsuario", b =>
                 {
                     b.Navigation("Pokemons");
                 });
