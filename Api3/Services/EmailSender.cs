@@ -15,6 +15,8 @@ public class EmailSender
 
     public async Task SendEmailAsync(string to, string subject, string body)
     {
+        Console.WriteLine($"[INFO] Intentando enviar correo a: {to}");
+
         using var client = new SmtpClient(_emailSettings.SmtpServer)
         {
             Port = _emailSettings.Port,
@@ -32,6 +34,35 @@ public class EmailSender
 
         message.To.Add(to);
 
-        await client.SendMailAsync(message);
+        try
+        {
+            Console.WriteLine("[INFO] Enviando correo...");
+            await client.SendMailAsync(message);
+            Console.WriteLine("[INFO] Correo enviado correctamente.");
+        }
+        catch (SmtpException ex)
+        {
+            Console.WriteLine($"[ERROR] SMTP Exception: {ex.Message}");
+            Console.WriteLine($"[ERROR] Status Code: {ex.StatusCode}");
+
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"[ERROR] Inner Exception: {ex.InnerException.Message}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[ERROR] General Exception: {ex.Message}");
+
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"[ERROR] Inner Exception: {ex.InnerException.Message}");
+            }
+        }
+
     }
+
+
+
+
 }
