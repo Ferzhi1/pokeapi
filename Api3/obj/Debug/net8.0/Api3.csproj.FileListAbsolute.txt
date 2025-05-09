@@ -288,3 +288,10 @@ C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\runtimes\win\lib\ne
 C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\SendGrid.dll
+C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\StarkbankEcdsa.dll
+C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\MailKit.dll
+C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\MimeKit.dll
+C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\hmelo003\source\repos\pokeapi\Api3\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

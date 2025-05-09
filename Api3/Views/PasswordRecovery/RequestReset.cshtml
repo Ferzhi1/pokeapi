@@ -1,0 +1,33 @@
+﻿@model api3.Models.RequestResetModel
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="~/css/styles5.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="image-section"></div>
+        <div class="login-container">
+            <h2>Recuperar Contraseña</h2>
+            <form asp-action="RequestReset" method="post">
+                <div>
+                    <label>Email:</label>
+                    <input asp-for="Email" class="form-control" required />
+                </div>
+
+                <button type="submit" class="btn">Enviar Enlace</button>
+            </form>
+            <p>
+                ¿Recordaste tu contraseña?
+                <a asp-action="Login">Inicia Sesión</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

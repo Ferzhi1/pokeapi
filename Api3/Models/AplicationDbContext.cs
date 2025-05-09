@@ -12,8 +12,9 @@ public class ApplicationDbContext : DbContext
     public DbSet<MazoPokemon> MazoPokemon { get; set; }
     public DbSet<UsuariosPokemonApi> UsuariosPokemonApi { get; set; }
     public DbSet<ColeccionPokemon> ColeccionPokemon { get; set; }
+  
 
-
+    public DbSet<PasswordResetToken>passwordResetTokens{ get; set; }
   
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

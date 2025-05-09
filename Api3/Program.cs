@@ -1,11 +1,15 @@
-﻿using api3.Services;
+﻿using api3.Models;
+using api3.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using SendGrid.Helpers.Mail;
 using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<IConfiguration>(provider =>
+    new ConfigurationBuilder().AddJsonFile("appsettings.json").Build());
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
@@ -15,6 +19,14 @@ builder.Services.AddScoped<PokemonStorageService>();
 builder.Services.AddScoped<CheckoutService>();
 builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<EmailSender>();
+builder.Services.AddTransient<PasswordRecoveryService>();
+
+
+
+
+
 builder.Services.AddMemoryCache();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
