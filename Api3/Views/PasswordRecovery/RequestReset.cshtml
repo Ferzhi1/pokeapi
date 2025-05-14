@@ -1,33 +1,33 @@
-﻿@model api3.Models.RequestResetModel
+﻿@model api3.Models.ForgotPasswordRequest
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Contraseña</title>
-    <link rel="stylesheet" href="~/css/styles5.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>¿Olvidaste tu contraseña?</title>
+	<link rel="stylesheet" href="~/css/styles7.css">
 </head>
 <body>
 
-    <div class="container">
-        <div class="image-section"></div>
-        <div class="login-container">
-            <h2>Recuperar Contraseña</h2>
-            <form asp-action="RequestReset" method="post">
-                <div>
-                    <label>Email:</label>
-                    <input asp-for="Email" class="form-control" required />
-                </div>
+	<div class="forgot-password-container">
+		<h2>¿Olvidaste tu contraseña?</h2>
+		<hr />
 
-                <button type="submit" class="btn">Enviar Enlace</button>
-            </form>
-            <p>
-                ¿Recordaste tu contraseña?
-                <a asp-action="Login">Inicia Sesión</a>
-            </p>
-        </div>
-    </div>
+		<form method="post">
+			<div asp-validation-summary="All" class="text-danger"></div>
+
+			<div class="form-group">
+				<label asp-for="Email">Correo electrónico:</label>
+				<input asp-for="Email" type="email" class="form-control" required />
+				<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+
+			<button type="submit" class="btn btn-success">Enviar Solicitud de Restablecimiento</button>
+		</form>
+
+		<p>¿Recordaste tu contraseña? <a asp-action="Login">Inicia sesión aquí</a></p>
+	</div>
 
 </body>
 </html>

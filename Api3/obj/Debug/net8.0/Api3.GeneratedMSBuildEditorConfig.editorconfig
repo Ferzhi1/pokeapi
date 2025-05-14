@@ -40,8 +40,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc3dvcmRSZWNvdmVyeVxSZXF1ZXN0UmVzZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/hmelo003/source/repos/pokeapi/Api3/Views/PasswordRecovery/ResetConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc3dvcmRSZWNvdmVyeVxSZXNldENvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hmelo003/source/repos/pokeapi/Api3/Views/PasswordRecovery/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc3dvcmRSZWNvdmVyeVxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmelo003/source/repos/pokeapi/Api3/Views/PasswordRecovery/ResetPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc3dvcmRSZWNvdmVyeVxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hmelo003/source/repos/pokeapi/Api3/Views/Pedido/Checkout.cshtml]

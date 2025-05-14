@@ -1,52 +1,88 @@
-﻿using api3.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using api3.Models;
+using api3.Services;
+using System.Threading.Tasks;
 
-public class PasswordRecoveryController : Controller
+namespace api3.Controllers
 {
-    private readonly PasswordRecoveryService _passwordRecoveryService;
-
-    public PasswordRecoveryController(PasswordRecoveryService passwordRecoveryService)
+    public class PasswordRecoveryController : Controller
     {
-        _passwordRecoveryService = passwordRecoveryService;
-    }
+        private readonly PasswordRecoveryService _passwordRecoveryService;
 
-
-    [HttpGet]
-    public IActionResult RequestReset()
-    {
-        return View();
-    }
-    [HttpPost]
-    public async Task<IActionResult> RequestReset(string email)
-    {
-        var token = await _passwordRecoveryService.GenerateResetToken(email);
-        if (token == null) return BadRequest("El correo no está registrado.");
-
-        return Ok("Correo enviado con instrucciones.");
-    }
-
-
-    [HttpGet]
-    public IActionResult ResetPassword(string token, string email)
-    {
-        var model = new ResetPasswordModel
+        public PasswordRecoveryController(PasswordRecoveryService passwordRecoveryService)
         {
-            Token = token,
-            Email = email
-        };
-        return View(model);
-    }
+            _passwordRecoveryService = passwordRecoveryService;
+        }
 
+        [HttpGet]
+        public IActionResult RequestReset()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> RequestReset(ForgotPasswordRequest model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
+            var user = await _passwordRecoveryService.FindUserByEmailAsync(model.Email);
+            if (user != null)
+            {
+                await _passwordRecoveryService.GenerateAndSetResetTokenAsync(user);
+                // Aquí enviarías el correo electrónico con el enlace que contiene el token
+                // Para este ejemplo simplificado, redirigimos directamente (INSEGURO PARA PRODUCCIÓN)
+                return RedirectToAction("ResetPassword", new { token = user.ResetPasswordToken });
+            }
 
-    [HttpPost]
-    public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
-    {
-        var success = await _passwordRecoveryService.ResetPassword(model);
-        if (!success) return BadRequest("Token inválido o expirado.");
+            ViewBag.Message = "Si este correo electrónico existe en nuestra base de datos, se ha enviado un enlace para restablecer la contraseña.";
+            return View("RequestResetConfirmation");
+        }
 
-        return Ok("Contraseña restablecida correctamente.");
+        [HttpGet]
+        public IActionResult RequestResetConfirmation()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword(string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                return View("Error"); // O una vista de error apropiada
+            }
+            return View(new ResetPasswordViewModel { ResetToken = token });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _passwordRecoveryService.FindUserByResetTokenAsync(model.ResetToken);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "El enlace de restablecimiento de contraseña no es válido o ha expirado.");
+                return View(model);
+            }
+
+            // *** INSPECCIONA EL OBJETO 'user' AQUÍ EN EL DEBUGGER ***
+
+            await _passwordRecoveryService.ResetPasswordAsync(user, model.NewPassword);
+            return RedirectToAction("ResetPasswordConfirmation");
+        }
+
+        [HttpGet]
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
+        }
     }
 }
-

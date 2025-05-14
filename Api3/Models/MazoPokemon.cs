@@ -9,7 +9,7 @@ namespace api3.Models
         public decimal Precio { get; set; }
         public string ImagenUrl { get; set; }
 
-        // ✅ Nueva propiedad para almacenar los Pokémon del mazo
+        
         public List<ProductoPokemon> Pokemons { get; set; }
 
         public MazoPokemon(string nombre, decimal precio, string imagenUrl)

@@ -29,20 +29,23 @@ namespace api3.Services
             while (idsAleatorios.Count < cantidadPokemons)
                 idsAleatorios.Add(_random.Next(1, 898));
 
-            foreach (var id in idsAleatorios)
+            var tareas = idsAleatorios.Select(async id =>
             {
+                string cacheKey = $"Pokemon_{id}";
+
+                // 🚀 Verificar caché antes de llamar a la API
+                if (_cache.TryGetValue(cacheKey, out ProductoPokemon cachedPokemon))
+                {
+                    Console.WriteLine($"✅ Recuperado desde caché: {cachedPokemon.Nombre}");
+                    return cachedPokemon;
+                }
+
+                var respuesta = await ObtenerRespuestaConReintento(id);
+                if (respuesta == null) return null;
+
                 try
                 {
-                    string cacheKey = $"Pokemon_{id}";
-
-                    if (_cache.TryGetValue(cacheKey, out ProductoPokemon cachedPokemon))
-                    {
-                        pokemons.Add(cachedPokemon);
-                        continue;
-                    }
-
-                    var detallesJson = JsonDocument.Parse(await _httpClient.GetStringAsync($"https://pokeapi.co/api/v2/pokemon/{id}"));
-
+                    var detallesJson = JsonDocument.Parse(respuesta);
                     var descripcion = detallesJson.RootElement.TryGetProperty("species", out var species)
                         ? species.GetProperty("name").GetString() ?? "Pokémon sin descripción"
                         : "Descripción no disponible";
@@ -62,16 +65,60 @@ namespace api3.Services
                             }).ToList()
                     };
 
-                    pokemons.Add(pokemon);
+                    // 🚀 Guardar en caché para evitar llamadas repetitivas
                     _cache.Set(cacheKey, pokemon, TimeSpan.FromMinutes(30));
+                    return pokemon;
+                }
+                catch (JsonException ex)
+                {
+                    Console.WriteLine($"❌ ERROR de JSON al procesar Pokémon {id}: {ex.Message}");
+                    return null;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"❌ ERROR al obtener Pokémon {id}: {ex.Message}");
+                    Console.WriteLine($"❌ ERROR inesperado al obtener Pokémon {id}: {ex.Message}");
+                    return null;
+                }
+            });
+
+            pokemons = (await Task.WhenAll(tareas)).Where(p => p is not null).ToList();
+
+            // 🚀 Asegurar que siempre haya 50 Pokémon
+            while (pokemons.Count < cantidadPokemons)
+            {
+                int nuevoId = _random.Next(1, 898);
+                if (!pokemons.Any(p => p.Id == nuevoId))
+                {
+                    var nuevoPokemon = await ObtenerPokemonsAsync(1);
+                    if (nuevoPokemon != null && nuevoPokemon.Any())
+                    {
+                        pokemons.Add(nuevoPokemon.First());
+                    }
                 }
             }
 
+            Console.WriteLine($"📌 Total de Pokémon obtenidos: {pokemons.Count}");
             return pokemons;
+        }
+
+ 
+        private async Task<string> ObtenerRespuestaConReintento(int id)
+        {
+            int intentos = 0;
+            while (intentos < 3) 
+            {
+                var respuesta = await _httpClient.GetStringAsync($"https://pokeapi.co/api/v2/pokemon/{id}");
+
+                if (!string.IsNullOrWhiteSpace(respuesta))
+                    return respuesta;
+
+                intentos++;
+                Console.WriteLine($"🔄 Reintentando obtener Pokémon {id} ({intentos}/3)");
+                await Task.Delay(500);
+            }
+
+            Console.WriteLine($"❌ No se pudo obtener Pokémon {id} después de 3 intentos");
+            return null;
         }
     }
 }

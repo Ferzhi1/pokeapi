@@ -1,11 +1,7 @@
-﻿using api3.Models;
-using api3.Services;
+﻿using api3.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using SendGrid.Helpers.Mail;
-using System.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IConfiguration>(provider =>
@@ -19,9 +15,8 @@ builder.Services.AddScoped<PokemonStorageService>();
 builder.Services.AddScoped<CheckoutService>();
 builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<AuthService>();
-builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
-builder.Services.AddTransient<EmailSender>();
-builder.Services.AddTransient<PasswordRecoveryService>();
+builder.Services.AddScoped<PasswordRecoveryService>();
+
 
 
 
@@ -33,10 +28,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Auth/Login";   
+        options.LoginPath = "/Auth/Login";
         options.LogoutPath = "/Auth/Logout";
     });
 
@@ -51,7 +47,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(); 
+app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 

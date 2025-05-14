@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using api3.Services;
 using api3.Models;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace api3.Controllers
 {
@@ -13,12 +14,14 @@ namespace api3.Controllers
         private readonly PokemonService _pokemonService;
         private readonly CheckoutService _checkoutService;
         private readonly PokemonStorageService _pokemonStorageService;
+        private readonly IMemoryCache _cache; // 🔥 Agregamos caché
 
-        public PedidoController(PokemonService pokemonService, CheckoutService checkoutService, PokemonStorageService pokemonStorageService)
+        public PedidoController(PokemonService pokemonService, CheckoutService checkoutService, PokemonStorageService pokemonStorageService, IMemoryCache cache)
         {
             _pokemonService = pokemonService;
             _checkoutService = checkoutService;
             _pokemonStorageService = pokemonStorageService;
+            _cache = cache;
         }
 
         private static string ObtenerImagenUrl(string nombreMazo) => nombreMazo switch
@@ -39,17 +42,32 @@ namespace api3.Controllers
             if (usuarioPokemon == null)
                 return BadRequest("El usuario no existe en la base de datos.");
 
-            var cantidadPokemons = nombreMazo switch
+            Console.WriteLine($"📌 Valor recibido de nombreMazo: {nombreMazo}");
+
+            var cantidadPokemons = nombreMazo.Trim().ToLower() switch
             {
-                "Mazo Pequeño" => 30,
-                "Mazo Mediano" => 40,
-                "Mazo Grande" => 50,
+                "mazo pequeño" => 30,
+                "mazo mediano" => 40,
+                "mazo grande" => 50,
                 _ => 30
             };
 
-            var pokemons = await _pokemonService.ObtenerPokemonsAsync(cantidadPokemons);
-            if (pokemons == null || !pokemons.Any())
-                return BadRequest("No se encontraron Pokémon para este mazo.");
+            // 🚀 Usar caché antes de llamar a la API
+            string cacheKey = $"PokemonMazo_{cantidadPokemons}";
+            if (!_cache.TryGetValue(cacheKey, out List<ProductoPokemon> pokemons))
+            {
+                Console.WriteLine($"⚠️ Mazo no encontrado en caché, llamando a la API...");
+                pokemons = await _pokemonService.ObtenerPokemonsAsync(cantidadPokemons);
+
+                if (pokemons == null || !pokemons.Any())
+                    return BadRequest("No se encontraron Pokémon para este mazo.");
+
+                _cache.Set(cacheKey, pokemons, TimeSpan.FromMinutes(30));
+            }
+            else
+            {
+                Console.WriteLine($"✅ Recuperado desde caché: {cacheKey}");
+            }
 
             var pedidoPokemon = new PedidoPokemon(nombreMazo, 25.99m, email)
             {
@@ -59,6 +77,7 @@ namespace api3.Controllers
             return View("~/Views/Pedido/Confirmacion.cshtml", pedidoPokemon);
         }
 
+        [HttpGet("Checkout")]
         public async Task<IActionResult> Checkout(string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre))
@@ -75,11 +94,32 @@ namespace api3.Controllers
                 _ => 30
             };
 
-            var pokemons = await _pokemonService.ObtenerPokemonsAsync(cantidadPokemons);
-            if (pokemons == null || !pokemons.Any())
-                return BadRequest("No se encontraron Pokémon para este mazo.");
+            var precioFijo = nombre switch
+            {
+                "mazo pequeño" => 25.99m,
+                "mazo mediano" => 40.99m,
+                "mazo grande" => 50.99m,
+                _ => 25.99m
+            };
 
-            var mazo = new MazoPokemon(nombre, 25.99m, imagenUrl)
+            // 🚀 Usar caché antes de llamar a la API
+            string cacheKey = $"PokemonMazo_{cantidadPokemons}";
+            if (!_cache.TryGetValue(cacheKey, out List<ProductoPokemon> pokemons))
+            {
+                Console.WriteLine($"⚠️ Mazo no encontrado en caché, llamando a la API...");
+                pokemons = await _pokemonService.ObtenerPokemonsAsync(cantidadPokemons);
+
+                if (pokemons == null || !pokemons.Any())
+                    return BadRequest("No se encontraron Pokémon para este mazo.");
+
+                _cache.Set(cacheKey, pokemons, TimeSpan.FromMinutes(30));
+            }
+            else
+            {
+                Console.WriteLine($"✅ Recuperado desde caché: {cacheKey}");
+            }
+
+            var mazo = new MazoPokemon(nombre, precioFijo, imagenUrl)
             {
                 Pokemons = pokemons
             };

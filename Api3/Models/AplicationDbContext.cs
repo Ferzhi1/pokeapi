@@ -14,7 +14,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<ColeccionPokemon> ColeccionPokemon { get; set; }
   
 
-    public DbSet<PasswordResetToken>passwordResetTokens{ get; set; }
   
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

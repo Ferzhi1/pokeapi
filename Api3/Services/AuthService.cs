@@ -16,10 +16,12 @@ namespace api3.Services
         public async Task<UsuariosPokemonApi?> AuthenticateAsync(string email, string password)
         {
             var user = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == email);
-            if (user == null || BCrypt.Net.BCrypt.Verify(password, user.Password))
-                return null;
+            if (user == null)
+                return null; 
+            if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+                return null; 
 
-            return user;
+            return user; 
         }
 
         public async Task RegisterAsync(string email, string nombre, string password)

@@ -1,46 +1,47 @@
-﻿using System;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 using api3.Models;
 
 namespace api3.Services
 {
     public class PedidoService
     {
-        private readonly HttpClient _httpClient;
         private readonly IMemoryCache _cache;
-        private readonly PokemonService _pokemonService;
 
-        public PedidoService(HttpClient httpClient, IMemoryCache cache, PokemonService pokemonService)
+        public PedidoService(IMemoryCache cache)
         {
-            _httpClient = httpClient;
             _cache = cache;
-            _pokemonService = pokemonService;
         }
 
-        public async Task<PedidoPokemon> ObtenerPedidoAsync(string nombreMazo, string email)
+        public PedidoPokemon ObtenerPedidoDesdeCache(string nombreMazo, string email, int cantidadPokemons)
         {
             if (string.IsNullOrWhiteSpace(nombreMazo) || string.IsNullOrWhiteSpace(email))
                 throw new ArgumentException("El nombre del mazo y el email son obligatorios.");
 
-            string cacheKey = $"Pedido_{email}_{nombreMazo}";
+            string cacheKeyMazo = $"PokemonMazo_{cantidadPokemons}";
+            string cacheKeyPedido = $"Pedido_{email}_{nombreMazo}";
 
-            if (_cache.TryGetValue(cacheKey, out PedidoPokemon cachedPedido))
+            if (!_cache.TryGetValue(cacheKeyMazo, out List<ProductoPokemon> pokemons))
+            {
+                Console.WriteLine($"❌ ERROR: El mazo {nombreMazo} no está en caché.");
+                throw new InvalidOperationException("El mazo no existe en caché.");
+            }
+
+            if (_cache.TryGetValue(cacheKeyPedido, out PedidoPokemon cachedPedido))
+            {
+                Console.WriteLine($"✅ Pedido recuperado desde caché: {cacheKeyPedido}");
                 return cachedPedido;
+            }
 
-            var pokemons = await _pokemonService.ObtenerPokemonsAsync(30);
-            if (pokemons is not { Count: > 0 })
-                throw new InvalidOperationException("No se pudieron obtener Pokémon de la API.");
-
+            
             var pedido = new PedidoPokemon(nombreMazo, 25.99m, email)
             {
                 Pokemons = pokemons
             };
 
-            _cache.Set(cacheKey, pedido, TimeSpan.FromMinutes(30));
+            _cache.Set(cacheKeyPedido, pedido, TimeSpan.FromMinutes(30));
+
+            Console.WriteLine($"✅ Nuevo pedido almacenado en caché: {cacheKeyPedido}");
+
             return pedido;
         }
     }
