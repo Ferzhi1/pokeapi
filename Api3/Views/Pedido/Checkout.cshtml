@@ -20,15 +20,10 @@
                 <h5 class="card-title">@Model.Nombre</h5>
                 <p class="card-text">Precio: $@Model.Precio</p>
 
-                <form asp-controller="Pedido" asp-action="Confirmacion" method="get">
+                <form asp-controller="Pedido" asp-action="Confirmacion" method="pO">
                     <div class="mb-3">
                         <label for="nombreMazo" class="form-label">Nombre del Mazo</label>
                         <input type="text" id="nombreMazo" name="nombreMazo" class="form-control" value="@Model.Nombre" readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="emailUsuario" class="form-label">Tu Correo Electrónico</label>
-                        <input type="email" id="emailUsuario" name="email" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-success w-100">

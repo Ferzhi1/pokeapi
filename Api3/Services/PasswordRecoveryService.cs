@@ -1,6 +1,6 @@
 ﻿using api3.Models;
 using Microsoft.EntityFrameworkCore;
-using BCrypt.Net; // Asegúrate de que este using esté presente
+using BCrypt.Net; 
 using System;
 using System.Threading.Tasks;
 
@@ -15,15 +15,20 @@ namespace api3.Services
             _context = context;
         }
 
-        public async Task<UsuariosPokemonApi?> FindUserByEmailAsync(string email)
+        public async Task<UsuariosPokemonApi?> FindUserByEmailAsync(string email,string respuestaSeguridad)
         {
-            return await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == email);
+            var usuario=await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == email);
+            if (usuario != null && BCrypt.Net.BCrypt.Verify(respuestaSeguridad, usuario.RespuestaSeguridad))
+            {
+                return usuario;
+            }
+            return null;
         }
 
         public async Task GenerateAndSetResetTokenAsync(UsuariosPokemonApi user)
         {
             user.ResetPasswordToken = Guid.NewGuid().ToString();
-            user.ResetPasswordTokenExpiry = DateTime.UtcNow.AddHours(1); // Token expira en 1 hora
+            user.ResetPasswordTokenExpiry = DateTime.UtcNow.AddHours(1); 
             _context.UsuariosPokemonApi.Update(user);
             await _context.SaveChangesAsync();
         }
@@ -49,7 +54,7 @@ namespace api3.Services
                 return;
             }
 
-            Console.WriteLine($"Reseteando contraseña para usuario con ID: {user.Id}");
+         
 
             _context.Attach(user);
             user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
@@ -60,7 +65,7 @@ namespace api3.Services
             _context.Entry(user).Property(p => p.ResetPasswordToken).IsModified = true;
             _context.Entry(user).Property(p => p.ResetPasswordTokenExpiry).IsModified = true;
 
-            // Verificando los cambios en el ChangeTracker antes de guardar
+       
             foreach (var entry in _context.ChangeTracker.Entries())
             {
                 Console.WriteLine($"Entidad: {entry.Entity.GetType().Name}, Estado: {entry.State}");
@@ -69,7 +74,7 @@ namespace api3.Services
             await _context.SaveChangesAsync();
             Console.WriteLine("Contraseña actualizada correctamente.");
 
-            // Forzar la recarga de la entidad para verificar la nueva contraseña en memoria
+            
             await _context.Entry(user).ReloadAsync();
             Console.WriteLine($"Nueva contraseña en memoria después de la recarga: {user.Password}");
         }

@@ -7,5 +7,7 @@ namespace api3.Models
         [Required(ErrorMessage = "El correo electrónico es requerido.")]
         [EmailAddress(ErrorMessage = "Por favor, introduce un correo electrónico válido.")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "La respuest de seguridad es requerida.")]
+        public string Respuesta {  get; set; }
     }
 }

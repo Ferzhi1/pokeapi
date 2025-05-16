@@ -68,7 +68,7 @@ namespace api3.Controllers
                 return View(model);
             }
 
-            await _authService.RegisterAsync(model.Email,model.Nombre, model.Password);
+            await _authService.RegisterAsync(model.Email,model.Nombre, model.Password,model.Pregunta,model.Respuesta);
             return RedirectToAction("Login");
         }
 

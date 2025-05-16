@@ -9,14 +9,13 @@ public class PedidoPokemon
     public string UsuarioEmail { get; set; }
     public DateTime FechaPedido { get; set; }
     public List<ProductoPokemon> Pokemons { get; set; }
-    public int PedidosUsuariosPokeId { get; set; } // ✅ Clave foránea correcta
-    public PedidoUsuario PedidoUsuario { get; set; } //
+    public int PedidosUsuariosPokeId { get; set; } 
+    public PedidoUsuario PedidoUsuario { get; set; } 
     public PedidoPokemon(string nombreMazo, decimal precio, string usuarioEmail)
     {
         NombreMazo = nombreMazo;
         Precio = precio;
         UsuarioEmail = usuarioEmail;
         FechaPedido = DateTime.UtcNow;
-        Pokemons = new List<ProductoPokemon>(); // ✅ Evita errores de `null`
-    }
+        Pokemons = new List<ProductoPokemon>(); 
 }

@@ -28,12 +28,11 @@ namespace api3.Controllers
                 return View(model);
             }
 
-            var user = await _passwordRecoveryService.FindUserByEmailAsync(model.Email);
+            var user = await _passwordRecoveryService.FindUserByEmailAsync(model.Email,model.Respuesta);
             if (user != null)
             {
                 await _passwordRecoveryService.GenerateAndSetResetTokenAsync(user);
-                // Aquí enviarías el correo electrónico con el enlace que contiene el token
-                // Para este ejemplo simplificado, redirigimos directamente (INSEGURO PARA PRODUCCIÓN)
+
                 return RedirectToAction("ResetPassword", new { token = user.ResetPasswordToken });
             }
 
@@ -73,7 +72,7 @@ namespace api3.Controllers
                 return View(model);
             }
 
-            // *** INSPECCIONA EL OBJETO 'user' AQUÍ EN EL DEBUGGER ***
+       
 
             await _passwordRecoveryService.ResetPasswordAsync(user, model.NewPassword);
             return RedirectToAction("ResetPasswordConfirmation");

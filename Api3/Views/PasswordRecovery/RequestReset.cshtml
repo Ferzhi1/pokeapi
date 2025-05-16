@@ -22,6 +22,11 @@
 				<input asp-for="Email" type="email" class="form-control" required />
 				<span asp-validation-for="Email" class="text-danger"></span>
 			</div>
+			<div class="form-group">
+				<label asp-for="Respuesta">Respuesta:</label>
+				<input asp-for="Respuesta" type="text" class="form-control" required />
+				<span asp-validation-for="Respuesta" class="text-danger"></span>
+			</div>
 
 			<button type="submit" class="btn btn-success">Enviar Solicitud de Restablecimiento</button>
 		</form>

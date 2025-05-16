@@ -11,7 +11,9 @@ namespace api3.Models
         public string Password { get; set; }
         public string? ResetPasswordToken { get; set; }
         public DateTime? ResetPasswordTokenExpiry { get; set; }
+        public string PreguntaSeguridad { get; set; }
 
+        public string RespuestaSeguridad { get; set; }
 
     }
 }

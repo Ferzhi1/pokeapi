@@ -24,13 +24,22 @@ namespace api3.Services
             return user; 
         }
 
-        public async Task RegisterAsync(string email, string nombre, string password)
+        public async Task RegisterAsync(string email, string nombre, string password, string pregunta, string respuesta)
         {
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-            var newUser = new UsuariosPokemonApi { Email = email, Nombre = nombre, Password = hashedPassword };
+            var hashedRespuesta = BCrypt.Net.BCrypt.HashPassword(respuesta); 
+            var newUser = new UsuariosPokemonApi
+            {
+                Email = email,
+                Nombre = nombre,
+                Password = hashedPassword,
+                PreguntaSeguridad = pregunta, 
+                RespuestaSeguridad = hashedRespuesta 
+            };
 
             _context.UsuariosPokemonApi.Add(newUser);
             await _context.SaveChangesAsync();
         }
+
     }
 }
