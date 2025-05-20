@@ -7,6 +7,7 @@ namespace api3.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
+  
 
         public string Password { get; set; }
         public string? ResetPasswordToken { get; set; }
@@ -14,6 +15,7 @@ namespace api3.Models
         public string PreguntaSeguridad { get; set; }
 
         public string RespuestaSeguridad { get; set; }
+        public bool CorreoValidado { get; set; } = true;
 
     }
 }

@@ -20,7 +20,7 @@
                 <h5 class="card-title">@Model.Nombre</h5>
                 <p class="card-text">Precio: $@Model.Precio</p>
 
-                <form asp-controller="Pedido" asp-action="Confirmacion" method="pO">
+                <form asp-controller="Pedido" asp-action="Confirmacion" method="post">
                     <div class="mb-3">
                         <label for="nombreMazo" class="form-label">Nombre del Mazo</label>
                         <input type="text" id="nombreMazo" name="nombreMazo" class="form-control" value="@Model.Nombre" readonly>
