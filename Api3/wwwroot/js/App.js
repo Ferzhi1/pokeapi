@@ -44,7 +44,7 @@ function irAColeccion() {
         return;
     }
 
-    window.location.href = `https://localhost:7200/Pokemon/Coleccion?email=${encodeURIComponent(emailUsuario)}`;
+    window.location.href = "/Pokemon/Coleccion";
 }
 
 

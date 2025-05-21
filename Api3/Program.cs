@@ -16,6 +16,7 @@ builder.Services.AddScoped<CheckoutService>();
 builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<PasswordRecoveryService>();
+builder.Services.AddScoped<VentaService>();
 
 
 

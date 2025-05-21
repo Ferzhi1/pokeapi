@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "O37EDewYdnwRmOEwTmoepxEW0vqa+8VP+juoqvGF3ws=",
+  "Hash": "cKEkFFFhS4tj5z8qC8z6fV+tSOgAWUysAAikzK1KE4I=",
   "Source": "api3",
   "BasePath": "_content/api3",
   "Mode": "Default",
@@ -493,8 +493,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ujt8fh9t6j",
-      "Integrity": "ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4=",
+      "Fingerprint": "20mzufybkb",
+      "Integrity": "3kvJx9nReweNe7MBc3qyZiwBvk1PHZJPFAh7gKY7yKc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\App.js"
@@ -514,8 +514,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "3r8b2a0bt1",
-      "Integrity": "8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=",
+      "Fingerprint": "1u780x1uca",
+      "Integrity": "qY2zOb94ONptcW5iuJdU9KXf3w/TfweF2cXV+r2ft8s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
@@ -3524,6 +3524,51 @@
       ]
     },
     {
+      "Route": "js/App.20mzufybkb.js",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3943"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3kvJx9nReweNe7MBc3qyZiwBvk1PHZJPFAh7gKY7yKc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 May 2025 13:23:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "20mzufybkb"
+        },
+        {
+          "Name": "label",
+          "Value": "js/App.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3kvJx9nReweNe7MBc3qyZiwBvk1PHZJPFAh7gKY7yKc="
+        }
+      ]
+    },
+    {
       "Route": "js/App.js",
       "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
       "Selectors": [],
@@ -3534,7 +3579,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4007"
+          "Value": "3943"
         },
         {
           "Name": "Content-Type",
@@ -3542,11 +3587,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4=\""
+          "Value": "\"3kvJx9nReweNe7MBc3qyZiwBvk1PHZJPFAh7gKY7yKc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 20 May 2025 20:33:57 GMT"
+          "Value": "Wed, 21 May 2025 13:23:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3556,57 +3601,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4="
+          "Value": "sha256-3kvJx9nReweNe7MBc3qyZiwBvk1PHZJPFAh7gKY7yKc="
         }
       ]
     },
     {
-      "Route": "js/App.ujt8fh9t6j.js",
-      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4007"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 20 May 2025 20:33:57 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ujt8fh9t6j"
-        },
-        {
-          "Name": "label",
-          "Value": "js/App.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ZpVdqG8caKCXHOIaJbzM8SOrmjRnajqQ1S70Kf99mU4="
-        }
-      ]
-    },
-    {
-      "Route": "js/site.3r8b2a0bt1.js",
+      "Route": "js/site.1u780x1uca.js",
       "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\site.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3616,7 +3616,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3"
+          "Value": "5689"
         },
         {
           "Name": "Content-Type",
@@ -3624,11 +3624,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=\""
+          "Value": "\"qY2zOb94ONptcW5iuJdU9KXf3w/TfweF2cXV+r2ft8s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 20 May 2025 20:33:57 GMT"
+          "Value": "Wed, 21 May 2025 22:56:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3638,7 +3638,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "3r8b2a0bt1"
+          "Value": "1u780x1uca"
         },
         {
           "Name": "label",
@@ -3646,7 +3646,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U="
+          "Value": "sha256-qY2zOb94ONptcW5iuJdU9KXf3w/TfweF2cXV+r2ft8s="
         }
       ]
     },
@@ -3661,7 +3661,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3"
+          "Value": "5689"
         },
         {
           "Name": "Content-Type",
@@ -3669,11 +3669,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=\""
+          "Value": "\"qY2zOb94ONptcW5iuJdU9KXf3w/TfweF2cXV+r2ft8s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 20 May 2025 20:33:57 GMT"
+          "Value": "Wed, 21 May 2025 22:56:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3683,7 +3683,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U="
+          "Value": "sha256-qY2zOb94ONptcW5iuJdU9KXf3w/TfweF2cXV+r2ft8s="
         }
       ]
     },

@@ -16,6 +16,7 @@ namespace api3.Models
 
         public string RespuestaSeguridad { get; set; }
         public bool CorreoValidado { get; set; } = true;
+        public decimal Monedero { get; set; } = 0;
 
     }
 }

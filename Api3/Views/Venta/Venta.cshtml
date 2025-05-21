@@ -1,0 +1,88 @@
+﻿@model List<api3.Models.ProductoPokemon>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Store</title>
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="~/css/styles3.css">
+
+    <!-- Íconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <input type="hidden" id="emailUsuario" value="@ViewBag.EmailUsuario">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pokémon Store</a>
+
+            <div class="d-flex">
+                <span class="navbar-text me-3">
+                    ✉️ Email: <strong>@ViewBag.EmailUsuario</strong>
+                </span>
+                <span class="navbar-text">
+                    💰 Monedero: <strong id="monederoUsuario">@ViewBag.Monedero</strong> monedas
+                </span>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center mt-5">
+        <h2 class="mb-4">Venta y Subasta de Pokémon 📜</h2>
+
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-warning">
+                ❌ No hay Pokémon guardados en tu catálogo de venta.
+            </div>
+        }
+        else
+        {
+            <h6>📢 Total de Pokémon para venta: @(Model.Count())</h6>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var pokemon in Model)
+                {
+                    <div class="col">
+                        <div class="card shadow-lg h-100">
+                            <img src="@pokemon.ImagenUrl" class="img-fluid rounded" alt="@pokemon.Nombre" style="width: 150px; height: auto;">
+                            <h5 class="mt-2">@pokemon.Nombre</h5>
+                            <p>Rareza: <span class="fw-bold">@pokemon.Rareza</span></p>
+
+                            @if (pokemon.Stats?.Any() ?? false)
+                            {
+                                <ul class="list-group mt-2">
+                                    @foreach (var stat in pokemon.Stats)
+                                    {
+                                        <li class="list-group-item small">
+                                            <i class="fas fa-chart-line"></i> @stat.Nombre: <strong>@stat.Valor</strong>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p class="text-muted">🔎 Sin estadísticas registradas.</p>
+                            }
+
+                           
+                            <label for="precioPokemon" class="mt-2">💰 Precio:</label>
+                            <input type="number" class="form-control mb-2" id="precioPokemon_@pokemon.Id" name="precio"
+                                   placeholder="Define un precio" min="1">
+
+                        
+                            <button class="btn btn-success vender-btn mt-2">🛒 Vender Pokémon</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>

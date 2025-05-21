@@ -33,7 +33,7 @@ namespace api3.Services
             {
                 string cacheKey = $"Pokemon_{id}";
 
-                // 🚀 Verificar caché antes de llamar a la API
+            
                 if (_cache.TryGetValue(cacheKey, out ProductoPokemon cachedPokemon))
                 {
                     Console.WriteLine($"✅ Recuperado desde caché: {cachedPokemon.Nombre}");
@@ -65,7 +65,7 @@ namespace api3.Services
                             }).ToList()
                     };
 
-                    // 🚀 Guardar en caché para evitar llamadas repetitivas
+                   
                     _cache.Set(cacheKey, pokemon, TimeSpan.FromMinutes(30));
                     return pokemon;
                 }
@@ -83,7 +83,7 @@ namespace api3.Services
 
             pokemons = (await Task.WhenAll(tareas)).Where(p => p is not null).ToList();
 
-            // 🚀 Asegurar que siempre haya 50 Pokémon
+           
             while (pokemons.Count < cantidadPokemons)
             {
                 int nuevoId = _random.Next(1, 898);

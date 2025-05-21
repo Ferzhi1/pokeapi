@@ -8,4 +8,5 @@ public class PedidoUsuario
     public string Email { get; set; }
     public string MazoSeleccionado { get; set; }
     public List<PedidoPokemon> Pokemons { get; set; }
+
 }

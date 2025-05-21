@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 [Authorize]
 public class PokemonController : Controller
 {
@@ -46,18 +47,32 @@ public class PokemonController : Controller
     }
 
     [HttpGet]
-    public IActionResult Coleccion(string email)
+    public IActionResult Coleccion()
     {
-        if (string.IsNullOrWhiteSpace(email))
-            return BadRequest("Debe especificar un email.");
 
-        var pokemonsGuardados = _pokemonStorageService.ObtenerColeccionPokemon(email);
+        var emailUsuarioAutenticado = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+        Console.WriteLine($"Email obtenido para colección: {emailUsuarioAutenticado}");
+
+        if (string.IsNullOrWhiteSpace(emailUsuarioAutenticado))
+        {
+            Console.WriteLine("No se pudo obtener el email del usuario autenticado.");
+            return RedirectToAction("Login"); 
+        }
+
+        var pokemonsGuardados = _pokemonStorageService.ObtenerColeccionPokemon(emailUsuarioAutenticado);
+
         if (pokemonsGuardados == null || !pokemonsGuardados.Any())
+        {
+            Console.WriteLine("No se encontraron Pokémon en la colección.");
             return View(new List<ProductoPokemon>());
+        }
 
         foreach (var pokemon in pokemonsGuardados)
             pokemon.Stats ??= new List<StatPokemon>();
 
         return View(pokemonsGuardados);
     }
+
+
 }

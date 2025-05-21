@@ -15,6 +15,12 @@ namespace api3.Controllers
         {
             _authService = authService;
         }
+        [HttpGet]
+        public IActionResult ObtenerEmail()
+        {
+            var emailUsuario = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            return Ok(new { email = emailUsuario });
+        }
 
         [HttpGet]
         public IActionResult Login()

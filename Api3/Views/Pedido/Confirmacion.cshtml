@@ -36,7 +36,7 @@
                                 </div>
 
                                 <div class="stats-section ms-3">
-                                    <h6>📊 Estadísticas:</h6>
+                                    <h6> Estadísticas:📊</h6>
                                     <ul class="list-group">
                                         @if (pokemon.Stats?.Any() ?? false)
                                         {
@@ -57,7 +57,9 @@
                                 <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
                                 <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
                                 <button class="btn btn-danger mt-2 guardar-btn">Guardar</button>
-                                <button class="btn btn-warning mt-3" onclick="guardarPokemonEnVenta(this.closest('.pokemon-card'))">🛒 Vender Pokémon</button>
+                                <button class="btn btn-warning mt-3 vender-btn"> 🛒 Vender Pokémon</button>
+
+
 
 
 
@@ -79,6 +81,7 @@
     </div>
 
     <script src="/js/App.js"></script>
+    <script src="/js/site.js"></script>
 
 </body>
 </html>

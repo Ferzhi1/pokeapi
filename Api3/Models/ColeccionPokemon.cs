@@ -8,7 +8,7 @@ namespace Api3.Models
         public string Nombre { get; set; }
         public string ImagenUrl { get; set; }
         public string Rareza { get; set; }
-        public string EmailUsuario { get; set; } // Relación con el usuario
+        public string EmailUsuario { get; set; } 
         public List<StatPokemon> Stats { get; set; } = new List<StatPokemon>();
     }
 

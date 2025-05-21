@@ -14,6 +14,7 @@ namespace api3.Models
         public string Rareza { get; set; }
         public string Email { get; set; }
         public bool EnVenta { get; set; }
+    
 
         public List<StatPokemon> Stats { get; set; } = new List<StatPokemon>();
     }
@@ -21,8 +22,8 @@ namespace api3.Models
     public class StatPokemon
     {
         public int Id { get; set; }
-        public string Nombre { get; set; } // Ejemplo: "attack", "defense", "speed"
-        public int Valor { get; set; } // Ejemplo: 50, 80, 100
+        public string Nombre { get; set; }
+        public int Valor { get; set; } 
     }
 }
 
