@@ -19,11 +19,11 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // 🔹 Configuración de relaciones
+
         modelBuilder.Entity<PedidoPokemon>()
             .HasOne(p => p.PedidoUsuario)
             .WithMany(u => u.Pokemons)
-            .HasForeignKey(p => p.PedidosUsuariosPokeId); // 🔥 Usa el nombre correcto de la clave foránea
+            .HasForeignKey(p => p.PedidosUsuariosPokeId);
 
         modelBuilder.Entity<PedidoUsuario>()
             .HasMany(p => p.Pokemons)

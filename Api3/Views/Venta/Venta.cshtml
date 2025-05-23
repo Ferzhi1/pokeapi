@@ -1,88 +1,119 @@
 ﻿@model List<api3.Models.ProductoPokemon>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Store</title>
-
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" href="~/css/styles3.css">
-
-    <!-- Íconos Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Subasta Pokémon</title>
+    <link rel="stylesheet" href="~/css/styles2.css">
 </head>
 <body>
-    <input type="hidden" id="emailUsuario" value="@ViewBag.EmailUsuario">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Pokémon Store</a>
+            <a class="navbar-brand" href="#">Subasta Pokémon</a>
 
-            <div class="d-flex">
-                <span class="navbar-text me-3">
-                    ✉️ Email: <strong>@ViewBag.EmailUsuario</strong>
-                </span>
-                <span class="navbar-text">
-                    💰 Monedero: <strong id="monederoUsuario">@ViewBag.Monedero</strong> monedas
-                </span>
-
+            <div class="d-flex align-items-center">
+                <span class="text-light me-3">💰 Monedas: <strong id="monedero">0</strong></span>
+                <span class="text-light">📧 @ViewBag.EmailUsuario</span>
             </div>
         </div>
     </nav>
 
     <div class="container text-center mt-5">
-        <h2 class="mb-4">Venta y Subasta de Pokémon 📜</h2>
+        <h2 class="mb-4">Subasta de Pokémon</h2>
 
-        @if (Model == null || !Model.Any())
-        {
-            <div class="alert alert-warning">
-                ❌ No hay Pokémon guardados en tu catálogo de venta.
-            </div>
-        }
-        else
-        {
-            <h6>📢 Total de Pokémon para venta: @(Model.Count())</h6>
+        <div class="alert alert-info">
+            🏆 Participa en la subasta y consigue los mejores Pokémon para tu colección.
+        </div>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+        <input type="hidden" id="emailUsuario" value="@ViewBag.EmailUsuario" />
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @if (Model?.Any() ?? false)
+            {
                 @foreach (var pokemon in Model)
                 {
-                    <div class="col">
-                        <div class="card shadow-lg h-100">
-                            <img src="@pokemon.ImagenUrl" class="img-fluid rounded" alt="@pokemon.Nombre" style="width: 150px; height: auto;">
-                            <h5 class="mt-2">@pokemon.Nombre</h5>
-                            <p>Rareza: <span class="fw-bold">@pokemon.Rareza</span></p>
+                    <div class="col pokemon-card" id="card-@pokemon.Nombre">
+                        <div class="card shadow-lg">
+                            <div class="d-flex align-items-center p-3">
+                                <div class="flex-shrink-0">
+                                    <img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
+                                         style="width: 180px; height: auto;"
+                                         onerror="this.src='/images/default-pokemon.png';" />
+                                </div>
+                            </div>
 
-                            @if (pokemon.Stats?.Any() ?? false)
-                            {
-                                <ul class="list-group mt-2">
-                                    @foreach (var stat in pokemon.Stats)
-                                    {
-                                        <li class="list-group-item small">
-                                            <i class="fas fa-chart-line"></i> @stat.Nombre: <strong>@stat.Valor</strong>
-                                        </li>
-                                    }
-                                </ul>
-                            }
-                            else
-                            {
-                                <p class="text-muted">🔎 Sin estadísticas registradas.</p>
-                            }
+                            <div class="card-body text-center">
+                                <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
+                                <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
 
-                           
-                            <label for="precioPokemon" class="mt-2">💰 Precio:</label>
-                            <input type="number" class="form-control mb-2" id="precioPokemon_@pokemon.Id" name="precio"
-                                   placeholder="Define un precio" min="1">
+                                <div class="stats-container">
+                                    <h6> 📊 Estadísticas:</h6>
+                                    <div class="stats-section">
+                                        <ul class="list-group">
+                                            @if (pokemon.Stats?.Any() ?? false)
+                                            {
+                                                @foreach (var stat in pokemon.Stats)
+                                                {
+                                                    <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
 
-                        
-                            <button class="btn btn-success vender-btn mt-2">🛒 Vender Pokémon</button>
+                                <p class="card-text">💰 Precio Inicial: <strong>@pokemon.PrecioInicial.ToString("F0") monedas</strong></p>
+                                <p class="card-text">🏅 Puja Actual: <strong id="puja-@pokemon.Id">@pokemon.PujaActual.ToString("F0") monedas</strong></p>
+                                <p class="card-text">
+                                    ⏳ Tiempo Restante:
+                                    <strong>
+                                        @(pokemon.TiempoExpiracion != DateTime.MinValue
+                                            ? Math.Max((int)(pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalMinutes), 0)
+                                            : 0) minutos
+                                    </strong>
+                                </p>
+
+                                @if (pokemon.EnVenta && pokemon.TiempoExpiracion < DateTime.Now)
+                                {
+                                    <form asp-action="IniciarSubasta" method="post">
+                                        <input type="hidden" name="pokemonId" value="@pokemon.Id" />
+
+                                        <label for="precioInicial">💰 Precio Inicial:</label>
+                                        <input type="number" name="precioInicial" required placeholder="Precio en monedas" />
+
+                                        <label for="duracionMinutos">⏳ Duración de la subasta (min):</label>
+                                        <input type="number" name="duracionMinutos" required placeholder="Ej: 60 minutos" />
+
+                                        <button class="btn btn-warning mt-3">🚀 Poner en Subasta</button>
+                                    </form>
+                                }
+                            </div>
                         </div>
                     </div>
                 }
-            </div>
-        }
+            }
+            else
+            {
+                <p class="text-muted">⚠ No hay Pokémon en subasta actualmente.</p>
+            }
+        </div>
+
+        <!-- 🔹 Botón para ir al Mercado -->
+        <div class="mt-5">
+            <a href="https://localhost:7200/Venta/Mercado" class="btn btn-primary btn-lg">🏪 Ir al Mercado</a>
+        </div>
+
     </div>
 
     <script src="~/js/site.js"></script>
+
 </body>
 </html>

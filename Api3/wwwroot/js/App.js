@@ -1,24 +1,29 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     const emailUsuario = document.getElementById("emailUsuario")?.value?.trim();
-    if (!emailUsuario) return console.error("❌ ERROR: Email del usuario no definido.");
+    const esPaginaColeccion = window.location.pathname.includes("/Pokemon/Coleccion");
 
-    document.querySelectorAll(".guardar-btn").forEach((boton) => {
-        boton.removeEventListener("click", boton.dataset.eventListener);
-        const eventListener = function () {
-            guardarPokemon(boton, emailUsuario);
-        };
-        boton.dataset.eventListener = eventListener;
-        boton.addEventListener("click", eventListener);
-    });
+    if (!emailUsuario && esPaginaColeccion) {
+        mostrarAlerta("⚠ Error: Correo electrónico del usuario no definido.", "danger");
+    }
+
+    // Solo asigna el evento guardar en la vista de colección
+    if (esPaginaColeccion) {
+        document.querySelectorAll(".guardar-btn").forEach((boton) => {
+            boton.removeEventListener("click", boton.eventListener);
+            boton.eventListener = function () {
+                guardarPokemon(boton, emailUsuario);
+            };
+            boton.addEventListener("click", boton.eventListener);
+        });
+    }
 });
 
 function guardarPokemon(boton, emailUsuario) {
     const card = boton.closest(".pokemon-card");
-    if (!card) return mostrarAlerta("⚠ Error: No se pudo obtener la información del Pokémon.", "danger");
+    if (!card) return;
 
     const { nombrePokemon, imagenUrl, rarezaPokemon, stats } = obtenerDatosPokemon(card);
-    if (!nombrePokemon || !imagenUrl || !rarezaPokemon || stats.length === 0)
-        return mostrarAlerta("⚠ No se pudo guardar porque los datos están incompletos.", "danger");
+    if (!nombrePokemon || !imagenUrl || !rarezaPokemon || stats.length === 0) return;
 
     fetch("/Pokemon/GuardarFavorito", {
         method: "POST",
@@ -27,30 +32,23 @@ function guardarPokemon(boton, emailUsuario) {
     })
         .then(response => response.ok ? response.json() : response.text().then(text => { throw new Error(text); }))
         .then(() => {
-            mostrarAlerta(`✅ ${nombrePokemon} guardado satisfactoriamente`, "success");
+            mostrarAlerta(`✅ ${nombrePokemon} se guardó en la colección.`, "success");
             card.remove();
         })
         .catch(error => mostrarAlerta(`⚠ Error al guardar: ${error.message}`, "danger"));
 }
 
 
-
 function irAColeccion() {
     const emailUsuario = document.getElementById("emailUsuario")?.value?.trim();
 
     if (!emailUsuario) {
-        console.error("❌ ERROR: Email del usuario no definido.");
-        mostrarAlerta("⚠ No se pudo acceder a la colección porque el email no está definido.", "danger");
+        mostrarAlerta("⚠ No se pudo acceder a la colección porque el correo electrónico no está definido.", "danger");
         return;
     }
 
     window.location.href = "/Pokemon/Coleccion";
 }
-
-
-
-
-
 
 function obtenerDatosPokemon(card) {
     return {
@@ -65,26 +63,6 @@ function obtenerDatosPokemon(card) {
             .filter(stat => stat.nombre)
     };
 }
-
-function mostrarAlerta(mensaje, tipo) {
-    let alertDiv = document.createElement("div");
-    alertDiv.className = `alert alert-${tipo} position-fixed top-0 start-50 translate-middle-x fade show`;
-    alertDiv.style.zIndex = "9999";
-    alertDiv.style.padding = "10px 20px";
-    alertDiv.innerHTML = mensaje;
-
-    document.body.appendChild(alertDiv);
-    setTimeout(() => {
-        alertDiv.style.transition = "opacity 0.5s";
-        alertDiv.style.opacity = "0";
-        setTimeout(() => alertDiv.remove(), 500);
-    }, 3000);
-}
-
-
-
-
-
 
 function mostrarAlerta(mensaje, tipo) {
     let alertDiv = document.createElement("div");

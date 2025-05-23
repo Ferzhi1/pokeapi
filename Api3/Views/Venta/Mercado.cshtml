@@ -1,0 +1,75 @@
+﻿@model List<api3.Models.ProductoPokemon>
+
+<div class="container text-center mt-5">
+    <h2 class="mb-4">🏪 Mercado Pokémon</h2>
+
+    <div class="alert alert-info">
+        📢 Participa en la subasta y consigue los mejores Pokémon antes de que el tiempo expire.
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @if (Model?.Any() ?? false)
+        {
+            @foreach (var pokemon in Model.Where(p => p.EnVenta))
+            {
+                <div class="col pokemon-card" id="card-@pokemon.Nombre">
+                    <div class="card shadow-lg">
+                        <div class="d-flex align-items-center p-3">
+                            <div class="flex-shrink-0">
+                                <img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
+                                     style="width: 180px; height: auto;"
+                                     onerror="this.src='/images/default-pokemon.png';" />
+                            </div>
+
+                            <div class="stats-section ms-3">
+                                <h6> 📊 Estadísticas:</h6>
+                                <ul class="list-group">
+                                    @if (pokemon.Stats?.Any() ?? false)
+                                    {
+                                        @foreach (var stat in pokemon.Stats)
+                                        {
+                                            <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
+                            <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
+                            <p class="card-text">💰 Precio Inicial: <strong>@pokemon.PrecioInicial.ToString("F0") monedas</strong></p>
+                            <p class="card-text">🏅 Puja Actual: <strong id="puja-@pokemon.Id">@pokemon.PujaActual.ToString("F0") monedas</strong></p>
+                            <p class="card-text">
+                                ⏳ Tiempo Restante:
+                                <strong>
+                                    @(pokemon.TiempoExpiracion != DateTime.MinValue
+                                        ? Math.Max((int)(pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalMinutes), 0)
+                                        : 0) minutos
+                                </strong>
+
+
+
+                            </p>
+
+                      
+                            <form asp-action="PujarPokemon" method="post">
+                                <input type="hidden" name="pokemonId" value="@pokemon.Id" />
+                                <input type="number" name="cantidadMonedas" min="@pokemon.PujaActual" placeholder="Monedas a ofertar" required />
+                                <button class="btn btn-success mt-3">💰 Pujar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">⚠ No hay cartas en subasta actualmente.</p>
+        }
+    </div>
+</div>

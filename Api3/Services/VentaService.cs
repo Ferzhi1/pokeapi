@@ -1,4 +1,5 @@
 ﻿using api3.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace api3.Services
@@ -6,7 +7,7 @@ namespace api3.Services
     public class VentaService
     { 
         private readonly ApplicationDbContext _context;
-        private readonly Dictionary<string, Decimal> _monederos = new Dictionary<string, decimal>();
+       
         public VentaService(ApplicationDbContext context)
         {
             _context = context;
@@ -17,37 +18,72 @@ namespace api3.Services
             _context.ProductoPokemon.Add(pokemon);
             _context.SaveChanges();
         }
+    
         public List<ProductoPokemon> ObtenerVentaPokemon(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
-                throw new ArgumentException("El email no puede ser nulo ni vacío.");
+                throw new ArgumentException("❌ Error: El email del usuario no puede estar vacío.");
 
-            return _context.ProductoPokemon
+            var pokemons = _context.ProductoPokemon
                 .Include(p => p.Stats)
-                .Where(p => p.Email == email)
+                .Where(p => p.Email == email && p.EnVenta == true) // ✅ Filtra Pokémon en venta
                 .ToList();
+
+            return pokemons;
         }
-        public bool VenderCarta(string emailUsuario, ProductoPokemon pokemon)
+        public void PonerPokemonEnSubasta(string emailUsuario, int pokemonId, decimal precioInicial, int duracionMinutos)
         {
             var usuario = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == emailUsuario);
-            if (usuario == null) return false;
+            var pokemon = _context.ProductoPokemon.Find(pokemonId);
 
-            usuario.Monedero += pokemon.Precio; // 💰 Aumentar saldo
-            _context.SaveChanges(); // 🏦 Guardar cambios en la BD
+            if (usuario == null || pokemon == null)
+                throw new ArgumentException("❌ Error: No se encontró el usuario o el Pokémon.");
 
-            return true;
+            // Validar que el dueño sea quien pone en subasta
+            if (pokemon.Email != emailUsuario)
+                throw new InvalidOperationException("❌ No puedes subastar un Pokémon que no es tuyo.");
+
+            // Configurar los valores de la subasta
+            pokemon.PrecioInicial = precioInicial;
+            pokemon.PujaActual = precioInicial; // Comienza con el precio establecido por el dueño
+            pokemon.TiempoExpiracion = DateTime.Now.AddMinutes(duracionMinutos);
+            pokemon.EnVenta = true; // Se activa la venta
+
+            _context.SaveChanges();
         }
-
-
-
-
-
-        public decimal ObtenerSaldo(string emailUsuario)
+        public void FinalizarSubasta(int pokemonId)
         {
-            return _monederos.ContainsKey(emailUsuario) ? _monederos[emailUsuario] : 0;
-        
-        
+            var pokemon = _context.ProductoPokemon.Find(pokemonId);
+            if (pokemon == null)
+                throw new ArgumentException("❌ No se encontró el Pokémon.");
+
+            if (pokemon.TiempoExpiracion > DateTime.Now)
+                throw new InvalidOperationException("❌ La subasta aún está activa.");
+
+            // 🔹 Resetear valores para permitir nueva subasta
+            pokemon.EnVenta = false;
+            pokemon.PujaActual = 0;
+            pokemon.TiempoExpiracion = DateTime.MinValue;
+
+            _context.SaveChanges();
         }
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -51,7 +51,7 @@ namespace api3.Controllers
         {
             if (string.IsNullOrEmpty(token))
             {
-                return View("Error"); // O una vista de error apropiada
+                return View("Error"); 
             }
             return View(new ResetPasswordViewModel { ResetToken = token });
         }
