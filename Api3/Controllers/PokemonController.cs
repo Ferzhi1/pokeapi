@@ -12,14 +12,15 @@ public class PokemonController : Controller
     private readonly PokemonService _pokemonService;
     private readonly CheckoutService _checkoutService;
     private readonly PokemonStorageService _pokemonStorageService;
-   
+    private readonly ApplicationDbContext _context;
 
-    public PokemonController(PokemonService pokemonService, CheckoutService checkoutService, PokemonStorageService pokemonStorageService)
+
+    public PokemonController(PokemonService pokemonService, CheckoutService checkoutService, PokemonStorageService pokemonStorageService, ApplicationDbContext context)
     {
         _pokemonService = pokemonService;
         _checkoutService = checkoutService;
         _pokemonStorageService = pokemonStorageService;
-      
+        _context = context; 
     }
 
     public async Task<IActionResult> Index()
@@ -40,39 +41,49 @@ public class PokemonController : Controller
         if (pokemon == null || string.IsNullOrWhiteSpace(pokemon.Nombre) || string.IsNullOrWhiteSpace(pokemon.Email))
             return BadRequest("Error: Datos del Pokémon incompletos.");
 
-        pokemon.Descripcion ??= "Sin descripción";
-        _pokemonStorageService.AgregarPokemonAFavoritos(pokemon.Email, pokemon);
+        Console.WriteLine($"Recibiendo Pokémon: {pokemon.Nombre} - {pokemon.Email}"); 
 
-        return Ok(new { mensaje = "✅ Pokémon guardado en colección.", stats = pokemon.Stats });
+        pokemon.Descripcion ??= "Sin descripción";
+        pokemon.EnVenta = false;
+
+        _context.ProductoPokemon.Add(pokemon);
+        _context.SaveChanges();
+
+        Console.WriteLine("✅ Pokémon guardado en la colección"); 
+
+        return Ok(new { mensaje = "✅ Pokémon guardado en la colección.", stats = pokemon.Stats });
     }
+
+
 
     [HttpGet]
     public IActionResult Coleccion()
     {
-
         var emailUsuarioAutenticado = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-
-        Console.WriteLine($"Email obtenido para colección: {emailUsuarioAutenticado}");
 
         if (string.IsNullOrWhiteSpace(emailUsuarioAutenticado))
         {
-            Console.WriteLine("No se pudo obtener el email del usuario autenticado.");
-            return RedirectToAction("Login"); 
+            return RedirectToAction("Login");
         }
 
-        var pokemonsGuardados = _pokemonStorageService.ObtenerColeccionPokemon(emailUsuarioAutenticado);
+        var pokemonsGuardados = _context.ProductoPokemon
+            .Where(p => p.Email == emailUsuarioAutenticado && !p.EnVenta) 
+            .ToList();
 
         if (pokemonsGuardados == null || !pokemonsGuardados.Any())
         {
-            Console.WriteLine("No se encontraron Pokémon en la colección.");
             return View(new List<ProductoPokemon>());
         }
 
         foreach (var pokemon in pokemonsGuardados)
+        {
             pokemon.Stats ??= new List<StatPokemon>();
+        }
 
         return View(pokemonsGuardados);
     }
-
-
 }
+
+
+
+

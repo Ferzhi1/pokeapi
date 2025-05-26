@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using api3.Models;
 using Api3.Models;
+using api3.Services;
 
 public class ApplicationDbContext : DbContext
 {
@@ -12,14 +13,15 @@ public class ApplicationDbContext : DbContext
     public DbSet<MazoPokemon> MazoPokemon { get; set; }
     public DbSet<UsuariosPokemonApi> UsuariosPokemonApi { get; set; }
     public DbSet<ColeccionPokemon> ColeccionPokemon { get; set; }
-   
+
+    public DbSet<SolicitudAmistad> SolicitudAmistad { get; set; }
+
   
 
   
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
         modelBuilder.Entity<PedidoPokemon>()
             .HasOne(p => p.PedidoUsuario)
             .WithMany(u => u.Pokemons)

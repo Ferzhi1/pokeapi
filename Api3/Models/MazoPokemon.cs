@@ -14,7 +14,7 @@ namespace api3.Models
 
         public MazoPokemon(string nombre, decimal precio, string imagenUrl)
         {
-            Id = Id;
+           
             Nombre = nombre;
             Precio = precio;
             ImagenUrl = imagenUrl;

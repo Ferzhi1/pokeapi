@@ -1,34 +1,35 @@
-﻿using api3.Services;
+﻿using api3.Hubs;
+using api3.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddSingleton<IConfiguration>(provider =>
     new ConfigurationBuilder().AddJsonFile("appsettings.json").Build());
+
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
+builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient<PokemonService>();
+
+
 builder.Services.AddScoped<PokemonStorageService>();
 builder.Services.AddScoped<CheckoutService>();
 builder.Services.AddScoped<PedidoService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<PasswordRecoveryService>();
 builder.Services.AddScoped<VentaService>();
+builder.Services.AddScoped<ClimaService>();
+builder.Services.AddScoped<SolicitudAmistadService>();
 
-
-
-
-
-
-builder.Services.AddMemoryCache();
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -41,6 +42,7 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -50,10 +52,12 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapRazorPages();
+app.MapHub<AmistadHub>("/amistadHub"); 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Pokemon}/{action=Index}/{nombre?}"

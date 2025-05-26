@@ -26,7 +26,7 @@ namespace api3.Services
 
             var pokemons = _context.ProductoPokemon
                 .Include(p => p.Stats)
-                .Where(p => p.Email == email && p.EnVenta == true) // ✅ Filtra Pokémon en venta
+                .Where(p => p.Email == email && p.EnVenta == true) 
                 .ToList();
 
             return pokemons;

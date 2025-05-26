@@ -390,8 +390,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>seyvgbo0a8</Fingerprint>
-      <Integrity>9FtJHuEdosYO93CnhIiMTx4JAVXEVbC7XnJ8iMu4Sjc=</Integrity>
+      <Fingerprint>basjzxp1v0</Fingerprint>
+      <Integrity>8wwEmQ/0FhRspx69MscN14Tn9JR82o2ga7uB5P4u9TY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\App.js'))</OriginalItemSpec>
@@ -408,11 +408,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>pwvejbc65b</Fingerprint>
-      <Integrity>CdgR+OxNDaBp1O6jxlMzDpm9F6sbxtOAXTtIu1uaxp4=</Integrity>
+      <Fingerprint>z53796sigb</Fingerprint>
+      <Integrity>x8x90IfXgYdHsbOYtTh0HV9Jq6ve7S1Ng9FkZDVfD1s=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\SolicitudesAmistad.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>api3</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/api3</BasePath>
+      <RelativePath>js/SolicitudesAmistad.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>e09wcif2ok</Fingerprint>
+      <Integrity>YoYfogikdY+up0BArv0Tmt9ZztpRxY5ATfAxr7B5Ikc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\SolicitudesAmistad.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.css'))">
       <SourceType>Package</SourceType>

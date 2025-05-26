@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\solicitudesamistad.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\solicitudesamistad.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\hubs\\amistadhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\hubs\\amistadhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\passwordrecovery\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\passwordrecovery\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\solicitudamistadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\controllers\\solicitudamistadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\solicitudamistadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\services\\solicitudamistadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +26,55 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "Api3\\wwwroot\\js\\site.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-23T16:35:45.674Z",
-              "EditorCaption": ""
+              "DocumentIndex": 1,
+              "Title": "AmistadHub.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\AmistadHub.cs",
+              "RelativeDocumentMoniker": "Api3\\Hubs\\AmistadHub.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\AmistadHub.cs",
+              "RelativeToolTip": "Api3\\Hubs\\AmistadHub.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAUwEcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T22:49:12.977Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "App.js",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\App.js",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
-              "RelativeToolTip": "Api3\\wwwroot\\js\\App.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-23T16:15:03.779Z",
-              "EditorCaption": ""
+              "DocumentIndex": 3,
+              "Title": "SolicitudAmistadService.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\SolicitudAmistadService.cs",
+              "RelativeDocumentMoniker": "Api3\\Services\\SolicitudAmistadService.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\SolicitudAmistadService.cs",
+              "RelativeToolTip": "Api3\\Services\\SolicitudAmistadService.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAUwJcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T22:46:28.096Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ResetPassword.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\PasswordRecovery\\ResetPassword.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\PasswordRecovery\\ResetPassword.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\PasswordRecovery\\ResetPassword.cshtml",
-              "RelativeToolTip": "Api3\\Views\\PasswordRecovery\\ResetPassword.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T16:11:42.736Z",
+              "Title": "SolicitudAmistadController.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SolicitudAmistadController.cs",
+              "RelativeDocumentMoniker": "Api3\\Controllers\\SolicitudAmistadController.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SolicitudAmistadController.cs",
+              "RelativeToolTip": "Api3\\Controllers\\SolicitudAmistadController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAADwv2cAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T20:33:40.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SolicitudesAmistad.js",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
+              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\SolicitudesAmistad.js",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
+              "RelativeToolTip": "Api3\\wwwroot\\js\\SolicitudesAmistad.js",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-26T19:33:20.055Z",
               "EditorCaption": ""
             }
           ]

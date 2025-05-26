@@ -20,6 +20,7 @@ wwwroot\img\Mazo5.jpg
 wwwroot\img\mazo6.jpg
 wwwroot\js\App.js
 wwwroot\js\site.js
+wwwroot\js\SolicitudesAmistad.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css

@@ -216,6 +216,33 @@ namespace Api3.Migrations
                     b.ToTable("Puja");
                 });
 
+            modelBuilder.Entity("api3.Models.SolicitudAmistad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaEnvio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReceptorEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RemitenteEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SolicitudAmistad");
+                });
+
             modelBuilder.Entity("api3.Models.StatPokemon", b =>
                 {
                     b.Property<int>("Id")

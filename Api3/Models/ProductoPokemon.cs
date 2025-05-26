@@ -15,7 +15,7 @@ namespace api3.Models
         public string ImagenUrl { get; set; }
         public string Rareza { get; set; }
         public string Email { get; set; }
-        public bool EnVenta { get; set; } = true;
+        public bool EnVenta { get; set; } = false;
         public decimal PrecioInicial { get; set; }
         public DateTime TiempoExpiracion { get; set; } 
         public List<Puja> HistorialPujas { get; set; } = new List<Puja>(); 

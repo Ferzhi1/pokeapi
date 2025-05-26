@@ -3,6 +3,7 @@ using api3.Services;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace api3.Controllers
 {
@@ -11,12 +12,14 @@ namespace api3.Controllers
         private readonly VentaService _ventaService;
         private readonly ApplicationDbContext _context;
         private readonly PokemonStorageService _pokemonStorageService;
+        private readonly ClimaService _climaService;
 
-        public VentaController(VentaService ventaService, ApplicationDbContext context, PokemonStorageService pokeStorageService)
+        public VentaController(VentaService ventaService,ApplicationDbContext context, PokemonStorageService pokeStorageService, ClimaService climaService)
         {
             _ventaService = ventaService;
             _context = context;
             _pokemonStorageService = pokeStorageService;
+            _climaService = climaService;
         }
 
         [HttpPost]
@@ -26,23 +29,45 @@ namespace api3.Controllers
                 return BadRequest("Error: Datos del Pokémon incompletos.");
 
             pokemon.Descripcion ??= "Sin descripción";
-            _ventaService.AgregarPokemonAVenta(pokemon.Email, pokemon);
+            pokemon.EnVenta = true;
 
-            return Ok(new { mensaje = "✅ Pokémon guardado en venta.", stats = pokemon.Stats });
+            _context.ProductoPokemon.Add(pokemon);
+            _context.SaveChanges();
+
+            return Ok(new { mensaje = "✅ Pokémon guardado para venta.", stats = pokemon.Stats });
         }
+
 
         [HttpGet]
         public IActionResult Venta()
         {
-            var emailUsuario = User.FindFirstValue(ClaimTypes.Email);
-            if (string.IsNullOrWhiteSpace(emailUsuario))
-                return BadRequest("❌ Error: El email del usuario no está definido.");
+            var emailUsuarioAutenticado = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
 
-            ViewBag.EmailUsuario = emailUsuario;
-            var pokemonsEnVenta = _ventaService.ObtenerVentaPokemon(emailUsuario);
+            if (string.IsNullOrWhiteSpace(emailUsuarioAutenticado))
+            {
+                return BadRequest("❌ Error: El email del usuario no está definido.");
+            }
+
+        
+            var usuario = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == emailUsuarioAutenticado);
+            if (usuario == null)
+            {
+                return BadRequest("❌ Error: Usuario no encontrado.");
+            }
+
+           
+            ViewBag.Monedero = usuario.Monedero;
+
+            var pokemonsEnVenta = _context.ProductoPokemon
+                .Include(p => p.Stats) 
+                .Where(p => p.Email == emailUsuarioAutenticado && p.EnVenta) 
+                .ToList();
 
             return View(pokemonsEnVenta);
         }
+
+
+
 
         [HttpPost]
         public IActionResult IniciarSubasta(int pokemonId, decimal precioInicial, int duracionMinutos)
@@ -77,7 +102,7 @@ namespace api3.Controllers
             return RedirectToAction("Mercado");
         }
 
-        public IActionResult Mercado()
+        public async Task<IActionResult> Mercado()
         {
             var pokemonsEnVenta = _context.ProductoPokemon
                 .Include(p => p.Stats)
@@ -85,18 +110,33 @@ namespace api3.Controllers
                 .OrderBy(p => p.TiempoExpiracion)
                 .ToList();
 
-            return View(pokemonsEnVenta);
+            var climaResponse = await _climaService.ObtenerClimaAsync("Bogotá");
+
+            Console.WriteLine($"✅ Clima recibido: {JsonSerializer.Serialize(climaResponse)}"); // 🔍 Depuración
+
+            var viewModel = new MercadoViewModel
+            {
+                Pokemons = pokemonsEnVenta,
+                Clima = climaResponse
+            };
+
+            return View(viewModel);
         }
 
+
+
+        [HttpPost]
         public IActionResult FinalizarSubasta(int pokemonId)
         {
             var pokemon = _context.ProductoPokemon.Find(pokemonId);
+
             if (pokemon == null)
                 return BadRequest("❌ Error: No se encontró el Pokémon.");
 
             if (pokemon.TiempoExpiracion > DateTime.Now)
                 return BadRequest("❌ La subasta aún está activa.");
 
+         
             pokemon.EnVenta = false;
             pokemon.PujaActual = 0;
             pokemon.PrecioInicial = 0;
@@ -105,7 +145,8 @@ namespace api3.Controllers
             _context.Entry(pokemon).State = EntityState.Modified;
             _context.SaveChanges();
 
-            return RedirectToAction("Venta");
+            return Ok(new { mensaje = "✅ Subasta finalizada correctamente." });
         }
+
     }
 }

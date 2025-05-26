@@ -89,6 +89,10 @@
       "PackagePath": "staticwebassets\\js\\App.js"
     },
     {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
+      "PackagePath": "staticwebassets\\js\\SolicitudesAmistad.js"
+    },
+    {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

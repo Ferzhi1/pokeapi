@@ -1,13 +1,13 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     const emailUsuario = document.getElementById("emailUsuario")?.value?.trim();
-    const esPaginaColeccion = window.location.pathname.includes("/Pokemon/Coleccion");
+    const esPaginaConfirmacion = window.location.pathname.includes("/Confirmacion");
 
-    if (!emailUsuario && esPaginaColeccion) {
+    if (!emailUsuario && esPaginaConfirmacion) {
         mostrarAlerta("⚠ Error: Correo electrónico del usuario no definido.", "danger");
     }
 
-    // Solo asigna el evento guardar en la vista de colección
-    if (esPaginaColeccion) {
+   
+    if (esPaginaConfirmacion) {
         document.querySelectorAll(".guardar-btn").forEach((boton) => {
             boton.removeEventListener("click", boton.eventListener);
             boton.eventListener = function () {
@@ -17,6 +17,7 @@
         });
     }
 });
+
 
 function guardarPokemon(boton, emailUsuario) {
     const card = boton.closest(".pokemon-card");
@@ -78,3 +79,4 @@ function mostrarAlerta(mensaje, tipo) {
         setTimeout(() => alertDiv.remove(), 500);
     }, 3000);
 }
+

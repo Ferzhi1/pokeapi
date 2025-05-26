@@ -47,6 +47,8 @@ namespace api3.Services
         public void AgregarPokemonAFavoritos(string email, ProductoPokemon pokemon)
         {
             pokemon.Descripcion ??= "Sin descripción";
+            pokemon.EnVenta = false; // 🔹 Asegurar que se almacene en la colección y NO en venta
+
             _context.ProductoPokemon.Add(pokemon);
             _context.SaveChanges();
         }

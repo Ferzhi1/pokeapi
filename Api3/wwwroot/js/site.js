@@ -73,12 +73,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+function actualizarVistaVenta() {
+    fetch("/Venta/Venta")
+        .then(response => response.text())
+        .then(data => {
+            const nuevaVista = new DOMParser().parseFromString(data, "text/html")
+                .querySelector(".row-cols-1.row-cols-md-3.g-4");
+
+            if (nuevaVista) {
+                document.querySelector(".row-cols-1.row-cols-md-3.g-4").replaceChildren(...nuevaVista.children);
+            }
+        })
+        .catch(error => console.error("❌ Error al actualizar la vista de Venta:", error));
+}
+
+
+setInterval(actualizarVistaVenta, 30000);
 function finalizarSubasta(pokemonId) {
     fetch(`/Venta/FinalizarSubasta?pokemonId=${pokemonId}`, { method: "POST" })
         .then(response => response.json())
-        .then(data => {
+        .then(() => {
             mostrarAlerta("✅ Subasta finalizada correctamente.", "success");
-            location.reload();
+
+          
+            setTimeout(actualizarVistaVenta, 2000);
         })
         .catch(error => mostrarAlerta("⚠ Error al finalizar la subasta.", "danger"));
 }
+
+
+
