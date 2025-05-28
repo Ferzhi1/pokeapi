@@ -114,14 +114,23 @@ namespace api3.Controllers
 
             Console.WriteLine($"✅ Clima recibido: {JsonSerializer.Serialize(climaResponse)}"); // 🔍 Depuración
 
+            // Obtener el email desde los Claims
+            var emailUsuario = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? string.Empty;
+
+            ViewBag.EmailUsuario = emailUsuario; // Pasarlo a la vista
+
             var viewModel = new MercadoViewModel
             {
                 Pokemons = pokemonsEnVenta,
-                Clima = climaResponse
+                Clima = climaResponse,
+                UsuarioEmail = emailUsuario // También en el modelo
             };
 
             return View(viewModel);
         }
+
+
+
 
 
 

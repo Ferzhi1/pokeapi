@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using api3.Services;
+using Microsoft.AspNetCore.SignalR;
 using System.Collections.Concurrent;
 using System.Security.Claims;
 
@@ -7,8 +8,13 @@ namespace api3.Hubs
     public class AmistadHub : Hub
     {
         private static ConcurrentDictionary<string, string> UsuariosConectados = new ConcurrentDictionary<string, string>();
+        private readonly SolicitudAmistadService _solicitudService;
 
-        public override Task OnConnectedAsync()
+        public AmistadHub(SolicitudAmistadService solicitudService)
+        {
+            _solicitudService = solicitudService;
+        }
+        public override async Task OnConnectedAsync()
         {
             var email = Context.User?.Identity?.IsAuthenticated == true
                         ? Context.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value
@@ -18,22 +24,36 @@ namespace api3.Hubs
             {
                 UsuariosConectados[email] = Context.ConnectionId;
                 Console.WriteLine($"🟢 Usuario conectado: {email} ({Context.ConnectionId})");
+
+              
+                var solicitudesPendientes = await _solicitudService.ObtenerSolicitudesPendientesAsync(email);
+                foreach (var solicitud in solicitudesPendientes)
+                {
+                    await Clients.Client(Context.ConnectionId).SendAsync("RecibirSolicitud", solicitud.RemitenteEmail);
+                }
             }
 
-            return base.OnConnectedAsync();
+            await base.OnConnectedAsync();
         }
 
-        public override Task OnDisconnectedAsync(Exception? exception)
+
+        public override async Task OnDisconnectedAsync(Exception exception)
         {
-            var usuarioDesconectado = UsuariosConectados.FirstOrDefault(x => x.Value == Context.ConnectionId);
-            if (!string.IsNullOrEmpty(usuarioDesconectado.Key))
+            var email = Context.User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+            if (!string.IsNullOrEmpty(email) && UsuariosConectados.ContainsKey(email))
             {
-                UsuariosConectados.TryRemove(usuarioDesconectado.Key, out _);
-                Console.WriteLine($"🔴 Usuario desconectado: {usuarioDesconectado.Key}");
+                UsuariosConectados.TryRemove(email, out _);
+                Console.WriteLine($"🔴 Usuario desconectado: {email} ({Context.ConnectionId})");
             }
 
-            return base.OnDisconnectedAsync(exception);
+            // 🔹 Registrar el motivo de la desconexión
+            Console.WriteLine($"⚠ Desconexión inesperada al enviar solicitud: {exception?.Message}");
+
+            await base.OnDisconnectedAsync(exception);
         }
+
+
 
         public async Task EnviarSolicitudAmistad(string remitenteEmail, string receptorEmail)
         {
@@ -48,14 +68,11 @@ namespace api3.Hubs
 
         public async Task AceptarSolicitudAmistad(string receptorEmail, string remitenteEmail)
         {
-            if (!UsuariosConectados.ContainsKey(remitenteEmail))
-            {
-                Console.WriteLine($"⚠️ Usuario {remitenteEmail} no está conectado.");
-                return;
-            }
+            if (!UsuariosConectados.ContainsKey(remitenteEmail)) return;
 
             await Clients.Client(UsuariosConectados[remitenteEmail]).SendAsync("SolicitudAceptada", receptorEmail);
         }
+
 
         public async Task RechazarSolicitudAmistad(string receptorEmail, string remitenteEmail)
         {

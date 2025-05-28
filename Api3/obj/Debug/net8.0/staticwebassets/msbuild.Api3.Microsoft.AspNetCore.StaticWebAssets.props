@@ -426,8 +426,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>e09wcif2ok</Fingerprint>
-      <Integrity>YoYfogikdY+up0BArv0Tmt9ZztpRxY5ATfAxr7B5Ikc=</Integrity>
+      <Fingerprint>4o200kwi4f</Fingerprint>
+      <Integrity>fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\SolicitudesAmistad.js'))</OriginalItemSpec>

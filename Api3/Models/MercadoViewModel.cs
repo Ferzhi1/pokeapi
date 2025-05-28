@@ -1,5 +1,4 @@
-﻿using api3.Services;
-using static api3.Services.ClimaService;
+﻿using static api3.Services.ClimaService;
 
 namespace api3.Models
 {
@@ -7,5 +6,9 @@ namespace api3.Models
     {
         public List<ProductoPokemon> Pokemons { get; set; }
         public ClimaResponse Clima { get; set; }
+
+    
+        public string UsuarioEmail { get; set; }
     }
 }
+

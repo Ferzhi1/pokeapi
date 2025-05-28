@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\solicitudesamistad.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\solicitudesamistad.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\hubs\\amistadhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\hubs\\amistadhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\solicitudamistadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\controllers\\solicitudamistadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\solicitudamistad\\listasolicitudes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\solicitudamistad\\listasolicitudes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\solicitudamistadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\services\\solicitudamistadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\hubs\\amistadhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\hubs\\amistadhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AmistadHub.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\AmistadHub.cs",
-              "RelativeDocumentMoniker": "Api3\\Hubs\\AmistadHub.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\AmistadHub.cs",
-              "RelativeToolTip": "Api3\\Hubs\\AmistadHub.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAUwEcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:49:12.977Z",
+              "DocumentIndex": 0,
+              "Title": "ListaSolicitudes.cshtml",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\SolicitudAmistad\\ListaSolicitudes.cshtml",
+              "RelativeDocumentMoniker": "Api3\\Views\\SolicitudAmistad\\ListaSolicitudes.cshtml",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\SolicitudAmistad\\ListaSolicitudes.cshtml",
+              "RelativeToolTip": "Api3\\Views\\SolicitudAmistad\\ListaSolicitudes.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T22:32:42.651Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SolicitudAmistadService.cs",
               "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\SolicitudAmistadService.cs",
               "RelativeDocumentMoniker": "Api3\\Services\\SolicitudAmistadService.cs",
               "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\SolicitudAmistadService.cs",
               "RelativeToolTip": "Api3\\Services\\SolicitudAmistadService.cs",
-              "ViewState": "AgIAAHEAAAAAAAAAAAAUwJcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAwwE4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:46:28.096Z",
+              "WhenOpened": "2025-05-28T22:30:38.902Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SolicitudAmistadController.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SolicitudAmistadController.cs",
-              "RelativeDocumentMoniker": "Api3\\Controllers\\SolicitudAmistadController.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SolicitudAmistadController.cs",
-              "RelativeToolTip": "Api3\\Controllers\\SolicitudAmistadController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAADwv2cAAAAAAAAAAAAAAA==",
+              "Title": "AmistadHub.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\AmistadHub.cs",
+              "RelativeDocumentMoniker": "Api3\\Hubs\\AmistadHub.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\AmistadHub.cs",
+              "RelativeToolTip": "Api3\\Hubs\\AmistadHub.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowDYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T20:33:40.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SolicitudesAmistad.js",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\SolicitudesAmistad.js",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
-              "RelativeToolTip": "Api3\\wwwroot\\js\\SolicitudesAmistad.js",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAwwF0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-26T19:33:20.055Z",
+              "WhenOpened": "2025-05-28T16:34:15.807Z",
               "EditorCaption": ""
             }
           ]

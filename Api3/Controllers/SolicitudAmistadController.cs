@@ -1,103 +1,137 @@
-﻿using System.Security.Claims;
-using api3.Services;
+﻿using api3.Hubs;
 using api3.Models;
-using api3.Hubs;
+using api3.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace api3.Controllers
 {
+    [Route("SolicitudAmistad")]
     public class SolicitudAmistadController : Controller
     {
-        private readonly SolicitudAmistadService _amistadService;
+        private readonly SolicitudAmistadService _solicitudService;
         private readonly IHubContext<AmistadHub> _hubContext;
+        private readonly ApplicationDbContext _context;
 
-        public SolicitudAmistadController(SolicitudAmistadService amistadService, IHubContext<AmistadHub> hubContext)
+        public SolicitudAmistadController(SolicitudAmistadService solicitudService, IHubContext<AmistadHub> hubContext, ApplicationDbContext context)
         {
-            _amistadService = amistadService;
+            _solicitudService = solicitudService;
             _hubContext = hubContext;
+            _context = context;
         }
 
+
+        [HttpPost("EnviarSolicitud")]
+        public async Task<IActionResult> EnviarSolicitud([FromForm] SolicitudAmistad solicitud)
+        {
+            try
+            {
+                if (solicitud == null || string.IsNullOrEmpty(solicitud.RemitenteEmail) || string.IsNullOrEmpty(solicitud.ReceptorEmail))
+                {
+                    Console.WriteLine("❌ Error: Datos inválidos.");
+                    return BadRequest("❌ Los datos de la solicitud no son válidos.");
+                }
+
+                Console.WriteLine($"📡 Intentando enviar solicitud de {solicitud.RemitenteEmail} a {solicitud.ReceptorEmail}");
+
+                var resultado = await _solicitudService.EnviarSolicitudAsync(solicitud.RemitenteEmail, solicitud.ReceptorEmail);
+                if (!resultado) throw new Exception("❌ La solicitud ya existe o no se pudo crear.");
+
+                Console.WriteLine("✅ Solicitud enviada correctamente.");
+
+                return Ok(new { mensaje = "✅ Solicitud enviada correctamente." });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error crítico en EnviarSolicitud: {ex.Message}");
+                return BadRequest(new { error = $"❌ Error al enviar la solicitud: {ex.Message}" });
+            }
+        }
+
+
+
+
+
+        [HttpGet("ListaSolicitudes")]
         public async Task<IActionResult> ListaSolicitudes()
         {
-            var emailUsuario = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            if (string.IsNullOrEmpty(emailUsuario))
-                return Challenge();
+            if (!User.Identity.IsAuthenticated)
+            {
+                Console.WriteLine("❌ Error: Usuario no autenticado.");
+                TempData["Error"] = "❌ No estás autenticado.";
+                return View("ListaSolicitudes", new List<SolicitudAmistad>());
+            }
 
-            var solicitudesPendientes = await _amistadService.ObtenerSolicitudesPendientesAsync(emailUsuario);
-            return View(solicitudesPendientes);
+            var usuarioEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value
+                               ?? User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrWhiteSpace(usuarioEmail))
+            {
+                Console.WriteLine("❌ Error: Email obtenido desde Claims es inválido.");
+                TempData["Error"] = "❌ No se pudo obtener tu email.";
+                return View("ListaSolicitudes", new List<SolicitudAmistad>());
+            }
+
+            Console.WriteLine($"🔍 Buscando solicitudes pendientes para {usuarioEmail}...");
+            Console.WriteLine($"📌 Estado Pendiente en Enum: {(int)EstadoSolicitud.Pendiente}");
+
+            var solicitudes = await _context.SolicitudAmistad
+                .Where(sa => sa.ReceptorEmail == usuarioEmail && sa.Estado == EstadoSolicitud.Pendiente)
+                .ToListAsync();
+
+            Console.WriteLine(solicitudes.Any()
+                ? $"📊 Solicitudes encontradas: {solicitudes.Count}"
+                : "⚠ No se encontraron solicitudes pendientes.");
+
+            ViewBag.EmailUsuario = usuarioEmail;
+
+            if (!solicitudes.Any())
+            {
+                TempData["Error"] = "❌ No tienes solicitudes pendientes.";
+                return View("ListaSolicitudes", new List<SolicitudAmistad>());
+            }
+
+            return View("ListaSolicitudes", solicitudes);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> EnviarSolicitud([FromBody] string receptorEmail)
+        [HttpGet("ObtenerSolicitudId")]
+        public async Task<IActionResult> ObtenerSolicitudId(string remitenteEmail)
         {
-            var remitenteEmail = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            if (string.IsNullOrEmpty(remitenteEmail))
-                return Challenge();
+            var solicitud = await _solicitudService.ObtenerSolicitudPendientePorEmailAsync(remitenteEmail);
 
-            receptorEmail = receptorEmail?.Trim(); // Eliminamos espacios innecesarios
-
-            // Validar formato de correo electrónico
-            if (!EsEmailValido(receptorEmail))
+            if (solicitud == null)
             {
-                Console.WriteLine("❌ Error: Formato de email inválido.");
-                return BadRequest("❌ El email del receptor no es válido.");
+                Console.WriteLine("❌ No se encontró la solicitud para " + remitenteEmail);
+                return NotFound("❌ No se encontró la solicitud.");
             }
 
-            try
-            {
-                var resultado = await _amistadService.EnviarSolicitudAsync(remitenteEmail, receptorEmail);
-                return resultado ? Ok("✅ Solicitud enviada correctamente.") : BadRequest("⚠️ No se pudo enviar la solicitud. Puede que ya exista.");
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"❌ Error en EnviarSolicitud: {ex.Message}");
-                return StatusCode(500, "❌ Error interno al procesar la solicitud.");
-            }
+            Console.WriteLine($"📡 ID de solicitud encontrado: {solicitud.Id}");
+            return Ok(new { solicitudId = solicitud.Id });
         }
 
-        [HttpPost("AceptarSolicitud/{id}")]
-        public async Task<IActionResult> AceptarSolicitud(int id)
+
+        [HttpPost("AceptarSolicitud")]
+        public async Task<IActionResult> AceptarSolicitud([FromBody] Dictionary<string, int> data)
         {
-            try
+            if (!data.TryGetValue("solicitudId", out int solicitudId) || solicitudId <= 0)
             {
-                var resultado = await _amistadService.AceptarSolicitudAsync(id);
-                if (!resultado) return BadRequest("⚠️ No se pudo aceptar la solicitud.");
+                Console.WriteLine("❌ ID de solicitud no válido recibido en el backend.");
+                return BadRequest("❌ ID de solicitud no válido.");
+            }
 
-                Console.WriteLine($"✅ Solicitud aceptada con ID {id}");
-                return Ok("✅ Solicitud aceptada correctamente.");
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"❌ Error en AceptarSolicitud: {ex.Message}");
-                return StatusCode(500, "❌ Error interno al procesar la solicitud.");
-            }
+            Console.WriteLine($"📡 Solicitud recibida con ID válido: {solicitudId}");
+
+            var resultado = await _solicitudService.AceptarSolicitudAsync(solicitudId);
+            return resultado ? Ok("✅ Solicitud aceptada.") : BadRequest("❌ Error al aceptar solicitud.");
         }
 
-        [HttpPost("RechazarSolicitud/{id}")]
-        public async Task<IActionResult> RechazarSolicitud(int id)
-        {
-            try
-            {
-                var resultado = await _amistadService.RechazarSolicitudAsync(id);
-                if (!resultado) return BadRequest("⚠️ No se pudo rechazar la solicitud.");
 
-                Console.WriteLine($"❌ Solicitud rechazada con ID {id}");
-                return Ok("❌ Solicitud rechazada correctamente.");
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"❌ Error en RechazarSolicitud: {ex.Message}");
-                return StatusCode(500, "❌ Error interno al procesar la solicitud.");
-            }
-        }
 
-        // Método para validar formato de correo electrónico
-        private bool EsEmailValido(string email)
-        {
-            var emailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
-            return emailRegex.IsMatch(email);
-        }
+
+
+
+
     }
 }

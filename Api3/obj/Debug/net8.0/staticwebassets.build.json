@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9Wc+E+TOdjhy1/Ga0F5v2bV0W3K3NSNgHL+Jfbl7VM4=",
+  "Hash": "3hToqANBZ6EMSS/AXNlXHSCuOrAY4prmcq3xpUODpcE=",
   "Source": "api3",
   "BasePath": "_content/api3",
   "Mode": "Default",
@@ -535,8 +535,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "e09wcif2ok",
-      "Integrity": "YoYfogikdY+up0BArv0Tmt9ZztpRxY5ATfAxr7B5Ikc=",
+      "Fingerprint": "4o200kwi4f",
+      "Integrity": "fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\SolicitudesAmistad.js"
@@ -3709,7 +3709,7 @@
       ]
     },
     {
-      "Route": "js/SolicitudesAmistad.e09wcif2ok.js",
+      "Route": "js/SolicitudesAmistad.4o200kwi4f.js",
       "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3719,7 +3719,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3397"
+          "Value": "7197"
         },
         {
           "Name": "Content-Type",
@@ -3727,11 +3727,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"YoYfogikdY+up0BArv0Tmt9ZztpRxY5ATfAxr7B5Ikc=\""
+          "Value": "\"fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 26 May 2025 22:55:00 GMT"
+          "Value": "Wed, 28 May 2025 22:16:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3741,7 +3741,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "e09wcif2ok"
+          "Value": "4o200kwi4f"
         },
         {
           "Name": "label",
@@ -3749,7 +3749,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-YoYfogikdY+up0BArv0Tmt9ZztpRxY5ATfAxr7B5Ikc="
+          "Value": "sha256-fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ="
         }
       ]
     },
@@ -3764,7 +3764,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3397"
+          "Value": "7197"
         },
         {
           "Name": "Content-Type",
@@ -3772,11 +3772,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"YoYfogikdY+up0BArv0Tmt9ZztpRxY5ATfAxr7B5Ikc=\""
+          "Value": "\"fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 26 May 2025 22:55:00 GMT"
+          "Value": "Wed, 28 May 2025 22:16:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3786,7 +3786,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-YoYfogikdY+up0BArv0Tmt9ZztpRxY5ATfAxr7B5Ikc="
+          "Value": "sha256-fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ="
         }
       ]
     },

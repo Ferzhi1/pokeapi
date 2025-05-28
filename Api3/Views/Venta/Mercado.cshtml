@@ -20,6 +20,11 @@
         📢 Participa en la subasta y consigue los mejores Pokémon antes de que el tiempo expire.
     </div>
 
+    <p>Email del usuario: <strong>@ViewBag.EmailUsuario</strong></p>
+
+
+    <input type="hidden" id="emailUsuario" value="@ViewBag.EmailUsuario" />
+
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @if (Model.Pokemons != null && Model.Pokemons.Any())
         {
@@ -57,6 +62,8 @@
                             <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
                             <p class="card-text">💰 Precio Inicial: <strong>@pokemon.PrecioInicial.ToString("F0") monedas</strong></p>
                             <p class="card-text">🏅 Puja Actual: <strong id="puja-@pokemon.Id">@pokemon.PujaActual.ToString("F0") monedas</strong></p>
+                            <p>Email del vendedor: <strong>@pokemon.Email</strong></p>
+
                             <p class="card-text">
                                 ⏳ Tiempo Restante:
                                 <strong>
@@ -72,12 +79,16 @@
                                 <button class="btn btn-success mt-3">💰 Pujar</button>
                             </form>
 
-
-                            <button onclick="enviarSolicitud('@pokemon.Email')" class="btn btn-secondary mt-2">
-                                ➕ Agregar a Amigos (@pokemon.Email)
-                            </button>
-
-
+                            @if (!string.IsNullOrEmpty(pokemon.Email))
+                            {
+                                <button onclick="enviarSolicitud('@pokemon.Email')" class="btn btn-secondary mt-2">
+                                    ➕ Agregar a Amigos (@pokemon.Email)
+                                </button>
+                            }
+                            else
+                            {
+                                <p class="text-muted">⚠ Email no disponible para solicitud.</p>
+                            }
                         </div>
                     </div>
                 </div>
@@ -89,8 +100,6 @@
         }
     </div>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 <script src="/js/SolicitudesAmistad.js"></script>
-
-
-

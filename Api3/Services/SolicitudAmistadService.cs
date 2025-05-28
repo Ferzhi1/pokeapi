@@ -23,76 +23,90 @@ namespace api3.Services
 
         public async Task<bool> EnviarSolicitudAsync(string remitenteEmail, string receptorEmail)
         {
-            if (remitenteEmail == receptorEmail)
-            {
-                Console.WriteLine("❌ Error: No puedes enviarte una solicitud de amistad a ti mismo.");
-                return false;
-            }
-
-            // Validar formato de correo electrónico
-            if (!EsEmailValido(receptorEmail))
-            {
-                Console.WriteLine("❌ Error: Formato de email inválido.");
-                return false;
-            }
-
+            // 🔹 Verificar si ya existe una solicitud con este remitente y receptor
             var solicitudExistente = await _context.SolicitudAmistad
-                .FirstOrDefaultAsync(sa => (sa.RemitenteEmail == remitenteEmail && sa.ReceptorEmail == receptorEmail) ||
-                                           (sa.RemitenteEmail == receptorEmail && sa.ReceptorEmail == remitenteEmail));
+                .FirstOrDefaultAsync(s => s.RemitenteEmail == remitenteEmail && s.ReceptorEmail == receptorEmail && s.Estado == EstadoSolicitud.Pendiente);
 
             if (solicitudExistente != null)
             {
-                if (solicitudExistente.Estado == EstadoSolicitud.Aceptada)
-                {
-                    Console.WriteLine("⚠️ Error: Ya son amigos.");
-                    return false;
-                }
-
-                Console.WriteLine("⚠️ Solicitud ya existe en la base de datos.");
-                return false;
+                Console.WriteLine("❌ La solicitud ya existe en la base de datos.");
+                return false; // 🔹 Evita que el backend intente crear una solicitud duplicada
             }
 
-            var solicitud = new SolicitudAmistad
+            var nuevaSolicitud = new SolicitudAmistad
             {
                 RemitenteEmail = remitenteEmail,
                 ReceptorEmail = receptorEmail,
-                Estado = EstadoSolicitud.Pendiente,
-                FechaEnvio = DateTime.UtcNow
+                FechaEnvio = DateTime.Now,
+                Estado = EstadoSolicitud.Pendiente
             };
+
+            _context.SolicitudAmistad.Add(nuevaSolicitud);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<List<SolicitudAmistad>> ObtenerSolicitudesPendientesAsync(string usuarioEmail)
+        {
+            if (string.IsNullOrWhiteSpace(usuarioEmail))
+            {
+                Console.WriteLine("❌ Error: Email inválido.");
+                return new List<SolicitudAmistad>(); // Retorna lista vacía si el email no es válido
+            }
 
             try
             {
-                _context.SolicitudAmistad.Add(solicitud);
-                await _context.SaveChangesAsync();
-                Console.WriteLine($"✅ Solicitud guardada en la base de datos: {remitenteEmail} → {receptorEmail}");
+                Console.WriteLine($"🔍 Buscando solicitudes pendientes para {usuarioEmail}...");
+                Console.WriteLine($"📌 Estado Pendiente en Enum: {(int)EstadoSolicitud.Pendiente}"); // Depuración
 
-                await _hubContext.Clients.User(receptorEmail).SendAsync("RecibirSolicitud", remitenteEmail);
-                return true;
+                var solicitudes = await _context.SolicitudAmistad
+                    .Where(sa => sa.ReceptorEmail == usuarioEmail && sa.Estado == EstadoSolicitud.Pendiente)
+                    .ToListAsync();
+
+                Console.WriteLine(solicitudes.Any()
+                    ? $"📊 Solicitudes encontradas: {solicitudes.Count}"
+                    : "⚠ No se encontraron solicitudes pendientes.");
+
+                return solicitudes;
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine($"❌ Error al guardar solicitud: {ex.Message}");
-                return false;
+                Console.WriteLine($"❌ Error al obtener solicitudes pendientes: {ex.Message}");
+                return new List<SolicitudAmistad>(); // Retorna lista vacía en caso de error
             }
+        }
+
+
+      
+        public async Task<SolicitudAmistad?> ObtenerSolicitudPendientePorEmailAsync(string remitenteEmail)
+        {
+            return await _context.SolicitudAmistad
+                .FirstOrDefaultAsync(s => s.RemitenteEmail == remitenteEmail && s.Estado == EstadoSolicitud.Pendiente);
         }
 
         public async Task<bool> AceptarSolicitudAsync(int solicitudId)
         {
             var solicitud = await _context.SolicitudAmistad.FindAsync(solicitudId);
+
             if (solicitud == null || solicitud.Estado != EstadoSolicitud.Pendiente)
             {
-                Console.WriteLine("⚠️ La solicitud no existe o ya fue procesada.");
+                Console.WriteLine($"❌ Error: La solicitud con ID {solicitudId} no existe o ya ha sido procesada.");
                 return false;
             }
 
+            
             solicitud.Estado = EstadoSolicitud.Aceptada;
 
             try
             {
                 await _context.SaveChangesAsync();
-                Console.WriteLine($"✅ Solicitud aceptada: {solicitud.RemitenteEmail} → {solicitud.ReceptorEmail}");
+                Console.WriteLine($"✅ Solicitud {solicitudId} aceptada: {solicitud.RemitenteEmail} ↔ {solicitud.ReceptorEmail}");
 
+                
                 await _hubContext.Clients.User(solicitud.RemitenteEmail).SendAsync("SolicitudAceptada", solicitud.ReceptorEmail);
+                Console.WriteLine($"📡 Notificación enviada a {solicitud.RemitenteEmail}");
+
                 return true;
             }
             catch (Exception ex)
@@ -102,50 +116,8 @@ namespace api3.Services
             }
         }
 
-        public async Task<bool> RechazarSolicitudAsync(int solicitudId)
-        {
-            var solicitud = await _context.SolicitudAmistad.FindAsync(solicitudId);
-            if (solicitud == null || solicitud.Estado != EstadoSolicitud.Pendiente)
-            {
-                Console.WriteLine("⚠️ La solicitud no existe o ya fue procesada.");
-                return false;
-            }
 
-            solicitud.Estado = EstadoSolicitud.Rechazada;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-                Console.WriteLine($"❌ Solicitud rechazada: {solicitud.RemitenteEmail} → {solicitud.ReceptorEmail}");
 
-                await _hubContext.Clients.User(solicitud.RemitenteEmail).SendAsync("SolicitudRechazada", solicitud.ReceptorEmail);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine($"❌ Error al rechazar solicitud: {ex.Message}");
-                return false;
-            }
-        }
-
-        public async Task<List<SolicitudAmistad>> ObtenerSolicitudesPendientesAsync(string usuarioEmail)
-        {
-            Console.WriteLine($"🔍 Buscando solicitudes pendientes para {usuarioEmail}...");
-            return await _context.SolicitudAmistad
-                .Where(sa => sa.ReceptorEmail == usuarioEmail && sa.Estado == EstadoSolicitud.Pendiente)
-                .ToListAsync();
-        }
-
-        public async Task<SolicitudAmistad?> ObtenerSolicitudPorIdAsync(int solicitudId)
-        {
-            return await _context.SolicitudAmistad.FindAsync(solicitudId);
-        }
-
-        // Método para validar formato de correo electrónico
-        private bool EsEmailValido(string email)
-        {
-            var emailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
-            return emailRegex.IsMatch(email);
-        }
     }
 }

@@ -5,10 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddSingleton<IConfiguration>(provider =>
     new ConfigurationBuilder().AddJsonFile("appsettings.json").Build());
-
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -16,10 +14,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllersWithViews();
-builder.Services.AddSignalR();
+builder.Services.AddSignalR(options =>
+{
+    options.KeepAliveInterval = TimeSpan.FromSeconds(30);
+    options.ClientTimeoutInterval = TimeSpan.FromMinutes(10);
+    options.HandshakeTimeout = TimeSpan.FromMinutes(2); 
+});
+
 builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient<PokemonService>();
-
 
 builder.Services.AddScoped<PokemonStorageService>();
 builder.Services.AddScoped<CheckoutService>();
@@ -29,7 +32,6 @@ builder.Services.AddScoped<PasswordRecoveryService>();
 builder.Services.AddScoped<VentaService>();
 builder.Services.AddScoped<ClimaService>();
 builder.Services.AddScoped<SolicitudAmistadService>();
-
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -55,12 +57,18 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
-app.MapRazorPages();
-app.MapHub<AmistadHub>("/amistadHub"); 
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapRazorPages();
+    endpoints.MapHub<AmistadHub>("/amistadHub");
+});
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Pokemon}/{action=Index}/{nombre?}"
 );
+
 
 app.Run();

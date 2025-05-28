@@ -7,17 +7,15 @@
          public string ReceptorEmail { get; set; }
 
         public EstadoSolicitud Estado { get; set; } = EstadoSolicitud.Pendiente;
-         public DateTime FechaEnvio { get; set; }=DateTime.UtcNow;
+         public DateTime FechaEnvio { get; set; }=DateTime.Now;
 
 
     }
-    public enum EstadoSolicitud 
+    public enum EstadoSolicitud
     {
-        Pendiente,
-        Aceptada,
-        Rechazada,
-        Cancelada
-    
-    
+        Pendiente = 1,   
+        Aceptada = 2,
+        Rechazada = 3,
+        Cancelada = 4
     }
 }

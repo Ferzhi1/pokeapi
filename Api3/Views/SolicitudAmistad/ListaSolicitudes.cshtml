@@ -1,49 +1,38 @@
 ﻿@model List<api3.Models.SolicitudAmistad>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitudes de Amistad</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-</head>
-<body>
+<div class="container text-center mt-5">
+    <h2 class="mb-4">📩 Solicitudes de Amistad</h2>
 
-    <h2>Solicitudes de Amistad Pendientes</h2>
+    <p>Email del usuario: <strong>@ViewBag.EmailUsuario</strong></p>
+    <input type="hidden" id="emailUsuario" value="@ViewBag.EmailUsuario" />
 
-   
-    <a asp-controller="SolicitudAmistad" asp-action="EnviarSolicitud">
-        <button style="padding: 10px 15px; font-size: 16px; cursor: pointer;">
-            ➕ Enviar Solicitud de Amistad
-        </button>
-    </a>
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
 
     @if (Model != null && Model.Any())
     {
-        <ul>
-            @foreach (var solicitud in Model)
-            {
-                <li>
-                    De: <strong>@solicitud.RemitenteEmail</strong>
-
-                    <form method="post" asp-controller="SolicitudAmistad" asp-action="AceptarSolicitud" asp-route-id="@solicitud.Id">
-                        <button type="submit">✅ Aceptar</button>
-                    </form>
-
-                    <form method="post" asp-controller="SolicitudAmistad" asp-action="RechazarSolicitud" asp-route-id="@solicitud.Id">
-                        <button type="submit">❌ Rechazar</button>
-                    </form>
-                </li>
-            }
-        </ul>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Remitente</th>
+                    <th>Fecha de envío</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var solicitud in Model)
+                {
+                    <tr id="solicitud-@solicitud.Id">
+                        <td>@solicitud.RemitenteEmail</td>
+                        <td>@solicitud.FechaEnvio.ToString("yyyy-MM-dd HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     }
     else
     {
-        <p>No tienes solicitudes pendientes.</p>
+        <p class="text-muted">⚠ No tienes solicitudes pendientes.</p>
     }
-
-    <script src="/js/SolicitudesAmistad.js"></script>
-
-</body>
-</html>
+</div>
