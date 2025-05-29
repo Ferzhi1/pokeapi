@@ -32,6 +32,8 @@ builder.Services.AddScoped<PasswordRecoveryService>();
 builder.Services.AddScoped<VentaService>();
 builder.Services.AddScoped<ClimaService>();
 builder.Services.AddScoped<SolicitudAmistadService>();
+builder.Services.AddScoped<SubastaService>();
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -56,14 +58,10 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-    endpoints.MapRazorPages();
-    endpoints.MapHub<AmistadHub>("/amistadHub");
-});
+app.MapControllers();
+app.MapRazorPages();
+app.MapHub<AmistadHub>("/amistadHub");
+app.MapHub<SubastaHub>("/subastaHub");
 
 app.MapControllerRoute(
     name: "default",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3hToqANBZ6EMSS/AXNlXHSCuOrAY4prmcq3xpUODpcE=",
+  "Hash": "BrVJwHCkYdgCbnKS7g4qTsOs/Na42CUWdGVkCXUvhP4=",
   "Source": "api3",
   "BasePath": "_content/api3",
   "Mode": "Default",
@@ -535,11 +535,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "4o200kwi4f",
-      "Integrity": "fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=",
+      "Fingerprint": "vudj3etvyk",
+      "Integrity": "GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\SolicitudesAmistad.js"
+    },
+    {
+      "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
+      "SourceId": "api3",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\",
+      "BasePath": "_content/api3",
+      "RelativePath": "js/Subasta#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "pop45rtrrs",
+      "Integrity": "96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Subasta.js"
     },
     {
       "Identity": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
@@ -3709,51 +3730,6 @@
       ]
     },
     {
-      "Route": "js/SolicitudesAmistad.4o200kwi4f.js",
-      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7197"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 22:16:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4o200kwi4f"
-        },
-        {
-          "Name": "label",
-          "Value": "js/SolicitudesAmistad.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ="
-        }
-      ]
-    },
-    {
       "Route": "js/SolicitudesAmistad.js",
       "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
       "Selectors": [],
@@ -3764,7 +3740,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "7197"
+          "Value": "6850"
         },
         {
           "Name": "Content-Type",
@@ -3772,11 +3748,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=\""
+          "Value": "\"GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 22:16:39 GMT"
+          "Value": "Thu, 29 May 2025 19:47:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3786,7 +3762,134 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ="
+          "Value": "sha256-GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE="
+        }
+      ]
+    },
+    {
+      "Route": "js/SolicitudesAmistad.vudj3etvyk.js",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6850"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 19:47:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vudj3etvyk"
+        },
+        {
+          "Name": "label",
+          "Value": "js/SolicitudesAmistad.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE="
+        }
+      ]
+    },
+    {
+      "Route": "js/Subasta.js",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 22:23:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw="
+        }
+      ]
+    },
+    {
+      "Route": "js/Subasta.pop45rtrrs.js",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 22:23:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pop45rtrrs"
+        },
+        {
+          "Name": "label",
+          "Value": "js/Subasta.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw="
         }
       ]
     },

@@ -7,7 +7,7 @@ namespace api3.Hubs
 {
     public class AmistadHub : Hub
     {
-        private static ConcurrentDictionary<string, string> UsuariosConectados = new ConcurrentDictionary<string, string>();
+        public static ConcurrentDictionary<string, string> UsuariosConectados = new ConcurrentDictionary<string, string>();
         private readonly SolicitudAmistadService _solicitudService;
 
         public AmistadHub(SolicitudAmistadService solicitudService)
@@ -23,7 +23,7 @@ namespace api3.Hubs
             if (!string.IsNullOrEmpty(email))
             {
                 UsuariosConectados[email] = Context.ConnectionId;
-                Console.WriteLine($"🟢 Usuario conectado: {email} ({Context.ConnectionId})");
+                
 
               
                 var solicitudesPendientes = await _solicitudService.ObtenerSolicitudesPendientesAsync(email);
@@ -47,8 +47,7 @@ namespace api3.Hubs
                 Console.WriteLine($"🔴 Usuario desconectado: {email} ({Context.ConnectionId})");
             }
 
-            // 🔹 Registrar el motivo de la desconexión
-            Console.WriteLine($"⚠ Desconexión inesperada al enviar solicitud: {exception?.Message}");
+          
 
             await base.OnDisconnectedAsync(exception);
         }

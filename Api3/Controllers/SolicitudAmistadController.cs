@@ -31,25 +31,26 @@ namespace api3.Controllers
             {
                 if (solicitud == null || string.IsNullOrEmpty(solicitud.RemitenteEmail) || string.IsNullOrEmpty(solicitud.ReceptorEmail))
                 {
-                    Console.WriteLine("❌ Error: Datos inválidos.");
-                    return BadRequest("❌ Los datos de la solicitud no son válidos.");
+                    return BadRequest("Los datos de la solicitud no son válidos.");
                 }
 
-                Console.WriteLine($"📡 Intentando enviar solicitud de {solicitud.RemitenteEmail} a {solicitud.ReceptorEmail}");
-
                 var resultado = await _solicitudService.EnviarSolicitudAsync(solicitud.RemitenteEmail, solicitud.ReceptorEmail);
-                if (!resultado) throw new Exception("❌ La solicitud ya existe o no se pudo crear.");
+                if (!resultado) throw new Exception("La solicitud ya existe o no se pudo crear.");
 
-                Console.WriteLine("✅ Solicitud enviada correctamente.");
+                if (AmistadHub.UsuariosConectados.TryGetValue(solicitud.ReceptorEmail, out var connectionId))
+                {
+                    await _hubContext.Clients.Client(connectionId).SendAsync("RecibirSolicitud", solicitud.RemitenteEmail);
+                }
 
-                return Ok(new { mensaje = "✅ Solicitud enviada correctamente." });
+                return Ok(new { mensaje = "Solicitud enviada correctamente." });
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error crítico en EnviarSolicitud: {ex.Message}");
-                return BadRequest(new { error = $"❌ Error al enviar la solicitud: {ex.Message}" });
+                return BadRequest(new { error = $"Error al enviar la solicitud: {ex.Message}" });
             }
         }
+
+
 
 
 

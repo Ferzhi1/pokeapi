@@ -6,11 +6,9 @@
     <title>@ViewData["Title"] - Api3</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
-
 </head>
 <body>
 
- 
     <div class="container mt-4">
         <main role="main">
             @RenderBody()
@@ -18,11 +16,8 @@
     </div>
 
 
-   
-
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/App.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

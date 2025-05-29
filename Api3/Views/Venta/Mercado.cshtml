@@ -75,8 +75,10 @@
 
                             <form asp-action="PujarPokemon" method="post">
                                 <input type="hidden" name="pokemonId" value="@pokemon.Id" />
-                                <input type="number" name="cantidadMonedas" min="@pokemon.PujaActual" placeholder="Monedas a ofertar" required />
-                                <button class="btn btn-success mt-3">💰 Pujar</button>
+                                <input type="number" id="oferta-@pokemon.Id" min="@pokemon.PujaActual" placeholder="Monedas a ofertar" required />
+                                <button class="btn btn-success mt-3" onclick="event.preventDefault(); pujarPokemon(@pokemon.Id)">💰 Pujar</button>
+
+
                             </form>
 
                             @if (!string.IsNullOrEmpty(pokemon.Email))
@@ -103,3 +105,4 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 <script src="/js/SolicitudesAmistad.js"></script>
+<script src="/js/Subasta.js"></script>

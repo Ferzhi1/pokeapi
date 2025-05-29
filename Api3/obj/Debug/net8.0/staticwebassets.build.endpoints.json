@@ -1807,51 +1807,6 @@
       ]
     },
     {
-      "Route": "js/SolicitudesAmistad.4o200kwi4f.js",
-      "AssetFile": "js/SolicitudesAmistad.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7197"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 22:16:39 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4o200kwi4f"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ="
-        },
-        {
-          "Name": "label",
-          "Value": "js/SolicitudesAmistad.js"
-        }
-      ]
-    },
-    {
       "Route": "js/SolicitudesAmistad.js",
       "AssetFile": "js/SolicitudesAmistad.js",
       "Selectors": [],
@@ -1866,7 +1821,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "7197"
+          "Value": "6850"
         },
         {
           "Name": "Content-Type",
@@ -1874,17 +1829,144 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ=\""
+          "Value": "\"GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 28 May 2025 22:16:39 GMT"
+          "Value": "Thu, 29 May 2025 19:47:32 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fKKIXt97KMPQgSJ/4sagSePHxl0JBpEcmzMioGjkpmQ="
+          "Value": "sha256-GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE="
+        }
+      ]
+    },
+    {
+      "Route": "js/SolicitudesAmistad.vudj3etvyk.js",
+      "AssetFile": "js/SolicitudesAmistad.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6850"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 19:47:32 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vudj3etvyk"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE="
+        },
+        {
+          "Name": "label",
+          "Value": "js/SolicitudesAmistad.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/Subasta.js",
+      "AssetFile": "js/Subasta.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 22:23:13 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw="
+        }
+      ]
+    },
+    {
+      "Route": "js/Subasta.pop45rtrrs.js",
+      "AssetFile": "js/Subasta.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 22:23:13 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pop45rtrrs"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw="
+        },
+        {
+          "Name": "label",
+          "Value": "js/Subasta.js"
         }
       ]
     },
