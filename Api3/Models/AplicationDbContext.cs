@@ -15,6 +15,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<ColeccionPokemon> ColeccionPokemon { get; set; }
 
     public DbSet<SolicitudAmistad> SolicitudAmistad { get; set; }
+    public DbSet<Puja2>Puja { get; set; }
 
   
 

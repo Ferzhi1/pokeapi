@@ -18,7 +18,7 @@ namespace api3.Models
         public bool EnVenta { get; set; } = false;
         public decimal PrecioInicial { get; set; }
         public DateTime TiempoExpiracion { get; set; } 
-        public List<Puja> HistorialPujas { get; set; } = new List<Puja>(); 
+        public List<Puja2> HistorialPujas { get; set; } = new List<Puja2>(); 
 
 
 
@@ -31,14 +31,7 @@ namespace api3.Models
         public string Nombre { get; set; }
         public int Valor { get; set; }
     }
-    public class Puja
-    {
-        public int Id { get; set; }
-        public int PokemonId { get; set; } // Pokémon en subasta
-        public string UsuarioEmail { get; set; } // Usuario que realizó la puja
-        public decimal CantidadMonedas { get; set; } // Monto apostado
-        public DateTime FechaPuja { get; set; } // Registro de la fecha
-    }
+
 }
 
 

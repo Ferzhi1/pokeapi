@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250604135826_update 17")]
+    partial class update17
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,37 +51,6 @@ namespace Api3.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ColeccionPokemon");
-                });
-
-            modelBuilder.Entity("Puja2", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("CantidadMonedas")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("FechaPuja")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PokemonId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductoPokemonId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UsuarioEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductoPokemonId");
-
-                    b.ToTable("Puja");
                 });
 
             modelBuilder.Entity("api3.Models.MazoPokemon", b =>
@@ -216,6 +188,37 @@ namespace Api3.Migrations
                     b.ToTable("ProductoPokemon");
                 });
 
+            modelBuilder.Entity("api3.Models.Puja", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("CantidadMonedas")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("FechaPuja")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PokemonId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductoPokemonId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsuarioEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductoPokemonId");
+
+                    b.ToTable("Puja");
+                });
+
             modelBuilder.Entity("api3.Models.SolicitudAmistad", b =>
                 {
                     b.Property<int>("Id")
@@ -318,13 +321,6 @@ namespace Api3.Migrations
                     b.ToTable("UsuariosPokemonApi");
                 });
 
-            modelBuilder.Entity("Puja2", b =>
-                {
-                    b.HasOne("api3.Models.ProductoPokemon", null)
-                        .WithMany("HistorialPujas")
-                        .HasForeignKey("ProductoPokemonId");
-                });
-
             modelBuilder.Entity("api3.Models.PedidoPokemon", b =>
                 {
                     b.HasOne("api3.Models.PedidoUsuario", "PedidoUsuario")
@@ -345,6 +341,13 @@ namespace Api3.Migrations
                     b.HasOne("api3.Models.PedidoPokemon", null)
                         .WithMany("Pokemons")
                         .HasForeignKey("PedidoPokemonId");
+                });
+
+            modelBuilder.Entity("api3.Models.Puja", b =>
+                {
+                    b.HasOne("api3.Models.ProductoPokemon", null)
+                        .WithMany("HistorialPujas")
+                        .HasForeignKey("ProductoPokemonId");
                 });
 
             modelBuilder.Entity("api3.Models.StatPokemon", b =>

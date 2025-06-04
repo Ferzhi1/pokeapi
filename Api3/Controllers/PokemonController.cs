@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Api3.Models;
 [Authorize]
 public class PokemonController : Controller
 {
@@ -41,18 +42,26 @@ public class PokemonController : Controller
         if (pokemon == null || string.IsNullOrWhiteSpace(pokemon.Nombre) || string.IsNullOrWhiteSpace(pokemon.Email))
             return BadRequest("Error: Datos del Pokémon incompletos.");
 
-        Console.WriteLine($"Recibiendo Pokémon: {pokemon.Nombre} - {pokemon.Email}"); 
+        Console.WriteLine($"Recibiendo Pokémon favorito: {pokemon.Nombre} - {pokemon.Email}");
 
-        pokemon.Descripcion ??= "Sin descripción";
-        pokemon.EnVenta = false;
+     
+        var coleccionPokemon = new ColeccionPokemon
+        {
+            Nombre = pokemon.Nombre,
+            ImagenUrl = pokemon.ImagenUrl,
+            Rareza = pokemon.Rareza,
+            EmailUsuario = pokemon.Email, 
+            Stats = pokemon.Stats
+        };
 
-        _context.ProductoPokemon.Add(pokemon);
+        _context.ColeccionPokemon.Add(coleccionPokemon);
         _context.SaveChanges();
 
-        Console.WriteLine("✅ Pokémon guardado en la colección"); 
+        Console.WriteLine("✅ Pokémon guardado en la colección correctamente");
 
-        return Ok(new { mensaje = "✅ Pokémon guardado en la colección.", stats = pokemon.Stats });
+        return Ok(new { mensaje = "✅ Pokémon guardado en la colección.", stats = coleccionPokemon.Stats });
     }
+
 
 
 

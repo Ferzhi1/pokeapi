@@ -51,22 +51,7 @@ namespace api3.Services
 
             _context.SaveChanges();
         }
-        public void FinalizarSubasta(int pokemonId)
-        {
-            var pokemon = _context.ProductoPokemon.Find(pokemonId);
-            if (pokemon == null)
-                throw new ArgumentException("❌ No se encontró el Pokémon.");
-
-            if (pokemon.TiempoExpiracion > DateTime.Now)
-                throw new InvalidOperationException("❌ La subasta aún está activa.");
-
-            // 🔹 Resetear valores para permitir nueva subasta
-            pokemon.EnVenta = false;
-            pokemon.PujaActual = 0;
-            pokemon.TiempoExpiracion = DateTime.MinValue;
-
-            _context.SaveChanges();
-        }
+      
 
 
 

@@ -1,5 +1,4 @@
 ﻿
-
 namespace api3.Models;
 public class PedidoPokemon
 {

@@ -8,11 +8,13 @@ public class SubastaController : Controller
 {
     private readonly SubastaService _subastaService;
     private readonly IHubContext<SubastaHub> _hubContext;
+    private readonly ApplicationDbContext _context;
 
-    public SubastaController(SubastaService subastaService, IHubContext<SubastaHub> hubContext)
+    public SubastaController(SubastaService subastaService, IHubContext<SubastaHub> hubContext, ApplicationDbContext context)
     {
         _subastaService = subastaService ?? throw new ArgumentNullException(nameof(subastaService));
         _hubContext = hubContext ?? throw new ArgumentNullException(nameof(hubContext));
+        _context = context;
     }
 
     [HttpPost("PujarPokemon")]
@@ -36,6 +38,29 @@ public class SubastaController : Controller
         return Ok(new { mensaje = "✅ Oferta realizada." });
 
     }
+
+
+    [HttpPost]
+    public async Task<IActionResult> FinalizarSubasta(int pokemonId)
+    {
+        var resultado = await _subastaService.FinalizarSubastaAsync(pokemonId);
+
+        if (!resultado)
+        {
+            return BadRequest("❌ No se pudo finalizar la subasta. Verifica que haya expirado.");
+        }
+
+        return Ok(new { mensaje = "✅ Subasta finalizada y el Pokémon ha sido transferido a la colección del ganador." });
+    }
+
+
+
+
+
+
+
+
+
 }
 
 public class OfertaDto

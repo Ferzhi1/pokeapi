@@ -33,5 +33,15 @@ namespace api3.Hubs
         {
             await Clients.All.SendAsync("ActualizarOferta", pokemonId, usuario, monto);
         }
+        public async Task ActualizarPagina()
+        {
+            await Clients.All.SendAsync("ActualizarPagina");
+        }
+
+   
+        public async Task FinalizarSubasta(int pokemonId, string ganador)
+        {
+            await Clients.All.SendAsync("SubastaFinalizada", pokemonId, ganador);
+        }
     }
 }

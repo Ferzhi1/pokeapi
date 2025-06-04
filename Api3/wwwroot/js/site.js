@@ -4,7 +4,7 @@
 
     document.querySelectorAll(".vender-btn").forEach((boton) => {
         if (boton.eventListener) {
-            boton.removeEventListener("click", boton.eventListener);  
+            boton.removeEventListener("click", boton.eventListener);
         }
 
         boton.eventListener = function () {
@@ -95,7 +95,7 @@ function finalizarSubasta(pokemonId) {
         .then(() => {
             mostrarAlerta("✅ Subasta finalizada correctamente.", "success");
 
-          
+
             setTimeout(actualizarVistaVenta, 2000);
         })
         .catch(error => mostrarAlerta("⚠ Error al finalizar la subasta.", "danger"));

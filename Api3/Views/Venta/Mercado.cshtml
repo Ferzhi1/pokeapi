@@ -66,11 +66,13 @@
 
                             <p class="card-text">
                                 ⏳ Tiempo Restante:
-                                <strong>
+                                <strong class="tiempo-restante"
+                                        data-expiracion="@pokemon.TiempoExpiracion.ToUniversalTime().ToString("o")">
                                     @(pokemon.TiempoExpiracion > DateTime.Now
                                         ? Math.Max((int)(pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalMinutes), 0)
                                         : 0) minutos
                                 </strong>
+
                             </p>
 
                             <form asp-action="PujarPokemon" method="post">

@@ -14,6 +14,29 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
         pujaElemento.innerText = `${monto} monedas`;
     }
 });
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/subastaHub")
+    .build();
+
+connection.on("ActualizarPagina", function () {
+    location.reload(); 
+});
+
+connection.on("SubastaFinalizada", function (pokemonId, ganador) {
+    alert(`La subasta del Pokémon ${pokemonId} ha terminado. Ganador: ${ganador}`);
+    location.reload();
+});
+document.addEventListener("DOMContentLoaded", function () {
+    setInterval(actualizarTiempo, 60000); 
+    actualizarTiempo(); 
+});
+
+
+connection.start().catch(function (err) {
+    console.error(err.toString());
+});
+
+
 
 
 async function pujarPokemon(pokemonId) {
@@ -47,4 +70,27 @@ async function pujarPokemon(pokemonId) {
         alert(err.message);
     }
 }
+function actualizarTiempoSubasta() {
+    document.querySelectorAll(".tiempo-restante").forEach(function (elemento) {
+        let fechaExpiracion = new Date(elemento.getAttribute("data-expiracion"));
+        let ahora = new Date();
+        let diferenciaMinutos = Math.max(Math.floor((fechaExpiracion - ahora) / 60000), 0);
+
+        // Actualiza el texto del tiempo restante en la tarjeta
+        elemento.innerText = diferenciaMinutos > 0 ? `${diferenciaMinutos} minutos` : "⏳ Finalizado";
+
+        // Cambia el estilo si ha expirado
+        if (diferenciaMinutos === 0) {
+            elemento.classList.add("text-danger");
+        }
+    });
+}
+
+// Ejecutar la función automáticamente cada minuto
+setInterval(actualizarTiempoSubasta, 60000);
+
+// Ejecutar al cargar la página para mostrar tiempos correctos desde el inicio
+document.addEventListener("DOMContentLoaded", actualizarTiempoSubasta);
+
+
 

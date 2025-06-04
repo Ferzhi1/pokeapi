@@ -408,8 +408,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>z53796sigb</Fingerprint>
-      <Integrity>x8x90IfXgYdHsbOYtTh0HV9Jq6ve7S1Ng9FkZDVfD1s=</Integrity>
+      <Fingerprint>5qzaqj4xxs</Fingerprint>
+      <Integrity>Xdlfv8AX05NOjwdAgcDcwh7NSf1pW3E3oYSuC7PM3Bc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>
@@ -426,8 +426,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vudj3etvyk</Fingerprint>
-      <Integrity>GcifxF37hWWleMhCDR0TYDstuVEooy6NLv/rsO4/3dE=</Integrity>
+      <Fingerprint>364dwsr7la</Fingerprint>
+      <Integrity>W9b+BdA3G3wGW1oJHwu0el/7n4EwEfYaP4ZzYFR0lYg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\SolicitudesAmistad.js'))</OriginalItemSpec>
@@ -444,8 +444,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>pop45rtrrs</Fingerprint>
-      <Integrity>96N8VgPsxqasldOXcMN/TkD15E5zox6aHd8DMEXOVnw=</Integrity>
+      <Fingerprint>k05bmd41i3</Fingerprint>
+      <Integrity>JJj+NbBB51Zl/AqUCAgL4ruo7OKsPz0oxztx/wFG7iw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Subasta.js'))</OriginalItemSpec>
