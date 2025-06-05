@@ -6,6 +6,7 @@
 
 connection.start().catch(err => console.error("❌ Error de conexión:", err));
 
+// Evento para actualizar una oferta en tiempo real
 connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
     console.log(`🔔 ${usuario} ha ofertado $${monto}`);
 
@@ -14,31 +15,19 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
         pujaElemento.innerText = `${monto} monedas`;
     }
 });
-const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/subastaHub")
-    .build();
 
-connection.on("ActualizarPagina", function () {
-    location.reload(); 
+// Evento para actualizar la página sin recargarla completamente
+connection.on("ActualizarPagina", () => {
+    document.querySelectorAll(".tiempo-restante").forEach(actualizarTiempoSubasta);
 });
 
-connection.on("SubastaFinalizada", function (pokemonId, ganador) {
-    alert(`La subasta del Pokémon ${pokemonId} ha terminado. Ganador: ${ganador}`);
-    location.reload();
-});
-document.addEventListener("DOMContentLoaded", function () {
-    setInterval(actualizarTiempo, 60000); 
-    actualizarTiempo(); 
+// Evento para manejar la finalización de una subasta
+connection.on("SubastaFinalizada", (pokemonId, ganador) => {
+    alert(`🏆 La subasta del Pokémon ${pokemonId} ha terminado. Ganador: ${ganador}`);
+    actualizarTiempoSubasta(); // Evita recargar completamente la página
 });
 
-
-connection.start().catch(function (err) {
-    console.error(err.toString());
-});
-
-
-
-
+// Función para pujar por un Pokémon
 async function pujarPokemon(pokemonId) {
     const usuario = document.getElementById("emailUsuario")?.value.trim();
     const montoInput = document.getElementById(`oferta-${pokemonId}`);
@@ -64,33 +53,32 @@ async function pujarPokemon(pokemonId) {
             throw new Error(errorData.error || "❌ Error al ofertar.");
         }
 
+        // Notificar a otros clientes sobre la nueva oferta
+        connection.invoke("NotificarOferta", pokemonId, usuario, parseFloat(monto))
+            .catch(err => console.error("❌ Error enviando oferta:", err));
+
         alert("✅ Oferta realizada.");
     } catch (err) {
         console.error("❌", err);
         alert(err.message);
     }
 }
+
+// Función para actualizar el tiempo restante de la subasta
 function actualizarTiempoSubasta() {
-    document.querySelectorAll(".tiempo-restante").forEach(function (elemento) {
+    document.querySelectorAll(".tiempo-restante").forEach((elemento) => {
         let fechaExpiracion = new Date(elemento.getAttribute("data-expiracion"));
         let ahora = new Date();
         let diferenciaMinutos = Math.max(Math.floor((fechaExpiracion - ahora) / 60000), 0);
 
-        // Actualiza el texto del tiempo restante en la tarjeta
         elemento.innerText = diferenciaMinutos > 0 ? `${diferenciaMinutos} minutos` : "⏳ Finalizado";
 
-        // Cambia el estilo si ha expirado
         if (diferenciaMinutos === 0) {
             elemento.classList.add("text-danger");
         }
     });
 }
 
-// Ejecutar la función automáticamente cada minuto
+// Ejecutar la actualización de tiempo periódicamente
 setInterval(actualizarTiempoSubasta, 60000);
-
-// Ejecutar al cargar la página para mostrar tiempos correctos desde el inicio
 document.addEventListener("DOMContentLoaded", actualizarTiempoSubasta);
-
-
-

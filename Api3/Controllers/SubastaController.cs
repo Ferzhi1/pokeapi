@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using api3.Services;
 using api3.Hubs;
+using Microsoft.EntityFrameworkCore;
 
 [Route("Subasta")]
 public class SubastaController : Controller
@@ -20,10 +21,15 @@ public class SubastaController : Controller
     [HttpPost("PujarPokemon")]
     public async Task<IActionResult> PujarPokemon([FromBody] OfertaDto oferta)
     {
-        if (oferta == null || oferta.PokemonId <= 0 || string.IsNullOrEmpty(oferta.Usuario) || oferta.Monto <= 0)
+        var pokemon = await _context.ProductoPokemon.FirstOrDefaultAsync(p => p.Id == oferta.PokemonId);
+
+        if (oferta == null || oferta.PokemonId <= 0 || string.IsNullOrEmpty(oferta.Usuario) || oferta.Monto <= 0 || pokemon == null || DateTime.Now >= pokemon.TiempoExpiracion)
         {
-            return BadRequest("❌ Datos de oferta inválidos.");
+            return BadRequest("❌ Datos de oferta inválidos o la subasta ha finalizado.");
         }
+
+
+
 
         var resultado = await _subastaService.RegistrarOfertaAsync(oferta.PokemonId, oferta.Usuario, oferta.Monto);
         if (!resultado)
@@ -31,7 +37,7 @@ public class SubastaController : Controller
             return BadRequest("❌ La oferta debe ser mayor a la puja actual.");
         }
         Console.WriteLine($"Oferta recibida: Usuario: {oferta.Usuario}, Monto: {oferta.Monto}");
-    
+
 
 
         await _hubContext.Clients.All.SendAsync("ActualizarOferta", oferta.PokemonId, oferta.Usuario, oferta.Monto);

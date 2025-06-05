@@ -1,88 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\wwwroot\\js\\subasta.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\subasta.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\views\\venta\\mercado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\venta\\mercado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\hubs\\subastahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\hubs\\subastahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\services\\subastaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\services\\subastaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SubastaService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Services\\SubastaService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\SubastaService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Services\\SubastaService.cs",
-              "RelativeToolTip": "Api3\\Services\\SubastaService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAowDUAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T22:16:49.186Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Subasta.js",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\Subasta.js",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
-              "RelativeToolTip": "Api3\\wwwroot\\js\\Subasta.js",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAE8AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-06-04T22:15:48.238Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SubastaHub.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Hubs\\SubastaHub.cs",
-              "RelativeDocumentMoniker": "Api3\\Hubs\\SubastaHub.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Hubs\\SubastaHub.cs",
-              "RelativeToolTip": "Api3\\Hubs\\SubastaHub.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwCgAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T22:14:15.284Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Mercado.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Venta\\Mercado.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Venta\\Mercado.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Venta\\Mercado.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Venta\\Mercado.cshtml",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAuwEoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-04T22:13:10.561Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
