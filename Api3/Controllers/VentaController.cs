@@ -4,6 +4,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
+using Microsoft.AspNetCore.SignalR;
+using api3.Hubs;
 
 namespace api3.Controllers
 {
@@ -13,13 +15,15 @@ namespace api3.Controllers
         private readonly ApplicationDbContext _context;
         private readonly PokemonStorageService _pokemonStorageService;
         private readonly ClimaService _climaService;
+        private readonly IHubContext<SubastaHub> _hubContext;
 
-        public VentaController(VentaService ventaService,ApplicationDbContext context, PokemonStorageService pokeStorageService, ClimaService climaService)
+        public VentaController(VentaService ventaService,ApplicationDbContext context, PokemonStorageService pokeStorageService, ClimaService climaService,IHubContext<SubastaHub>hubContext)
         {
             _ventaService = ventaService;
             _context = context;
             _pokemonStorageService = pokeStorageService;
             _climaService = climaService;
+            _hubContext = hubContext;
         }
 
         [HttpPost]
@@ -89,8 +93,13 @@ namespace api3.Controllers
             pokemon.EnVenta = true;
 
             _context.SaveChanges();
+
+
+            _hubContext.Clients.All.SendAsync("SubastaIniciada", pokemonId, pokemon.Nombre, precioInicial, duracionMinutos, pokemon.ImagenUrl, pokemon.Email, pokemon.Stats);
+
             return RedirectToAction("Mercado");
         }
+
 
 
         public async Task<IActionResult> Mercado()

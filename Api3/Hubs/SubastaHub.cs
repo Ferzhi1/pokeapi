@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using api3.Models;
+using Microsoft.AspNetCore.SignalR;
 using System.Collections.Concurrent;
 
 namespace api3.Hubs
@@ -25,15 +26,15 @@ namespace api3.Hubs
             Console.WriteLine($"❌ Usuario desconectado: {Context.ConnectionId}. Error: {exception?.Message}");
             await base.OnDisconnectedAsync(exception);
         }
-        public async Task NotificarNuevaSubasta(int pokemonId, string nombrePokemon, decimal precioInicial)
+
+        public async Task NotificarNuevaSubasta(int pokemonId, string nombrePokemon, decimal precioInicial, string imagenUrl, int duracionMinutos, string emailVendedor, decimal pujaActual)
         {
-            await Clients.All.SendAsync("NuevaSubasta", pokemonId, nombrePokemon, precioInicial);
+            await Clients.All.SendAsync("NuevaSubasta", pokemonId, nombrePokemon, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual);
         }
 
-        public async Task FinalizarSubasta(int pokemonId, string ganador)
+        public async Task NotificarInicioSubasta(int pokemonId, string nombrePokemon, decimal precioInicial, int duracionMinutos, string imagenUrl)
         {
-            await Clients.All.SendAsync("SubastaFinalizada", pokemonId, ganador);
-            Console.WriteLine($"🏆 Subasta finalizada. Ganador: {ganador}, Pokémon: {pokemonId}");
+            await Clients.All.SendAsync("SubastaIniciada", pokemonId, nombrePokemon, precioInicial, duracionMinutos, imagenUrl);
         }
 
     }

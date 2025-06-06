@@ -1,4 +1,6 @@
-﻿using api3.Models;
+﻿using api3.Hubs;
+using api3.Models;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace api3.Services
@@ -6,10 +8,12 @@ namespace api3.Services
     public class VentaService
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHubContext<SubastaHub> _hubContext;
 
-        public VentaService(ApplicationDbContext context)
+        public VentaService(ApplicationDbContext context, IHubContext<SubastaHub> hubContext)
         {
             _context = context;
+            _hubContext= hubContext;
         }
 
         public void AgregarPokemonAVenta(string email, ProductoPokemon pokemon)
@@ -28,21 +32,25 @@ namespace api3.Services
                 .Where(p => p.Email == email && p.EnVenta)
                 .ToList();
         }
-
-        public void PonerPokemonEnSubasta(string emailUsuario, int pokemonId, decimal precioInicial, int duracionMinutos)
+        public async Task<bool> IniciarSubastaAsync(int pokemonId, decimal precioInicial, int duracionMinutos, string usuarioEmail)
         {
-            var usuario = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == emailUsuario);
-            var pokemon = _context.ProductoPokemon.Find(pokemonId);
+            var pokemon = await _context.ProductoPokemon.FirstOrDefaultAsync(p => p.Id == pokemonId && p.Email == usuarioEmail);
 
-            if (usuario == null || pokemon == null) return;
-            if (pokemon.Email != emailUsuario) return;
+            if (pokemon == null)
+            {
+                return false;
+            }
 
             pokemon.PrecioInicial = precioInicial;
             pokemon.PujaActual = precioInicial;
             pokemon.TiempoExpiracion = DateTime.Now.AddMinutes(duracionMinutos);
             pokemon.EnVenta = true;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+
+            await _hubContext.Clients.All.SendAsync("SubastaIniciada", pokemonId, pokemon.Nombre, precioInicial, duracionMinutos, pokemon.ImagenUrl);
+
+            return true;
         }
     }
 }
