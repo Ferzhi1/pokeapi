@@ -390,8 +390,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>basjzxp1v0</Fingerprint>
-      <Integrity>8wwEmQ/0FhRspx69MscN14Tn9JR82o2ga7uB5P4u9TY=</Integrity>
+      <Fingerprint>dc83r95z2c</Fingerprint>
+      <Integrity>/RvWb1r3UOodmeLk0ffCuV+Wi54JNkrSy81H3I9CZTo=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\App.js'))</OriginalItemSpec>
@@ -408,8 +408,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5qzaqj4xxs</Fingerprint>
-      <Integrity>Xdlfv8AX05NOjwdAgcDcwh7NSf1pW3E3oYSuC7PM3Bc=</Integrity>
+      <Fingerprint>x04pjzz8z9</Fingerprint>
+      <Integrity>oW8VrRydHQt0EDrDVSlVp+CQqqi0/Zn88kEWW4N6L2s=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>
@@ -426,8 +426,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>364dwsr7la</Fingerprint>
-      <Integrity>W9b+BdA3G3wGW1oJHwu0el/7n4EwEfYaP4ZzYFR0lYg=</Integrity>
+      <Fingerprint>5b124nrewu</Fingerprint>
+      <Integrity>3xwNCNFdfbrjlq9idLnftq0nu0YZq+8QL+0j8zQjYtQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\SolicitudesAmistad.js'))</OriginalItemSpec>
@@ -444,8 +444,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>4l45cwy523</Fingerprint>
-      <Integrity>eBJBGlZMyPkQxwXK0HHZgB6MJNwzCRSypzn16dmeFQ0=</Integrity>
+      <Fingerprint>kma876g6fg</Fingerprint>
+      <Integrity>NFmBzXaG3LWn1VVBfU9ogQLLHfNt7P8TV3GMrqRksN0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Subasta.js'))</OriginalItemSpec>

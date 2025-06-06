@@ -75,8 +75,8 @@ public class PokemonController : Controller
             return RedirectToAction("Login");
         }
 
-        var pokemonsGuardados = _context.ProductoPokemon
-            .Where(p => p.Email == emailUsuarioAutenticado && !p.EnVenta) 
+        var pokemonsGuardados = _context.ColeccionPokemon
+            .Where(p => p.EmailUsuario == emailUsuarioAutenticado) 
             .ToList();
 
         if (pokemonsGuardados == null || !pokemonsGuardados.Any())

@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\",
+  "WorkspaceRootPath": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\controllers\\subastacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\subasta.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\subasta.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\subastacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\controllers\\subastacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\hubs\\amistadhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\hubs\\amistadhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SubastaController.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Controllers\\SubastaController.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SubastaController.cs",
               "RelativeDocumentMoniker": "Api3\\Controllers\\SubastaController.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Controllers\\SubastaController.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SubastaController.cs",
               "RelativeToolTip": "Api3\\Controllers\\SubastaController.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAwEMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCIAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T14:54:07.964Z",
+              "WhenOpened": "2025-06-06T19:29:37.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Subasta.js",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
+              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\Subasta.js",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
+              "RelativeToolTip": "Api3\\wwwroot\\js\\Subasta.js",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACcAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-06-06T19:06:57.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AmistadHub.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\AmistadHub.cs",
+              "RelativeDocumentMoniker": "Api3\\Hubs\\AmistadHub.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\AmistadHub.cs",
+              "RelativeToolTip": "Api3\\Hubs\\AmistadHub.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAYwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T17:18:29.236Z",
               "EditorCaption": ""
             }
           ]

@@ -66,12 +66,13 @@
 
                             <p class="card-text">
                                 ⏳ Tiempo Restante:
-                                <strong class="tiempo-restante"
+                                <strong id="tiempo-restante"
                                         data-expiracion="@pokemon.TiempoExpiracion.ToUniversalTime().ToString("o")">
                                     @(pokemon.TiempoExpiracion > DateTime.Now
-                                        ? Math.Max((int)(pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalMinutes), 0)
-                                        : 0) minutos
+                                        ? Math.Max((int)(pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalSeconds), 0)
+                                        : 0) segundos
                                 </strong>
+
 
                             </p>
 
@@ -108,3 +109,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 <script src="/js/SolicitudesAmistad.js"></script>
 <script src="/js/Subasta.js"></script>
+

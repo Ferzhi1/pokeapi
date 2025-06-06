@@ -6,7 +6,6 @@
         mostrarAlerta("⚠ Error: Correo electrónico del usuario no definido.", "danger");
     }
 
-   
     if (esPaginaConfirmacion) {
         document.querySelectorAll(".guardar-btn").forEach((boton) => {
             boton.removeEventListener("click", boton.eventListener);
@@ -17,7 +16,6 @@
         });
     }
 });
-
 
 function guardarPokemon(boton, emailUsuario) {
     const card = boton.closest(".pokemon-card");
@@ -39,10 +37,8 @@ function guardarPokemon(boton, emailUsuario) {
         .catch(error => mostrarAlerta(`⚠ Error al guardar: ${error.message}`, "danger"));
 }
 
-
 function irAColeccion() {
     const emailUsuario = document.getElementById("emailUsuario")?.value?.trim();
-
     if (!emailUsuario) {
         mostrarAlerta("⚠ No se pudo acceder a la colección porque el correo electrónico no está definido.", "danger");
         return;
@@ -79,4 +75,3 @@ function mostrarAlerta(mensaje, tipo) {
         setTimeout(() => alertDiv.remove(), 500);
     }, 3000);
 }
-

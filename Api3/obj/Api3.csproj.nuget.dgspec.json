@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\api3.csproj": {}
+    "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\api3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\api3.csproj": {
+    "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\api3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\api3.csproj",
+        "projectUniqueName": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\api3.csproj",
         "projectName": "api3",
-        "projectPath": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\api3.csproj",
+        "projectPath": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\api3.csproj",
         "packagesPath": "C:\\Users\\hmelo003\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\obj\\",
+        "outputPath": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

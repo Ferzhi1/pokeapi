@@ -13,35 +13,28 @@ namespace api3.Hubs
             if (!string.IsNullOrEmpty(usuario))
             {
                 UsuariosSubasta.TryAdd(usuario, Context.ConnectionId);
+                Console.WriteLine($"✅ Usuario conectado: {usuario}, ID: {Context.ConnectionId}");
             }
 
             await base.OnConnectedAsync();
         }
 
+
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            var usuario = Context.User?.Identity?.Name;
-            if (!string.IsNullOrEmpty(usuario))
-            {
-                UsuariosSubasta.TryRemove(usuario, out _);
-            }
-
+            Console.WriteLine($"❌ Usuario desconectado: {Context.ConnectionId}. Error: {exception?.Message}");
             await base.OnDisconnectedAsync(exception);
         }
-
-        public async Task NotificarOferta(int pokemonId, string usuario, decimal monto)
+        public async Task NotificarNuevaSubasta(int pokemonId, string nombrePokemon, decimal precioInicial)
         {
-            await Clients.All.SendAsync("ActualizarOferta", pokemonId, usuario, monto);
-        }
-        public async Task ActualizarPagina()
-        {
-            await Clients.All.SendAsync("ActualizarPagina");
+            await Clients.All.SendAsync("NuevaSubasta", pokemonId, nombrePokemon, precioInicial);
         }
 
-   
         public async Task FinalizarSubasta(int pokemonId, string ganador)
         {
             await Clients.All.SendAsync("SubastaFinalizada", pokemonId, ganador);
+            Console.WriteLine($"🏆 Subasta finalizada. Ganador: {ganador}, Pokémon: {pokemonId}");
         }
+
     }
 }

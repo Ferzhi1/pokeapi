@@ -50,19 +50,11 @@ namespace api3.Controllers
             }
         }
 
-
-
-
-
-
-
         [HttpGet("ListaSolicitudes")]
         public async Task<IActionResult> ListaSolicitudes()
         {
             if (!User.Identity.IsAuthenticated)
             {
-                Console.WriteLine("❌ Error: Usuario no autenticado.");
-                TempData["Error"] = "❌ No estás autenticado.";
                 return View("ListaSolicitudes", new List<SolicitudAmistad>());
             }
 
@@ -71,32 +63,18 @@ namespace api3.Controllers
 
             if (string.IsNullOrWhiteSpace(usuarioEmail))
             {
-                Console.WriteLine("❌ Error: Email obtenido desde Claims es inválido.");
-                TempData["Error"] = "❌ No se pudo obtener tu email.";
                 return View("ListaSolicitudes", new List<SolicitudAmistad>());
             }
-
-            Console.WriteLine($"🔍 Buscando solicitudes pendientes para {usuarioEmail}...");
-            Console.WriteLine($"📌 Estado Pendiente en Enum: {(int)EstadoSolicitud.Pendiente}");
 
             var solicitudes = await _context.SolicitudAmistad
                 .Where(sa => sa.ReceptorEmail == usuarioEmail && sa.Estado == EstadoSolicitud.Pendiente)
                 .ToListAsync();
 
-            Console.WriteLine(solicitudes.Any()
-                ? $"📊 Solicitudes encontradas: {solicitudes.Count}"
-                : "⚠ No se encontraron solicitudes pendientes.");
-
             ViewBag.EmailUsuario = usuarioEmail;
-
-            if (!solicitudes.Any())
-            {
-                TempData["Error"] = "❌ No tienes solicitudes pendientes.";
-                return View("ListaSolicitudes", new List<SolicitudAmistad>());
-            }
 
             return View("ListaSolicitudes", solicitudes);
         }
+
         [HttpGet("ObtenerSolicitudId")]
         public async Task<IActionResult> ObtenerSolicitudId(string remitenteEmail)
         {
@@ -104,13 +82,12 @@ namespace api3.Controllers
 
             if (solicitud == null)
             {
-                Console.WriteLine("❌ No se encontró la solicitud para " + remitenteEmail);
-                return NotFound("❌ No se encontró la solicitud.");
+                return NotFound("No se encontró la solicitud.");
             }
 
-            Console.WriteLine($"📡 ID de solicitud encontrado: {solicitud.Id}");
             return Ok(new { solicitudId = solicitud.Id });
         }
+
 
 
         [HttpPost("AceptarSolicitud")]
@@ -118,14 +95,11 @@ namespace api3.Controllers
         {
             if (!data.TryGetValue("solicitudId", out int solicitudId) || solicitudId <= 0)
             {
-                Console.WriteLine("❌ ID de solicitud no válido recibido en el backend.");
-                return BadRequest("❌ ID de solicitud no válido.");
+                return BadRequest("ID de solicitud no válido.");
             }
 
-            Console.WriteLine($"📡 Solicitud recibida con ID válido: {solicitudId}");
-
             var resultado = await _solicitudService.AceptarSolicitudAsync(solicitudId);
-            return resultado ? Ok("✅ Solicitud aceptada.") : BadRequest("❌ Error al aceptar solicitud.");
+            return resultado ? Ok("Solicitud aceptada.") : BadRequest("Error al aceptar solicitud.");
         }
 
 

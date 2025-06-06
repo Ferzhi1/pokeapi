@@ -1,6 +1,6 @@
-﻿using api3.Models;
+﻿
 
-namespace Api3.Models
+namespace api3.Models
 {
     public class ColeccionPokemon
     {

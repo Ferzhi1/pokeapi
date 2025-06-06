@@ -17,8 +17,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR(options =>
 {
     options.KeepAliveInterval = TimeSpan.FromSeconds(30);
-    options.ClientTimeoutInterval = TimeSpan.FromMinutes(10);
-    options.HandshakeTimeout = TimeSpan.FromMinutes(2); 
+    options.ClientTimeoutInterval = TimeSpan.FromMinutes(5);
+    options.HandshakeTimeout = TimeSpan.FromMinutes(30); 
 });
 
 builder.Services.AddMemoryCache();

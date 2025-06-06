@@ -72,26 +72,16 @@ namespace api3.Controllers
         [HttpPost]
         public IActionResult IniciarSubasta(int pokemonId, decimal precioInicial, int duracionMinutos)
         {
-            if (!User.Identity.IsAuthenticated)
-                return Unauthorized("El usuario no está autenticado.");
+            if (!User.Identity.IsAuthenticated) return Unauthorized();
 
-            var emailUsuarioAutenticado = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            if (string.IsNullOrWhiteSpace(emailUsuarioAutenticado))
-                return BadRequest("No se pudo obtener el email del usuario autenticado.");
+            var emailUsuario = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            if (string.IsNullOrWhiteSpace(emailUsuario)) return BadRequest();
 
-            var usuarioPokemon = _pokemonStorageService.ObtenerUsuarioPokemon(emailUsuarioAutenticado);
-            if (usuarioPokemon == null)
-                return BadRequest("El usuario no existe en la base de datos.");
-
-            if (!usuarioPokemon.CorreoValidado)
-                return BadRequest("Debes validar tu correo electrónico antes de proceder con la subasta.");
-
+            var usuarioPokemon = _pokemonStorageService.ObtenerUsuarioPokemon(emailUsuario);
             var pokemon = _context.ProductoPokemon.Find(pokemonId);
-            if (pokemon == null)
-                return BadRequest("No se encontró el Pokémon.");
 
-            if (pokemon.Email != emailUsuarioAutenticado)
-                return BadRequest("No puedes subastar un Pokémon que no es tuyo.");
+            if (usuarioPokemon == null || !usuarioPokemon.CorreoValidado || pokemon == null || pokemon.Email != emailUsuario)
+                return BadRequest();
 
             pokemon.PrecioInicial = precioInicial;
             pokemon.PujaActual = precioInicial;
@@ -101,6 +91,7 @@ namespace api3.Controllers
             _context.SaveChanges();
             return RedirectToAction("Mercado");
         }
+
 
         public async Task<IActionResult> Mercado()
         {
@@ -114,48 +105,19 @@ namespace api3.Controllers
 
             Console.WriteLine($"✅ Clima recibido: {JsonSerializer.Serialize(climaResponse)}"); // 🔍 Depuración
 
-            // Obtener el email desde los Claims
+          
             var emailUsuario = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? string.Empty;
 
-            ViewBag.EmailUsuario = emailUsuario; // Pasarlo a la vista
+            ViewBag.EmailUsuario = emailUsuario; 
 
             var viewModel = new MercadoViewModel
             {
                 Pokemons = pokemonsEnVenta,
                 Clima = climaResponse,
-                UsuarioEmail = emailUsuario // También en el modelo
+                UsuarioEmail = emailUsuario 
             };
 
             return View(viewModel);
         }
-
-
-
-
-
-
-        [HttpPost]
-        public IActionResult FinalizarSubasta(int pokemonId)
-        {
-            var pokemon = _context.ProductoPokemon.Find(pokemonId);
-
-            if (pokemon == null)
-                return BadRequest("❌ Error: No se encontró el Pokémon.");
-
-            if (pokemon.TiempoExpiracion > DateTime.Now)
-                return BadRequest("❌ La subasta aún está activa.");
-
-         
-            pokemon.EnVenta = false;
-            pokemon.PujaActual = 0;
-            pokemon.PrecioInicial = 0;
-            pokemon.TiempoExpiracion = DateTime.MinValue;
-
-            _context.Entry(pokemon).State = EntityState.Modified;
-            _context.SaveChanges();
-
-            return Ok(new { mensaje = "✅ Subasta finalizada correctamente." });
-        }
-
     }
 }

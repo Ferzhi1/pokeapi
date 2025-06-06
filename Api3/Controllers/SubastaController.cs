@@ -18,32 +18,33 @@ public class SubastaController : Controller
         _context = context;
     }
 
+
     [HttpPost("PujarPokemon")]
     public async Task<IActionResult> PujarPokemon([FromBody] OfertaDto oferta)
     {
         var pokemon = await _context.ProductoPokemon.FirstOrDefaultAsync(p => p.Id == oferta.PokemonId);
 
-        if (oferta == null || oferta.PokemonId <= 0 || string.IsNullOrEmpty(oferta.Usuario) || oferta.Monto <= 0 || pokemon == null || DateTime.Now >= pokemon.TiempoExpiracion)
+        if (pokemon == null || oferta == null || oferta.PokemonId <= 0 || string.IsNullOrEmpty(oferta.Usuario) || oferta.Monto <= 0 || DateTime.Now >= pokemon.TiempoExpiracion)
         {
             return BadRequest("❌ Datos de oferta inválidos o la subasta ha finalizado.");
         }
 
-
-
+      
+        if (pokemon.Email == oferta.Usuario)
+        {
+            return BadRequest(new { error = "❌ No puedes pujar por tu propio Pokémon." });
+        }
 
         var resultado = await _subastaService.RegistrarOfertaAsync(oferta.PokemonId, oferta.Usuario, oferta.Monto);
         if (!resultado)
         {
             return BadRequest("❌ La oferta debe ser mayor a la puja actual.");
         }
-        Console.WriteLine($"Oferta recibida: Usuario: {oferta.Usuario}, Monto: {oferta.Monto}");
-
-
 
         await _hubContext.Clients.All.SendAsync("ActualizarOferta", oferta.PokemonId, oferta.Usuario, oferta.Monto);
         return Ok(new { mensaje = "✅ Oferta realizada." });
-
     }
+
 
 
     [HttpPost]

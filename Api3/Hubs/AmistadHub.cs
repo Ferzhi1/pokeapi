@@ -7,25 +7,22 @@ namespace api3.Hubs
 {
     public class AmistadHub : Hub
     {
-        public static ConcurrentDictionary<string, string> UsuariosConectados = new ConcurrentDictionary<string, string>();
+        public static ConcurrentDictionary<string, string> UsuariosConectados = new();
         private readonly SolicitudAmistadService _solicitudService;
+
 
         public AmistadHub(SolicitudAmistadService solicitudService)
         {
             _solicitudService = solicitudService;
         }
+
         public override async Task OnConnectedAsync()
         {
-            var email = Context.User?.Identity?.IsAuthenticated == true
-                        ? Context.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value
-                        : null;
-
+            var email = Context.User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
             if (!string.IsNullOrEmpty(email))
             {
                 UsuariosConectados[email] = Context.ConnectionId;
-                
 
-              
                 var solicitudesPendientes = await _solicitudService.ObtenerSolicitudesPendientesAsync(email);
                 foreach (var solicitud in solicitudesPendientes)
                 {
@@ -41,47 +38,31 @@ namespace api3.Hubs
         {
             var email = Context.User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
 
-            if (!string.IsNullOrEmpty(email) && UsuariosConectados.ContainsKey(email))
+            if (!string.IsNullOrEmpty(email))
             {
                 UsuariosConectados.TryRemove(email, out _);
-                Console.WriteLine($"🔴 Usuario desconectado: {email} ({Context.ConnectionId})");
             }
-
-          
 
             await base.OnDisconnectedAsync(exception);
         }
 
-
-
         public async Task EnviarSolicitudAmistad(string remitenteEmail, string receptorEmail)
         {
-            if (!UsuariosConectados.ContainsKey(receptorEmail))
+            if (UsuariosConectados.TryGetValue(receptorEmail, out var connectionId))
             {
-                Console.WriteLine($"⚠️ Usuario {receptorEmail} no está conectado.");
-                return;
+                await Clients.User(receptorEmail).SendAsync("RecibirSolicitud", remitenteEmail);
             }
-
-            await Clients.Client(UsuariosConectados[receptorEmail]).SendAsync("RecibirSolicitud", remitenteEmail);
         }
+
 
         public async Task AceptarSolicitudAmistad(string receptorEmail, string remitenteEmail)
         {
-            if (!UsuariosConectados.ContainsKey(remitenteEmail)) return;
-
-            await Clients.Client(UsuariosConectados[remitenteEmail]).SendAsync("SolicitudAceptada", receptorEmail);
-        }
-
-
-        public async Task RechazarSolicitudAmistad(string receptorEmail, string remitenteEmail)
-        {
-            if (!UsuariosConectados.ContainsKey(remitenteEmail))
+            if (UsuariosConectados.TryGetValue(remitenteEmail, out var connectionId))
             {
-                Console.WriteLine($"⚠️ Usuario {remitenteEmail} no está conectado.");
-                return;
+                await Clients.Client(connectionId).SendAsync("SolicitudAceptada", receptorEmail);
             }
-
-            await Clients.Client(UsuariosConectados[remitenteEmail]).SendAsync("SolicitudRechazada", receptorEmail);
         }
+
+   
     }
 }

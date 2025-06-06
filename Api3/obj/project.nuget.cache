@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "djK5KICGq3A=",
+  "dgSpecHash": "6F2W1GQzGj0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\api3.csproj",
+  "projectFilePath": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\api3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hmelo003\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\hmelo003\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
