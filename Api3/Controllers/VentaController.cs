@@ -72,7 +72,6 @@ namespace api3.Controllers
 
 
 
-
         [HttpPost]
         public IActionResult IniciarSubasta(int pokemonId, decimal precioInicial, int duracionMinutos)
         {
@@ -82,7 +81,7 @@ namespace api3.Controllers
             if (string.IsNullOrWhiteSpace(emailUsuario)) return BadRequest();
 
             var usuarioPokemon = _pokemonStorageService.ObtenerUsuarioPokemon(emailUsuario);
-            var pokemon = _context.ProductoPokemon.Find(pokemonId);
+            var pokemon = _context.ProductoPokemon.Include(p => p.Stats).FirstOrDefault(p => p.Id == pokemonId);
 
             if (usuarioPokemon == null || !usuarioPokemon.CorreoValidado || pokemon == null || pokemon.Email != emailUsuario)
                 return BadRequest();
@@ -94,11 +93,23 @@ namespace api3.Controllers
 
             _context.SaveChanges();
 
-
-            _hubContext.Clients.All.SendAsync("SubastaIniciada", pokemonId, pokemon.Nombre, precioInicial, duracionMinutos, pokemon.ImagenUrl, pokemon.Email, pokemon.Stats);
+            _hubContext.Clients.All.SendAsync(
+                "NuevaSubasta",
+                pokemonId,
+                pokemon.Nombre,
+                pokemon.Rareza,
+                precioInicial,
+                pokemon.ImagenUrl,
+                duracionMinutos,
+                pokemon.Email,
+                pokemon.PujaActual,
+                pokemon.Stats
+            );
 
             return RedirectToAction("Mercado");
         }
+
+
 
 
 

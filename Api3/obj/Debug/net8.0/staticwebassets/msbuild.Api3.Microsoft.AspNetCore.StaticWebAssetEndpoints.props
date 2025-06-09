@@ -288,17 +288,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-3xwNCNFdfbrjlq9idLnftq0nu0YZq\u002B8QL\u002B0j8zQjYtQ="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4480"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00223xwNCNFdfbrjlq9idLnftq0nu0YZq\u002B8QL\u002B0j8zQjYtQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 06 Jun 2025 21:22:20 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/api3/js/Subasta.3fs9hdmvoc.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Subasta.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3fs9hdmvoc"},{"Name":"integrity","Value":"sha256-4eKdVhbbOvTDPb4FSJ0LtkOHrxuxh1oXQxWibRSdxE0="},{"Name":"label","Value":"_content/api3/js/Subasta.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3042"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00224eKdVhbbOvTDPb4FSJ0LtkOHrxuxh1oXQxWibRSdxE0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 06 Jun 2025 22:55:43 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/api3/js/Subasta.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Subasta.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-4eKdVhbbOvTDPb4FSJ0LtkOHrxuxh1oXQxWibRSdxE0="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3042"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00224eKdVhbbOvTDPb4FSJ0LtkOHrxuxh1oXQxWibRSdxE0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 06 Jun 2025 22:55:43 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-izvmiPdmjjPp8YnhTqCUWNuXmEyxo89BYI/p3vMBmVA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4250"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022izvmiPdmjjPp8YnhTqCUWNuXmEyxo89BYI/p3vMBmVA=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 22:03:29 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/api3/js/Subasta.xpt88te03v.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Subasta.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xpt88te03v"},{"Name":"integrity","Value":"sha256-izvmiPdmjjPp8YnhTqCUWNuXmEyxo89BYI/p3vMBmVA="},{"Name":"label","Value":"_content/api3/js/Subasta.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4250"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022izvmiPdmjjPp8YnhTqCUWNuXmEyxo89BYI/p3vMBmVA=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 22:03:29 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/api3/lib/bootstrap/dist/css/bootstrap-grid.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.css'))</AssetFile>

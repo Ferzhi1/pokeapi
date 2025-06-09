@@ -18,40 +18,75 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
     }
 });
 
-connection.on("SubastaFinalizada", (pokemonId, ganador) => {
-    alert(`La subasta del Pokémon ${pokemonId} ha terminado. Ganador: ${ganador}`);
-});
 
+/*connection.on("NuevaSubasta", (pokemonId, nombrePokemon,rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats) => {
+  
 
-
-
-connection.on("SubastaIniciada", (pokemonId, nombrePokemon, precioInicial, duracionMinutos, imagenUrl, emailVendedor, pujaActual) => {
     const contenedor = document.querySelector(".row.row-cols-1.row-cols-md-3.g-4");
     if (!contenedor) return;
 
     const nuevaCarta = document.createElement("div");
     nuevaCarta.classList.add("col", "pokemon-card");
     nuevaCarta.id = `card-${pokemonId}`;
-    nuevaCarta.innerHTML = `
-        <div class="card shadow-lg">
-            <div class="card-body text-center">
-                <img src="${imagenUrl}" class="img-fluid pokemon-img" style="width: 180px;"
-                     onerror="this.src='/images/default-pokemon.png';" />
-                <h5 class="card-title">${nombrePokemon}</h5>
-                <p class="card-text">💰 Precio Inicial: <strong>${precioInicial} monedas</strong></p>
-                <p class="card-text">⏳ Tiempo Restante: <strong>${duracionMinutos} minutos</strong></p>
-                <p class="card-text">📧 Vendedor: <strong>${emailVendedor}</strong></p>
-                <p class="card-text">🏅 Puja Actual: <strong id="puja-${pokemonId}">${pujaActual} monedas</strong></p>
 
-                <!-- Input para pujar -->
-                <input type="number" id="oferta-${pokemonId}" min="${pujaActual}" placeholder="Monedas a ofertar" required />
-                <button class="btn btn-success mt-3" onclick="pujarPokemon(${pokemonId})">💰 Pujar</button>
+    let statsHTML = '<ul class="list-group">';
+    if (Array.isArray(stats) && stats.length > 0) {
+        stats.forEach(stat => {
+            statsHTML += `<li class="list-group-item small">${stat.nombre}: <strong>${stat.valor}</strong></li>`;
+        });
+    } else {
+        statsHTML += '<li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>';
+    }
+    statsHTML += '</ul>';
+
+  
+    nuevaCarta.innerHTML = `
+    <div class="card shadow-lg">
+        <div class="d-flex align-items-center p-3">
+            <div class="flex-shrink-0">
+                <img src="${imagenUrl}" class="img-fluid rounded pokemon-img"
+                     alt="${nombrePokemon}" style="width: 180px; height: auto;"
+                     onerror="this.src='/images/default-pokemon.png';" />
+            </div>
+            <div class="stats-section ms-3">
+                <h6> 📊 Estadísticas:</h6>
+                ${statsHTML}
             </div>
         </div>
+
+        <div class="card-body text-center">
+            <h5 class="card-title pokemon-nombre">${nombrePokemon}</h5>
+            <p class="card-text"><strong>Rareza:</strong> ${rareza}</p>
+            <p class="card-text">💰 Precio Inicial: <strong>${precioInicial} monedas</strong></p>
+            <p class="card-text">🏅 Puja Actual: <strong id="puja-${pokemonId}">${pujaActual} monedas</strong></p>
+            <p class="card-text">Email del vendedor:<strong>${emailVendedor}</strong></p>
+            <p class="card-text">
+                ⏳ Tiempo Restante:
+                <strong id="tiempo-restante"
+                        data-expiracion="${duracionMinutos * 60}">
+                    ${duracionMinutos} minutos
+                </strong>
+            </p>
+
+            <input type="number" id="oferta-${pokemonId}" min="${pujaActual}" placeholder="Monedas a ofertar" required />
+            <button class="btn btn-success mt-3" onclick="pujarPokemon(${pokemonId})">💰 Pujar</button>
+
+            <!-- Agregar botón de solicitud de amistad al final -->
+            ${emailVendedor ?
+            `<button onclick="enviarSolicitud('${emailVendedor}')" class="btn btn-secondary mt-2">
+                    ➕ Agregar a Amigos (${emailVendedor})
+                </button>`
+            :
+            '<p class="text-muted">⚠ Email no disponible para solicitud.</p>'}
+        </div>
+    </div>
     `;
 
     contenedor.appendChild(nuevaCarta);
-});
+});*/
+
+
+
 
 
 

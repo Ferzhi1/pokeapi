@@ -48,7 +48,7 @@ namespace api3.Services
 
             await _context.SaveChangesAsync();
 
-            await _hubContext.Clients.All.SendAsync("SubastaIniciada", pokemonId, pokemon.Nombre, precioInicial, duracionMinutos, pokemon.ImagenUrl);
+            await _hubContext.Clients.All.SendAsync("NuevaSubasta", pokemonId, pokemon.Nombre, precioInicial, duracionMinutos, pokemon.ImagenUrl);
 
             return true;
         }

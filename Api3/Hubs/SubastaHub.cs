@@ -14,28 +14,25 @@ namespace api3.Hubs
             if (!string.IsNullOrEmpty(usuario))
             {
                 UsuariosSubasta.TryAdd(usuario, Context.ConnectionId);
-                Console.WriteLine($"✅ Usuario conectado: {usuario}, ID: {Context.ConnectionId}");
             }
-
             await base.OnConnectedAsync();
         }
 
-
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            Console.WriteLine($"❌ Usuario desconectado: {Context.ConnectionId}. Error: {exception?.Message}");
             await base.OnDisconnectedAsync(exception);
         }
 
-        public async Task NotificarNuevaSubasta(int pokemonId, string nombrePokemon, decimal precioInicial, string imagenUrl, int duracionMinutos, string emailVendedor, decimal pujaActual)
+        public async Task NotificarActualizarOferta(int pokemonId, string usuario, decimal monto)
         {
-            await Clients.All.SendAsync("NuevaSubasta", pokemonId, nombrePokemon, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual);
+            await Clients.All.SendAsync("ActualizarOferta", pokemonId, usuario, monto);
         }
 
-        public async Task NotificarInicioSubasta(int pokemonId, string nombrePokemon, decimal precioInicial, int duracionMinutos, string imagenUrl)
+        public async Task NotificarNuevaSubasta(int pokemonId, string nombrePokemon, string rareza, decimal precioInicial, string imagenUrl, int duracionMinutos, string emailVendedor, decimal pujaActual, List<StatPokemon> stats)
         {
-            await Clients.All.SendAsync("SubastaIniciada", pokemonId, nombrePokemon, precioInicial, duracionMinutos, imagenUrl);
+            await Clients.All.SendAsync("NuevaSubasta", pokemonId, nombrePokemon, rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats);
         }
+
 
     }
 }

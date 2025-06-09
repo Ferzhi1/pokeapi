@@ -47,18 +47,7 @@ public class SubastaController : Controller
 
 
 
-    [HttpPost]
-    public async Task<IActionResult> FinalizarSubasta(int pokemonId)
-    {
-        var resultado = await _subastaService.FinalizarSubastaAsync(pokemonId);
-
-        if (!resultado)
-        {
-            return BadRequest("❌ No se pudo finalizar la subasta. Verifica que haya expirado.");
-        }
-
-        return Ok(new { mensaje = "✅ Subasta finalizada y el Pokémon ha sido transferido a la colección del ganador." });
-    }
+ 
 
 
 
