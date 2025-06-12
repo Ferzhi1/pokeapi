@@ -66,15 +66,14 @@
 
                             <p class="card-text">
                                 ⏳ Tiempo Restante:
-                                <strong id="tiempo-restante"
+                                <strong id="tiempo-restante-@pokemon.Id"
                                         data-expiracion="@pokemon.TiempoExpiracion.ToUniversalTime().ToString("o")">
                                     @(pokemon.TiempoExpiracion > DateTime.Now
                                         ? Math.Max((int)(pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalSeconds), 0)
                                         : 0) segundos
                                 </strong>
-
-
                             </p>
+
 
                             <form asp-action="PujarPokemon" method="post">
                                 <input type="hidden" name="pokemonId" value="@pokemon.Id" />

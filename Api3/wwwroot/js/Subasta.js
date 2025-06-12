@@ -6,11 +6,6 @@
 
 connection.start();
 
-
-
-
-
-
 connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
     const pujaElemento = document.getElementById(`puja-${pokemonId}`);
     if (pujaElemento) {
@@ -19,8 +14,8 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
 });
 
 
-/*connection.on("NuevaSubasta", (pokemonId, nombrePokemon,rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats) => {
-  
+connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats) => {
+
 
     const contenedor = document.querySelector(".row.row-cols-1.row-cols-md-3.g-4");
     if (!contenedor) return;
@@ -38,8 +33,8 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
         statsHTML += '<li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>';
     }
     statsHTML += '</ul>';
+    let tiempoRestante = duracionMinutos * 60;
 
-  
     nuevaCarta.innerHTML = `
     <div class="card shadow-lg">
         <div class="d-flex align-items-center p-3">
@@ -60,11 +55,10 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
             <p class="card-text">💰 Precio Inicial: <strong>${precioInicial} monedas</strong></p>
             <p class="card-text">🏅 Puja Actual: <strong id="puja-${pokemonId}">${pujaActual} monedas</strong></p>
             <p class="card-text">Email del vendedor:<strong>${emailVendedor}</strong></p>
-            <p class="card-text">
+         <p class="card-text">
                 ⏳ Tiempo Restante:
-                <strong id="tiempo-restante"
-                        data-expiracion="${duracionMinutos * 60}">
-                    ${duracionMinutos} minutos
+                <strong id="tiempo-restante-${pokemonId}">
+                    ${tiempoRestante} segundos
                 </strong>
             </p>
 
@@ -83,12 +77,34 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
     `;
 
     contenedor.appendChild(nuevaCarta);
-});*/
+    setTimeout(() => {
+        const tiempoElemento = document.getElementById(`tiempo-restante-${pokemonId}`);
+        if (!tiempoElemento) {
+            console.error(`❌ No se encontró tiempo-restante-${pokemonId}.`);
+            return;
+        }
 
+        const intervalo = setInterval(() => {
+            if (tiempoRestante > 0) {
+                tiempoRestante--;
+                tiempoElemento.innerText = `${tiempoRestante} segundos`;
+            } else {
+                tiempoElemento.innerText = "⏳ Finalizando...";
+                clearInterval(intervalo);
 
-
-
-
+                setTimeout(() => {
+                    const cartaElemento = document.getElementById(`card-${pokemonId}`);
+                    if (cartaElemento) {
+                        cartaElemento.remove();
+                        console.log(`✅ Carta eliminada correctamente.`);
+                    } else {
+                        console.error(`❌ No se encontró la carta con ID: card-${pokemonId}.`);
+                    }
+                }, 2000);
+            }
+        }, 1000);
+    }, 500);
+});
 
 function pujarPokemon(pokemonId) {
     const emailUsuario = document.getElementById("emailUsuario").value;
@@ -114,5 +130,94 @@ function pujarPokemon(pokemonId) {
         })
         .catch(err => alert("❌ Error al enviar la oferta."));
 }
+
+
+
+function actualizarTiempoRestante() {
+    document.querySelectorAll("[id^='tiempo-restante-']").forEach(tiempoElemento => {
+        const expiracionStr = tiempoElemento.getAttribute("data-expiracion");
+        if (!expiracionStr) return;
+
+        let tiempoExpiracion = new Date(expiracionStr).getTime();
+        let ahora = new Date().getTime();
+        let tiempoRestante = Math.max(Math.floor((tiempoExpiracion - ahora) / 1000), 0);
+
+        if (tiempoRestante > 0) {
+            tiempoElemento.innerText = `${tiempoRestante} segundos`;
+        } else {
+            tiempoElemento.innerText = "⏳ Finalizando...";
+
+            const cartaElemento = document.querySelector(`[data-name="${tiempoElemento.getAttribute("data-name")}"]`);
+            const nombrePokemon = cartaElemento?.getAttribute("data-name");
+
+            if (!nombrePokemon) {
+                console.error(`❌ No se pudo obtener el nombre del Pokémon.`);
+            }
+        }
+    });
+}
+
+setInterval(actualizarTiempoRestante, 1000);
+
+
+
+
+
+
+connection.on("ActualizarTiempoSubasta", (pokemonId, emailVendedor, tiempoRestante) => {
+    const tiempoElemento = document.getElementById(`tiempo-restante-${pokemonId}`);
+    if (tiempoElemento) {
+        tiempoElemento.setAttribute("data-expiracion", new Date().getTime() + tiempoRestante * 1000);
+
+        if (tiempoRestante > 0) {
+            tiempoElemento.innerText = `${tiempoRestante} segundos`;
+        } else {
+            tiempoElemento.innerText = "⏳ Finalizando...";
+            
+        }
+   
+    }
+});
+connection.on("FinalizarSubasta", (nombrePokemon) => {
+    console.log(`🛑 Eliminando carta de la subasta: ${nombrePokemon}`);
+
+    const cardElement = document.getElementById(`card-${nombrePokemon}`);
+
+    if (cardElement) {
+        console.log(`✅ Carta eliminada correctamente.`);
+        cardElement.remove();
+    } else {
+        console.error(`❌ No se encontró la carta con ID: card-${nombrePokemon}.`);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

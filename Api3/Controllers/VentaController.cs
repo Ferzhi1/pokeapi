@@ -103,7 +103,9 @@ namespace api3.Controllers
                 duracionMinutos,
                 pokemon.Email,
                 pokemon.PujaActual,
-                pokemon.Stats
+                pokemon.Stats,
+                pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalMinutes
+
             );
 
             return RedirectToAction("Mercado");

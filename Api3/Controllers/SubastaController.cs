@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 using api3.Services;
-using api3.Hubs;
 using Microsoft.EntityFrameworkCore;
 
 [Route("Subasta")]
 public class SubastaController : Controller
 {
     private readonly SubastaService _subastaService;
-    private readonly IHubContext<SubastaHub> _hubContext;
+
     private readonly ApplicationDbContext _context;
 
-    public SubastaController(SubastaService subastaService, IHubContext<SubastaHub> hubContext, ApplicationDbContext context)
+    public SubastaController(SubastaService subastaService,ApplicationDbContext context)
     {
         _subastaService = subastaService ?? throw new ArgumentNullException(nameof(subastaService));
-        _hubContext = hubContext ?? throw new ArgumentNullException(nameof(hubContext));
+        
         _context = context;
     }
 
@@ -41,13 +39,21 @@ public class SubastaController : Controller
             return BadRequest("❌ La oferta debe ser mayor a la puja actual.");
         }
 
-        await _hubContext.Clients.All.SendAsync("ActualizarOferta", oferta.PokemonId, oferta.Usuario, oferta.Monto);
+       
         return Ok(new { mensaje = "✅ Oferta realizada." });
+    }
+
+    [HttpPost("finalizar/{pokemonId}")]
+    public async Task<IActionResult> FinalizarSubasta(int pokemonId)
+    {
+        await _subastaService.FinalizarSubastaAsync(pokemonId);
+        return Ok(new { mensaje = "Subasta finalizada correctamente" });
     }
 
 
 
- 
+
+
 
 
 

@@ -33,6 +33,23 @@ namespace api3.Hubs
             await Clients.All.SendAsync("NuevaSubasta", pokemonId, nombrePokemon, rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats);
         }
 
+    
+
+        public async Task ActualizarTiempoSubasta(int pokemonId, string emailVendedor, int tiempoRestante)
+        {
+
+            await Clients.All.SendAsync("ActualizarTiempoSubasta", pokemonId, emailVendedor, tiempoRestante);
+        }
+
+
+        public async Task FinalizarSubasta(string nombrePokemon)
+        {
+            await Clients.All.SendAsync("FinalizarSubasta", nombrePokemon);
+        }
+
+
+
+
 
     }
 }
