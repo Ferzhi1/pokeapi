@@ -59,7 +59,7 @@ namespace api3.Controllers
                 return BadRequest("❌ Error: Usuario no encontrado.");
             }
 
-           
+            ViewBag.EmailUsuario = usuario.Email;
             ViewBag.Monedero = usuario.Monedero;
 
             var pokemonsEnVenta = _context.ProductoPokemon
@@ -125,21 +125,26 @@ namespace api3.Controllers
 
             var climaResponse = await _climaService.ObtenerClimaAsync("Bogotá");
 
-            Console.WriteLine($"✅ Clima recibido: {JsonSerializer.Serialize(climaResponse)}"); // 🔍 Depuración
 
-          
+
+           
             var emailUsuario = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? string.Empty;
 
-            ViewBag.EmailUsuario = emailUsuario; 
+            var usuario = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == emailUsuario);
+
+
+            ViewBag.Monedero = usuario?.Monedero ?? 0;
+            ViewBag.EmailUsuario = emailUsuario;
 
             var viewModel = new MercadoViewModel
             {
                 Pokemons = pokemonsEnVenta,
                 Clima = climaResponse,
-                UsuarioEmail = emailUsuario 
+                UsuarioEmail = emailUsuario
             };
 
             return View(viewModel);
         }
+
     }
 }

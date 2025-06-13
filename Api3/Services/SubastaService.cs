@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using api3.Hubs;
+using api3.Models;
 using Api3.Models;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,6 @@ namespace api3.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _hubContext = hubContext ?? throw new ArgumentNullException(nameof(hubContext));
         }
-
         public async Task<bool> RegistrarOfertaAsync(int pokemonId, string usuario, decimal monto)
         {
             var pokemon = await _context.ProductoPokemon
@@ -48,10 +48,10 @@ namespace api3.Services
             return true;
         }
 
+
         public void IniciarTemporizador(int pokemonId, string emailVendedor, int duracionMinutos)
         {
             int tiempoRestante = duracionMinutos * 60;
-
             Timer timer = null;
 
             timer = new Timer(async _ =>
@@ -61,18 +61,15 @@ namespace api3.Services
                     tiempoRestante--;
                     SubastasActivas[pokemonId] = (timer, tiempoRestante);
 
-                   
-
-                   
                     if (tiempoRestante == 0)
                     {
                         await _hubContext.Clients.All.SendAsync("ActualizarTiempoSubasta", pokemonId, emailVendedor, "⏳ Finalizando...");
-                       
 
                         await Task.Delay(5000); 
 
-                        await FinalizarSubastaAsync(pokemonId);
                         timer.Dispose();
+
+                 
                     }
                     else
                     {
@@ -83,7 +80,6 @@ namespace api3.Services
 
             SubastasActivas.TryAdd(pokemonId, (timer, tiempoRestante));
         }
-
         public async Task FinalizarSubastaAsync(int pokemonId)
         {
             if (SubastasActivas.TryRemove(pokemonId, out var subasta))
@@ -94,21 +90,74 @@ namespace api3.Services
 
                 if (pokemon == null) return;
 
-                var pujaGanadora = pokemon.HistorialPujas?.OrderByDescending(p => p.CantidadMonedas).FirstOrDefault();
-
-                if (pujaGanadora != null)
+                var pujaGanadora = await _context.Puja
+                    .Where(p => p.PokemonId == pokemonId)
+                    .OrderByDescending(p => p.CantidadMonedas)
+                    .FirstOrDefaultAsync();
+                if (pujaGanadora == null)
                 {
-                    pokemon.Email = pujaGanadora.UsuarioEmail;
+                    pokemon.EnVenta = false;
+                    pokemon.Precio = 0;
+
+
+                    pokemon.Email = pokemon.Email ?? pokemon.Email;
+
+                    _context.ProductoPokemon.Update(pokemon);
+                    await _context.SaveChangesAsync();
+
+                    await _hubContext.Clients.All.SendAsync("FinalizarSubasta", pokemonId, pokemon.Nombre, 0, "Sin ganador", 0m);
+
+
+                    await _hubContext.Clients.User(pokemon.Email).SendAsync("PokemonDevuelto", pokemonId, pokemon.Nombre);
+
+                    return;
                 }
 
+
+                bool tieneDescuento = await _context.SolicitudAmistad
+                    .AnyAsync(s =>
+                        (s.RemitenteEmail == pujaGanadora.UsuarioEmail && s.ReceptorEmail == pokemon.Email) ||
+                        (s.ReceptorEmail == pujaGanadora.UsuarioEmail && s.RemitenteEmail == pokemon.Email) &&
+                        s.Estado == EstadoSolicitud.Aceptada);
+
+                decimal precioFinal = tieneDescuento ? pujaGanadora.CantidadMonedas * 0.7m : pujaGanadora.CantidadMonedas;
+
+                pokemon.Email = pujaGanadora.UsuarioEmail;
                 pokemon.EnVenta = false;
+                pokemon.Precio = precioFinal;
 
                 _context.ProductoPokemon.Update(pokemon);
                 await _context.SaveChangesAsync();
 
-                await _hubContext.Clients.All.SendAsync("FinalizarSubasta", pokemon.Nombre);
+                var comprador = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == pujaGanadora.UsuarioEmail);
+                if (comprador != null)
+                {
+                    comprador.Monedero -= precioFinal;
+                    _context.UsuariosPokemonApi.Update(comprador);
+                    await _context.SaveChangesAsync();
+                }
+
+                await _hubContext.Clients.All.SendAsync(
+                    "FinalizarSubasta",
+                    pokemonId,
+                    pokemon.Nombre,
+                    pujaGanadora.Id,
+                    pujaGanadora.UsuarioEmail,
+                    precioFinal
+                );
+
+                await _hubContext.Clients.User(pujaGanadora.UsuarioEmail).SendAsync(
+                    "ActualizarMonedero",
+                    comprador?.Monedero ?? 0
+                );
             }
         }
+
+
+
+
+
+
 
 
     }

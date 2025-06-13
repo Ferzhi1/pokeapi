@@ -13,10 +13,11 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
     }
 });
 
+connection.on("ActualizarMonedero", function (nuevoSaldo) {
+    document.getElementById("monedero").innerText = nuevoSaldo;
+});
 
 connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats) => {
-
-
     const contenedor = document.querySelector(".row.row-cols-1.row-cols-md-3.g-4");
     if (!contenedor) return;
 
@@ -33,105 +34,36 @@ connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, 
         statsHTML += '<li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>';
     }
     statsHTML += '</ul>';
+
     let tiempoRestante = duracionMinutos * 60;
 
     nuevaCarta.innerHTML = `
     <div class="card shadow-lg">
         <div class="d-flex align-items-center p-3">
             <div class="flex-shrink-0">
-                <img src="${imagenUrl}" class="img-fluid rounded pokemon-img"
-                     alt="${nombrePokemon}" style="width: 180px; height: auto;"
-                     onerror="this.src='/images/default-pokemon.png';" />
+                <img src="${imagenUrl}" class="img-fluid rounded pokemon-img" alt="${nombrePokemon}" style="width: 180px; height: auto;" onerror="this.src='/images/default-pokemon.png';" />
             </div>
             <div class="stats-section ms-3">
                 <h6> 📊 Estadísticas:</h6>
                 ${statsHTML}
             </div>
         </div>
-
         <div class="card-body text-center">
             <h5 class="card-title pokemon-nombre">${nombrePokemon}</h5>
             <p class="card-text"><strong>Rareza:</strong> ${rareza}</p>
             <p class="card-text">💰 Precio Inicial: <strong>${precioInicial} monedas</strong></p>
             <p class="card-text">🏅 Puja Actual: <strong id="puja-${pokemonId}">${pujaActual} monedas</strong></p>
             <p class="card-text">Email del vendedor:<strong>${emailVendedor}</strong></p>
-         <p class="card-text">
-                ⏳ Tiempo Restante:
-                <strong id="tiempo-restante-${pokemonId}">
-                    ${tiempoRestante} segundos
-                </strong>
-            </p>
-
+            <p class="card-text">⏳ Tiempo Restante: <strong id="tiempo-restante-${pokemonId}">${tiempoRestante} segundos</strong></p>
             <input type="number" id="oferta-${pokemonId}" min="${pujaActual}" placeholder="Monedas a ofertar" required />
             <button class="btn btn-success mt-3" onclick="pujarPokemon(${pokemonId})">💰 Pujar</button>
-
-            <!-- Agregar botón de solicitud de amistad al final -->
-            ${emailVendedor ?
-            `<button onclick="enviarSolicitud('${emailVendedor}')" class="btn btn-secondary mt-2">
-                    ➕ Agregar a Amigos (${emailVendedor})
-                </button>`
-            :
-            '<p class="text-muted">⚠ Email no disponible para solicitud.</p>'}
+            ${emailVendedor ? `<button onclick="enviarSolicitud('${emailVendedor}')" class="btn btn-secondary mt-2">➕ Agregar a Amigos (${emailVendedor})</button>` : '<p class="text-muted">⚠ Email no disponible para solicitud.</p>'}
         </div>
     </div>
     `;
 
     contenedor.appendChild(nuevaCarta);
-    setTimeout(() => {
-        const tiempoElemento = document.getElementById(`tiempo-restante-${pokemonId}`);
-        if (!tiempoElemento) {
-            console.error(`❌ No se encontró tiempo-restante-${pokemonId}.`);
-            return;
-        }
-
-        const intervalo = setInterval(() => {
-            if (tiempoRestante > 0) {
-                tiempoRestante--;
-                tiempoElemento.innerText = `${tiempoRestante} segundos`;
-            } else {
-                tiempoElemento.innerText = "⏳ Finalizando...";
-                clearInterval(intervalo);
-
-                setTimeout(() => {
-                    const cartaElemento = document.getElementById(`card-${pokemonId}`);
-                    if (cartaElemento) {
-                        cartaElemento.remove();
-                        console.log(`✅ Carta eliminada correctamente.`);
-                    } else {
-                        console.error(`❌ No se encontró la carta con ID: card-${pokemonId}.`);
-                    }
-                }, 2000);
-            }
-        }, 1000);
-    }, 500);
 });
-
-function pujarPokemon(pokemonId) {
-    const emailUsuario = document.getElementById("emailUsuario").value;
-    const oferta = document.getElementById(`oferta-${pokemonId}`).value;
-
-    if (!emailUsuario || oferta === "" || isNaN(oferta) || Number(oferta) <= 0) {
-        alert("❌ Debes ingresar una oferta válida.");
-        return;
-    }
-
-    fetch("/Subasta/PujarPokemon", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pokemonId, usuario: emailUsuario, monto: oferta })
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                alert(data.error);
-            } else {
-                alert("✅ Oferta realizada.");
-            }
-        })
-        .catch(err => alert("❌ Error al enviar la oferta."));
-}
-
-
 
 function actualizarTiempoRestante() {
     document.querySelectorAll("[id^='tiempo-restante-']").forEach(tiempoElemento => {
@@ -147,77 +79,34 @@ function actualizarTiempoRestante() {
         } else {
             tiempoElemento.innerText = "⏳ Finalizando...";
 
-            const cartaElemento = document.querySelector(`[data-name="${tiempoElemento.getAttribute("data-name")}"]`);
-            const nombrePokemon = cartaElemento?.getAttribute("data-name");
+            const pokemonCard = tiempoElemento.closest(".pokemon-card");
+            if (!pokemonCard || pokemonCard.getAttribute("data-finalizado") === "true") return;
 
-            if (!nombrePokemon) {
-                console.error(`❌ No se pudo obtener el nombre del Pokémon.`);
-            }
+            const pokemonId = pokemonCard.querySelector("[name='pokemonId']")?.value;
+            if (!pokemonId) return;
+
+            fetch("/Subasta/FinalizarSubasta", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ pokemonId: parseInt(pokemonId) })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    pokemonCard.setAttribute("data-finalizado", "true");
+                    if (data.sinPujas) {
+                        pokemonCard.style.display = "none";
+                    }
+                })
+                .catch(err => { });
         }
     });
 }
 
 setInterval(actualizarTiempoRestante, 1000);
 
-
-
-
-
-
-connection.on("ActualizarTiempoSubasta", (pokemonId, emailVendedor, tiempoRestante) => {
-    const tiempoElemento = document.getElementById(`tiempo-restante-${pokemonId}`);
-    if (tiempoElemento) {
-        tiempoElemento.setAttribute("data-expiracion", new Date().getTime() + tiempoRestante * 1000);
-
-        if (tiempoRestante > 0) {
-            tiempoElemento.innerText = `${tiempoRestante} segundos`;
-        } else {
-            tiempoElemento.innerText = "⏳ Finalizando...";
-            
-        }
-   
-    }
-});
-connection.on("FinalizarSubasta", (nombrePokemon) => {
-    console.log(`🛑 Eliminando carta de la subasta: ${nombrePokemon}`);
-
-    const cardElement = document.getElementById(`card-${nombrePokemon}`);
-
+connection.on("FinalizarSubasta", (pokemonId, nombrePokemon, Id, ganador) => {
+    const cardElement = document.getElementById(`card-${Id}`);
     if (cardElement) {
-        console.log(`✅ Carta eliminada correctamente.`);
-        cardElement.remove();
-    } else {
-        console.error(`❌ No se encontró la carta con ID: card-${nombrePokemon}.`);
+        cardElement.innerHTML += `<p class="text-success">✅ Subasta finalizada. Ganador: <strong>${ganador}</strong></p>`;
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

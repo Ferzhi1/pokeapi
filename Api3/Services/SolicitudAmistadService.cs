@@ -19,13 +19,15 @@ namespace api3.Services
             _context = context;
             _hubContext = hubContext;
         }
-
         public async Task<bool> EnviarSolicitudAsync(string remitenteEmail, string receptorEmail)
         {
-            var solicitudExistente = await _context.SolicitudAmistad
-                .FirstOrDefaultAsync(s => s.RemitenteEmail == remitenteEmail && s.ReceptorEmail == receptorEmail && s.Estado == EstadoSolicitud.Pendiente);
+            
+            if (remitenteEmail == receptorEmail) return false;
 
-            if (solicitudExistente != null) return false;
+            var solicitudExistente = await _context.SolicitudAmistad
+                .FirstOrDefaultAsync(s => s.RemitenteEmail == remitenteEmail && s.ReceptorEmail == receptorEmail);
+
+            if (solicitudExistente != null) return false; 
 
             var nuevaSolicitud = new SolicitudAmistad
             {
@@ -46,6 +48,8 @@ namespace api3.Services
 
             return true;
         }
+
+
 
 
         public async Task<List<SolicitudAmistad>> ObtenerSolicitudesPendientesAsync(string usuarioEmail)

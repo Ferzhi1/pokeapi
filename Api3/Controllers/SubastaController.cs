@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using api3.Services;
 using Microsoft.EntityFrameworkCore;
+using api3.Models;
+using Microsoft.AspNetCore.SignalR;
 
 [Route("Subasta")]
 public class SubastaController : Controller
@@ -9,12 +11,13 @@ public class SubastaController : Controller
 
     private readonly ApplicationDbContext _context;
 
-    public SubastaController(SubastaService subastaService,ApplicationDbContext context)
+    public SubastaController(SubastaService subastaService, ApplicationDbContext context)
     {
         _subastaService = subastaService ?? throw new ArgumentNullException(nameof(subastaService));
-        
+
         _context = context;
     }
+
 
 
     [HttpPost("PujarPokemon")]
@@ -27,7 +30,7 @@ public class SubastaController : Controller
             return BadRequest("❌ Datos de oferta inválidos o la subasta ha finalizado.");
         }
 
-      
+
         if (pokemon.Email == oferta.Usuario)
         {
             return BadRequest(new { error = "❌ No puedes pujar por tu propio Pokémon." });
@@ -39,31 +42,100 @@ public class SubastaController : Controller
             return BadRequest("❌ La oferta debe ser mayor a la puja actual.");
         }
 
-       
+
         return Ok(new { mensaje = "✅ Oferta realizada." });
     }
 
-    [HttpPost("finalizar/{pokemonId}")]
-    public async Task<IActionResult> FinalizarSubasta(int pokemonId)
+    [HttpPost("FinalizarSubasta")]
+    public async Task<IActionResult> FinalizarSubasta([FromBody] Dictionary<string, int> data)
     {
+        if (!data.TryGetValue("pokemonId", out int pokemonId) || pokemonId <= 0)
+        {
+            return BadRequest(new { error = "❌ ID de Pokémon no válido." });
+        }
+
+        var pokemon = await _context.ProductoPokemon
+            .Include(p => p.HistorialPujas)
+            .FirstOrDefaultAsync(p => p.Id == pokemonId);
+
+        if (pokemon == null)
+        {
+            return NotFound(new { error = "❌ Pokémon no encontrado en subasta." });
+        }
+
         await _subastaService.FinalizarSubastaAsync(pokemonId);
-        return Ok(new { mensaje = "Subasta finalizada correctamente" });
+
+        var pujaGanadora = await _context.Puja
+            .Where(p => p.PokemonId == pokemonId)
+            .OrderByDescending(p => p.CantidadMonedas)
+            .FirstOrDefaultAsync();
+
+        if (pujaGanadora == null || pujaGanadora.UsuarioEmail == pokemon.Email)
+        {
+            pokemon.EnVenta = false;
+            pokemon.Precio = 0;
+
+            _context.ProductoPokemon.Update(pokemon);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { mensaje = $"❌ Subasta del Pokémon {pokemon.Nombre} finalizada sin cambios.", sinPujas = true });
+
+        }
+
+        bool tieneDescuento = await _context.SolicitudAmistad
+            .AnyAsync(s =>
+                (s.RemitenteEmail == pujaGanadora.UsuarioEmail && s.ReceptorEmail == pokemon.Email) ||
+                (s.ReceptorEmail == pujaGanadora.UsuarioEmail && s.RemitenteEmail == pokemon.Email) &&
+                s.Estado == EstadoSolicitud.Aceptada);
+
+        decimal precioFinal = tieneDescuento ? pujaGanadora.CantidadMonedas * 0.7m : pujaGanadora.CantidadMonedas;
+
+        var comprador = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == pujaGanadora.UsuarioEmail);
+        if (comprador != null)
+        {
+            comprador.Monedero -= precioFinal;
+            _context.UsuariosPokemonApi.Update(comprador);
+            await _context.SaveChangesAsync();
+        }
+
+        var pokemonColeccion = new ColeccionPokemon
+        {
+            Id = pokemon.Id,
+            Nombre = pokemon.Nombre,
+            ImagenUrl = pokemon.ImagenUrl,
+            Rareza = pokemon.Rareza,
+            EmailUsuario = pujaGanadora.UsuarioEmail
+        };
+
+        _context.ColeccionPokemon.Add(pokemonColeccion);
+        _context.ProductoPokemon.Remove(pokemon);
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new { mensaje = $"❌ Subasta del Pokémon {pokemon.Nombre} finalizada sin cambios.", sinPujas = true });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 public class OfertaDto
 {

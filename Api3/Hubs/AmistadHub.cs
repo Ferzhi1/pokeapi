@@ -10,7 +10,6 @@ namespace api3.Hubs
         public static ConcurrentDictionary<string, string> UsuariosConectados = new();
         private readonly SolicitudAmistadService _solicitudService;
 
-
         public AmistadHub(SolicitudAmistadService solicitudService)
         {
             _solicitudService = solicitudService;
@@ -18,10 +17,11 @@ namespace api3.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            var email = Context.User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            var email = Context.User?.FindFirst(ClaimTypes.Email)?.Value;
             if (!string.IsNullOrEmpty(email))
             {
-                UsuariosConectados[email] = Context.ConnectionId;
+             
+                UsuariosConectados.AddOrUpdate(email, Context.ConnectionId, (key, oldValue) => Context.ConnectionId);
 
                 var solicitudesPendientes = await _solicitudService.ObtenerSolicitudesPendientesAsync(email);
                 foreach (var solicitud in solicitudesPendientes)
@@ -33,11 +33,9 @@ namespace api3.Hubs
             await base.OnConnectedAsync();
         }
 
-
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            var email = Context.User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-
+            var email = Context.User?.FindFirst(ClaimTypes.Email)?.Value;
             if (!string.IsNullOrEmpty(email))
             {
                 UsuariosConectados.TryRemove(email, out _);
@@ -48,21 +46,16 @@ namespace api3.Hubs
 
         public async Task EnviarSolicitudAmistad(string remitenteEmail, string receptorEmail)
         {
-            if (UsuariosConectados.TryGetValue(receptorEmail, out var connectionId))
-            {
-                await Clients.User(receptorEmail).SendAsync("RecibirSolicitud", remitenteEmail);
-            }
-        }
+            if (!UsuariosConectados.ContainsKey(receptorEmail)) return; 
 
+            await Clients.User(receptorEmail).SendAsync("RecibirSolicitud", remitenteEmail);
+        }
 
         public async Task AceptarSolicitudAmistad(string receptorEmail, string remitenteEmail)
         {
-            if (UsuariosConectados.TryGetValue(remitenteEmail, out var connectionId))
-            {
-                await Clients.Client(connectionId).SendAsync("SolicitudAceptada", receptorEmail);
-            }
-        }
+            if (!UsuariosConectados.ContainsKey(remitenteEmail)) return;
 
-   
+            await Clients.Client(UsuariosConectados[remitenteEmail]).SendAsync("SolicitudAceptada", receptorEmail);
+        }
     }
 }

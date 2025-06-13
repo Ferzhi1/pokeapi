@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using System.Threading.Tasks;
+
 
 namespace api3.Controllers
 {
@@ -31,11 +31,20 @@ namespace api3.Controllers
             {
                 if (solicitud == null || string.IsNullOrEmpty(solicitud.RemitenteEmail) || string.IsNullOrEmpty(solicitud.ReceptorEmail))
                 {
-                    return BadRequest("Los datos de la solicitud no son válidos.");
+                    return BadRequest(new { error = "Los datos de la solicitud no son válidos." });
+                }
+
+          
+                if (solicitud.RemitenteEmail == solicitud.ReceptorEmail)
+                {
+                    return BadRequest(new { error = "No puedes enviarte una solicitud a ti mismo." });
                 }
 
                 var resultado = await _solicitudService.EnviarSolicitudAsync(solicitud.RemitenteEmail, solicitud.ReceptorEmail);
-                if (!resultado) throw new Exception("La solicitud ya existe o no se pudo crear.");
+                if (!resultado)
+                {
+                    return BadRequest(new { error = "La solicitud ya existe o no se pudo crear." });
+                }
 
                 if (AmistadHub.UsuariosConectados.TryGetValue(solicitud.ReceptorEmail, out var connectionId))
                 {
@@ -46,9 +55,10 @@ namespace api3.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { error = $"Error al enviar la solicitud: {ex.Message}" });
+                return StatusCode(500, new { error = $"Error interno al enviar la solicitud: {ex.Message}" });
             }
         }
+
 
         [HttpGet("ListaSolicitudes")]
         public async Task<IActionResult> ListaSolicitudes()

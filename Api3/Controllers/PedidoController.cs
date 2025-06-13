@@ -16,13 +16,15 @@ namespace api3.Controllers
         private readonly CheckoutService _checkoutService;
         private readonly PokemonStorageService _pokemonStorageService;
         private readonly IMemoryCache _cache;
+        private ApplicationDbContext _context;
 
-        public PedidoController(PokemonService pokemonService, CheckoutService checkoutService, PokemonStorageService pokemonStorageService, IMemoryCache cache)
+        public PedidoController(PokemonService pokemonService, CheckoutService checkoutService, PokemonStorageService pokemonStorageService, IMemoryCache cache, ApplicationDbContext context)
         {
             _pokemonService = pokemonService;
             _checkoutService = checkoutService;
             _pokemonStorageService = pokemonStorageService;
             _cache = cache;
+            _context = context;
         }
 
         private static string ObtenerImagenUrl(string nombreMazo) => nombreMazo switch
@@ -78,6 +80,23 @@ namespace api3.Controllers
             {
                 Pokemons = pokemons
             };
+            usuarioPokemon.Monedero += 1000;
+
+            
+            var usuarioExistente = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == usuarioPokemon.Email);
+
+            if (usuarioExistente != null)
+            {
+              
+                usuarioExistente.Monedero = usuarioPokemon.Monedero;
+
+             
+                _context.SaveChanges();
+            }
+            else
+            {
+                throw new InvalidOperationException("El usuario no existe en la base de datos.");
+            }
 
             return View("~/Views/Pedido/Confirmacion.cshtml", pedidoPokemon);
         }

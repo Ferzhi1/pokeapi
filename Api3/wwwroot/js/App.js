@@ -52,14 +52,15 @@ function obtenerDatosPokemon(card) {
         nombrePokemon: card.querySelector(".pokemon-nombre")?.textContent?.trim() || "Desconocido",
         rarezaPokemon: card.querySelector(".pokemon-rareza")?.textContent?.replace("Rareza: ", "").trim() || "N/A",
         imagenUrl: card.querySelector(".pokemon-img")?.src || "/images/default-pokemon.png",
-        stats: Array.from(card.querySelectorAll(".list-group-item"))
+        stats: Array.from(card.querySelectorAll(".stats-section .list-group-item"))
             .map(stat => {
-                const statData = stat.textContent.split(": ");
-                return { nombre: statData[0]?.trim(), valor: statData[1]?.trim() || "N/A" };
+                const statData = stat.textContent.split(/:\s+/);
+                return statData.length === 2 ? { nombre: statData[0]?.trim(), valor: statData[1]?.trim() || "N/A" } : null;
             })
-            .filter(stat => stat.nombre)
+            .filter(stat => stat !== null)
     };
 }
+
 
 function mostrarAlerta(mensaje, tipo) {
     let alertDiv = document.createElement("div");

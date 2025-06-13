@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using api3.Models;
-using Api3.Models;
-using api3.Services;
+
 
 public class ApplicationDbContext : DbContext
 {

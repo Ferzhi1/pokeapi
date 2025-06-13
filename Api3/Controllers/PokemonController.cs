@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Api3.Models;
+using Microsoft.EntityFrameworkCore;
 [Authorize]
 public class PokemonController : Controller
 {
@@ -76,21 +77,18 @@ public class PokemonController : Controller
         }
 
         var pokemonsGuardados = _context.ColeccionPokemon
-            .Where(p => p.EmailUsuario == emailUsuarioAutenticado) 
+            .Include(p => p.Stats) 
+            .Where(p => p.EmailUsuario == emailUsuarioAutenticado)
             .ToList();
 
-        if (pokemonsGuardados == null || !pokemonsGuardados.Any())
+        if (!pokemonsGuardados.Any())
         {
-            return View(new List<ProductoPokemon>());
-        }
-
-        foreach (var pokemon in pokemonsGuardados)
-        {
-            pokemon.Stats ??= new List<StatPokemon>();
+            return View(new List<ColeccionPokemon>());
         }
 
         return View(pokemonsGuardados);
     }
+
 }
 
 
