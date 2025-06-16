@@ -54,67 +54,28 @@ public class SubastaController : Controller
             return BadRequest(new { error = "❌ ID de Pokémon no válido." });
         }
 
-        var pokemon = await _context.ProductoPokemon
-            .Include(p => p.HistorialPujas)
-            .FirstOrDefaultAsync(p => p.Id == pokemonId);
+        var resultado = await _subastaService.FinalizarSubastaAsync(pokemonId);
 
-        if (pokemon == null)
+        if (resultado.SinPujas)
         {
-            return NotFound(new { error = "❌ Pokémon no encontrado en subasta." });
+            return Ok(new
+            {
+                mensaje = $"⚠️ Subasta del Pokémon {resultado.NombrePokemon} finalizada sin pujas.",
+                sinPujas = true
+            });
         }
 
-        await _subastaService.FinalizarSubastaAsync(pokemonId);
-
-        var pujaGanadora = await _context.Puja
-            .Where(p => p.PokemonId == pokemonId)
-            .OrderByDescending(p => p.CantidadMonedas)
-            .FirstOrDefaultAsync();
-
-        if (pujaGanadora == null || pujaGanadora.UsuarioEmail == pokemon.Email)
+        return Ok(new
         {
-            pokemon.EnVenta = false;
-            pokemon.Precio = 0;
-
-            _context.ProductoPokemon.Update(pokemon);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { mensaje = $"❌ Subasta del Pokémon {pokemon.Nombre} finalizada sin cambios.", sinPujas = true });
-
-        }
-
-        bool tieneDescuento = await _context.SolicitudAmistad
-            .AnyAsync(s =>
-                (s.RemitenteEmail == pujaGanadora.UsuarioEmail && s.ReceptorEmail == pokemon.Email) ||
-                (s.ReceptorEmail == pujaGanadora.UsuarioEmail && s.RemitenteEmail == pokemon.Email) &&
-                s.Estado == EstadoSolicitud.Aceptada);
-
-        decimal precioFinal = tieneDescuento ? pujaGanadora.CantidadMonedas * 0.7m : pujaGanadora.CantidadMonedas;
-
-        var comprador = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == pujaGanadora.UsuarioEmail);
-        if (comprador != null)
-        {
-            comprador.Monedero -= precioFinal;
-            _context.UsuariosPokemonApi.Update(comprador);
-            await _context.SaveChangesAsync();
-        }
-
-        var pokemonColeccion = new ColeccionPokemon
-        {
-            Id = pokemon.Id,
-            Nombre = pokemon.Nombre,
-            ImagenUrl = pokemon.ImagenUrl,
-            Rareza = pokemon.Rareza,
-            EmailUsuario = pujaGanadora.UsuarioEmail
-        };
-
-        _context.ColeccionPokemon.Add(pokemonColeccion);
-        _context.ProductoPokemon.Remove(pokemon);
-
-        await _context.SaveChangesAsync();
-
-        return Ok(new { mensaje = $"❌ Subasta del Pokémon {pokemon.Nombre} finalizada sin cambios.", sinPujas = true });
+            mensaje = $"✅ Subasta del Pokémon {resultado.NombrePokemon} finalizada exitosamente.",
+            sinPujas = false,
+            ganador = resultado.Ganador
+        });
     }
+
 }
+
+
 
 
 
