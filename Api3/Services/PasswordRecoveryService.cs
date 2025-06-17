@@ -72,11 +72,11 @@ namespace api3.Services
             }
 
             await _context.SaveChangesAsync();
-            Console.WriteLine("Contraseña actualizada correctamente.");
+            
 
             
             await _context.Entry(user).ReloadAsync();
-            Console.WriteLine($"Nueva contraseña en memoria después de la recarga: {user.Password}");
+            
         }
 
 

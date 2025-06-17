@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OQFLcegK929PijZzxG4Cp1S0X+ZL3zg54EwsIeW+564=",
+  "Hash": "kycj79WA4UaGH0andAB6LN5FReNWFHCHQviuErA6zds=",
   "Source": "api3",
   "BasePath": "_content/api3",
   "Mode": "Default",
@@ -556,8 +556,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "kpfyw5mdr0",
-      "Integrity": "CHgRYl5QgVsosPdSLwy1qK8oHSeuAyLEfJh8rhDD5w8=",
+      "Fingerprint": "b9p4b44lsq",
+      "Integrity": "IaxsRkHDF4/2ajHUXrW9ge6xb4Se/npJG8aoxViCr5o=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Subasta.js"
@@ -3812,6 +3812,51 @@
       ]
     },
     {
+      "Route": "js/Subasta.b9p4b44lsq.js",
+      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9091"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IaxsRkHDF4/2ajHUXrW9ge6xb4Se/npJG8aoxViCr5o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Jun 2025 13:26:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b9p4b44lsq"
+        },
+        {
+          "Name": "label",
+          "Value": "js/Subasta.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IaxsRkHDF4/2ajHUXrW9ge6xb4Se/npJG8aoxViCr5o="
+        }
+      ]
+    },
+    {
       "Route": "js/Subasta.js",
       "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
       "Selectors": [],
@@ -3822,7 +3867,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8066"
+          "Value": "9091"
         },
         {
           "Name": "Content-Type",
@@ -3830,11 +3875,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"CHgRYl5QgVsosPdSLwy1qK8oHSeuAyLEfJh8rhDD5w8=\""
+          "Value": "\"IaxsRkHDF4/2ajHUXrW9ge6xb4Se/npJG8aoxViCr5o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 16 Jun 2025 19:08:24 GMT"
+          "Value": "Tue, 17 Jun 2025 13:26:37 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3844,52 +3889,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-CHgRYl5QgVsosPdSLwy1qK8oHSeuAyLEfJh8rhDD5w8="
-        }
-      ]
-    },
-    {
-      "Route": "js/Subasta.kpfyw5mdr0.js",
-      "AssetFile": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "8066"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"CHgRYl5QgVsosPdSLwy1qK8oHSeuAyLEfJh8rhDD5w8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 16 Jun 2025 19:08:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "kpfyw5mdr0"
-        },
-        {
-          "Name": "label",
-          "Value": "js/Subasta.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-CHgRYl5QgVsosPdSLwy1qK8oHSeuAyLEfJh8rhDD5w8="
+          "Value": "sha256-IaxsRkHDF4/2ajHUXrW9ge6xb4Se/npJG8aoxViCr5o="
         }
       ]
     },

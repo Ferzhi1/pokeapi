@@ -19,7 +19,6 @@ public class SubastaController : Controller
     }
 
 
-
     [HttpPost("PujarPokemon")]
     public async Task<IActionResult> PujarPokemon([FromBody] OfertaDto oferta)
     {
@@ -47,14 +46,14 @@ public class SubastaController : Controller
     }
 
     [HttpPost("FinalizarSubasta")]
-    public async Task<IActionResult> FinalizarSubasta([FromBody] Dictionary<string, int> data)
+    public async Task<IActionResult> FinalizarSubasta([FromBody] OfertaDto oferta)
     {
-        if (!data.TryGetValue("pokemonId", out int pokemonId) || pokemonId <= 0)
+        if (oferta == null || oferta.PokemonId <= 0 || string.IsNullOrWhiteSpace(oferta.Usuario) || oferta.Monto <= 0)
         {
-            return BadRequest(new { error = "❌ ID de Pokémon no válido." });
+            return BadRequest(new { error = "❌ Datos de oferta incompletos o inválidos." });
         }
 
-        var resultado = await _subastaService.FinalizarSubastaAsync(pokemonId);
+        var resultado = await _subastaService.FinalizarSubastaAsync(oferta);
 
         if (resultado.SinPujas)
         {
@@ -72,6 +71,7 @@ public class SubastaController : Controller
             ganador = resultado.Ganador
         });
     }
+
 
 }
 

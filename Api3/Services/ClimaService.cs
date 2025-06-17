@@ -29,14 +29,11 @@ namespace api3.Services
                 {
                     PropertyNameCaseInsensitive = true 
                 });
-
-                Console.WriteLine($"✅ JSON Clima: {respuesta}"); 
-
                 return clima ?? new ClimaResponse(); 
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error al obtener el clima: {ex.Message}");
+            
                 return new ClimaResponse();
             }
         }

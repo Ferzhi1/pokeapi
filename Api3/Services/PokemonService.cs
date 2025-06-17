@@ -97,7 +97,7 @@ namespace api3.Services
                 }
             }
 
-            Console.WriteLine($"📌 Total de Pokémon obtenidos: {pokemons.Count}");
+            
             return pokemons;
         }
 
@@ -113,11 +113,11 @@ namespace api3.Services
                     return respuesta;
 
                 intentos++;
-                Console.WriteLine($"🔄 Reintentando obtener Pokémon {id} ({intentos}/3)");
+
                 await Task.Delay(500);
             }
 
-            Console.WriteLine($"❌ No se pudo obtener Pokémon {id} después de 3 intentos");
+
             return null;
         }
     }

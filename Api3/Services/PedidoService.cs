@@ -22,13 +22,13 @@ namespace api3.Services
 
             if (!_cache.TryGetValue(cacheKeyMazo, out List<ProductoPokemon> pokemons))
             {
-                Console.WriteLine($"❌ ERROR: El mazo {nombreMazo} no está en caché.");
+              
                 throw new InvalidOperationException("El mazo no existe en caché.");
             }
 
             if (_cache.TryGetValue(cacheKeyPedido, out PedidoPokemon cachedPedido))
             {
-                Console.WriteLine($"✅ Pedido recuperado desde caché: {cacheKeyPedido}");
+               
                 return cachedPedido;
             }
 
@@ -40,7 +40,7 @@ namespace api3.Services
 
             _cache.Set(cacheKeyPedido, pedido, TimeSpan.FromMinutes(30));
 
-            Console.WriteLine($"✅ Nuevo pedido almacenado en caché: {cacheKeyPedido}");
+ 
 
             return pedido;
         }

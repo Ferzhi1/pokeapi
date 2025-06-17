@@ -126,6 +126,12 @@ function pujarPokemon(pokemonId) {
                 alert(data.error);
             } else {
                 alert("✅ Oferta realizada.");
+                const cartaElemento = document.querySelector(`#card-${pokemonId}`);
+                if (cartaElemento) {
+                    cartaElemento.setAttribute("data-usuario", emailUsuario);
+                    cartaElemento.setAttribute("data-monto", oferta);
+                }
+
             }
         })
         .catch(err => alert("❌ Error al enviar la oferta."));
@@ -138,31 +144,38 @@ function actualizarTiempoRestante() {
         const expiracionStr = tiempoElemento.getAttribute("data-expiracion");
         if (!expiracionStr) return;
 
-        let tiempoExpiracion = new Date(expiracionStr).getTime();
-        let ahora = new Date().getTime();
-        let tiempoRestante = Math.max(Math.floor((tiempoExpiracion - ahora) / 1000), 0);
+        const tiempoExpiracion = new Date(expiracionStr).getTime();
+        const ahora = Date.now();
+        const tiempoRestante = Math.max(Math.floor((tiempoExpiracion - ahora) / 1000), 0);
 
         if (tiempoRestante > 0) {
-            tiempoElemento.innerText = `${tiempoRestante} segundos`;
+            tiempoElemento.textContent = `${tiempoRestante} segundos`;
         } else {
-            tiempoElemento.innerText = "⏳ Finalizando...";
+            tiempoElemento.textContent = "⏳ Finalizando...";
 
             const cartaElemento = tiempoElemento.closest(".pokemon-card");
             if (!cartaElemento || cartaElemento.getAttribute("data-finalizado") === "true") return;
 
-            const pokemonId = cartaElemento.querySelector("[name='pokemonId']")?.value;
-            if (!pokemonId) return;
+            const pokemonId = parseInt(cartaElemento.querySelector("[name='pokemonId']")?.value);
+            const usuario = cartaElemento.getAttribute("data-usuario");
+            const monto = parseFloat(cartaElemento.getAttribute("data-monto"));
+
+            if (!pokemonId || !usuario || isNaN(monto)) return;
 
             fetch("/Subasta/FinalizarSubasta", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ pokemonId: parseInt(pokemonId) })
+                body: JSON.stringify({ pokemonId, usuario, monto })
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     cartaElemento.setAttribute("data-finalizado", "true");
                     if (data.sinPujas) {
-                       
                         cartaElemento.remove();
                     }
                 })
@@ -174,6 +187,8 @@ function actualizarTiempoRestante() {
 }
 
 setInterval(actualizarTiempoRestante, 1000);
+
+
 
 
 
@@ -210,6 +225,18 @@ connection.on("FinalizarSubasta", (nombrePokemon) => {
         console.error(`❌ No se encontró la carta con ID: card-${nombrePokemon}.`);
     }
 });
+
+
+connection.on("ActualizarMonedero", function (nuevoSaldo) {
+    const monederoElement = document.getElementById("monedero");
+    if (monederoElement) {
+        monederoElement.textContent = nuevoSaldo;
+        console.log("✅ Monedero actualizado: " + nuevoSaldo);
+    } else {
+        console.warn("⚠️ Elemento del monedero no encontrado.");
+    }
+});
+
 
 
 
