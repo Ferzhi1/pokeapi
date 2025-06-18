@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using api3.Services;
 using api3.Models;
 using Microsoft.Extensions.Caching.Memory;

@@ -95,8 +95,8 @@ connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, 
                 setTimeout(() => {
                     const cartaElemento = document.getElementById(`card-${pokemonId}`);
                     if (cartaElemento) {
-                        cartaElemento.remove();
-                        console.log(`✅ Carta eliminada correctamente.`);
+                      
+                        
                     } else {
                         console.error(`❌ No se encontró la carta con ID: card-${pokemonId}.`);
                     }
@@ -176,7 +176,7 @@ function actualizarTiempoRestante() {
                 .then(data => {
                     cartaElemento.setAttribute("data-finalizado", "true");
                     if (data.sinPujas) {
-                        cartaElemento.remove();
+                       
                     }
                 })
                 .catch(err => {
@@ -213,18 +213,21 @@ connection.on("ActualizarTiempoSubasta", (pokemonId, emailVendedor, tiempoRestan
 
 
 
-connection.on("FinalizarSubasta", (nombrePokemon) => {
-    console.log(`🛑 Eliminando carta de la subasta: ${nombrePokemon}`);
-
-    const cardElement = document.getElementById(`card-${nombrePokemon}`);
-
+connection.on("FinalizarSubasta", (pokemonId) => {
+    const cardElement = document.getElementById(`card-${pokemonId}`);
     if (cardElement) {
-        console.log(`✅ Carta eliminada correctamente.`);
         cardElement.remove();
-    } else {
-        console.error(`❌ No se encontró la carta con ID: card-${nombrePokemon}.`);
     }
 });
+
+
+
+connection.on("EliminarCarta", function (pokemonId) {
+    const carta = document.getElementById(`card-${pokemonId}`); 
+    if (carta) carta.remove();
+    else console.warn(`⚠️ No se encontró card-${pokemonId}`);
+});
+
 
 
 connection.on("ActualizarMonedero", function (nuevoSaldo) {

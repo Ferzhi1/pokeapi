@@ -444,8 +444,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>b9p4b44lsq</Fingerprint>
-      <Integrity>IaxsRkHDF4/2ajHUXrW9ge6xb4Se/npJG8aoxViCr5o=</Integrity>
+      <Fingerprint>4lhuo5o5pq</Fingerprint>
+      <Integrity>eD9Mdb0+vu3RUT9PFYtA3XwWPvs4e289Vruaidwpdmc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Subasta.js'))</OriginalItemSpec>

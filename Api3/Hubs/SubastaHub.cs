@@ -59,11 +59,18 @@ namespace api3.Hubs
         {
             await Clients.User(usuarioEmail).SendAsync("ActualizarMonedero", nuevoSaldo);
         }
+
+
         public async Task FinalizarSubasta(int pokemonId, string ganadorEmail, decimal montoFinal)
         {
             
             await Clients.All.SendAsync("SubastaFinalizada", pokemonId, ganadorEmail, montoFinal);
         }
+        public async Task NotificarEliminarCarta(int pokemonId)
+        {
+            await Clients.All.SendAsync("EliminarCarta", pokemonId);
+        }
+
 
 
 

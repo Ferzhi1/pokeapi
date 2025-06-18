@@ -73,47 +73,25 @@ namespace api3.Controllers
 
 
         [HttpPost]
-        public IActionResult IniciarSubasta(int pokemonId, decimal precioInicial, int duracionMinutos)
+        public async Task<IActionResult> IniciarSubasta(int pokemonId, decimal precioInicial, int duracionMinutos)
         {
-            if (!User.Identity.IsAuthenticated) return Unauthorized();
+            if (!User.Identity.IsAuthenticated)
+                return Unauthorized();
 
             var emailUsuario = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            if (string.IsNullOrWhiteSpace(emailUsuario)) return BadRequest();
-
-            var usuarioPokemon = _pokemonStorageService.ObtenerUsuarioPokemon(emailUsuario);
-            var pokemon = _context.ProductoPokemon.Include(p => p.Stats).FirstOrDefault(p => p.Id == pokemonId);
-
-            if (usuarioPokemon == null || !usuarioPokemon.CorreoValidado || pokemon == null || pokemon.Email != emailUsuario)
+            if (string.IsNullOrWhiteSpace(emailUsuario))
                 return BadRequest();
 
-            pokemon.PrecioInicial = precioInicial;
-            pokemon.PujaActual = precioInicial;
-            pokemon.TiempoExpiracion = DateTime.Now.AddMinutes(duracionMinutos);
-            pokemon.EnVenta = true;
+            var usuarioPokemon = _pokemonStorageService.ObtenerUsuarioPokemon(emailUsuario);
+            if (usuarioPokemon == null || !usuarioPokemon.CorreoValidado)
+                return BadRequest();
 
-            _context.SaveChanges();
-
-            _hubContext.Clients.All.SendAsync(
-                "NuevaSubasta",
-                pokemonId,
-                pokemon.Nombre,
-                pokemon.Rareza,
-                precioInicial,
-                pokemon.ImagenUrl,
-                duracionMinutos,
-                pokemon.Email,
-                pokemon.PujaActual,
-                pokemon.Stats,
-                pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalMinutes
-
-            );
+            var resultado = await _ventaService.IniciarSubastaAsync(pokemonId, precioInicial, duracionMinutos, emailUsuario);
+            if (!resultado)
+                return BadRequest();
 
             return RedirectToAction("Mercado");
         }
-
-
-
-
 
         public async Task<IActionResult> Mercado()
         {

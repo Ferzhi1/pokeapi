@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using api3.Models;
 
 public class Puja2
 {
@@ -12,4 +13,5 @@ public class Puja2
     public string UsuarioEmail { get; set; }
     public decimal CantidadMonedas { get; set; }
     public DateTime FechaPuja { get; set; }
+    public ProductoPokemon ProductoPokemon { get; set; }
 }

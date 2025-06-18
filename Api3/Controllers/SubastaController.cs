@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using api3.Services;
 using Microsoft.EntityFrameworkCore;
-using api3.Models;
-using Microsoft.AspNetCore.SignalR;
 
 [Route("Subasta")]
 public class SubastaController : Controller

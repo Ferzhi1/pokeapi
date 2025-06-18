@@ -18,7 +18,12 @@ namespace api3.Models
         public bool EnVenta { get; set; } = false;
         public decimal PrecioInicial { get; set; }
         public DateTime TiempoExpiracion { get; set; } 
-        public List<Puja2> HistorialPujas { get; set; } = new List<Puja2>(); 
+        public List<Puja2> HistorialPujas { get; set; } = new List<Puja2>();
+        public string UltimoDueno { get; set; }
+
+        public DateTime fechaInicioSubasta { get; set; }
+
+
 
 
 
