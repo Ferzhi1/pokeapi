@@ -1,19 +1,22 @@
 ﻿using api3.Models;
 using Microsoft.AspNetCore.SignalR;
 using System.Collections.Concurrent;
+using System.Security.Claims;
 
 namespace api3.Hubs
 {
     public class SubastaHub : Hub
     {
+        // Almacena los usuarios conectados y su ConnectionId
         public static ConcurrentDictionary<string, string> UsuariosSubasta = new();
 
         public override async Task OnConnectedAsync()
         {
-            var usuario = Context.User?.Identity?.Name;
-            if (!string.IsNullOrEmpty(usuario))
+            var email = Context.User?.FindFirst(ClaimTypes.Email)?.Value;
+            if (!string.IsNullOrEmpty(email))
             {
-                UsuariosSubasta.AddOrUpdate(usuario, Context.ConnectionId, (key, oldValue) => Context.ConnectionId);
+                UsuariosSubasta[email] = Context.ConnectionId;
+                Console.WriteLine($"✅ Usuario conectado al hub de subasta: {email} - ConnectionId: {Context.ConnectionId}");
             }
 
             await base.OnConnectedAsync();
@@ -21,14 +24,17 @@ namespace api3.Hubs
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            var usuario = Context.User?.Identity?.Name;
-            if (!string.IsNullOrEmpty(usuario))
+            var email = UsuariosSubasta.FirstOrDefault(x => x.Value == Context.ConnectionId).Key;
+
+            if (!string.IsNullOrEmpty(email))
             {
-                UsuariosSubasta.TryRemove(usuario, out _);
+                UsuariosSubasta.TryRemove(email, out _);
+                Console.WriteLine($"🛑 Usuario desconectado del hub de subasta: {email}");
             }
 
             await base.OnDisconnectedAsync(exception);
         }
+
 
         public async Task NotificarActualizarOferta(int pokemonId, string usuario, decimal monto)
         {
@@ -38,9 +44,13 @@ namespace api3.Hubs
             }
         }
 
+
         public async Task NotificarNuevaSubasta(int pokemonId, string nombrePokemon, string rareza, decimal precioInicial, string imagenUrl, int duracionMinutos, string emailVendedor, decimal pujaActual, List<StatPokemon> stats)
         {
-            if (pokemonId > 0 && !string.IsNullOrEmpty(nombrePokemon) && !string.IsNullOrEmpty(emailVendedor) && precioInicial >= 0)
+            if (pokemonId > 0 &&
+                !string.IsNullOrEmpty(nombrePokemon) &&
+                !string.IsNullOrEmpty(emailVendedor) &&
+                precioInicial >= 0)
             {
                 await Clients.All.SendAsync("NuevaSubasta", pokemonId, nombrePokemon, rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats);
             }
@@ -54,7 +64,6 @@ namespace api3.Hubs
             }
         }
 
-    
         public async Task ActualizarMonedero(string usuarioEmail, decimal nuevoSaldo)
         {
             await Clients.User(usuarioEmail).SendAsync("ActualizarMonedero", nuevoSaldo);
@@ -63,17 +72,18 @@ namespace api3.Hubs
 
         public async Task FinalizarSubasta(int pokemonId, string ganadorEmail, decimal montoFinal)
         {
-            
-            await Clients.All.SendAsync("SubastaFinalizada", pokemonId, ganadorEmail, montoFinal);
+            if (pokemonId > 0 && !string.IsNullOrEmpty(ganadorEmail) && montoFinal >= 0)
+            {
+                await Clients.All.SendAsync("SubastaFinalizada", pokemonId, ganadorEmail, montoFinal);
+            }
         }
+
         public async Task NotificarEliminarCarta(int pokemonId)
         {
-            await Clients.All.SendAsync("EliminarCarta", pokemonId);
+            if (pokemonId > 0)
+            {
+                await Clients.All.SendAsync("EliminarCarta", pokemonId);
+            }
         }
-
-
-
-
-
     }
 }

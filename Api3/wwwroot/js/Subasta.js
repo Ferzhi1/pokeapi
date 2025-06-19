@@ -14,6 +14,7 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
 });
 
 
+
 connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats) => {
 
 
@@ -237,12 +238,15 @@ connection.on("EliminarCarta", function (pokemonId) {
 connection.on("ActualizarMonedero", function (nuevoSaldo) {
     const monederoElement = document.getElementById("monedero");
     if (monederoElement) {
-        monederoElement.textContent = nuevoSaldo;
-        console.log("✅ Monedero actualizado: " + nuevoSaldo);
+        const saldoFormateado = Number(nuevoSaldo).toFixed(2);
+        monederoElement.textContent = `$${saldoFormateado}`;
+        console.log("✅ Monedero actualizado: $" + saldoFormateado);
     } else {
         console.warn("⚠️ Elemento del monedero no encontrado.");
     }
 });
+
+
 
 
 

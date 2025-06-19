@@ -1889,51 +1889,6 @@
       ]
     },
     {
-      "Route": "js/Subasta.4j3ehzflh4.js",
-      "AssetFile": "js/Subasta.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "9079"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oKmvR5yzbCbbCprRpfDn/g7fZQUSFGPSmHLtHF8Imh8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 19 Jun 2025 17:27:55 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4j3ehzflh4"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-oKmvR5yzbCbbCprRpfDn/g7fZQUSFGPSmHLtHF8Imh8="
-        },
-        {
-          "Name": "label",
-          "Value": "js/Subasta.js"
-        }
-      ]
-    },
-    {
       "Route": "js/Subasta.js",
       "AssetFile": "js/Subasta.js",
       "Selectors": [],
@@ -1948,7 +1903,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9079"
+          "Value": "9166"
         },
         {
           "Name": "Content-Type",
@@ -1956,17 +1911,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"oKmvR5yzbCbbCprRpfDn/g7fZQUSFGPSmHLtHF8Imh8=\""
+          "Value": "\"5DF7oYTGXrrPrjD6ntLHxSzVSkafnpuMmeHMiIwSotY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Jun 2025 17:27:55 GMT"
+          "Value": "Thu, 19 Jun 2025 22:03:14 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-oKmvR5yzbCbbCprRpfDn/g7fZQUSFGPSmHLtHF8Imh8="
+          "Value": "sha256-5DF7oYTGXrrPrjD6ntLHxSzVSkafnpuMmeHMiIwSotY="
+        }
+      ]
+    },
+    {
+      "Route": "js/Subasta.odby0sb790.js",
+      "AssetFile": "js/Subasta.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9166"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5DF7oYTGXrrPrjD6ntLHxSzVSkafnpuMmeHMiIwSotY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 19 Jun 2025 22:03:14 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "odby0sb790"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5DF7oYTGXrrPrjD6ntLHxSzVSkafnpuMmeHMiIwSotY="
+        },
+        {
+          "Name": "label",
+          "Value": "js/Subasta.js"
         }
       ]
     },

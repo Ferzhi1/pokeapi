@@ -67,14 +67,19 @@ namespace api3.Services
                 {
                     int nuevoTiempo = subasta.Item2 - 1;
 
+                    Console.WriteLine($"[TIMER] Pokémon ID: {pokemonId} - Tiempo restante: {nuevoTiempo}s");
+
                     if (nuevoTiempo <= 0)
                     {
+                        Console.WriteLine($"[TIMER] Pokémon ID: {pokemonId} - Tiempo agotado. Finalizando...");
+
                         await _hubContext.Clients.All.SendAsync("ActualizarTiempoSubasta", pokemonId, emailVendedor, "⏳ Finalizando...");
                         await Task.Delay(5000);
 
                         if (SubastasActivas.TryRemove(pokemonId, out var finalSubasta))
                         {
                             finalSubasta.Item1?.Dispose();
+                            Console.WriteLine($"[TIMER] Pokémon ID: {pokemonId} - Temporizador eliminado.");
                         }
                     }
                     else
@@ -85,12 +90,17 @@ namespace api3.Services
                 }
             }, null, 1000, 1000);
 
-
             if (SubastasActivas.ContainsKey(pokemonId))
             {
+                Console.WriteLine($"[TIMER] Pokémon ID: {pokemonId} - Temporizador sobrescrito con {tiempoRestante}s.");
                 SubastasActivas[pokemonId] = (timer, tiempoRestante);
             }
+            else
+            {
+                Console.WriteLine($"[TIMER] Pokémon ID: {pokemonId} - Nuevo temporizador creado con {tiempoRestante}s.");
+            }
         }
+
         public async Task<ResultadoSubasta> FinalizarSubastaAsync(OfertaDto oferta)
         {
             var lockObj = Locks.GetOrAdd(oferta.PokemonId, new object());
@@ -104,29 +114,39 @@ namespace api3.Services
 
         private async Task<ResultadoSubasta> FinalizarInternamenteAsync(OfertaDto oferta)
         {
+            var txId = Guid.NewGuid();
+            Console.WriteLine($"[{txId}] 🟡 Iniciando finalización de subasta para Pokémon ID: {oferta.PokemonId}");
+
             var pokemon = await _context.ProductoPokemon
                 .Include(p => p.HistorialPujas)
                 .FirstOrDefaultAsync(p => p.Id == oferta.PokemonId);
 
             if (pokemon == null)
             {
+                Console.WriteLine($"[{txId}] ⚠️ Pokémon no encontrado.");
                 return new ResultadoSubasta { SinPujas = true, NombrePokemon = "Desconocido" };
             }
 
+            if (!pokemon.EnVenta)
+            {
+                Console.WriteLine($"[{txId}] ⛔ Subasta ya finalizada previamente para Pokémon ID: {oferta.PokemonId}. Abortando ejecución.");
+                return new ResultadoSubasta { SinPujas = false, NombrePokemon = pokemon.Nombre, Ganador = pokemon.Email };
+            }
+
             var pujaGanadora = await _context.Puja
-                .Where(p =>
-                    p.PokemonId == oferta.PokemonId &&
-                    p.FechaPuja >= pokemon.fechaInicioSubasta &&
-                    p.FechaPuja <= pokemon.TiempoExpiracion)
+                .Where(p => p.PokemonId == oferta.PokemonId &&
+                            p.FechaPuja >= pokemon.fechaInicioSubasta &&
+                            p.FechaPuja <= pokemon.TiempoExpiracion)
                 .OrderByDescending(p => p.CantidadMonedas)
                 .FirstOrDefaultAsync();
 
             if (pujaGanadora == null)
             {
-                pokemon.EnVenta = true;
+                Console.WriteLine($"[{txId}] ❌ No hubo pujas. Pokémon se queda con el vendedor.");
+                pokemon.EnVenta = false;
                 pokemon.Precio = 0;
 
-                _context.ProductoPokemon.Update(pokemon);
+                _context.Update(pokemon);
                 await _context.SaveChangesAsync();
 
                 await _hubContext.Clients.All.SendAsync("FinalizarSubasta", oferta.PokemonId, pokemon.Nombre, 0, "Sin ganador", 0m);
@@ -139,56 +159,58 @@ namespace api3.Services
             var vendedor = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == pokemon.UltimoDueno);
 
             bool tieneDescuento = await _context.SolicitudAmistad.AnyAsync(s =>
-                ((s.RemitenteEmail == pujaGanadora.UsuarioEmail && s.ReceptorEmail == pokemon.UltimoDueno) ||
-                 (s.RemitenteEmail == pokemon.UltimoDueno && s.ReceptorEmail == pujaGanadora.UsuarioEmail)) &&
+                ((s.RemitenteEmail == comprador.Email && s.ReceptorEmail == vendedor.Email) ||
+                 (s.RemitenteEmail == vendedor.Email && s.ReceptorEmail == comprador.Email)) &&
                 s.Estado == EstadoSolicitud.Aceptada);
 
-            decimal precioFinal = tieneDescuento
-                ? pujaGanadora.CantidadMonedas * 0.7m
-                : pujaGanadora.CantidadMonedas;
+            decimal precioFinal = tieneDescuento ? pujaGanadora.CantidadMonedas * 0.7m : pujaGanadora.CantidadMonedas;
 
-            pokemon.Email = pujaGanadora.UsuarioEmail;
-            pokemon.EnVenta = true;
+            Console.WriteLine($"[{txId}] ✅ Puja ganadora por {pujaGanadora.CantidadMonedas}, descuento: {tieneDescuento}, total: {precioFinal}");
+
+            pokemon.Email = comprador.Email;
+            pokemon.EnVenta = false;
             pokemon.Precio = precioFinal;
 
-            _context.ProductoPokemon.Update(pokemon);
+
+            comprador.Monedero -= precioFinal;
+            vendedor.Monedero += precioFinal;
+
+            _context.UpdateRange(pokemon, comprador, vendedor);
             await _context.SaveChangesAsync();
 
-            if (comprador != null && vendedor != null)
+            Console.WriteLine($"[{txId}] 💰 Monedero comprador: {comprador.Monedero} | vendedor: {vendedor.Monedero}");
+            // Notificar al comprador si está conectado
+            string compradorConn;
+            if (SubastaHub.UsuariosSubasta.TryGetValue(comprador.Email, out compradorConn))
             {
-                Console.WriteLine($"Puja: {pujaGanadora.CantidadMonedas}, Descuento aplicado: {tieneDescuento}, Monto final: {precioFinal}");
-                Console.WriteLine($"Monedero comprador antes: {comprador.Monedero}");
-
-                comprador.Monedero -= precioFinal;
-                vendedor.Monedero += precioFinal;
-
-                _context.Entry(comprador).State = EntityState.Modified;
-                _context.Entry(vendedor).State = EntityState.Modified;
-
-                await _context.SaveChangesAsync();
-                Console.WriteLine($"Monedero comprador después: {comprador.Monedero}");
+                Console.WriteLine($"📢 Enviando actualización de monedero al comprador: {comprador.Email} - ConnID: {compradorConn}");
+                await _hubContext.Clients.Client(compradorConn).SendAsync("ActualizarMonedero", comprador.Monedero);
             }
 
-            if (SubastaHub.UsuariosSubasta.TryGetValue(comprador.Email, out var compradorConnectionId))
+            // Notificar al vendedor si está conectado
+            string vendedorConn;
+            if (SubastaHub.UsuariosSubasta.TryGetValue(vendedor.Email, out vendedorConn))
             {
-                await _hubContext.Clients.Client(compradorConnectionId).SendAsync("ActualizarMonedero", comprador.Monedero);
+                Console.WriteLine($"📢 Enviando actualización de monedero al vendedor: {vendedor.Email} - ConnID: {vendedorConn}");
+                await _hubContext.Clients.Client(vendedorConn).SendAsync("ActualizarMonedero", vendedor.Monedero);
             }
 
-            if (vendedor != null && SubastaHub.UsuariosSubasta.TryGetValue(vendedor.Email, out var vendedorConnectionId))
-            {
-                await _hubContext.Clients.Client(vendedorConnectionId).SendAsync("ActualizarMonedero", vendedor.Monedero);
-            }
 
+
+
+            Console.WriteLine($"[{txId}] ✅ Finalización completa para Pokémon {pokemon.Nombre}");
 
             return new ResultadoSubasta
             {
                 SinPujas = false,
                 NombrePokemon = pokemon.Nombre,
-                Ganador = pujaGanadora.UsuarioEmail
+                Ganador = comprador.Email
             };
         }
+
     }
 }
+
 
 
 
