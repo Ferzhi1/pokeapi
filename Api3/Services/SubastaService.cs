@@ -12,7 +12,7 @@ namespace api3.Services
         private readonly IHubContext<SubastaHub> _hubContext;
         private static ConcurrentDictionary<int, (Timer, int)> SubastasActivas = new ConcurrentDictionary<int, (Timer, int)>();
         private static ConcurrentDictionary<int, object> Locks = new();
-
+        public static ConcurrentDictionary<string, string> UsuariosSubasta = new();
         public SubastaService(ApplicationDbContext context, IHubContext<SubastaHub> hubContext)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -91,27 +91,27 @@ namespace api3.Services
                 SubastasActivas[pokemonId] = (timer, tiempoRestante);
             }
         }
-
         public async Task<ResultadoSubasta> FinalizarSubastaAsync(OfertaDto oferta)
         {
-            Console.WriteLine("🟡 Iniciando FinalizarSubastaAsync...");
+            var lockObj = Locks.GetOrAdd(oferta.PokemonId, new object());
 
-            if (!SubastasActivas.TryRemove(oferta.PokemonId, out _))
+            lock (lockObj)
             {
-                Console.WriteLine("🟠 Subasta no estaba activa o ya fue removida.");
+                return FinalizarInternamenteAsync(oferta).GetAwaiter().GetResult();
             }
+        }
 
+
+        private async Task<ResultadoSubasta> FinalizarInternamenteAsync(OfertaDto oferta)
+        {
             var pokemon = await _context.ProductoPokemon
                 .Include(p => p.HistorialPujas)
                 .FirstOrDefaultAsync(p => p.Id == oferta.PokemonId);
 
             if (pokemon == null)
             {
-                Console.WriteLine("🔴 Pokémon no encontrado.");
                 return new ResultadoSubasta { SinPujas = true, NombrePokemon = "Desconocido" };
             }
-
-            Console.WriteLine($"🟢 Pokémon encontrado: {pokemon.Nombre}");
 
             var pujaGanadora = await _context.Puja
                 .Where(p =>
@@ -123,21 +123,17 @@ namespace api3.Services
 
             if (pujaGanadora == null)
             {
-                Console.WriteLine("⚪ Sin pujas. Devolviendo Pokémon al vendedor.");
                 pokemon.EnVenta = true;
                 pokemon.Precio = 0;
 
                 _context.ProductoPokemon.Update(pokemon);
                 await _context.SaveChangesAsync();
-                Console.WriteLine("✅ Pokémon actualizado sin pujas.");
 
                 await _hubContext.Clients.All.SendAsync("FinalizarSubasta", oferta.PokemonId, pokemon.Nombre, 0, "Sin ganador", 0m);
                 await _hubContext.Clients.User(pokemon.Email).SendAsync("PokemonDevuelto", oferta.PokemonId, pokemon.Nombre);
 
                 return new ResultadoSubasta { SinPujas = true, NombrePokemon = pokemon.Nombre };
             }
-
-            Console.WriteLine($"🏆 Puja ganadora detectada: {pujaGanadora.UsuarioEmail} con {pujaGanadora.CantidadMonedas} monedas.");
 
             var comprador = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == pujaGanadora.UsuarioEmail);
             var vendedor = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == pokemon.UltimoDueno);
@@ -147,13 +143,9 @@ namespace api3.Services
                  (s.RemitenteEmail == pokemon.UltimoDueno && s.ReceptorEmail == pujaGanadora.UsuarioEmail)) &&
                 s.Estado == EstadoSolicitud.Aceptada);
 
-            Console.WriteLine($"🔍 ¿Tiene descuento por amistad? {tieneDescuento}");
-
             decimal precioFinal = tieneDescuento
                 ? pujaGanadora.CantidadMonedas * 0.7m
                 : pujaGanadora.CantidadMonedas;
-
-            Console.WriteLine($"💰 Precio final calculado: {precioFinal}");
 
             pokemon.Email = pujaGanadora.UsuarioEmail;
             pokemon.EnVenta = true;
@@ -161,10 +153,12 @@ namespace api3.Services
 
             _context.ProductoPokemon.Update(pokemon);
             await _context.SaveChangesAsync();
-            Console.WriteLine("✅ Pokémon transferido al nuevo dueño.");
 
             if (comprador != null && vendedor != null)
             {
+                Console.WriteLine($"Puja: {pujaGanadora.CantidadMonedas}, Descuento aplicado: {tieneDescuento}, Monto final: {precioFinal}");
+                Console.WriteLine($"Monedero comprador antes: {comprador.Monedero}");
+
                 comprador.Monedero -= precioFinal;
                 vendedor.Monedero += precioFinal;
 
@@ -172,19 +166,19 @@ namespace api3.Services
                 _context.Entry(vendedor).State = EntityState.Modified;
 
                 await _context.SaveChangesAsync();
-                Console.WriteLine("💳 Monederos actualizados exitosamente.");
+                Console.WriteLine($"Monedero comprador después: {comprador.Monedero}");
             }
-            else
+
+            if (SubastaHub.UsuariosSubasta.TryGetValue(comprador.Email, out var compradorConnectionId))
             {
-                Console.WriteLine("❗ Comprador o vendedor no encontrados para actualizar monederos.");
+                await _hubContext.Clients.Client(compradorConnectionId).SendAsync("ActualizarMonedero", comprador.Monedero);
             }
 
-            await _hubContext.Clients.All.SendAsync("FinalizarSubasta", oferta.PokemonId);
+            if (vendedor != null && SubastaHub.UsuariosSubasta.TryGetValue(vendedor.Email, out var vendedorConnectionId))
+            {
+                await _hubContext.Clients.Client(vendedorConnectionId).SendAsync("ActualizarMonedero", vendedor.Monedero);
+            }
 
-            await _hubContext.Clients.User(pujaGanadora.UsuarioEmail).SendAsync("ActualizarMonedero", comprador?.Monedero ?? 0);
-            await _hubContext.Clients.User(vendedor?.Email).SendAsync("ActualizarMonedero", vendedor?.Monedero ?? 0);
-            await _hubContext.Clients.All.SendAsync("EliminarCarta", oferta.PokemonId);
-            Console.WriteLine("📡 Notificaciones enviadas a clientes.");
 
             return new ResultadoSubasta
             {
@@ -193,16 +187,17 @@ namespace api3.Services
                 Ganador = pujaGanadora.UsuarioEmail
             };
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+   

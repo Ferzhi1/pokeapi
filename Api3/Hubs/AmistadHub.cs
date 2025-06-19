@@ -20,7 +20,7 @@ namespace api3.Hubs
             var email = Context.User?.FindFirst(ClaimTypes.Email)?.Value;
             if (!string.IsNullOrEmpty(email))
             {
-             
+
                 UsuariosConectados.AddOrUpdate(email, Context.ConnectionId, (key, oldValue) => Context.ConnectionId);
 
                 var solicitudesPendientes = await _solicitudService.ObtenerSolicitudesPendientesAsync(email);
@@ -46,7 +46,7 @@ namespace api3.Hubs
 
         public async Task EnviarSolicitudAmistad(string remitenteEmail, string receptorEmail)
         {
-            if (!UsuariosConectados.ContainsKey(receptorEmail)) return; 
+            if (!UsuariosConectados.ContainsKey(receptorEmail)) return;
 
             await Clients.User(receptorEmail).SendAsync("RecibirSolicitud", remitenteEmail);
         }

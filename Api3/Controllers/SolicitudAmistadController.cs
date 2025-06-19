@@ -34,7 +34,6 @@ namespace api3.Controllers
                     return BadRequest(new { error = "Los datos de la solicitud no son válidos." });
                 }
 
-          
                 if (solicitud.RemitenteEmail == solicitud.ReceptorEmail)
                 {
                     return BadRequest(new { error = "No puedes enviarte una solicitud a ti mismo." });
@@ -46,11 +45,6 @@ namespace api3.Controllers
                     return BadRequest(new { error = "La solicitud ya existe o no se pudo crear." });
                 }
 
-                if (AmistadHub.UsuariosConectados.TryGetValue(solicitud.ReceptorEmail, out var connectionId))
-                {
-                    await _hubContext.Clients.Client(connectionId).SendAsync("RecibirSolicitud", solicitud.RemitenteEmail);
-                }
-
                 return Ok(new { mensaje = "Solicitud enviada correctamente." });
             }
             catch (Exception ex)
@@ -58,6 +52,7 @@ namespace api3.Controllers
                 return StatusCode(500, new { error = $"Error interno al enviar la solicitud: {ex.Message}" });
             }
         }
+
 
 
         [HttpGet("ListaSolicitudes")]

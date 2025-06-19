@@ -21,13 +21,13 @@ namespace api3.Services
         }
         public async Task<bool> EnviarSolicitudAsync(string remitenteEmail, string receptorEmail)
         {
-            
+
             if (remitenteEmail == receptorEmail) return false;
 
             var solicitudExistente = await _context.SolicitudAmistad
                 .FirstOrDefaultAsync(s => s.RemitenteEmail == remitenteEmail && s.ReceptorEmail == receptorEmail);
 
-            if (solicitudExistente != null) return false; 
+            if (solicitudExistente != null) return false;
 
             var nuevaSolicitud = new SolicitudAmistad
             {
@@ -44,6 +44,8 @@ namespace api3.Services
             {
                 var solicitudesPendientes = await ObtenerSolicitudesPendientesAsync(receptorEmail);
                 await _hubContext.Clients.Client(connectionId).SendAsync("ActualizarListaSolicitudes", solicitudesPendientes);
+                await _hubContext.Clients.Client(connectionId).SendAsync("RecibirSolicitud", remitenteEmail);
+
             }
 
             return true;

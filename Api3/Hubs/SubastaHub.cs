@@ -6,7 +6,7 @@ namespace api3.Hubs
 {
     public class SubastaHub : Hub
     {
-        private static ConcurrentDictionary<string, string> UsuariosSubasta = new();
+        public static ConcurrentDictionary<string, string> UsuariosSubasta = new();
 
         public override async Task OnConnectedAsync()
         {

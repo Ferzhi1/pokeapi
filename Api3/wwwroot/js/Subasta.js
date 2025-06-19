@@ -95,7 +95,7 @@ connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, 
                 setTimeout(() => {
                     const cartaElemento = document.getElementById(`card-${pokemonId}`);
                     if (cartaElemento) {
-                      
+                        cartaElemento.remove();
                         
                     } else {
                         console.error(`❌ No se encontró la carta con ID: card-${pokemonId}.`);
@@ -175,13 +175,17 @@ function actualizarTiempoRestante() {
                 })
                 .then(data => {
                     cartaElemento.setAttribute("data-finalizado", "true");
+
                     if (data.sinPujas) {
-                       
+                        console.log("No hubo pujas.");
+                    } else {
+                        console.log("✅ Subasta finalizada con pujas.");
                     }
+
+                    
+                    cartaElemento.remove();
                 })
-                .catch(err => {
-                    console.error("❌ Error al finalizar la subasta:", err);
-                });
+
         }
     });
 }

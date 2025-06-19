@@ -14,19 +14,33 @@
             setTimeout(iniciarConexion, 5000);
         }
     }
+    connection.on("ActualizarListaSolicitudes", function (solicitudes) {
+        console.log("📥 Lista de solicitudes actualizada:", solicitudes);
+        actualizarListaSolicitudes();
+    });
+
 
     connection.on("RecibirSolicitud", async (remitenteEmail) => {
         try {
-            actualizarListaSolicitudes(); 
+            actualizarListaSolicitudes();
 
             const response = await fetch(`/SolicitudAmistad/ObtenerSolicitudId?remitenteEmail=${encodeURIComponent(remitenteEmail)}`);
             if (!response.ok) throw new Error("Error obteniendo solicitud.");
 
             const data = await response.json();
-            if (confirm(`Tienes una solicitud de amistad de ${remitenteEmail}. ¿Quieres aceptarla ahora?`)) {
-                aceptarSolicitud(data.solicitudId);
-                actualizarListaSolicitudes(); 
-            }
+            Swal.fire({
+                title: '👥 Nueva solicitud de amistad',
+                text: `¿Aceptar solicitud de ${remitenteEmail}?`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Aceptar',
+                cancelButtonText: 'Rechazar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    aceptarSolicitud(data.solicitudId);
+                }
+            });
+
         } catch (err) {
             console.error("Error procesando solicitud:", err);
         }
