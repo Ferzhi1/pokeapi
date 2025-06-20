@@ -1,75 +1,119 @@
-﻿body {
-    font-family: Arial, sans-serif;
-    background-color:#31c431; 
-    color: white;
-    text-align: center;
-    padding: 20px;
+﻿/* === Fondo general === */
+body {
+    background-color: #000000;
+    color: #000000; /* Letra negra por defecto */
 }
 
-
-.alert-warning {
-    background-color: #ffc107;
-    color: black;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 15px;
+/* === Tarjeta de Pokémon === */
+.pokemon-card .card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 2px solid #333;
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-h2 {
-    font-size: 30px;
-    font-weight: bold;
-    color: #FFD700; 
-    text-transform: uppercase;
-    margin-bottom: 25px;
-}
-
-
-.card {
-    background: #222; 
-    color: white;
-    border-radius: 15px;
-    box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.5); 
-    transition: transform 0.3s ease-in-out;
-    padding: 15px;
-    text-align: center;
-}
-
-    .card:hover {
-        transform: scale(1.07);
+    .pokemon-card .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2);
     }
 
-
-.img-fluid {
-    border-radius: 10px;
-    max-width: 100%;
-    height: auto;
+/* === Nombre del Pokémon === */
+.pokemon-nombre {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #000000;
 }
 
-
-.fw-bold {
-    color: #ffcc00; 
+/* === Rareza === */
+.pokemon-rareza {
+    color: #222;
 }
 
-
+/* === Texto en tarjetas === */
+.card-text,
+.card-title,
+.stats-section,
 .list-group-item {
-    background: transparent;
-    color: white;
-    border: 1px solid #FFD700; 
-    font-size: 14px;
+    color: #000000;
 }
 
-
-.row {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+/* === Labels e Inputs === */
+label {
+    color: #ffffff; /* Para destacar sobre fondo negro */
+    font-weight: bold;
 }
 
+input[type="number"] {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #555;
+    border-radius: 10px;
+    padding: 10px;
+}
 
-@media (max-width: 768px) {
-    .card {
-        width: 100%;
+/* === Sección de estadísticas === */
+.stats-section {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* === Encabezado Principal === */
+h2 {
+    color: #ffffff;
+    text-shadow: 2px 2px #888;
+}
+
+/* === Alerta de información === */
+.alert-info {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+/* === Botones conservan su estilo moderno === */
+.btn-warning,
+.btn-primary,
+.btn-lg {
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+/* === Contenedor del formulario === */
+form {
+    background-color: #1a1a1a;
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+    /* === Etiquetas (títulos de input) === */
+    form label {
+        display: block;
+        font-size: 0.95rem;
+        color: #ffffff;
+        margin-bottom: 6px;
+        font-weight: 600;
+        text-align: left;
     }
-}
+
+    /* === Inputs numéricos estilizados === */
+    form input[type="number"] {
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 1rem;
+        color: #000000;
+        background-color: #ffffff;
+        border: 2px solid #555;
+        border-radius: 10px;
+        margin-bottom: 18px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        form input[type="number"]:focus {
+            border-color: #3b4cca;
+            box-shadow: 0 0 8px rgba(59, 76, 202, 0.4);
+            outline: none;
+        }

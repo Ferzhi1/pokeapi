@@ -23,11 +23,21 @@ function guardarPokemon(boton, emailUsuario) {
 
     const { nombrePokemon, imagenUrl, rarezaPokemon, stats } = obtenerDatosPokemon(card);
     if (!nombrePokemon || !imagenUrl || !rarezaPokemon || stats.length === 0) return;
+    const idPokemon = card.getAttribute("data-id");
+
+    const data = {
+        PokemonIdOriginal: parseInt(idPokemon),
+        Nombre: nombrePokemon,
+        ImagenUrl: imagenUrl,
+        Rareza: rarezaPokemon,
+        Stats: stats,
+        Email: emailUsuario
+    };
 
     fetch("/Pokemon/GuardarFavorito", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ Nombre: nombrePokemon, ImagenUrl: imagenUrl, Rareza: rarezaPokemon, Stats: stats, Email: emailUsuario })
+        body: JSON.stringify(data)
     })
         .then(response => response.ok ? response.json() : response.text().then(text => { throw new Error(text); }))
         .then(() => {
@@ -60,7 +70,6 @@ function obtenerDatosPokemon(card) {
             .filter(stat => stat !== null)
     };
 }
-
 
 function mostrarAlerta(mensaje, tipo) {
     let alertDiv = document.createElement("div");

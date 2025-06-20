@@ -1,91 +1,96 @@
 ﻿@model List<api3.Models.ColeccionPokemon>
+@{
+    int currentPage = ViewBag.Page ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    string email = ViewBag.EmailUsuario ?? "Entrenador desconocido";
+    int monedero = ViewBag.Monedero ?? 0;
+}
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colección Pokémon</title>
-    <link rel="stylesheet" href="~/css/styles3.css">
+    <meta charset="UTF-8" />
+    <title>Pokédex - Álbum</title>
+    <link rel="stylesheet" href="~/css/stylecoleccion.css" />
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Colección Pokémon</a>
-
-            <div class="d-flex align-items-center">
-                <span class="text-light me-3">
-                    💰 Monedas: <strong id="monedero">@ViewBag.Monedero</strong>
-                </span>
-                <span class="text-light">
-                    📧 @ViewBag.EmailUsuario
-                </span>
+        <div class="container-fluid justify-content-between">
+            <a class="navbar-brand" href="#">Pokédex</a>
+            <div class="d-flex flex-column align-items-end">
+                <span class="text-light">💰 Monedas: <strong>@monedero</strong></span>
+                <span class="text-light">📧 @email</span>
             </div>
         </div>
     </nav>
 
-    <div class="container text-center mt-5">
-        <h2 class="mb-4">📜 Tu Colección de Pokémon</h2>
+    <div class="container pokedex-container">
+        <h2>📘 Álbum de colección</h2>
 
-        @if (Model?.Any() ?? false)
-        {
-            <h6>📢 Total de Pokémon en tu colección: @(Model.Count())</h6>
-
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                @foreach (var pokemon in Model)
-                {
-                    <div class="col pokemon-card" id="card-@pokemon.Nombre">
-                        <div class="card shadow-lg">
-                            <div class="d-flex align-items-center p-3">
-                                <div class="flex-shrink-0">
+        <div class="pokedex-grid">
+            @foreach (var pokemon in Model)
+            {
+                <div class="pokedex-card @(string.IsNullOrEmpty(pokemon.Nombre) ? "empty" : "filled")">
+                    <div class="card">
+                        <div class="d-flex align-items-center p-3">
+                            <div class="flex-shrink-0">
+                                @if (!string.IsNullOrEmpty(pokemon.Nombre))
+                                {
                                     <img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img"
-                                         alt="@pokemon.Nombre" style="width: 180px; height: auto;"
                                          onerror="this.src='/images/default-pokemon.png';" />
-                                </div>
+                                }
+                                else
+                                {
+                                    <img src="/images/silueta.png" class="img-fluid rounded pokemon-img" />
+                                }
                             </div>
-
-                            <div class="card-body text-center">
-                                <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
-                                <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
-
-                                <div class="stats-container">
-                                    <h6> 📊 Estadísticas:</h6>
-                                    <div class="stats-section">
-                                        <ul class="list-group">
-                                            @if (pokemon.Stats?.Any() ?? false)
+                            <div class="stats-section ms-3">
+                                <h6>N.º @pokemon.PokemonIdOriginal.ToString("D3")</h6>
+                                @if (!string.IsNullOrEmpty(pokemon.Nombre))
+                                {
+                                    <h5 class="pokemon-nombre">@pokemon.Nombre</h5>
+                                    <ul class="list-group">
+                                        @if (pokemon.Stats?.Any() ?? false)
+                                        {
+                                            @foreach (var stat in pokemon.Stats)
                                             {
-                                                @foreach (var stat in pokemon.Stats)
-                                                {
-                                                    <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
-                                                }
+                                                <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
                                             }
-                                            else
-                                            {
-                                                <li class="list-group-item small text-muted">No hay estadísticas disponibles.</li>
-                                            }
-                                        </ul>
-                                    </div>
-                                </div>
+                                        }
+                                        else
+                                        {
+                                            <li class="list-group-item small text-muted">Sin estadísticas</li>
+                                        }
+                                    </ul>
+                                    <p class="pokemon-rareza mt-2">Rareza: <strong>@pokemon.Rareza</strong></p>
+                                }
+                                else
+                                {
+                                    <h6 class="text-muted mt-3">Aún no lo obtienes</h6>
+                                    <p class="text-muted">Captúralo para ver sus estadísticas</p>
+                                }
                             </div>
                         </div>
                     </div>
-                }
-            </div>
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                ❌ No hay Pokémon guardados en tu colección.
-            </div>
-        }
-    </div>
+                </div>
+            }
+        </div>
 
-    <div class="mt-5">
-        <a href="https://localhost:7200/Venta/Mercado" class="btn btn-primary btn-lg">🏪 Ir al Mercado</a>
-    </div>
+        <div class="pagination">
+            @if (currentPage > 1)
+            {
+                <a href="@Url.Action("Coleccion", new { page = currentPage - 1 })" class="pagination-btn">⬅ Anterior</a>
+            }
 
-    <script src="~/js/site.js"></script>
+            <span class="page-indicator">Página @currentPage de @totalPages</span>
+
+            @if (currentPage < totalPages)
+            {
+                <a href="@Url.Action("Coleccion", new { page = currentPage + 1 })" class="pagination-btn">Siguiente ➡</a>
+            }
+        </div>
+    </div>
 
 </body>
 </html>

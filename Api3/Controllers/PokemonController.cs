@@ -45,49 +45,79 @@ public class PokemonController : Controller
 
         Console.WriteLine($"Recibiendo Pokémon favorito: {pokemon.Nombre} - {pokemon.Email}");
 
-     
+        
+        var ultimoNumero = _context.ColeccionPokemon
+            .Where(p => p.EmailUsuario == pokemon.Email)
+            .Max(p => (int?)p.PokemonIdOriginal) ?? 0;
+
         var coleccionPokemon = new ColeccionPokemon
         {
             Nombre = pokemon.Nombre,
             ImagenUrl = pokemon.ImagenUrl,
             Rareza = pokemon.Rareza,
-            EmailUsuario = pokemon.Email, 
-            Stats = pokemon.Stats
+            EmailUsuario = pokemon.Email,
+            Stats = pokemon.Stats,
+            PokemonIdOriginal = pokemon.PokemonIdOriginal
         };
 
         _context.ColeccionPokemon.Add(coleccionPokemon);
         _context.SaveChanges();
 
-        Console.WriteLine("✅ Pokémon guardado en la colección correctamente");
+        Console.WriteLine("✅ Pokémon guardado en la colección correctamente con número de álbum: " + coleccionPokemon.NumeroAlbum);
 
-        return Ok(new { mensaje = "✅ Pokémon guardado en la colección.", stats = coleccionPokemon.Stats });
+        return Ok(new
+        {
+            mensaje = "✅ Pokémon guardado en la colección.",
+            NumeroAlbum = coleccionPokemon.PokemonIdOriginal,
+            stats = coleccionPokemon.Stats
+        });
     }
 
 
 
 
     [HttpGet]
-    public IActionResult Coleccion()
+    public IActionResult Coleccion(int page = 1)
     {
-        var emailUsuarioAutenticado = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+        const int totalSlots = 1000;
+        const int pageSize = 40;
 
-        if (string.IsNullOrWhiteSpace(emailUsuarioAutenticado))
+        var emailUsuario = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+        if (string.IsNullOrWhiteSpace(emailUsuario))
         {
             return RedirectToAction("Login");
         }
 
-        var pokemonsGuardados = _context.ColeccionPokemon
-            .Include(p => p.Stats) 
-            .Where(p => p.EmailUsuario == emailUsuarioAutenticado)
+        var capturados = _context.ColeccionPokemon
+            .Include(p => p.Stats)
+            .Where(p => p.EmailUsuario == emailUsuario)
             .ToList();
 
-        if (!pokemonsGuardados.Any())
-        {
-            return View(new List<ColeccionPokemon>());
-        }
+   
+        var listaCompleta = Enumerable.Range(1, totalSlots)
+            .Select(id =>
+                capturados.FirstOrDefault(p => p.PokemonIdOriginal == id)
+                ?? new ColeccionPokemon { PokemonIdOriginal = id }
+            ).ToList();
 
-        return View(pokemonsGuardados);
+   
+        var paginaActual = listaCompleta
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+
+        ViewBag.Page = page;
+        ViewBag.TotalPages = (int)Math.Ceiling((double)totalSlots / pageSize);
+        ViewBag.EmailUsuario = emailUsuario;
+
+        var usuario = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == emailUsuario);
+        ViewBag.Monedero = usuario != null ? (int)usuario.Monedero : 0;
+
+        return View("Coleccion", paginaActual);
     }
+
+
+
 
 }
 

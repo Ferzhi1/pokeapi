@@ -34,6 +34,7 @@ namespace api3.Controllers
 
             pokemon.Descripcion ??= "Sin descripción";
             pokemon.EnVenta = true;
+            pokemon.UltimoDueno ??= "Desconocido";
 
             _context.ProductoPokemon.Add(pokemon);
             _context.SaveChanges();
@@ -52,8 +53,11 @@ namespace api3.Controllers
                 return BadRequest("❌ Error: El email del usuario no está definido.");
             }
 
-        
-            var usuario = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == emailUsuarioAutenticado);
+
+            var usuario = _context.UsuariosPokemonApi
+            .AsNoTracking()
+             .FirstOrDefault(u => u.Email == emailUsuarioAutenticado);
+
             if (usuario == null)
             {
                 return BadRequest("❌ Error: Usuario no encontrado.");
@@ -63,9 +67,11 @@ namespace api3.Controllers
             ViewBag.Monedero = usuario.Monedero;
 
             var pokemonsEnVenta = _context.ProductoPokemon
-                .Include(p => p.Stats) 
-                .Where(p => p.Email == emailUsuarioAutenticado && p.EnVenta) 
-                .ToList();
+                .AsNoTracking()
+                 .Include(p => p.Stats)
+                 .Where(p => p.Email == emailUsuarioAutenticado && p.EnVenta)
+                 .ToList();
+
 
             return View(pokemonsEnVenta);
         }
@@ -96,6 +102,7 @@ namespace api3.Controllers
         public async Task<IActionResult> Mercado()
         {
             var pokemonsEnVenta = _context.ProductoPokemon
+                .AsNoTracking()
                 .Include(p => p.Stats)
                 .Where(p => p.EnVenta && p.TiempoExpiracion > DateTime.Now)
                 .OrderBy(p => p.TiempoExpiracion)
@@ -103,13 +110,11 @@ namespace api3.Controllers
 
             var climaResponse = await _climaService.ObtenerClimaAsync("Bogotá");
 
-
-
-           
             var emailUsuario = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value ?? string.Empty;
 
-            var usuario = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == emailUsuario);
-
+            var usuario = _context.UsuariosPokemonApi
+                .AsNoTracking()
+                .FirstOrDefault(u => u.Email == emailUsuario);
 
             ViewBag.Monedero = usuario?.Monedero ?? 0;
             ViewBag.EmailUsuario = emailUsuario;
@@ -123,6 +128,7 @@ namespace api3.Controllers
 
             return View(viewModel);
         }
+
 
     }
 }

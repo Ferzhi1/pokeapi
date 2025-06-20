@@ -33,7 +33,7 @@ namespace api3.Services
 
             return _context.ProductoPokemon
                 .Include(p => p.Stats)
-                .Where(p => p.Email == email && p.EnVenta)
+                .Where(p => p.Email == email)
                 .ToList();
         }
         public async Task<bool> IniciarSubastaAsync(int pokemonId, decimal precioInicial, int duracionMinutos, string usuarioEmail)

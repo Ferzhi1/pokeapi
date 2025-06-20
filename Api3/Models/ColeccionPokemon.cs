@@ -4,11 +4,14 @@ namespace api3.Models
 {
     public class ColeccionPokemon
     {
+        public int PokemonIdOriginal { get; set; }
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string ImagenUrl { get; set; }
         public string Rareza { get; set; }
         public string EmailUsuario { get; set; } 
+
+        public int NumeroAlbum { get; set; }
         public List<StatPokemon> Stats { get; set; } = new List<StatPokemon>();
     }
 

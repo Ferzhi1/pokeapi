@@ -154,9 +154,10 @@ namespace api3.Services
 
                 return new ResultadoSubasta { SinPujas = true, NombrePokemon = pokemon.Nombre };
             }
+            
+            var comprador = await _context.UsuariosPokemonApi.AsNoTracking().FirstOrDefaultAsync(u => u.Email == pujaGanadora.UsuarioEmail);
+            var vendedor = await _context.UsuariosPokemonApi.AsNoTracking().FirstOrDefaultAsync(u => u.Email == pokemon.UltimoDueno);
 
-            var comprador = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == pujaGanadora.UsuarioEmail);
-            var vendedor = await _context.UsuariosPokemonApi.FirstOrDefaultAsync(u => u.Email == pokemon.UltimoDueno);
 
             bool tieneDescuento = await _context.SolicitudAmistad.AnyAsync(s =>
                 ((s.RemitenteEmail == comprador.Email && s.ReceptorEmail == vendedor.Email) ||

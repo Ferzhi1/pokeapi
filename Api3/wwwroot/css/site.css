@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #1A1A2E; /* Fondo oscuro elegante */
-    color: white; /* Texto blanco en toda la página */
+    background-color: #1A1A2E; 
+    color: white; 
     text-align: center;
     padding: 20px;
     display: flex;
@@ -12,33 +12,33 @@ body {
 h2 {
     font-size: 28px;
     font-weight: bold;
-    color: #FFD700; /* Dorado Pokémon */
+    color: #FFD700; 
     text-transform: uppercase;
     margin-bottom: 20px;
 }
 
 .card {
-    background: #222; /* Fondo oscuro para la tarjeta */
-    color: white; /* Texto blanco */
+    background: #222;
+    color: white;
     border-radius: 15px;
-    box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.5); /* Sombra dorada */
+    box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.5);
     transition: transform 0.3s ease-in-out;
 }
 
     .card:hover {
-        transform: scale(1.05); /* Efecto de zoom */
+        transform: scale(1.05); 
     }
 
 .mazo-img {
     width: 100%;
     height: auto;
-    border-radius: 10px 10px 0 0; /* Bordes redondeados solo arriba */
+    border-radius: 10px 10px 0 0; 
 }
 
 .card-title {
     font-size: 24px;
     font-weight: bold;
-    color: #FFD700; /* Dorado */
+    color: #FFD700;
 }
 
 .card-text {
@@ -47,8 +47,7 @@ h2 {
 }
 
 .btn-success {
-    background-color: #ffcc00; /* Amarillo Pokémon */
-    border: none;
+    background-color: #ffcc00;
     padding: 12px;
     font-size: 18px;
     font-weight: bold;
@@ -58,5 +57,5 @@ h2 {
 }
 
     .btn-success:hover {
-        background-color: #e6b800; /* Tonalidad más oscura */
+        background-color: #e6b800; 
     }

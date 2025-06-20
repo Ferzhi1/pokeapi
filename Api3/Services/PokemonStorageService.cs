@@ -13,12 +13,12 @@ namespace api3.Services
         public PokemonStorageService(ApplicationDbContext context) => _context = context;
 
         public UsuariosPokemonApi ObtenerUsuarioPokemon(string email) =>
-            _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == email);
+            _context.UsuariosPokemonApi.AsNoTracking().FirstOrDefault(u => u.Email == email);
 
         public string ObtenerEmailUsuario(string email)
         {
-            var usuarioPokemon = _context.UsuariosPokemonApi
-                .FirstOrDefault(u => u.Email.Trim().ToLower() == email.Trim().ToLower());
+            var usuarioPokemon = _context.UsuariosPokemonApi.
+                AsNoTracking().FirstOrDefault(u => u.Email.Trim().ToLower() == email.Trim().ToLower());
 
             return usuarioPokemon?.Email ?? throw new InvalidOperationException("El usuario no existe en la base de datos.");
         }

@@ -7,6 +7,7 @@
     flex-direction: column;
     min-height: 100vh;
 }
+
 @keyframes cambiarColor {
     0% {
         color: red;
@@ -27,19 +28,17 @@
     100% {
         color: red;
     }
-    
 }
 
 h1 span {
     display: inline-block;
-    animation: cambiarColor 4s infinite ease-in-out; 
+    animation: cambiarColor 4s infinite ease-in-out;
 }
 
 
 
 @keyframes cambiarFondo {
     0% {
-       
         background-image: url('../img/headerpokemon.png');
     }
 
@@ -48,19 +47,17 @@ h1 span {
     }
 
     66% {
-      
         background-image: url('../img/headerpokemon2.png');
     }
 
     100% {
         background-image: url('../img/headerpokemon3.jpg');
-     
     }
 }
 
 .hero {
     width: 100%;
-    height: 100vh; 
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,7 +67,6 @@ h1 span {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
     animation: cambiarFondo 12s infinite ease-in-out;
 }
 
@@ -94,7 +90,6 @@ h1 span {
     text-align: center;
     transition: transform 0.3s ease;
     color: white;
-    
 }
 
     .mazo-card:hover {

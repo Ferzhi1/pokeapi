@@ -1,4 +1,5 @@
 wwwroot\css\site.css
+wwwroot\css\stylecoleccion.css
 wwwroot\css\styles.css
 wwwroot\css\styles2.css
 wwwroot\css\styles3.css

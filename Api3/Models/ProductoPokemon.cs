@@ -8,6 +8,7 @@ namespace api3.Models
     {
         [Key]
         public int Id { get; set; }
+        public int PokemonIdOriginal { get; set; }
         public string Nombre { get; set; }
         public decimal Precio { get; set; }
         public decimal PujaActual { get; set; } = 0;

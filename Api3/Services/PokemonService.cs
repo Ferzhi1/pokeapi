@@ -52,6 +52,8 @@ namespace api3.Services
 
                     var pokemon = new ProductoPokemon
                     {
+                        PokemonIdOriginal= id,
+                        Id = 0,
                         Nombre = detallesJson.RootElement.GetProperty("name").GetString(),
                         ImagenUrl = $"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{id}.png",
                         Descripcion = descripcion,
