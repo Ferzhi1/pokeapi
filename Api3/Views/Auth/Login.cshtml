@@ -3,37 +3,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="~/css/styles5.css">
+    <link rel="stylesheet" href="~/css/styles5.css" />
 </head>
 <body>
 
-    <div class="container">
-
-        <div class="image-section"></div>
-
-        <div class="login-container">
+    <div class="login-wrapper">
+        <div class="login-card">
             <h2>Iniciar Sesión</h2>
             <form asp-action="Login" method="post">
-                <div>
-                    <label>Correo Electrónico:</label>
-                    <input asp-for="Email" class="form-control" required />
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input asp-for="Email" type="email" required />
                 </div>
-
-                <div>
-                    <label>Contraseña:</label>
-                    <input asp-for="Password" type="password" class="form-control" required />
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input asp-for="Password" type="password" required />
                 </div>
-
-                <button type="submit" class="btn">Iniciar Sesión</button>
+                <button type="submit">Entrar</button>
             </form>
-            <p><a asp-action="Register">Crear una Cuenta</a></p>
-            <p>
-                ¿Olvidaste tu Contraseña?
-                <a asp-controller="PasswordRecovery" asp-action="RequestReset">Haz clic aquí</a>
-            </p>
+            <p><a asp-action="Register">Crear una cuenta</a></p>
+            <p>¿Olvidaste tu contraseña? <a asp-controller="PasswordRecovery" asp-action="RequestReset">Recupérala</a></p>
         </div>
     </div>
 

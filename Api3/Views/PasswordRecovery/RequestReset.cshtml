@@ -3,33 +3,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>¿Olvidaste tu contraseña?</title>
-    <link rel="stylesheet" href="~/css/styles7.css">
+    <link rel="stylesheet" href="~/css/styles7.css" />
 </head>
 <body>
 
     <div class="page-wrapper">
         <div class="forgot-password-container">
             <h2>¿Olvidaste tu contraseña?</h2>
-            <hr />
 
-            <form method="post">
+            <form method="post" class="forgot-password-form">
                 <div asp-validation-summary="All" class="text-danger"></div>
 
                 <div class="form-group">
                     <label asp-for="Email">Correo electrónico:</label>
-                    <input asp-for="Email" type="email" class="form-control" required />
+                    <input asp-for="Email" type="email" required />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
-                    <label asp-for="Respuesta">Respuesta:</label>
-                    <input asp-for="Respuesta" type="text" class="form-control" required />
+                    <label asp-for="Respuesta">Respuesta de seguridad:</label>
+                    <input asp-for="Respuesta" type="text" required />
                     <span asp-validation-for="Respuesta" class="text-danger"></span>
                 </div>
 
-                <button type="submit" class="btn btn-success">Enviar Solicitud de Restablecimiento</button>
+                <button type="submit">Enviar Solicitud</button>
             </form>
 
             <p>¿Recordaste tu contraseña? <a asp-controller="Auth" asp-action="Login">Inicia sesión aquí</a></p>

@@ -1,4 +1,4 @@
-wwwroot\css\Confimation.css
+wwwroot\css\Confirmation.css
 wwwroot\css\site.css
 wwwroot\css\stylecoleccion.css
 wwwroot\css\styles.css
@@ -9,6 +9,12 @@ wwwroot\css\styles5.css
 wwwroot\css\styles6.css
 wwwroot\css\styles7.css
 wwwroot\favicon.ico
+wwwroot\img\289177-money-coins-stack-wealth-finance-bar-business.jpg
+wwwroot\img\4124520.jpg
+wwwroot\img\487115 (1).jpg
+wwwroot\img\487192 (1).jpg
+wwwroot\img\82049 (1).jpg
+wwwroot\img\8652 (1).jpg
 wwwroot\img\HeaderPokemon.png
 wwwroot\img\HeaderPokemon1.jpg
 wwwroot\img\HeaderPokemon2.png
@@ -20,6 +26,7 @@ wwwroot\img\Mazo3.jpg
 wwwroot\img\Mazo4.webp
 wwwroot\img\Mazo5.jpg
 wwwroot\img\mazo6.jpg
+wwwroot\img\wp4853976-realistic-pokeball-desktop-wallpapers.jpg
 wwwroot\js\App.js
 wwwroot\js\site.js
 wwwroot\js\SolicitudesAmistad.js

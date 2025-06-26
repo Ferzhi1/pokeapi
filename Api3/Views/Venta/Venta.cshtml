@@ -47,7 +47,8 @@
 					<div class="col pokemon-card" id="card-@pokemon.Nombre">
 						<div class="card shadow-lg">
 							<div class="d-flex align-items-center p-3">
-								<div class="flex-shrink-0">
+								<div class="flex-shrink-0 mx-auto">
+
 									<img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
 										 style="width: 180px; height: auto;"
 										 onerror="this.src='/images/default-pokemon.png';" />
@@ -89,17 +90,18 @@
 								</p>
 								@if (pokemon.EnVenta && pokemon.TiempoExpiracion < DateTime.Now)
 								{
-									<form asp-action="IniciarSubasta" method="post">
+									<form asp-action="IniciarSubasta" method="post" class="formulario-subasta">
 										<input type="hidden" name="pokemonId" value="@pokemon.Id" />
 
 										<label for="precioInicial-@pokemon.Id">💰 Precio Inicial:</label>
 										<input type="number" id="precioInicial-@pokemon.Id" name="precioInicial" required placeholder="Precio en monedas" />
 
-										<label for="duracionMinutos-@pokemon.Id">⏳ Duración de la subasta (min):</label>
-										<input type="number" id="duracionMinutos-@pokemon.Id" name="duracionMinutos" required placeholder="Ej: 60 minutos" />
+										<label for="duracionMinutos-@pokemon.Id">⏳ Duración (minutos):</label>
+										<input type="number" id="duracionMinutos-@pokemon.Id" name="duracionMinutos" required placeholder="Ej: 60" />
 
 										<button class="btn btn-warning mt-3">🚀 Poner en Subasta</button>
 									</form>
+
 								}
 							</div>
 						</div>

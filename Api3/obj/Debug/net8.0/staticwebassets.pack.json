@@ -5,8 +5,8 @@
       "PackagePath": "staticwebassets\\api3.j3j5e62mko.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\Confimation.css",
-      "PackagePath": "staticwebassets\\css\\Confimation.css"
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\Confirmation.css",
+      "PackagePath": "staticwebassets\\css\\Confirmation.css"
     },
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\site.css",
@@ -47,6 +47,30 @@
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\289177-money-coins-stack-wealth-finance-bar-business.jpg",
+      "PackagePath": "staticwebassets\\img\\289177-money-coins-stack-wealth-finance-bar-business.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\4124520.jpg",
+      "PackagePath": "staticwebassets\\img\\4124520.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\487115 (1).jpg",
+      "PackagePath": "staticwebassets\\img\\487115 (1).jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\487192 (1).jpg",
+      "PackagePath": "staticwebassets\\img\\487192 (1).jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\82049 (1).jpg",
+      "PackagePath": "staticwebassets\\img\\82049 (1).jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\8652 (1).jpg",
+      "PackagePath": "staticwebassets\\img\\8652 (1).jpg"
     },
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\HeaderPokemon.png",
@@ -91,6 +115,10 @@
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\mazo6.jpg",
       "PackagePath": "staticwebassets\\img\\mazo6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\img\\wp4853976-realistic-pokeball-desktop-wallpapers.jpg",
+      "PackagePath": "staticwebassets\\img\\wp4853976-realistic-pokeball-desktop-wallpapers.jpg"
     },
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",

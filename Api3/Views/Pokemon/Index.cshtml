@@ -4,38 +4,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Store</title>
-    <link rel="stylesheet" href="~/css/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda Pokémon</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-content">
-            <h1>TIENDA DE <span>MAZOS POKEMON</span></h1>
-            <h1>¡Atrapa tu Mazo Pokémon!</h1>
-            <p>Explora y consigue cartas exclusivas.</p>
 
-            <a asp-controller="SolicitudAmistad" asp-action="ListaSolicitudes" class="btn btn-secondary">
-                📌 Ver Solicitudes de Amistad
-            </a>
-        </div>
+    <header class="hero">
+        <h1>Tienda de Mazos Pokémon</h1>
+        <p>Explora la colección y potencia tu juego</p>
     </header>
 
-    <div class="main-container">
-        <div class="mazos-container">
-            @foreach (var mazo in Model)
-            {
-                <div class="mazo-card">
-                    <img src="@mazo.ImagenUrl" alt="@mazo.Nombre">
-                    <h2>@mazo.Nombre</h2>
-                    <p>Precio: $@mazo.Precio</p>
-                    <a asp-controller="Pedido" asp-action="Checkout" asp-route-nombre="@mazo.Nombre"
-                       class="btn btn-primary">Comprar</a>
-                </div>
-            }
+    <!-- Presentación de cartas en fila: imagen izquierda, texto derecha -->
+    <section class="presentacion-cartas">
+        <div class="imagen-cartas">
+            <img src="/img/4124520.jpg" alt="Carta Pokémon" />
         </div>
-    </div>
+
+        <div class="texto-cartas">
+            <h2>Cartas Pokémon</h2>
+            <p>
+                ¡Descubre el poder de los mazos Pokémon y prepárate para la batalla definitiva! Sumérgete en el universo Pokémon como nunca antes con nuestra exclusiva colección de mazos cuidadosamente seleccionados. Cada uno está diseñado para ofrecer una experiencia única, llena de estrategia, sorpresas y combates épicos.
+
+                Ya seas un entrenador principiante o un coleccionista experimentado, encontrarás un mazo que se adapta perfectamente a tu estilo de juego y a tus Pokémon favoritos. Los mazos que ofrecemos están listos para jugar desde el primer momento. Incluyen cartas clave con sinergias poderosas, entrenadores estratégicos y energías esenciales para enfrentarte a cualquier desafío.
+
+                Además, todos nuestros productos son 100% auténticos y vienen sellados directamente de fábrica para garantizar su calidad y valor coleccionable. Haz crecer tu arsenal, fortalece tu estrategia y conviértete en el entrenador que siempre soñaste ser.
+            </p>
+        </div>
+    </section>
+
+    <!-- Fila de mazos -->
+    <main class="fila-mazos">
+        @foreach (var mazo in Model.Take(3))
+        {
+            <div class="mazo-card">
+                <img src="@mazo.ImagenUrl" alt="@mazo.Nombre" />
+                <h3>@mazo.Nombre</h3>
+                <p>$@mazo.Precio</p>
+                <a asp-controller="Pedido" asp-action="Checkout" asp-route-nombre="@mazo.Nombre">Comprar</a>
+            </div>
+        }
+    </main>
 
 </body>
 </html>

@@ -77,7 +77,7 @@ namespace api3.Controllers
             {
                 Pokemons = pokemons
             };
-            usuarioPokemon.Monedero += 1000;
+            usuarioPokemon.Monedero += 5000;
 
             
             var usuarioExistente = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == usuarioPokemon.Email);
@@ -94,6 +94,21 @@ namespace api3.Controllers
             {
                 throw new InvalidOperationException("El usuario no existe en la base de datos.");
             }
+            if (usuarioExistente != null)
+            {
+                usuarioExistente.Monedero = usuarioPokemon.Monedero;
+                _context.SaveChanges();
+            }
+            else
+            {
+                throw new InvalidOperationException("El usuario no existe en la base de datos.");
+            }
+
+            
+            ViewBag.EmailUsuario = usuarioPokemon.Email;
+            ViewBag.Monedero = usuarioPokemon.Monedero;
+
+            return View("~/Views/Pedido/Confirmacion.cshtml", pedidoPokemon);
 
             return View("~/Views/Pedido/Confirmacion.cshtml", pedidoPokemon);
         }
