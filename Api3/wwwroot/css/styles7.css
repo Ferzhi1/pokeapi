@@ -82,3 +82,9 @@ a {
     a:hover {
         text-decoration: underline;
     }
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}

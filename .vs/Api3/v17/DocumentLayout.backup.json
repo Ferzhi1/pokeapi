@@ -1,38 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\",
+  "WorkspaceRootPath": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\views\\venta\\venta.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\venta\\venta.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\wwwroot\\css\\styles2.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\css\\styles2.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\css\\styles5.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\css\\styles5.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\views\\pedido\\confirmacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\pedido\\confirmacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\css\\styles6.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\css\\styles6.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\passwordrecovery\\resetpasswordconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\passwordrecovery\\resetpasswordconfirmation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\services\\ventaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\services\\ventaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\desktop\\pokeapi\\api3\\views\\venta\\mercado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\venta\\mercado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\css\\confimation.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\css\\confimation.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,108 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-20T21:12:17.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Confirmacion.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAkwFkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-20T21:11:54.244Z",
+              "DocumentIndex": 1,
+              "Title": "styles5.css",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles5.css",
+              "RelativeDocumentMoniker": "Api3\\wwwroot\\css\\styles5.css",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles5.css",
+              "RelativeToolTip": "Api3\\wwwroot\\css\\styles5.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-26T15:51:16.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Venta.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Venta\\Venta.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Venta\\Venta.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Venta\\Venta.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Venta\\Venta.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGkAAAALAAAAAAAAAA==",
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Api3\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Api3\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-20T21:13:15.644Z",
+              "WhenOpened": "2025-06-26T15:50:13.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "VentaController.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Controllers\\VentaController.cs",
-              "RelativeDocumentMoniker": "Api3\\Controllers\\VentaController.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Controllers\\VentaController.cs",
-              "RelativeToolTip": "Api3\\Controllers\\VentaController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAqwDwAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T20:59:45.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "VentaService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Services\\VentaService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\VentaService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Services\\VentaService.cs",
-              "RelativeToolTip": "Api3\\Services\\VentaService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwCMAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T21:58:16.427Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Mercado.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Venta\\Mercado.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Venta\\Mercado.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\Views\\Venta\\Mercado.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Venta\\Mercado.cshtml",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwIIAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-20T21:12:43.897Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "styles2.css",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\wwwroot\\css\\styles2.css",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\css\\styles2.css",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\wwwroot\\css\\styles2.css",
-              "RelativeToolTip": "Api3\\wwwroot\\css\\styles2.css",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAwLMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "styles6.css",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles6.css",
+              "RelativeDocumentMoniker": "Api3\\wwwroot\\css\\styles6.css",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles6.css",
+              "RelativeToolTip": "Api3\\wwwroot\\css\\styles6.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-06-20T21:10:30.044Z",
+              "WhenOpened": "2025-06-26T15:48:41.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Confimation.css",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\Confimation.css",
+              "RelativeDocumentMoniker": "Api3\\wwwroot\\css\\Confimation.css",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\Confimation.css",
+              "RelativeToolTip": "Api3\\wwwroot\\css\\Confimation.css",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAUwDsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-26T15:37:42.945Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "styles.css",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\wwwroot\\css\\styles.css",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\css\\styles.css",
-              "ToolTip": "C:\\Users\\hmelo003\\Desktop\\pokeapi\\Api3\\wwwroot\\css\\styles.css",
-              "RelativeToolTip": "Api3\\wwwroot\\css\\styles.css",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAiwGkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-06-20T21:10:14.716Z",
+              "Title": "ResetPasswordConfirmation.cshtml",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\PasswordRecovery\\ResetPasswordConfirmation.cshtml",
+              "RelativeDocumentMoniker": "Api3\\Views\\PasswordRecovery\\ResetPasswordConfirmation.cshtml",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\PasswordRecovery\\ResetPasswordConfirmation.cshtml",
+              "RelativeToolTip": "Api3\\Views\\PasswordRecovery\\ResetPasswordConfirmation.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-26T15:35:55.666Z",
               "EditorCaption": ""
             }
           ]

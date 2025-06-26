@@ -28,17 +28,19 @@ namespace api3.Controllers
                 return View(model);
             }
 
-            var user = await _passwordRecoveryService.FindUserByEmailAsync(model.Email,model.Respuesta);
-            if (user != null)
-            {
-                await _passwordRecoveryService.GenerateAndSetResetTokenAsync(user);
+            var user = await _passwordRecoveryService.FindUserByEmailAsync(model.Email, model.Respuesta);
 
-                return RedirectToAction("ResetPassword", new { token = user.ResetPasswordToken });
+            if (user == null)
+            {
+                ModelState.AddModelError(string.Empty, "Correo electrónico o respuesta incorrectos.");
+                return View(model);
             }
 
-            ViewBag.Message = "Si este correo electrónico existe en nuestra base de datos, se ha enviado un enlace para restablecer la contraseña.";
-            return View("RequestResetConfirmation");
+            await _passwordRecoveryService.GenerateAndSetResetTokenAsync(user);
+
+            return RedirectToAction("ResetPassword", new { token = user.ResetPasswordToken });
         }
+
 
         [HttpGet]
         public IActionResult RequestResetConfirmation()

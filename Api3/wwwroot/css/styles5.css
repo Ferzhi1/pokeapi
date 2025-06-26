@@ -1,8 +1,16 @@
 ﻿
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+}
+
+
 .container {
     display: flex;
     height: 100vh;
-    width:100vw;
+    width: 100vw;
 }
 
 
@@ -10,58 +18,81 @@
     width: 50%;
     background: url('../img/HeaderPokemon3.jpg') center/cover no-repeat;
 }
+
+
 h2 {
     font-size: 28px;
     font-weight: bold;
     text-align: center;
-    background: linear-gradient( to right, #2454BC 35%, #9055F8 63% ); 
+    background: linear-gradient(to right, #2980b9, #6dd5fa);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    margin-bottom: 20px;
 }
 
 
 .login-container {
     width: 50%;
-    background:linear-gradient( to right, #C879FD 14%, #B2ABAB 47%, #774897 91% );
+    background: linear-gradient(to right, #ffffff, #f2f3f5);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 40px;
-    color: white;
+    color: #333;
 }
+
 
 form div {
     margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #444;
 }
 
 input {
     width: 100%;
     padding: 10px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
 }
+
 .btn {
-    background: #7F45C7;
+    background: #3498db;
     color: white;
-    padding: 5px 50px;
+    padding: 8px 50px;
     border: none;
-    border-radius: 20px; 
+    border-radius: 20px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
+    font-size: 16px;
+    width: 100%;
 }
 
     .btn:hover {
-        background: #602F9D;
+        background: #217dbb;
     }
 
-
-p a {
-    color: white;
-    text-decoration: none;
+p {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #444;
+    text-align: center;
 }
 
-    p a:hover {
-        text-decoration: underline;
+    p a {
+        color: #2980b9;
+        text-decoration: none;
     }
+
+        p a:hover {
+            text-decoration: underline;
+        }

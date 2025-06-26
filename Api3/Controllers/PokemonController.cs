@@ -42,6 +42,11 @@ public class PokemonController : Controller
     {
         if (pokemon == null || string.IsNullOrWhiteSpace(pokemon.Nombre) || string.IsNullOrWhiteSpace(pokemon.Email))
             return BadRequest("Error: Datos del Pokémon incompletos.");
+        if (pokemon == null || string.IsNullOrWhiteSpace(pokemon.Nombre) || string.IsNullOrWhiteSpace(pokemon.Email))
+            return BadRequest("Error: Datos del Pokémon incompletos.");
+
+
+
 
         Console.WriteLine($"Recibiendo Pokémon favorito: {pokemon.Nombre} - {pokemon.Email}");
 
@@ -63,7 +68,7 @@ public class PokemonController : Controller
         _context.ColeccionPokemon.Add(coleccionPokemon);
         _context.SaveChanges();
 
-        Console.WriteLine("✅ Pokémon guardado en la colección correctamente con número de álbum: " + coleccionPokemon.NumeroAlbum);
+       
 
         return Ok(new
         {
@@ -109,9 +114,13 @@ public class PokemonController : Controller
         ViewBag.Page = page;
         ViewBag.TotalPages = (int)Math.Ceiling((double)totalSlots / pageSize);
         ViewBag.EmailUsuario = emailUsuario;
+        var usuario = _context.UsuariosPokemonApi
+        .AsNoTracking()
+        .FirstOrDefault(u => u.Email == emailUsuario);
 
-        var usuario = _context.UsuariosPokemonApi.FirstOrDefault(u => u.Email == emailUsuario);
-        ViewBag.Monedero = usuario != null ? (int)usuario.Monedero : 0;
+        ViewBag.Monedero = (int)(usuario?.Monedero ?? 0m);
+
+
 
         return View("Coleccion", paginaActual);
     }

@@ -36,7 +36,7 @@ namespace api3.Services
             
                 if (_cache.TryGetValue(cacheKey, out ProductoPokemon cachedPokemon))
                 {
-                    Console.WriteLine($"✅ Recuperado desde caché: {cachedPokemon.Nombre}");
+                    
                     return cachedPokemon;
                 }
 

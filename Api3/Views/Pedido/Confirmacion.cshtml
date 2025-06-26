@@ -37,7 +37,8 @@
             {
                 @foreach (var pokemon in Model.Pokemons)
                 {
-                    <div class="col pokemon-card" id="card-@pokemon.Nombre">
+                    <div class="col pokemon-card" id="card-@pokemon.Nombre" data-id="@pokemon.PokemonIdOriginal">
+
                         <div class="card shadow-lg">
                             <div class="d-flex align-items-center p-3">
                                 <div class="flex-shrink-0">

@@ -1,6 +1,6 @@
 ﻿body {
     font-family: Arial, sans-serif;
-    background: url('../img/HeaderPokemon.png') no-repeat center center fixed;
+    background: url('../img/HeaderPokemon4.png') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -82,3 +82,9 @@ a {
     a:hover {
         text-decoration: underline;
     }
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
