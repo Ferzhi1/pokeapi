@@ -154,7 +154,7 @@ namespace api3.Services
 
                 return new ResultadoSubasta { SinPujas = true, NombrePokemon = pokemon.Nombre };
             }
-            
+
             var comprador = await _context.UsuariosPokemonApi.AsNoTracking().FirstOrDefaultAsync(u => u.Email == pujaGanadora.UsuarioEmail);
             var vendedor = await _context.UsuariosPokemonApi.AsNoTracking().FirstOrDefaultAsync(u => u.Email == pokemon.UltimoDueno);
 
@@ -180,7 +180,7 @@ namespace api3.Services
             await _context.SaveChangesAsync();
 
             Console.WriteLine($"[{txId}] 💰 Monedero comprador: {comprador.Monedero} | vendedor: {vendedor.Monedero}");
-            // Notificar al comprador si está conectado
+
             string compradorConn;
             if (SubastaHub.UsuariosSubasta.TryGetValue(comprador.Email, out compradorConn))
             {
@@ -188,7 +188,7 @@ namespace api3.Services
                 await _hubContext.Clients.Client(compradorConn).SendAsync("ActualizarMonedero", comprador.Monedero);
             }
 
-            // Notificar al vendedor si está conectado
+
             string vendedorConn;
             if (SubastaHub.UsuariosSubasta.TryGetValue(vendedor.Email, out vendedorConn))
             {
@@ -209,7 +209,27 @@ namespace api3.Services
             };
         }
 
+        public async Task<List<ProductoPokemon>> ObtenerPokemonesGanadosPorUsuario(string emailUsuario)
+        {
+            
+            var idsYaGuardados = await _context.ColeccionPokemon
+                .Where(c => c.EmailUsuario == emailUsuario)
+                .Select(c => c.PokemonIdOriginal)
+                .ToListAsync();
+
+         
+            return await _context.ProductoPokemon
+                .Where(p =>
+                    !p.EnVenta &&
+                    p.Email == emailUsuario &&
+                    p.HistorialPujas.Any() &&
+                    !idsYaGuardados.Contains(p.PokemonIdOriginal))
+                .OrderByDescending(p => p.TiempoExpiracion)
+                .ToListAsync();
+        }
+
     }
+
 }
 
 
@@ -223,4 +243,5 @@ namespace api3.Services
 
 
 
-   
+
+

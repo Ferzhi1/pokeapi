@@ -44,7 +44,9 @@
 			{
 				@foreach (var pokemon in Model)
 				{
-					<div class="col pokemon-card" id="card-@pokemon.Nombre">
+					<div class="col pokemon-card" id="card-@pokemon.Nombre" data-id="@pokemon.PokemonIdOriginal">
+
+
 						<div class="card shadow-lg">
 							<div class="d-flex align-items-center p-3">
 								<div class="flex-shrink-0 mx-auto">
@@ -58,6 +60,8 @@
 							<div class="card-body text-center">
 								<h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
 								<p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
+								<p class="text-muted small">🆔 ID Original: @pokemon.PokemonIdOriginal</p>
+
 
 								<div class="stats-container">
 									<h6> 📊 Estadísticas:</h6>
@@ -113,10 +117,15 @@
 				<p class="text-muted">⚠ No hay Pokémon en subasta actualmente.</p>
 			}
 		</div>
-
-		<div class="mt-5">
-			<a href="https://localhost:7200/Venta/Mercado" class="btn btn-primary btn-lg">🏪 Ir al Mercado</a>
+       	<div class="mt-4 d-flex justify-content-center gap-3">
+			<a href="/Venta/Mercado" class="btn btn-primary btn-lg">
+				🏪 Ir al Mercado
+			</a>
+			<a href="/Subasta/Ganados" class="btn btn-success btn-lg">
+				🥇 Pokémon Ganados
+			</a>
 		</div>
+
 
 	</div>
 

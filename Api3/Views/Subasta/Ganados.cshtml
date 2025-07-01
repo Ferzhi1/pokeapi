@@ -1,0 +1,53 @@
+﻿@model List<api3.Models.ProductoPokemon>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <style>
+        body {
+            background-color: #fff !important;
+        }
+    </style>
+    <input type="hidden" id="emailUsuario" value="@ViewBag.EmailUsuario" />
+
+    @foreach (var pokemon in Model)
+    {
+        <div class="pokemon-card" data-id="@pokemon.PokemonIdOriginal" data-enventa="@pokemon.EnVenta.ToString().ToLower()">
+
+            <div class="card shadow-lg">
+                <div class="d-flex align-items-center p-3">
+                    <div class="flex-shrink-0 mx-auto">
+                        <img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
+                             style="width: 180px; height: auto;"
+                             onerror="this.src='/images/default-pokemon.png';" />
+                    </div>
+                </div>
+
+                <div class="card-body text-center">
+                    <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
+                    <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
+
+                    <div class="stats-section mb-3">
+                        <h6>📊 Estadísticas:</h6>
+                        <ul class="list-group">
+                            @if (pokemon.Stats?.Any() ?? false)
+                            {
+                                @foreach (var stat in pokemon.Stats)
+                                {
+                                    <li class="list-group-item small">@stat.Nombre: <strong>@stat.Valor</strong></li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="list-group-item small text-muted">Sin estadísticas.</li>
+                            }
+                        </ul>
+                    </div>
+
+                    <button class="btn btn-danger mt-2 guardar-btn">Guardar</button>
+                    <button class="btn btn-warning mt-3 vender-btn"> 🛒 Vender Pokémon</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/js/ganados.js"></script>
+

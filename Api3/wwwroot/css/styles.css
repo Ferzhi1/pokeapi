@@ -4,19 +4,113 @@
     padding: 0;
     background-color: #f9f9f9;
     color: #222;
+    overflow-x: hidden;
+}
+.navbar {
+    background-color: #2c3e50;
+    padding: 14px 30px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+    .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
 
-}
+    .navbar li {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar a,
+    .navbar form button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        transition: background 0.3s ease, color 0.3s ease;
+        cursor: pointer;
+    }
+
+        .navbar a:hover,
+        .navbar form button:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffdd57;
+        }
+
+    .navbar form {
+        margin: 0;
+    }
+
+
 .hero {
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 20px 30px;
     background-color: #fff;
     border-bottom: 1px solid #eee;
-    margin-bottom: 40px;
+    margin-bottom: 0;
 }
 
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
 
+    .hero p {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+.hero-carrusel {
+    position: relative;
+    height: 400px;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+    .slide.active {
+        opacity: 1;
+    }
+
+.hero-texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 0 0 10px black;
+    text-align: center;
+}
 
 .presentacion-cartas {
     display: flex;

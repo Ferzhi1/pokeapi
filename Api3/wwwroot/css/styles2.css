@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    color: white !important;
 }
 
 @keyframes cambiarColor {
@@ -34,8 +35,6 @@ h1 span {
     display: inline-block;
     animation: cambiarColor 4s infinite ease-in-out;
 }
-
-
 
 @keyframes cambiarFondo {
     0% {
@@ -103,6 +102,7 @@ h1 span {
         border-radius: 10px;
         transition: all 0.3s ease-in-out;
     }
+
 .guardar-btn {
     background: linear-gradient(145deg, #3ccf4e, #2e9e3a);
     color: white;
@@ -142,6 +142,7 @@ h1 span {
         transform: translateY(-3px) scale(1.05);
         box-shadow: 0 10px 16px rgba(0, 0, 0, 0.3);
     }
+
 .btn-success {
     background: linear-gradient(135deg, #6a5acd, #836fff);
     color: white;
@@ -150,14 +151,14 @@ h1 span {
     padding: 12px 24px;
     border-radius: 14px;
     font-size: 1rem;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
 }
 
     .btn-success:hover {
         background: linear-gradient(135deg, #7b68ee, #9a8df5);
         transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 10px 16px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.3);
     }
 
 .btn-primary {
@@ -168,15 +169,16 @@ h1 span {
     padding: 12px 24px;
     border-radius: 14px;
     font-size: 1rem;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
 }
 
     .btn-primary:hover {
         background: linear-gradient(135deg, #ff6659, #f88080);
         transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 10px 16px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.3);
     }
+
 .formulario-subasta {
     display: flex;
     flex-direction: column;
@@ -187,7 +189,7 @@ h1 span {
 
     .formulario-subasta label {
         font-weight: bold;
-        color: #333;
+        color: white;
         margin-top: 6px;
     }
 
@@ -198,6 +200,8 @@ h1 span {
         border-radius: 8px;
         font-size: 0.95rem;
         outline: none;
+        background-color: #222;
+        color: white;
         transition: border-color 0.3s;
     }
 
@@ -206,10 +210,34 @@ h1 span {
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
         }
 
-    .formulario-subasta label {
-        font-weight: bold;
-        color: white; 
-        margin-top: 6px;
-    }
+.disabled-card {
+    opacity: 0.8;
+    pointer-events: none;
+    filter: grayscale(10%);
+    transition: 0.3s ease all;
+}
 
+.card {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.list-group-item {
+    background-color: #333;
+    color: white;
+    border: none;
+}
+
+.text-muted, .small {
+    color: #ccc !important;
+}
+
+.alert {
+    color: white !important;
+}
+.id-original {
+    color: white !important;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
 

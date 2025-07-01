@@ -125,6 +125,10 @@
       "PackagePath": "staticwebassets\\js\\App.js"
     },
     {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Ganados.js",
+      "PackagePath": "staticwebassets\\js\\Ganados.js"
+    },
+    {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\SolicitudesAmistad.js",
       "PackagePath": "staticwebassets\\js\\SolicitudesAmistad.js"
     },

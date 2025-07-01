@@ -14,9 +14,18 @@ connection.on("ActualizarOferta", (pokemonId, usuario, monto) => {
 });
 
 
-
-connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats) => {
-
+connection.on("NuevaSubasta", (
+    pokemonId,
+    nombrePokemon,
+    rareza,
+    precioInicial,
+    imagenUrl,
+    duracionMinutos,
+    emailVendedor,
+    pujaActual,
+    stats,
+    pokemonIdOriginal
+) => {
 
     const contenedor = document.querySelector(".row.row-cols-1.row-cols-md-3.g-4");
     if (!contenedor) return;
@@ -24,7 +33,7 @@ connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, 
     const nuevaCarta = document.createElement("div");
     nuevaCarta.classList.add("col", "pokemon-card");
     nuevaCarta.id = `card-${pokemonId}`;
-
+    nuevaCarta.setAttribute("data-id", pokemonIdOriginal);
     let statsHTML = '<ul class="list-group">';
     if (Array.isArray(stats) && stats.length > 0) {
         stats.forEach(stat => {
@@ -53,10 +62,11 @@ connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, 
         <div class="card-body text-center">
             <h5 class="card-title pokemon-nombre">${nombrePokemon}</h5>
             <p class="card-text"><strong>Rareza:</strong> ${rareza}</p>
+            <p class="card-text text-muted small">🧬 ID Original: <strong>${pokemonIdOriginal}</strong></p>
             <p class="card-text">💰 Precio Inicial: <strong>${precioInicial} monedas</strong></p>
             <p class="card-text">🏅 Puja Actual: <strong id="puja-${pokemonId}">${pujaActual} monedas</strong></p>
             <p class="card-text">Email del vendedor:<strong>${emailVendedor}</strong></p>
-         <p class="card-text">
+            <p class="card-text">
                 ⏳ Tiempo Restante:
                 <strong id="tiempo-restante-${pokemonId}">
                     ${tiempoRestante} segundos
@@ -66,12 +76,10 @@ connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, 
             <input type="number" id="oferta-${pokemonId}" min="${pujaActual}" placeholder="Monedas a ofertar" required />
             <button class="btn btn-success mt-3" onclick="pujarPokemon(${pokemonId})">💰 Pujar</button>
 
-            <!-- Agregar botón de solicitud de amistad al final -->
             ${emailVendedor ?
             `<button onclick="enviarSolicitud('${emailVendedor}')" class="btn btn-secondary mt-2">
-                    ➕ Agregar a Amigos (${emailVendedor})
-                </button>`
-            :
+                ➕ Agregar a Amigos (${emailVendedor})
+            </button>` :
             '<p class="text-muted">⚠ Email no disponible para solicitud.</p>'}
         </div>
     </div>
@@ -80,10 +88,7 @@ connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, 
     contenedor.appendChild(nuevaCarta);
     setTimeout(() => {
         const tiempoElemento = document.getElementById(`tiempo-restante-${pokemonId}`);
-        if (!tiempoElemento) {
-            console.error(`❌ No se encontró tiempo-restante-${pokemonId}.`);
-            return;
-        }
+        if (!tiempoElemento) return;
 
         const intervalo = setInterval(() => {
             if (tiempoRestante > 0) {
@@ -97,15 +102,14 @@ connection.on("NuevaSubasta", (pokemonId, nombrePokemon, rareza, precioInicial, 
                     const cartaElemento = document.getElementById(`card-${pokemonId}`);
                     if (cartaElemento) {
                         cartaElemento.remove();
-                        
-                    } else {
-                        console.error(`❌ No se encontró la carta con ID: card-${pokemonId}.`);
                     }
                 }, 2000);
             }
         }, 1000);
     }, 500);
 });
+
+
 
 function pujarPokemon(pokemonId) {
     const emailUsuario = document.getElementById("emailUsuario").value;

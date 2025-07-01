@@ -1,7 +1,7 @@
 ﻿@model List<api3.Models.SolicitudAmistad>
 
 <div class="container text-center mt-5">
-    <h2 class="mb-4">📩 Solicitudes de Amistad</h2>
+    <h2 class="mb-4">📩 Amigos</h2>
 
     <p>Email del usuario: <strong>@ViewBag.EmailUsuario</strong></p>
     <input type="hidden" id="emailUsuario" value="@ViewBag.EmailUsuario" />
@@ -16,8 +16,8 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Remitente</th>
-                    <th>Fecha de envío</th>
+                    <th>Amigo</th>
+                    <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,9 +30,13 @@
                 }
             </tbody>
         </table>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary px-4 py-2 fw-semibold shadow-sm text-decoration-none">
+                🏠 Volver al inicio
+            </a>
+        </div>
+
+
     }
-    else
-    {
-        <p class="text-muted">⚠ No tienes solicitudes pendientes.</p>
-    }
+ 
 </div>

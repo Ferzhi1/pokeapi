@@ -84,8 +84,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ef9y9s74dh</Fingerprint>
-      <Integrity>xpLTFX4umdKmbf+x9X0TeXhIsa1Bfz9dQOD7DAJlT3A=</Integrity>
+      <Fingerprint>myjxoml80x</Fingerprint>
+      <Integrity>TmM7OPSFeJ1Obj91DCz8/piBFE85hLpPCDOQUX+5DRQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\styles.css'))</OriginalItemSpec>
@@ -102,8 +102,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>zoboggva5o</Fingerprint>
-      <Integrity>ze7zDLd6ECfqyekmr5mNbhtrZ3rl/nR7SGZRwDZxFsU=</Integrity>
+      <Fingerprint>gbvpf80o4h</Fingerprint>
+      <Integrity>NAZ66Uh6ApjWE+BGSJ/vfgrVyFvbX1f7QSAH8XLWZsc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\styles2.css'))</OriginalItemSpec>
@@ -558,6 +558,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\App.js'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Ganados.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>api3</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/api3</BasePath>
+      <RelativePath>js/Ganados.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>uknavr2pxz</Fingerprint>
+      <Integrity>Ij9PCEnBTMLWK7NM09FKTXACTIaVzHTZyXIFg26clic=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Ganados.js'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))">
       <SourceType>Package</SourceType>
       <SourceId>api3</SourceId>
@@ -570,8 +588,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>x04pjzz8z9</Fingerprint>
-      <Integrity>oW8VrRydHQt0EDrDVSlVp+CQqqi0/Zn88kEWW4N6L2s=</Integrity>
+      <Fingerprint>o8je4wnksk</Fingerprint>
+      <Integrity>GDNH8SfZEfz3b8TOpp5P6bXf0jusZXUhVymcM1d84Co=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>
@@ -606,8 +624,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>odby0sb790</Fingerprint>
-      <Integrity>5DF7oYTGXrrPrjD6ntLHxSzVSkafnpuMmeHMiIwSotY=</Integrity>
+      <Fingerprint>2ts33ybscq</Fingerprint>
+      <Integrity>avB9mw1YXpntAB70YnGPXmn4b+iL0DtnFZ0lSgPwgcM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Subasta.js'))</OriginalItemSpec>

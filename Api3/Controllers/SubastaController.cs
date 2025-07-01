@@ -68,7 +68,42 @@ public class SubastaController : Controller
             sinPujas = false,
             ganador = resultado.Ganador
         });
+
     }
+    [HttpGet("Ganados")]
+    public async Task<IActionResult> Ganados()
+    {
+        if (!User.Identity.IsAuthenticated)
+            return RedirectToAction("Login", "Auth");
+
+        var email = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.Value;
+        if (string.IsNullOrWhiteSpace(email))
+            return RedirectToAction("Login", "Auth");
+
+     
+        var idsGuardados = await _context.ColeccionPokemon
+            .Where(c => c.EmailUsuario == email)
+            .Select(c => c.PokemonIdOriginal)
+            .ToListAsync();
+
+ 
+        var pokemonesGanados = await _context.ProductoPokemon
+            .Include(p => p.Stats)
+            .Where(p =>
+                !p.EnVenta &&
+                p.Email == email &&
+                p.HistorialPujas.Any() &&
+                !idsGuardados.Contains(p.PokemonIdOriginal)
+            )
+            .OrderByDescending(p => p.TiempoExpiracion)
+            .ToListAsync();
+
+        ViewBag.EmailUsuario = email;
+        return View("Ganados", pokemonesGanados);
+    }
+
+
+
 
 
 }

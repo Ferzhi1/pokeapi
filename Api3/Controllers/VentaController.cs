@@ -39,8 +39,16 @@ namespace api3.Controllers
             _context.ProductoPokemon.Add(pokemon);
             _context.SaveChanges();
 
+           
+            if (pokemon.PokemonIdOriginal == 0)
+            {
+                pokemon.PokemonIdOriginal = pokemon.Id;
+                _context.SaveChanges();
+            }
+
             return Ok(new { mensaje = "✅ Pokémon guardado para venta.", stats = pokemon.Stats });
         }
+
 
 
         [HttpGet]
@@ -93,6 +101,7 @@ namespace api3.Controllers
                 return BadRequest();
 
             var resultado = await _ventaService.IniciarSubastaAsync(pokemonId, precioInicial, duracionMinutos, emailUsuario);
+
             if (!resultado)
                 return BadRequest();
 

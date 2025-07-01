@@ -72,8 +72,9 @@ namespace api3.Controllers
             }
 
             var solicitudes = await _context.SolicitudAmistad
-                .Where(sa => sa.ReceptorEmail == usuarioEmail && sa.Estado == EstadoSolicitud.Pendiente)
+                .Where(sa => sa.ReceptorEmail == usuarioEmail && sa.Estado == EstadoSolicitud.Aceptada)
                 .ToListAsync();
+      
 
             ViewBag.EmailUsuario = usuarioEmail;
 

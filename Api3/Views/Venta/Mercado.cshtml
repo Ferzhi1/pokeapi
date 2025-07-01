@@ -56,6 +56,7 @@
                 {
                     <div class="col pokemon-card"
                          id="card-@pokemon.Nombre"
+                         data-id="@pokemon.PokemonIdOriginal"
                          data-usuario="@pokemon.Email"
                          data-monto="@pokemon.PujaActual"
                          data-finalizado="false">
@@ -90,6 +91,7 @@
                                 <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
                                 <p class="card-text">💰 Precio Inicial: <strong>@pokemon.PrecioInicial.ToString("F0") monedas</strong></p>
                                 <p class="card-text">🏅 Puja Actual: <strong id="puja-@pokemon.Id">@pokemon.PujaActual.ToString("F0") monedas</strong></p>
+                                <p class="card-text">🆔 ID Original: <strong>@pokemon.PokemonIdOriginal</strong></p>
                                 <p>Email del vendedor: <strong>@pokemon.Email</strong></p>
 
                                 <p class="card-text">
@@ -129,7 +131,7 @@
             }
         </div>
     </div>
-  
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script src="/js/SolicitudesAmistad.js"></script>
     <script src="/js/Subasta.js"></script>
