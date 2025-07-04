@@ -7,7 +7,7 @@ namespace api3.Hubs
 {
     public class SubastaHub : Hub
     {
-        // Almacena los usuarios conectados y su ConnectionId
+ 
         public static ConcurrentDictionary<string, string> UsuariosSubasta = new();
 
         public override async Task OnConnectedAsync()
@@ -45,16 +45,42 @@ namespace api3.Hubs
         }
 
 
-        public async Task NotificarNuevaSubasta(int pokemonId, string nombrePokemon, string rareza, decimal precioInicial, string imagenUrl, int duracionMinutos, string emailVendedor, decimal pujaActual, List<StatPokemon> stats)
+        public async Task NotificarNuevaSubasta(
+            int pokemonId,
+            string nombrePokemon,
+            string rareza,
+            decimal precioInicial,
+            string imagenUrl,
+            int duracionMinutos,
+            string emailVendedor,
+            decimal pujaActual,
+            List<StatPokemon> stats,
+            int pokemonIdOriginal)
         {
             if (pokemonId > 0 &&
                 !string.IsNullOrEmpty(nombrePokemon) &&
                 !string.IsNullOrEmpty(emailVendedor) &&
                 precioInicial >= 0)
             {
-                await Clients.All.SendAsync("NuevaSubasta", pokemonId, nombrePokemon, rareza, precioInicial, imagenUrl, duracionMinutos, emailVendedor, pujaActual, stats);
+                var subastaInfo = new SubastaInfo
+                {
+                    PokemonId = pokemonId,
+                    Nombre = nombrePokemon,
+                    Rareza = rareza,
+                    PrecioInicial = precioInicial,
+                    ImagenUrl = imagenUrl,
+                    DuracionMinutos = duracionMinutos,
+                    Email = emailVendedor,
+                    PujaActual = pujaActual,
+                    Stats = stats,
+                    PokemonIdOriginal = pokemonIdOriginal
+                };
+
+                await Clients.All.SendAsync("NuevaSubasta", subastaInfo);
             }
         }
+
+
 
         public async Task ActualizarTiempoSubasta(int pokemonId, string emailVendedor, int tiempoRestante)
         {

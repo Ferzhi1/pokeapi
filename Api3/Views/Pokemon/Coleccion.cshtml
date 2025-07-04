@@ -17,13 +17,34 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid justify-content-between">
-            <a class="navbar-brand" href="#">Pokémon Store</a>
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item me-3">
+                    <a class="nav-link text-white" href="/SolicitudAmistad/ListaSolicitudes">👥 Amigos</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-white" href="/Venta/Venta">🛒 Ir a venta</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-white" href="/Subasta/Ganados">🏆 Subastas ganadas</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-white" href="/Venta/Mercado">🌐 Mercado Pokémon</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-white" href="/Pokemon/Index">📔 Mazos</a>
+                </li>
+            </ul>
             <div class="d-flex flex-column align-items-end">
                 <span class="text-light">💰 Monedas: <strong>@ViewBag.Monedero</strong></span>
                 <span class="text-light">📧 @ViewBag.EmailUsuario</span>
+                <form asp-controller="Auth" asp-action="Logout" method="post" class="mt-1">
+                    <button type="submit" class="btn btn-link nav-link p-0 text-white">🔓 Cerrar sesión</button>
+                </form>
             </div>
         </div>
     </nav>
+
+
 
 
     <div class="container pokedex-container">

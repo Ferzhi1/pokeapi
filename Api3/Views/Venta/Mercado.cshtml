@@ -9,18 +9,23 @@
     <link rel="stylesheet" href="~/css/styles2.css">
 </head>
 <body>
+ 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Mercado Pokémon</a>
-
-            <div class="d-flex align-items-center">
-                <span class="text-light me-3" style="display: block !important; color: white !important;">
-                    💰 Monedas: <strong id="monedero">@ViewBag.Monedero</strong>
-                </span>
-                <span class="text-light" style="display: block !important; color: white !important;">
-                    📧 @ViewBag.EmailUsuario
-                </span>
+        <div class="container-fluid justify-content-between">
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item me-3"><a class="nav-link text-white" href="/SolicitudAmistad/ListaSolicitudes">👥 Amigos</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="/Venta/Venta">🛒 Ir a venta</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="/Pokemon/Index">📔 Ir a Mazos</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="/Subasta/Ganados">🏆 Subastas ganadas</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="/Pokemon/Coleccion">🧾 Colección</a></li>
+            </ul>
+            <div class="d-flex flex-column align-items-end">
+                <span class="text-light">💰 Monedas: <strong id="monedero">@ViewBag.Monedero</strong></span>
+                <span class="text-light">📧 @ViewBag.EmailUsuario</span>
+                <form asp-controller="Auth" asp-action="Logout" method="post" class="mt-1">
+                    <button type="submit" class="btn btn-link nav-link p-0 text-white">🔓 Cerrar sesión</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -28,34 +33,52 @@
     <div class="container text-center mt-5">
         <h2 class="mb-4">🏪 Mercado Pokémon</h2>
 
-        @if (Model.Clima != null && Model.Clima.Main != null && Model.Clima.Weather != null && Model.Clima.Weather.Any())
+        @if (Model.Clima?.Main != null && Model.Clima?.Weather != null && Model.Clima.Weather.Any())
         {
-            <div class="alert alert-warning">
+            <div class="alert alert-clima clima-info">
                 🌤 Clima en Bogotá: <strong>@Model.Clima.Main.Temp°C</strong>, @Model.Clima.Weather[0].Description
             </div>
         }
         else
         {
-            <div class="alert alert-danger">
-                ⚠ No se pudo obtener información del clima.
-            </div>
+            <div class="alert alert-danger">⚠ No se pudo obtener información del clima.</div>
         }
 
-        <div class="alert alert-info">
-            📢 Participa en la subasta y consigue los mejores Pokémon antes de que el tiempo expire.
+        <div class="alert alert-info">📢 Participa en la subasta y consigue los mejores Pokémon antes de que el tiempo expire.</div>
+
+        <div class="container mt-5">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">💬 Chat en vivo como: <strong>@ViewBag.EmailUsuario</strong></h5>
+                </div>
+                <input type="hidden" id="userEmail" value="@ViewBag.EmailUsuario" />
+
+                <div class="card-body">
+                    <div class="mb-3 row align-items-center">
+                        <label for="messageInput" class="col-sm-2 col-form-label fw-bold">Mensaje</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="messageInput" class="form-control" placeholder="Escribe tu mensaje..." />
+                        </div>
+                        <div class="col-sm-2 text-end">
+                            <button id="sendButton" class="btn btn-success w-100">Enviar</button>
+                        </div>
+                    </div>
+                    <hr />
+                    <ul id="messagesList" class="list-group">
+                     
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <p>Email del usuario: <strong>@ViewBag.EmailUsuario</strong></p>
 
-        <input type="hidden" id="emailUsuario" value="@ViewBag.EmailUsuario" />
-
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
             @if (Model.Pokemons != null && Model.Pokemons.Any())
             {
                 @foreach (var pokemon in Model.Pokemons.Where(p => p.EnVenta))
                 {
                     <div class="col pokemon-card"
-                         id="card-@pokemon.Nombre"
+                         id="card-@pokemon.Id"
                          data-id="@pokemon.PokemonIdOriginal"
                          data-usuario="@pokemon.Email"
                          data-monto="@pokemon.PujaActual"
@@ -64,12 +87,12 @@
                             <div class="d-flex align-items-center p-3">
                                 <div class="flex-shrink-0">
                                     <img src="@(!string.IsNullOrEmpty(pokemon.ImagenUrl) ? pokemon.ImagenUrl : "/images/default-pokemon.png")"
-                                         class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
+                                         class="img-fluid rounded pokemon-img"
+                                         alt="@pokemon.Nombre"
                                          style="width: 180px; height: auto;" />
                                 </div>
-
-                                <div class="stats-section ms-3">
-                                    <h6> 📊 Estadísticas:</h6>
+                                <div class="ms-3">
+                                    <h6>📊 Estadísticas:</h6>
                                     <ul class="list-group">
                                         @if (pokemon.Stats != null && pokemon.Stats.Any())
                                         {
@@ -85,15 +108,13 @@
                                     </ul>
                                 </div>
                             </div>
-
                             <div class="card-body text-center">
-                                <h5 class="card-title pokemon-nombre">@pokemon.Nombre</h5>
-                                <p class="card-text pokemon-rareza">Rareza: <strong>@pokemon.Rareza</strong></p>
+                                <h5 class="card-title">@pokemon.Nombre</h5>
+                                <p class="card-text">Rareza: <strong>@pokemon.Rareza</strong></p>
                                 <p class="card-text">💰 Precio Inicial: <strong>@pokemon.PrecioInicial.ToString("F0") monedas</strong></p>
                                 <p class="card-text">🏅 Puja Actual: <strong id="puja-@pokemon.Id">@pokemon.PujaActual.ToString("F0") monedas</strong></p>
                                 <p class="card-text">🆔 ID Original: <strong>@pokemon.PokemonIdOriginal</strong></p>
                                 <p>Email del vendedor: <strong>@pokemon.Email</strong></p>
-
                                 <p class="card-text">
                                     ⏳ Tiempo Restante:
                                     <strong id="tiempo-restante-@pokemon.Id"
@@ -135,6 +156,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script src="/js/SolicitudesAmistad.js"></script>
     <script src="/js/Subasta.js"></script>
+    <script src="/js/Chat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>

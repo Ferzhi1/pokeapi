@@ -10,19 +10,37 @@
 	<link rel="stylesheet" href="~/css/styles.css" />
 </head>
 <body>
-	<nav class="navbar">
-
-		<ul>
-			<li><a href="/SolicitudAmistad/ListaSolicitudes">👥 Amigos</a></li>
-			<li><a href="/Pokemon/Coleccion">📦 Colección Pokémon</a></li>
-			<form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
-				<button type="submit" class="btn btn-link nav-link" style="color: #fff; text-decoration: none;">🔓 Cerrar sesión</button>
-			</form>
-
-		</ul>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid justify-content-between">
+			<ul class="navbar-nav d-flex flex-row">
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/SolicitudAmistad/ListaSolicitudes">👥 Amigos</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/Venta/Venta">🛒 Ir a venta</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/Subasta/Ganados">🏆 Subastas ganadas</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/Venta/Mercado">🌐 Mercado Pokémon</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/Pokemon/Coleccion">🧾 Coleccion</a>
+				</li>
+			</ul>
+			<div class="d-flex flex-column align-items-end">
+				<span class="text-light">💰 Monedas: <strong>@ViewBag.Monedero</strong></span>
+				<span class="text-light">📧 @ViewBag.EmailUsuario</span>
+				<form asp-controller="Auth" asp-action="Logout" method="post" class="mt-1">
+					<button type="submit" class="btn btn-link nav-link p-0 text-white">🔓 Cerrar sesión</button>
+				</form>
+			</div>
+		</div>
 	</nav>
 
-	
+
+
 
 
 	<header class="hero">

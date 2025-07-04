@@ -1,0 +1,70 @@
+﻿
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+
+.navbar {
+    border-bottom: 2px solid #FFD700;
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+    .nav-link:hover {
+        color: #FFD700 !important;
+    }
+
+strong {
+    color: #000000;
+}
+
+.table {
+    background-color: #111111;
+    color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background-color: #333333;
+        color: #FFD700;
+    }
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #1c1c1c;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #2a2a2a;
+}
+
+.table td, .table th {
+    border-color: #444444;
+}
+
+/* Botón de volver */
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Alerta de error */
+.alert-danger {
+    background-color: #ffdddd;
+    color: #8b0000;
+    border: 1px solid #8b0000;
+}

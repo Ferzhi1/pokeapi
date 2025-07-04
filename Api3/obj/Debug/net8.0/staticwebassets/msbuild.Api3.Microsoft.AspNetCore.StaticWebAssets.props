@@ -18,6 +18,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\api3.j3j5e62mko.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\amistad.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>api3</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/api3</BasePath>
+      <RelativePath>css/amistad.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>n1fil2fczm</Fingerprint>
+      <Integrity>q4nUosm3ytNoBWrcW9dZJAPrVxaxaLeGq9ZNhQ/rd7A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\amistad.css'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Confirmation.css'))">
       <SourceType>Package</SourceType>
       <SourceId>api3</SourceId>
@@ -66,8 +84,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>kpey667kck</Fingerprint>
-      <Integrity>CHP7JqM9TYqoj/ZVpl7YV0Rk9P356sWuA/xmYS31XxM=</Integrity>
+      <Fingerprint>p0yl8ulm8y</Fingerprint>
+      <Integrity>ea+hOdBKSOYlyxKmFgLeo+nQ/NLAG8jWIPoBLXO1kAg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\stylecoleccion.css'))</OriginalItemSpec>
@@ -102,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gbvpf80o4h</Fingerprint>
-      <Integrity>NAZ66Uh6ApjWE+BGSJ/vfgrVyFvbX1f7QSAH8XLWZsc=</Integrity>
+      <Fingerprint>bxf5jqhvjv</Fingerprint>
+      <Integrity>30qIEMQGg5xvmzQ1D9Ah0ig1Eq0MX4L1r3suA7EoJLQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\styles2.css'))</OriginalItemSpec>
@@ -156,8 +174,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>hg6jh8jwar</Fingerprint>
-      <Integrity>j1fdKlzCQA+JlG5iuToCfKdSbFsyqtZTYjlJbVvGJF0=</Integrity>
+      <Fingerprint>ggjwyoptcy</Fingerprint>
+      <Integrity>gLxHeCzftV1IZlUozwio+XmW7lsyBD27yt87wh0cFH4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\styles5.css'))</OriginalItemSpec>
@@ -558,6 +576,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\App.js'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Chat.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>api3</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/api3</BasePath>
+      <RelativePath>js/Chat.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>0unipql747</Fingerprint>
+      <Integrity>2EXtm2rh1lb0Cqzyvzq6kyPwQUZ661qjYPsn364ujcE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Chat.js'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Ganados.js'))">
       <SourceType>Package</SourceType>
       <SourceId>api3</SourceId>
@@ -570,8 +606,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>uknavr2pxz</Fingerprint>
-      <Integrity>Ij9PCEnBTMLWK7NM09FKTXACTIaVzHTZyXIFg26clic=</Integrity>
+      <Fingerprint>ha2eidu9gj</Fingerprint>
+      <Integrity>5zauutVEIXm2k+1bw+KDGF4xkN2iU7At+fCunz1ONIY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Ganados.js'))</OriginalItemSpec>
@@ -624,8 +660,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>2ts33ybscq</Fingerprint>
-      <Integrity>avB9mw1YXpntAB70YnGPXmn4b+iL0DtnFZ0lSgPwgcM=</Integrity>
+      <Fingerprint>oar09q1eob</Fingerprint>
+      <Integrity>MGu2vs1ZZBVCOUWs+ub3HfCAebRqyDajez1iWFwDfgQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Subasta.js'))</OriginalItemSpec>

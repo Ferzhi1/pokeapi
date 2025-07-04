@@ -7,72 +7,24 @@
       "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\subasta.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\ventaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\services\\ventaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\controllers\\ventacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\subastaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\services\\subastaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\ganados.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\ganados.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\subastacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\controllers\\subastacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\subasta\\ganados.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\subasta\\ganados.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\venta\\mercado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\venta\\mercado.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\css\\styles2.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\css\\styles2.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\js\\chat.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\js\\chat.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\pedido\\confirmacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\pedido\\confirmacion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\hubs\\subastahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\hubs\\subastahub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\venta\\venta.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\venta\\venta.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\solicitudamistad\\listasolicitudes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\solicitudamistad\\listasolicitudes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\views\\pokemon\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\views\\pokemon\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\controllers\\solicitudamistadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\controllers\\solicitudamistadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\services\\solicitudamistadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\services\\solicitudamistadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|c:\\users\\hmelo003\\source\\repos\\pokeapi\\api3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{214424C2-8D1B-49AF-B433-2E26EAE8EAC3}|Api3\\api3.csproj|solutionrelative:api3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,21 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Ganados.js",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Ganados.js",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\Ganados.js",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Ganados.js",
-              "RelativeToolTip": "Api3\\wwwroot\\js\\Ganados.js",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAuwG4AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-07-01T16:03:03.486Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -105,217 +44,74 @@
               "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\Subasta.js",
               "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Subasta.js",
               "RelativeToolTip": "Api3\\wwwroot\\js\\Subasta.js",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAuwBkAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAIkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-07-01T19:42:03.817Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "VentaService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\VentaService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\VentaService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\VentaService.cs",
-              "RelativeToolTip": "Api3\\Services\\VentaService.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAADgAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T19:33:20.7Z",
+              "WhenOpened": "2025-07-04T14:50:16.002Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "Api3\\wwwroot\\js\\site.js",
-              "ViewState": "AgIAABwAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-07-01T17:30:51.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "VentaController.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\VentaController.cs",
-              "RelativeDocumentMoniker": "Api3\\Controllers\\VentaController.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\VentaController.cs",
-              "RelativeToolTip": "Api3\\Controllers\\VentaController.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAgwFwAAAAhAAAAAAAAAA==",
+              "Title": "SubastaHub.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\SubastaHub.cs",
+              "RelativeDocumentMoniker": "Api3\\Hubs\\SubastaHub.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\SubastaHub.cs",
+              "RelativeToolTip": "Api3\\Hubs\\SubastaHub.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAwwAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T17:49:08.503Z",
+              "WhenOpened": "2025-07-04T14:44:04.69Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SubastaService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\SubastaService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\SubastaService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\SubastaService.cs",
-              "RelativeToolTip": "Api3\\Services\\SubastaService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwNsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T15:30:17.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SubastaController.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SubastaController.cs",
-              "RelativeDocumentMoniker": "Api3\\Controllers\\SubastaController.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SubastaController.cs",
-              "RelativeToolTip": "Api3\\Controllers\\SubastaController.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAwwFgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T15:33:29.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Ganados.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Subasta\\Ganados.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Subasta\\Ganados.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Subasta\\Ganados.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Subasta\\Ganados.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-01T15:35:30.51Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Venta.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Venta\\Venta.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Venta\\Venta.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Venta\\Venta.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Venta\\Venta.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwD8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-01T13:20:37.472Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "Mercado.cshtml",
               "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Venta\\Mercado.cshtml",
               "RelativeDocumentMoniker": "Api3\\Views\\Venta\\Mercado.cshtml",
               "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Venta\\Mercado.cshtml",
               "RelativeToolTip": "Api3\\Views\\Venta\\Mercado.cshtml",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAuwI0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAcwKMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-01T16:04:25.875Z",
+              "WhenOpened": "2025-07-03T21:22:35.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "styles.css",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles.css",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\css\\styles.css",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles.css",
-              "RelativeToolTip": "Api3\\wwwroot\\css\\styles.css",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-01T13:28:40.602Z",
+              "DocumentIndex": 2,
+              "Title": "Chat.js",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Chat.js",
+              "RelativeDocumentMoniker": "Api3\\wwwroot\\js\\Chat.js",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Chat.js",
+              "RelativeToolTip": "Api3\\wwwroot\\js\\Chat.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-03T21:21:47.513Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Confirmacion.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Pedido\\Confirmacion.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEYAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-01T16:27:37.237Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "styles2.css",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles2.css",
-              "RelativeDocumentMoniker": "Api3\\wwwroot\\css\\styles2.css",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\styles2.css",
-              "RelativeToolTip": "Api3\\wwwroot\\css\\styles2.css",
-              "ViewState": "AgIAANsAAAAAAAAAAAAqwPIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-07-01T17:18:35.297Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ListaSolicitudes.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\SolicitudAmistad\\ListaSolicitudes.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\SolicitudAmistad\\ListaSolicitudes.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\SolicitudAmistad\\ListaSolicitudes.cshtml",
-              "RelativeToolTip": "Api3\\Views\\SolicitudAmistad\\ListaSolicitudes.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-01T13:54:18.72Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "SolicitudAmistadController.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SolicitudAmistadController.cs",
-              "RelativeDocumentMoniker": "Api3\\Controllers\\SolicitudAmistadController.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Controllers\\SolicitudAmistadController.cs",
-              "RelativeToolTip": "Api3\\Controllers\\SolicitudAmistadController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAUwEwAAAAGAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Program.cs",
+              "RelativeDocumentMoniker": "Api3\\Program.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Program.cs",
+              "RelativeToolTip": "Api3\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAD0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T13:50:31.828Z",
+              "WhenOpened": "2025-07-03T21:20:20.309Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Pokemon\\Index.cshtml",
-              "RelativeDocumentMoniker": "Api3\\Views\\Pokemon\\Index.cshtml",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Views\\Pokemon\\Index.cshtml",
-              "RelativeToolTip": "Api3\\Views\\Pokemon\\Index.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-01T13:25:26.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\AuthService.cs",
-              "RelativeToolTip": "Api3\\Services\\AuthService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "Api3\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "Api3\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T15:15:43.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "SolicitudAmistadService.cs",
-              "DocumentMoniker": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\SolicitudAmistadService.cs",
-              "RelativeDocumentMoniker": "Api3\\Services\\SolicitudAmistadService.cs",
-              "ToolTip": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\Services\\SolicitudAmistadService.cs",
-              "RelativeToolTip": "Api3\\Services\\SolicitudAmistadService.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAowD8AAABrAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T15:02:25.351Z",
+              "WhenOpened": "2025-07-03T21:17:56.123Z",
               "EditorCaption": ""
             }
           ]

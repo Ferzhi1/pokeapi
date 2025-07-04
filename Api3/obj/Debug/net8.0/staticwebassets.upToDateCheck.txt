@@ -1,3 +1,4 @@
+wwwroot\css\amistad.css
 wwwroot\css\Confirmation.css
 wwwroot\css\site.css
 wwwroot\css\stylecoleccion.css
@@ -28,6 +29,7 @@ wwwroot\img\Mazo5.jpg
 wwwroot\img\mazo6.jpg
 wwwroot\img\wp4853976-realistic-pokeball-desktop-wallpapers.jpg
 wwwroot\js\App.js
+wwwroot\js\Chat.js
 wwwroot\js\Ganados.js
 wwwroot\js\site.js
 wwwroot\js\SolicitudesAmistad.js

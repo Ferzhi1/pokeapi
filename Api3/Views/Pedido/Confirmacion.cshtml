@@ -11,16 +11,18 @@
     <link rel="stylesheet" href="~/css/styles2.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Pokémon Store</a>
+    <nav class="navbar">
 
-            <div class="d-flex align-items-center">
-                <span class="text-light me-3">💰 Monedas: <strong id="monedero">@ViewBag.Monedero</strong></span>
-                <span class="text-light">📧 @ViewBag.EmailUsuario</span>
-            </div>
-        </div>
+        <ul>
+            <li><a href="/SolicitudAmistad/ListaSolicitudes">👥 Amigos</a></li>
+            <li><a href="/Pokemon/Coleccion">📦 Colección Pokémon</a></li>
+            <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                <button type="submit" class="btn btn-link nav-link" style="color: #fff; text-decoration: none;">🔓 Cerrar sesión</button>
+            </form>
+
+        </ul>
     </nav>
+
 
 
     <div class="container text-center mt-5">
@@ -42,7 +44,9 @@
                         <div class="card shadow-lg">
                             <div class="d-flex align-items-center p-3">
                                 <div class="flex-shrink-0">
-                                    <img src="@pokemon.ImagenUrl" class="img-fluid rounded pokemon-img" alt="@pokemon.Nombre"
+                                    <img src="@pokemon.ImagenUrl"
+                                         class="img-fluid rounded pokemon-img @pokemon.Rareza.ToLower()"
+                                         alt="@pokemon.Nombre" 
                                          style="width: 180px; height: auto;"
                                          onerror="this.src='/images/default-pokemon.png';" />
                                 </div>

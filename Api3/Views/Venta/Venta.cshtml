@@ -8,27 +8,37 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Subasta Pokémon</title>
 	<link rel="stylesheet" href="~/css/styles2.css">
-	
-
 </head>
 <body>
-
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Subasta Pokémon</a>
-
-			<div class="d-flex align-items-center">
-				<span class="text-light me-3" style="display: block !important; color: white !important;">
-					💰 Monedas: <strong id="monedero">@ViewBag.Monedero</strong>
-				</span>
-				<span class="text-light" style="display: block !important; color: white !important;">
-					📧 @ViewBag.EmailUsuario
-				</span>
-
+		<div class="container-fluid justify-content-between">
+			<ul class="navbar-nav d-flex flex-row">
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/SolicitudAmistad/ListaSolicitudes">👥 Amigos</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/Pokemon/Index">📔Mazos</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/Pokemon/Coleccion">📦 Colección Pokémon</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/Subasta/Ganados">🏆 Subastas ganadas</a>
+				</li>
+				<li class="nav-item me-3">
+					<a class="nav-link text-white" href="/Venta/Mercado">🌐 Mercado Pokémon</a>
+				</li>
+			</ul>
+			<div class="d-flex flex-column align-items-end">
+				<span class="text-light">💰 Monedas: <strong>@ViewBag.Monedero</strong></span>
+				<span class="text-light">📧 @ViewBag.EmailUsuario</span>
+				<form asp-controller="Auth" asp-action="Logout" method="post" class="mt-1">
+					<button type="submit" class="btn btn-link nav-link p-0 text-white">🔓 Cerrar sesión</button>
+				</form>
 			</div>
 		</div>
 	</nav>
+
 
 	<div class="container text-center mt-5">
 		<h2 class="mb-4">Subasta de Pokémon</h2>

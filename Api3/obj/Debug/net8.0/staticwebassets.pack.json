@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\Confirmation.css"
     },
     {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\amistad.css",
+      "PackagePath": "staticwebassets\\css\\amistad.css"
+    },
+    {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -123,6 +127,10 @@
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\App.js",
       "PackagePath": "staticwebassets\\js\\App.js"
+    },
+    {
+      "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Chat.js",
+      "PackagePath": "staticwebassets\\js\\Chat.js"
     },
     {
       "Id": "C:\\Users\\hmelo003\\source\\repos\\pokeapi\\Api3\\wwwroot\\js\\Ganados.js",

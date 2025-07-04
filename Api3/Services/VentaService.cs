@@ -52,20 +52,24 @@ namespace api3.Services
             pokemon.fechaInicioSubasta = DateTime.Now;
 
             await _context.SaveChangesAsync();
+            var subastaInfo = new SubastaInfo
+            {
+                PokemonId = pokemon.Id,
+                PokemonIdOriginal = pokemon.PokemonIdOriginal,
+                Nombre = pokemon.Nombre,
+                Rareza = pokemon.Rareza,
+                PrecioInicial = precioInicial,
+                ImagenUrl = pokemon.ImagenUrl,
+                DuracionMinutos = duracionMinutos,
+                Email = pokemon.Email,
+                PujaActual = pokemon.PujaActual,
+                Stats = pokemon.Stats,
+                TiempoRestante = pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalMinutes
+            };
 
-            await _hubContext.Clients.All.SendAsync("NuevaSubasta",
-                pokemon.PokemonIdOriginal,
-                pokemon.Nombre,
-                pokemon.Rareza,
-                precioInicial,
-                pokemon.ImagenUrl,
-                duracionMinutos,
-                pokemon.Email,
-                pokemon.PujaActual,
-                pokemon.Stats,
-                pokemon.TiempoExpiracion.Subtract(DateTime.Now).TotalMinutes
-             
-            );
+            await _hubContext.Clients.All.SendAsync("NuevaSubasta", subastaInfo);
+
+
 
             _subastaService.IniciarTemporizador(pokemon.Id, pokemon.Email, duracionMinutos);
 

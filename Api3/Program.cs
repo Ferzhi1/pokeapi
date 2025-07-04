@@ -62,7 +62,7 @@ app.MapControllers();
 app.MapRazorPages();
 app.MapHub<AmistadHub>("/amistadHub");
 app.MapHub<SubastaHub>("/subastaHub");
-
+app.MapHub<ChatHub>("/chatHub");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Pokemon}/{action=Index}/{nombre?}"

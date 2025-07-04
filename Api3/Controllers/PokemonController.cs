@@ -27,15 +27,25 @@ public class PokemonController : Controller
 
     public async Task<IActionResult> Index()
     {
+        var emailUsuario = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+        ViewBag.EmailUsuario = emailUsuario;
+
+        var usuario = await _context.UsuariosPokemonApi
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Email == emailUsuario);
+
+        ViewBag.Monedero = (int)(usuario?.Monedero ?? 0m);
+
         var mazos = new List<MazoPokemon>
-        {
-            new("Mazo Pequeño", 25.99m, "/img/mazo1.jpg"),
-            new("Mazo Mediano", 39.99m, "/img/mazo2.jpg"),
-            new("Mazo Grande", 69.99m, "/img/mazo6.jpg")
-        };
+    {
+        new("Mazo Pequeño", 25.99m, "/img/mazo1.jpg"),
+        new("Mazo Mediano", 39.99m, "/img/mazo2.jpg"),
+        new("Mazo Grande", 69.99m, "/img/mazo6.jpg")
+    };
 
         return View(mazos);
     }
+
 
     [HttpPost]
     public IActionResult GuardarFavorito([FromBody] ProductoPokemon pokemon)
